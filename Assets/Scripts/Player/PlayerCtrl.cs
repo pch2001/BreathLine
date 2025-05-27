@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -167,17 +168,17 @@ public class PlayerCtrl : MonoBehaviour
     //여기서부터 늑대 선언부
     private void OnWolfMove(InputAction.CallbackContext context) // 늑대 움직임 구현, 마우스 좌클릭 시 실행
     {
+        if (currentWolfState == WolfState.Damaged) return; // 늑대 부상시 조작 불가능
+
+        wolfExitTimer = 0f;
+
         if (currentWolfState == WolfState.Hide) // 늑대가 Hide 상태일 때, 늑대 등장
         {
-            StartCoroutine(playerSkill.WolfAppear()); // 늑대 등장 구현
-            wolfExitTimer = 0f;
-            currentWolfState = WolfState.Idle; 
+            StartCoroutine(playerSkill.WolfAppear(false));    
         }
         else if (currentWolfState == WolfState.Idle)// 늑대가 Hide상태x, 기존 위치 -> 늑대 새로운 위치 등장
         {
-            StartCoroutine(playerSkill.WolfAppear()); // 늑대 등장 구현
-            wolfExitTimer = 0f;
-            currentWolfState = WolfState.Idle;
+            StartCoroutine(playerSkill.WolfAppear(true));
         }
     }
 
@@ -240,13 +241,23 @@ public class PlayerCtrl : MonoBehaviour
         }
         if(collision.gameObject.CompareTag("Enemy")) // 적과 충돌시 데미지 or 가드
         {
-            if(currentWolfState != WolfState.Damaged) // 늑대 보호 가능
+            EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy 기본 클래스 가져옴
+            if (enemy != null)
             {
-                OnWolfGuard(); // 가드 실행
+                if (!enemy.attackMode) return; // 적의 공격 모드가 false일 경우 충돌 X
+                
+                if (currentWolfState != WolfState.Damaged) // 늑대 보호 가능
+                {
+                    OnWolfGuard(); // 가드 실행
+                }
+                else
+                {
+                    Debug.Log("소녀 피격! GameOver...");
+                }
             }
             else
             {
-                Debug.Log("소녀 피격! GameOver...");
+                Debug.Log("해당 적은 EnemyBase 클래스를 상속하지 않았습니다! 연결해유");
             }
         }
     }
