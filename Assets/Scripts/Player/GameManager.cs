@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public List<PollutionStage> pollutionStages; // 오염도 단계별 데이터 저장 리스트
     public PollutionStage currentStageData; // 현재 오염도 단계 데이터
     public int currentStageIndex; // 현재 오염도 단계
+    public int curedSeed = 0; //@정화된 씨앗 개수
     [SerializeField] RectTransform pollutionGauge; // 오염도 UI 
 
     public Vector3 savePoint; // 세이브 포인트 위치
