@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,16 +13,12 @@ public class PlayerCtrl : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     private PlayerSkill playerSkill;
-    private GhoulCamp ghoulCamp; //@구울 캠프 스크립트
     public SpriteRenderer spriteRenderer; // Sprite 반전용
     private PlayerInputAction playerinputAction; // 강화된 Input 방식 사용
     private float moveSpeed = 5f; // 이동속도
     private float jumpForce = 12f; // 점프력
     private bool isGrounded = true; // 착지 여부
     private bool isPressingPiri = false; // 피리 연주 여부
-    private bool isBow = false; //@숙임 여부
-    private float campTimer = 0f; //@CampTimer
-    private GameObject savePoint; //@savePoint
 
     public GameObject wolf; // 늑대 게임 오브젝트
     public Animator wolfAnimator; // 늑대 애니메이터
@@ -31,6 +28,7 @@ public class PlayerCtrl : MonoBehaviour
     public Image wolfAttackCool; // 늑대 공격 쿨타임 UI 
     private Coroutine wolfAttackCoolRoutine; // 늑대 공격 쿨타임 코루틴
 
+    private bool dontmove = true;//플레이 고정시
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,8 +39,10 @@ public class PlayerCtrl : MonoBehaviour
         playerSkill = GetComponent<PlayerSkill>();
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
+        dontmove = true;
+
         // inputAction 활성화
         playerinputAction.Enable();
 
@@ -64,10 +64,11 @@ public class PlayerCtrl : MonoBehaviour
         playerinputAction.Wolf.Attack.performed += OnWolfAttack;
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         // inputAction 비활성화
         playerinputAction.Disable();
+        dontmove = false;
     }
 
     // 소녀 연결 이벤트
@@ -111,21 +112,19 @@ public class PlayerCtrl : MonoBehaviour
 
     private void OnPlayerMove()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetKey(KeyCode.S)) //@@
+        float h;
+        if (dontmove)
         {
-            h = 0f;
-            isBow = true;
-            //Debug.Log("숙임!");
+
+            h = Input.GetAxisRaw("Horizontal");
+
+            // 좌우 이동
+            rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
         }
         else
         {
-            isBow = false;
+            h = 0;
         }
-
-        // 좌우 이동
-        rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
         if (h != 0)
             animator.SetBool("isMove", true);
         else
@@ -136,6 +135,7 @@ public class PlayerCtrl : MonoBehaviour
             spriteRenderer.flipX = false;
         else if (h < 0)
             spriteRenderer.flipX = true;
+
     }
 
     private void OnJump(InputAction.CallbackContext context) // 점프
@@ -182,17 +182,17 @@ public class PlayerCtrl : MonoBehaviour
     //여기서부터 늑대 선언부
     private void OnWolfMove(InputAction.CallbackContext context) // 늑대 움직임 구현, 마우스 좌클릭 시 실행
     {
+        if (currentWolfState == WolfState.Damaged) return; // 늑대 부상시 조작 불가능
+
+        wolfExitTimer = 0f;
+
         if (currentWolfState == WolfState.Hide) // 늑대가 Hide 상태일 때, 늑대 등장
         {
-            StartCoroutine(playerSkill.WolfAppear()); // 늑대 등장 구현
-            wolfExitTimer = 0f;
-            currentWolfState = WolfState.Idle;
+            StartCoroutine(playerSkill.WolfAppear(false));
         }
         else if (currentWolfState == WolfState.Idle)// 늑대가 Hide상태x, 기존 위치 -> 늑대 새로운 위치 등장
         {
-            StartCoroutine(playerSkill.WolfAppear()); // 늑대 등장 구현
-            wolfExitTimer = 0f;
-            currentWolfState = WolfState.Idle;
+            StartCoroutine(playerSkill.WolfAppear(true));
         }
     }
 
@@ -255,53 +255,24 @@ public class PlayerCtrl : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy")) // 적과 충돌시 데미지 or 가드
         {
-            if (currentWolfState != WolfState.Damaged) // 늑대 보호 가능
+            EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy 기본 클래스 가져옴
+            if (enemy != null)
             {
-                OnWolfGuard(); // 가드 실행
+                if (!enemy.attackMode) return; // 적의 공격 모드가 false일 경우 충돌 X
+
+                if (currentWolfState != WolfState.Damaged) // 늑대 보호 가능
+                {
+                    OnWolfGuard(); // 가드 실행
+                }
+                else
+                {
+                    Debug.Log("소녀 피격! GameOver...");
+                }
             }
             else
             {
-                Debug.Log("소녀 피격! GameOver...");
-                this.transform.position = savePoint.transform.position; //@@
+                Debug.Log("해당 적은 EnemyBase 클래스를 상속하지 않았습니다! 연결해유");
             }
-        }
-        if (collision.gameObject.CompareTag("Fall")) //@@
-        {
-            Debug.Log("소녀 낙사! GameOver...");
-            this.transform.position = savePoint.transform.position; //@@
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("GhoulCamp") && isBow)
-        {
-            campTimer += Time.deltaTime;
-            if (campTimer >= 2f)
-            {
-                ghoulCamp = other.gameObject.GetComponent<GhoulCamp>();
-                StartCoroutine(ghoulCamp.Cure(true));
-                campTimer = 0f;
-            }
-        }
-        else
-        {
-            campTimer = 0f;
-        }
-
-        if (other.gameObject.CompareTag("Ignore"))
-        {
-            ghoulCamp = other.gameObject.transform.parent.GetComponent<GhoulCamp>();
-            StartCoroutine(ghoulCamp.Cure(false));
-        }
-        if (other.gameObject.CompareTag("Seed") && Input.GetKeyDown(KeyCode.S))
-        {
-            GameManager.Instance.curedSeed++;
-            other.gameObject.SetActive(false);
-        }
-        if (other.gameObject.CompareTag("SavePoint"))
-        {
-            savePoint = other.gameObject;
         }
     }
 }
