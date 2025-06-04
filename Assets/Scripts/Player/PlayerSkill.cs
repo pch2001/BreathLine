@@ -64,7 +64,7 @@ public class PlayerSkill : MonoBehaviour
 
     private IEnumerator PlayShortPiri() // 분노의 악장 구현
     {
-        Debug.Log("피리로 [분노의 악장]을 연주합니다!");
+        //Debug.Log("피리로 [분노의 악장]을 연주합니다!");
         PlayPiriSound("Anger");
         RequestMoveSpeed?.Invoke(0.5f); // 이동속도 0.5로 변경
         RestoreSpeedAfterDelay(0.5f);
@@ -78,7 +78,7 @@ public class PlayerSkill : MonoBehaviour
 
     private void PlaySoftPiriCanceled() // 평화의 악장 취소 시
     {
-        Debug.Log("[평화의 악장] 연주 실패...");
+        // Debug.Log("[평화의 악장] 연주 실패...");
         PeaceWaitingEffect.SetActive(false); // 평화의 악장 준비 이펙트 종료
         audioSource.Stop();
         PlayPiriSound("PeaceFail");
@@ -96,20 +96,20 @@ public class PlayerSkill : MonoBehaviour
 
     public void ReleasePiri() // 연주버튼 입력 시간에 따른 연주 분기 조건 (분노의 악장 + 평화의 악장 실패시)
     {
-            float duration = Time.time - piriStartTime; // 연주버튼 누른 시간
+        float duration = Time.time - piriStartTime; // 연주버튼 누른 시간
 
-            if (duration <= 0.3f)
-            {
-                StartCoroutine(PlayShortPiri());
-            }
-            else if (duration > 0.4f && duration < SoftPiriKeyDownTime)
-            {
-                PlaySoftPiriCanceled();
-            }
+        if (duration <= 0.3f)
+        {
+            StartCoroutine(PlayShortPiri());
+        }
+        else if (duration > 0.4f && duration < SoftPiriKeyDownTime)
+        {
+            PlaySoftPiriCanceled();
+        }
 
-            RequestAnimSpeed?.Invoke(1f);
-            RequestMoveSpeed?.Invoke(2.5f); // 이동속도 2.5로 변경
-            StartCoroutine(RestoreSpeedAfterDelay(0.5f)); // 0.5초동안 잠시 이동속도 감소
+        RequestAnimSpeed?.Invoke(1f);
+        RequestMoveSpeed?.Invoke(2.5f); // 이동속도 2.5로 변경
+        StartCoroutine(RestoreSpeedAfterDelay(0.5f)); // 0.5초동안 잠시 이동속도 감소
     }
 
     public void CheckSoftPiri() // 평화의 악장 차징시간 도달 확인 
@@ -119,7 +119,7 @@ public class PlayerSkill : MonoBehaviour
             float duration = Time.time - piriStartTime;
             if (duration > 0.4f && !isSoftPiriStart)
             {
-                Debug.Log("[평화의 악장] 연주 시작");
+                // Debug.Log("[평화의 악장] 연주 시작");
                 PeaceWaitingEffect.SetActive(true); // 평화의 악장 준비 이펙트 활성화
 
                 audioSource.clip = piriClips["Peace"];
@@ -137,7 +137,7 @@ public class PlayerSkill : MonoBehaviour
 
     private IEnumerator PlaySoftPiri()
     {
-        Debug.Log("피리로 [평화의 악장]을 연주해냅니다.");
+        // Debug.Log("피리로 [평화의 악장]을 연주해냅니다.");
         PeaceWaitingEffect.SetActive(false); // 평화의 악장 준비 이펙트 종료
 
         audioSource.time = 9f; // 평화의 악장 끝부분(8.5초)으로 이동 (잔음도 표현)
@@ -204,7 +204,7 @@ public class PlayerSkill : MonoBehaviour
 
     public IEnumerator WolfAppear(bool isExist) // 늑대 등장 구현
     {
-        if(!wolfMoveReady) yield break; // 이동 쿨타임시 조작 불가능(너무 빈번한 이동 방지)
+        if (!wolfMoveReady) yield break; // 이동 쿨타임시 조작 불가능(너무 빈번한 이동 방지)
 
         wolfMoveReady = false;
         StartCoroutine(WolfMoveCool()); // 이동 쿨타임 시작
@@ -215,10 +215,10 @@ public class PlayerSkill : MonoBehaviour
 
         float timer = 0f;
 
-        if(mousePosition.x > playerCtrl.transform.position.x)
+        if (mousePosition.x > playerCtrl.transform.position.x)
         {
             wolfSpriteRenderer.flipX = false;
-            isStartRight = Vector2.left * 4; 
+            isStartRight = Vector2.left * 4;
         }
         else
         {
@@ -229,7 +229,7 @@ public class PlayerSkill : MonoBehaviour
         if (isExist) // 늑대 이미 등장시
         {
             // 늑대 기존 위치에서 사라지는 연출
-            Debug.Log("늑대가 사라집니다!");
+            // Debug.Log("늑대가 사라집니다!");
             RequestWolfAnimTrigger?.Invoke("Hide");
             wolfAppearArea.SetActive(false); // 늑대 등장 효과 종료
 
@@ -245,7 +245,7 @@ public class PlayerSkill : MonoBehaviour
         }
 
         // 새로운 위치로 나타나는 연출
-        Debug.Log("늑대가 나타납니다!");
+        // Debug.Log("늑대가 나타납니다!");
         RequestWolfState(WolfState.Idle); // 늑대 Idle 상태로 변경
         playerCtrl.wolf.transform.position = mousePosition + isStartRight; // 늑대 출발점
         RequestWolfAnimTrigger?.Invoke("Move");
@@ -260,7 +260,7 @@ public class PlayerSkill : MonoBehaviour
 
             if (wolfIsDamaged)
             {
-                Debug.Log("등장 중 늑대가 소녀 곁으로 이동합니다!");
+                // Debug.Log("등장 중 늑대가 소녀 곁으로 이동합니다!");
                 playerCtrl.wolf.transform.position = playerCtrl.transform.position; // 소녀 위치로 이동
                 yield break; // 늑대 부상시 함수 실행 중지
             }
@@ -271,7 +271,7 @@ public class PlayerSkill : MonoBehaviour
     }
     public IEnumerator WolfAttack() // 늑대 공격 구현
     {
-        if(wolfAttackReady)
+        if (wolfAttackReady)
         {
             wolfAttackReady = false;
             StartCoroutine(WolfAttackCool()); // 쿨타임 코루틴 실행
@@ -303,13 +303,13 @@ public class PlayerSkill : MonoBehaviour
         }
         wolfEyesAnim.SetBool("isOpen", wolfGuardReady);
         wolfEyes.enabled = true; // 늑대 눈 나타내기기
-           
+
         yield return StartCoroutine(FadeCoroutine(0.0f, 0.3f)); // FadeOut
     }
 
     public void WolfGuard() // 늑대 가드 구현
     {
-        if(wolfGuardReady)
+        if (wolfGuardReady)
         {
             wolfIsDamaged = true; // 늑대 부상 (등장중일 경우, 코루틴 탈출)
             wolfGuardReady = false; // 늑대 가드 비활성화
@@ -328,7 +328,7 @@ public class PlayerSkill : MonoBehaviour
         yield return new WaitForSeconds(0.4f); // 0.4초 후 사라짐
         guardImg.SetActive(false);
     }
-    
+
     private IEnumerator WolfMoveCool() // 늑대 이동 쿨타임 코루틴
     {
         yield return new WaitForSeconds(1f);
@@ -344,7 +344,7 @@ public class PlayerSkill : MonoBehaviour
     private IEnumerator WolfGuardCool() // 늑대 가드 쿨타임 코루틴, 성공 후 쿨타임동안 늑대 제어 불가
     {
         wolfEyesAnim.SetBool("isOpen", wolfGuardReady);
-        Debug.Log("늑대 부상! 회복중");
+        //Debug.Log("늑대 부상! 회복중");
 
         yield return new WaitForSeconds(5.0f);
 
@@ -352,7 +352,7 @@ public class PlayerSkill : MonoBehaviour
         wolfGuardReady = true;
         wolfEyesAnim.SetBool("isOpen", wolfGuardReady);
         wolfIsDamaged = false; // 늑대 부상 회복
-        Debug.Log("늑대 회복!");
+        //Debug.Log("늑대 회복!");
     }
 
     private IEnumerator FadeCoroutine(float targetAlpha, float duration) // 늑대의 fade in/out을 위한 함수, targetAlpha는 투명도, duration은 실행시간

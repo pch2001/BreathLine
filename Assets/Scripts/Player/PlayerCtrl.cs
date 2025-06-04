@@ -38,7 +38,7 @@ public class PlayerCtrl : MonoBehaviour
         playerSkill = GetComponent<PlayerSkill>();
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
         // inputAction 활성화
         playerinputAction.Enable(); 
@@ -61,7 +61,7 @@ public class PlayerCtrl : MonoBehaviour
         playerinputAction.Wolf.Attack.performed += OnWolfAttack;
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         // inputAction 비활성화
         playerinputAction.Disable(); 
