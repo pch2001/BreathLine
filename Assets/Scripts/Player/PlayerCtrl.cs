@@ -232,22 +232,27 @@ public class PlayerCtrl : MonoBehaviour
         wolfAttackCool.fillAmount = 1f;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) 
+    private void OnCollisionEnter2D(Collision2D collision) // 물리 충돌만 구현
     {
         if (collision.gameObject.CompareTag("Ground")) // 바닥과 충돌시 값 초기화
         {
             animator.speed = 1f; // 다시 애니메이션 동작
             isGrounded = true;
         }
-        if(collision.gameObject.CompareTag("Enemy")) // 적과 충돌시 데미지 or 가드
+    }
+
+    private void OnTriggerEneter2D(Collider2D collision) // 주된 충돌은 Trigger에서 계산
+    {
+        if (collision.gameObject.CompareTag("Enemy")) // 적과 충돌시 데미지 or 가드
         {
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy 기본 클래스 가져옴
             if (enemy != null)
             {
                 if (!enemy.attackMode) return; // 적의 공격 모드가 false일 경우 충돌 X
-                
+
                 if (currentWolfState != WolfState.Damaged) // 늑대 보호 가능
                 {
+                    animator.SetTrigger(PlayerAnimTrigger.Hit); // 소녀 피격 애니메이션 실행
                     OnWolfGuard(); // 가드 실행
                 }
                 else

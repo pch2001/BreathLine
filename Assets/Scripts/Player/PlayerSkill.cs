@@ -15,6 +15,7 @@ public class PlayerSkill : MonoBehaviour
     [SerializeField] private AudioClip peaceMelody; // 평화의 악장 음원
     [SerializeField] private AudioClip peaceCancelMelody; // 평화의 악장 실패 음원
 
+    public float playerDamage; // 플레이어의 공격력
     private float piriStartTime; // 피리연주 시작 시간
     private bool isSoftPiriPlayed = false; // 평화의 악장 연주가 완료되었는지
     private bool isSoftPiriStart = false; // 평화의 악장 연주가 시작되었는지
@@ -162,6 +163,7 @@ public class PlayerSkill : MonoBehaviour
 
         AngerAttackArea.transform.localScale = Vector3.one * GameManager.Instance.currentStageData.anger_range;
         PeaceAttackArea.transform.localScale = Vector3.one * GameManager.Instance.currentStageData.peace_range;
+        playerDamage = GameManager.Instance.currentStageData.anger_damage;
 
         piriClips = new Dictionary<string, AudioClip>();
         piriClips.Add("Anger", angerMelody);
