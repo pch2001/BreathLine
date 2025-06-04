@@ -19,6 +19,7 @@ public class PlayerCtrl : MonoBehaviour
     private float jumpForce = 12f; // 점프력
     private bool isGrounded = true; // 착지 여부
     private bool isPressingPiri = false; // 피리 연주 여부
+    private bool dontmove = true;//플레이 고정시
 
     public GameObject wolf; // 늑대 게임 오브젝트
     public Animator wolfAnimator; // 늑대 애니메이터
@@ -40,6 +41,7 @@ public class PlayerCtrl : MonoBehaviour
 
     public void OnEnable()
     {
+        dontmove = true;// 대화시 움직임 멈추기 위해 true = 움직이는 상태
         // inputAction 활성화
         playerinputAction.Enable(); 
 
@@ -63,6 +65,8 @@ public class PlayerCtrl : MonoBehaviour
 
     public void OnDisable()
     {
+        dontmove = false;// 대화시 움직임 멈추기 위해 faalse = 못 움직이는 상태
+
         // inputAction 비활성화
         playerinputAction.Disable(); 
     }
@@ -106,12 +110,20 @@ public class PlayerCtrl : MonoBehaviour
         OnWolfHide(); // 늑대 숨김 구현
     }
 
+    float h;
+
     private void OnPlayerMove()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-
-        // 좌우 이동
-        rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
+        if (dontmove)
+        {
+            h = Input.GetAxisRaw("Horizontal");
+            // 좌우 이동
+            rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
+        }
+        else
+        {
+            h = 0;
+        }
         if (h != 0)
             animator.SetBool("isMove", true);
         else
