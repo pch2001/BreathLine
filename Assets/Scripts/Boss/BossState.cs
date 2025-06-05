@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
+
 
 public class BossState : MonoBehaviour
 {
 
-    public int HP = 10;
+    public float HP = 10;
+    public float maxHP = 10;
     public float moveSpeed = 4f; // 이동 속도
 
     private Animator anim;
@@ -22,10 +25,11 @@ public class BossState : MonoBehaviour
     private bool dontmove = true;
 
     public GameObject notePrefab;  // Inspector에서 할당할 음표 프리팹
-
+    public Image fillImage; // Image 컴포넌트, Inspector에서 할당
     // Start is called before the first frame update
     void Start()
     {
+
         isAttacking = false;
         attackArea1.SetActive(false); // 시작 시 공격 범위 꺼두기
         attackArea2.SetActive(false); // 시작 시 공격 범위 꺼두기
@@ -46,7 +50,7 @@ public class BossState : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(dontmove && !isAttacking)
+        if (dontmove && !isAttacking && isdie)
             MoveToPlayer();
 
     }
@@ -60,7 +64,7 @@ public class BossState : MonoBehaviour
         float distanceX = Mathf.Abs(player.position.x - transform.position.x);
         if (distanceX <= stopDistance && !isAttacking)
         {
-            Attack();
+            //Attack();
 
             Debug.Log("공격");
             return;
@@ -88,17 +92,17 @@ public class BossState : MonoBehaviour
             StartCoroutine(Attack1());
             num++;
         }
-        else if (num<5)
+        else if (num < 5)
         {
             StartCoroutine(Attack2());
-            num ++;
+            num++;
         }
         else if (num == 5)
         {
             StartCoroutine(Attack3());
             num = 0;
         }
-       //StartCoroutine(cooltime());
+        //StartCoroutine(cooltime());
     }
     bool isdie;
     private void OnTriggerEnter2D(Collider2D collider)
@@ -112,16 +116,18 @@ public class BossState : MonoBehaviour
                 anim.SetTrigger("die");
 
                 Invoke(nameof(HandleDeath), 1.5f);
-
             }
-            else {
+            else
+            {
                 dontmove = false;
                 anim.SetTrigger("isHit");
                 Debug.Log("보스 HP: " + HP);
                 HP--;
                 Invoke(nameof(SetMove), 0.5f);
+                fillImage.fillAmount = HP / maxHP;
+
             }
-            
+
         }
     }
     private void HandleDeath()
@@ -155,9 +161,9 @@ public class BossState : MonoBehaviour
             col.enabled = false;
             col.enabled = true;
         }
-            
+
         yield return new WaitForSeconds(0.2f);
-     
+
         // 공격 판정 비활성화
         attackArea1.SetActive(false);
 
