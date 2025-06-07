@@ -35,7 +35,6 @@ public class PlayerSkill : MonoBehaviour
 
     private bool wolfMoveReady = true; // 늑대 이동 쿨타임
     private bool wolfAttackReady = true; // 늑대 공격 쿨타임
-    private bool wolfGuardReady = true; // 늑대 가드 쿨타임
     private bool wolfIsDamaged = false; // 늑대 부상 상태 확인
 
     private float wolfPolution = 1f; // 늑대 오염도 계수
@@ -301,7 +300,7 @@ public class PlayerSkill : MonoBehaviour
             RequestWolfState(WolfState.Damaged); // 늑대 상태 변화(Damaged)
             yield return StartCoroutine(FadeCoroutine(1.0f, 0.4f)); // FadeIn
         }
-        wolfEyesAnim.SetBool("isOpen", wolfGuardReady);
+        wolfEyesAnim.SetBool("wolfDamaged", wolfIsDamaged);
         wolfEyes.enabled = true; // 늑대 눈 나타내기기
            
         yield return StartCoroutine(FadeCoroutine(0.0f, 0.3f)); // FadeOut
@@ -309,11 +308,10 @@ public class PlayerSkill : MonoBehaviour
 
     public void WolfGuard() // 늑대 가드 구현
     {
-        if(wolfGuardReady)
+        if(!wolfIsDamaged)
         {
-            wolfIsDamaged = true; // 늑대 부상 (등장중일 경우, 코루틴 탈출)
-            wolfGuardReady = false; // 늑대 가드 비활성화
-
+            wolfIsDamaged = true; // 늑대부상 변수 (등장중일 경우, 코루틴 탈출)
+            
             StartCoroutine(WolfHide(true));
             StartCoroutine(WolfGuardEffect()); // 가드 이펙트 코루틴 실행 
             StartCoroutine(WolfGuardCool()); // 가드 쿨타임 코루틴 실행
@@ -343,16 +341,15 @@ public class PlayerSkill : MonoBehaviour
     }
     private IEnumerator WolfGuardCool() // 늑대 가드 쿨타임 코루틴, 성공 후 쿨타임동안 늑대 제어 불가
     {
-        wolfEyesAnim.SetBool("isOpen", wolfGuardReady);
         Debug.Log("늑대 부상! 회복중");
+        wolfEyesAnim.SetBool("wolfDamaged", wolfIsDamaged);
 
         yield return new WaitForSeconds(5.0f);
 
-        RequestWolfState(WolfState.Hide);
-        wolfGuardReady = true;
-        wolfEyesAnim.SetBool("isOpen", wolfGuardReady);
-        wolfIsDamaged = false; // 늑대 부상 회복
         Debug.Log("늑대 회복!");
+        RequestWolfState(WolfState.Hide);
+        wolfIsDamaged = false; // 늑대 부상 회복
+        wolfEyesAnim.SetBool("wolfDamaged", wolfIsDamaged);
     }
 
     private IEnumerator FadeCoroutine(float targetAlpha, float duration) // 늑대의 fade in/out을 위한 함수, targetAlpha는 투명도, duration은 실행시간

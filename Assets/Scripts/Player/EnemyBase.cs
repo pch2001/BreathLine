@@ -76,8 +76,8 @@ public abstract class EnemyBase : MonoBehaviour
         float startAlpha = spriteRenderer.color.a;
         float elapsedTime = 0f;
 
-        enemyFadeEffect.SetActive(true);
         isDead = true; // 죽음 상태로 변경
+        enemyFadeEffect.SetActive(true);
         defaultMoveSpeed = 0f; // 이동 불가능
         animator.SetBool("isRun", false);
 
@@ -114,6 +114,7 @@ public abstract class EnemyBase : MonoBehaviour
         else // 사망 반응 
         {
             Debug.Log("적이 고통스럽게 소멸합니다...");
+            isDead = true;
             moveSpeed = 0f;
             animator.SetTrigger("Die");
             dieEffect.SetActive(true);

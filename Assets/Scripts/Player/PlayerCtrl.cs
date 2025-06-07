@@ -253,14 +253,14 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    private void OnTriggerEneter2D(Collider2D collision) // 주된 충돌은 Trigger에서 계산
+    private void OnTriggerEnter2D(Collider2D collision) // 주된 충돌은 Trigger에서 계산
     {
         if (collision.gameObject.CompareTag("Enemy")) // 적과 충돌시 데미지 or 가드
         {
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy 기본 클래스 가져옴
             if (enemy != null)
             {
-                if (!enemy.attackMode) return; // 적의 공격 모드가 false일 경우 충돌 X
+                if (!enemy.attackMode || enemy.isStune || enemy.isDead) return; // 적의 공격 모드가 false or 스턴, 사망 상태일 경우 충돌 X
 
                 if (currentWolfState != WolfState.Damaged) // 늑대 보호 가능
                 {
