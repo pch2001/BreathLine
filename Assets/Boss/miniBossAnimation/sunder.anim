@@ -40,9 +40,9 @@ AnimationClip:
       value: {fileID: -3580953827957122341, guid: a3e0ab6f8137c474cabb2f5271a7ac45, type: 3}
     - time: 1.25
       value: {fileID: -5807839643380264221, guid: a3e0ab6f8137c474cabb2f5271a7ac45, type: 3}
-    - time: 1.5
+    - time: 1.6666666
       value: {fileID: 1792157409085774312, guid: a3e0ab6f8137c474cabb2f5271a7ac45, type: 3}
-    - time: 1.9166666
+    - time: 2.1666667
       value: {fileID: 7206431213704863398, guid: a3e0ab6f8137c474cabb2f5271a7ac45, type: 3}
     attribute: m_Sprite
     path: 
@@ -83,7 +83,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2
+    m_StopTime: 2.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -102,4 +102,60 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1.0833334
+    functionName: ActiveBoom
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.25
+    functionName: ActiveBoom
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 1
+    intParameter: 1
+    messageOptions: 0
+  - time: 1.3333334
+    functionName: PassiveBoom
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5
+    functionName: ActiveBoom
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 2
+    intParameter: 2
+    messageOptions: 0
+  - time: 1.5833334
+    functionName: PassiveBoom
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 1
+    intParameter: 1
+    messageOptions: 0
+  - time: 1.75
+    functionName: ActiveBoom
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 3
+    intParameter: 3
+    messageOptions: 0
+  - time: 1.8333334
+    functionName: PassiveBoom
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 2
+    intParameter: 2
+    messageOptions: 0
+  - time: 1.9166666
+    functionName: PassiveBoom
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 3
+    intParameter: 3
+    messageOptions: 0

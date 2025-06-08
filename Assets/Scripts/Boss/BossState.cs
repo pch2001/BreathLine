@@ -26,17 +26,20 @@ public class BossState : MonoBehaviour
 
     public GameObject notePrefab;  // Inspector에서 할당할 음표 프리팹
     public Image fillImage; // Image 컴포넌트, Inspector에서 할당
-    // Start is called before the first frame update
+    
+    public GameObject[] attackAreas; // 공격 범위 오브젝트 배열 
+
     void Start()
     {
 
         isAttacking = false;
-        attackArea1.SetActive(false); // 시작 시 공격 범위 꺼두기
-        attackArea2.SetActive(false); // 시작 시 공격 범위 꺼두기
-        attackArea3.SetActive(false); // 시작 시 공격 범위 꺼두기
+        //attackArea1.SetActive(false); // 시작 시 공격 범위 꺼두기
+        //attackArea2.SetActive(false); // 시작 시 공격 범위 꺼두기
+        //attackArea3.SetActive(false); // 시작 시 공격 범위 꺼두기
         boomArea[0].SetActive(false);
         boomArea[1].SetActive(false);
         boomArea[2].SetActive(false);
+        boomArea[3].SetActive(false);
 
         isdie = true; //보스 죽었는지 확인
         anim = GetComponent<Animator>();
@@ -58,13 +61,13 @@ public class BossState : MonoBehaviour
     {
         if (player == null) return;
 
-        float stopDistance = 1.5f;
+        float stopDistance = 1f;
 
         // x축 거리만 비교 (y축 무시)
         float distanceX = Mathf.Abs(player.position.x - transform.position.x);
         if (distanceX <= stopDistance && !isAttacking)
         {
-            //Attack();
+            Attack();
 
             Debug.Log("공격");
             return;
@@ -86,6 +89,7 @@ public class BossState : MonoBehaviour
 
     void Attack()
     {
+        //StartCoroutine(Attack3());
 
         if (num < 3)
         {
@@ -146,30 +150,43 @@ public class BossState : MonoBehaviour
         dontmove = true;
     }
 
+    public void SetAttack(int attacknum)
+    {
+       // Debug.Log("공격 번호: " + attacknum);
+        GameObject targetArea = attackAreas[attacknum];
+        attack attackScript = targetArea.GetComponent<attack>();
+
+        if (attackScript != null)
+        {
+            attackScript.isAttacking = true; // 공격 상태로 설정
+        }
+    }
+
+    public void SetNoAttack(int attacknum)
+    {
+      //  Debug.Log("공격 번호: " + attacknum);
+
+        GameObject targetArea = attackAreas[attacknum];
+        attack attackScript = targetArea.GetComponent<attack>();
+
+        if (attackScript != null)
+        {
+            attackScript.isAttacking = false; // 공격 상태로 설정
+        }
+    }
+
     IEnumerator Attack1()
     {
         isAttacking = true;
         anim.SetTrigger("attack1");
 
-
-        // 공격 지속 시간 대기
-        yield return new WaitForSeconds(0.8f);
         if (dontmove)
         {
-            attackArea1.SetActive(true);
             Collider2D col = attackArea1.GetComponent<Collider2D>();
             col.enabled = false;
             col.enabled = true;
         }
-
-        yield return new WaitForSeconds(0.2f);
-
-        // 공격 판정 비활성화
-        attackArea1.SetActive(false);
-
-        // 쿨타임
-        yield return new WaitForSeconds(0.1f);
-
+        yield return new WaitForSeconds(1.2f);
         isAttacking = false;
     }
 
@@ -178,23 +195,17 @@ public class BossState : MonoBehaviour
 
         isAttacking = true;
         anim.SetTrigger("attack2");
+        yield return new WaitForSeconds(0.7f);
 
         // 공격 지속 시간 대기
-        yield return new WaitForSeconds(0.7f);
         if (dontmove)
         {
-            attackArea2.SetActive(true);
+            //attackArea2.SetActive(true);
             Collider2D col = attackArea2.GetComponent<Collider2D>();
             col.enabled = false;
             col.enabled = true;
         }
-        yield return new WaitForSeconds(0.2f);
-
-        // 공격 판정 비활성화
-        attackArea2.SetActive(false);
-
-        // 쿨타임
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         isAttacking = false;
     }
 
@@ -203,31 +214,47 @@ public class BossState : MonoBehaviour
         isAttacking = true;
         anim.SetTrigger("attack3");
 
-        // 공격 지속 시간 대기
-        yield return new WaitForSeconds(1.5f);
-        boomArea[0].SetActive(true);
-        yield return new WaitForSeconds(0.2f);
-        boomArea[1].SetActive(true);
-        yield return new WaitForSeconds(0.2f);
-        boomArea[0].SetActive(false);
-        boomArea[2].SetActive(true);
-        yield return new WaitForSeconds(0.2f);
-        boomArea[1].SetActive(false);
+        yield return new WaitForSeconds(2.5f);
 
-        attackArea3.SetActive(true);
-
-
-        // 공격 판정 비활성화
-        attackArea3.SetActive(false);
-        yield return new WaitForSeconds(0.2f);
-
-        boomArea[2].SetActive(false);
-
-        // 쿨타임
-        yield return new WaitForSeconds(0.3f);
 
         isAttacking = false;
     }
+
+    public void ActiveBoom(int num)
+    {
+        boomArea[num].SetActive(true);
+
+        GameObject targetArea = boomArea[num];
+        attack attackScript = targetArea.GetComponent<attack>();
+
+        if (attackScript != null)
+        {
+            attackScript.isAttacking = true; // 공격 상태로 설정
+        }
+        if (dontmove)
+        {
+            //attackArea2.SetActive(true);
+            Collider2D col = attackArea2.GetComponent<Collider2D>();
+            col.enabled = false;
+            col.enabled = true;
+        }
+    }
+    public void PassiveBoom(int num)
+    {
+
+        GameObject targetArea = boomArea[num];
+        attack attackScript = targetArea.GetComponent<attack>();
+
+        if (attackScript != null)
+        {
+            attackScript.isAttacking = false; // 공격 상태로 설정
+        }
+
+        boomArea[num].SetActive(false);
+
+    }
+
+
     IEnumerator cooltime()
     {
         isAttacking = true;

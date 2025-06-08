@@ -7,12 +7,27 @@ public class attack : MonoBehaviour
     public float knockbackForce = 3f;         // 밀려나는 힘
     public float knockbackDuration = 0.2f;    // 밀리는 시간
 
+    public GameObject fireEffectPrefab;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public bool isAttacking = false; // 공격 중인지 여부
+
+    void Start()
     {
-        if (collision.CompareTag("Player"))
+        isAttacking = false;
+    }
+
+
+       
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("충돌중");
+
+        if (collision.CompareTag("Player") && isAttacking)
         {
+            isAttacking = false;
             Debug.Log("대미지 입음!");
+            GameObject fire = Instantiate(fireEffectPrefab, collision.transform.position, Quaternion.identity);
+            Destroy(fire, 1f);
 
             Animator playerAnimator = collision.GetComponent<Animator>();
             if (playerAnimator != null)
