@@ -1,0 +1,3590 @@
+fileFormatVersion: 2
+guid: a2874d22a21b1a14d85cba3c6c9a6c54
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: The Tarnished Widow_Frame_0
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 746
+      y: 1653
+      width: 109
+      height: 155
+    spriteID: 8a5684458b79bf34ca5f73e1b61bf425
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 746, y: 1653}
+  - name: The Tarnished Widow_Frame_1
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 746
+      y: 1816
+      width: 109
+      height: 155
+    spriteID: 5976cdb066e71ba4a82d623db2946e2a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 746, y: 1816}
+  - name: The Tarnished Widow_Frame_2
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.15384616}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 746
+      y: 997
+      width: 109
+      height: 156
+    spriteID: a7b7f1b16b6cf8d41a73e7985f9ff639
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 746, y: 997}
+  - name: The Tarnished Widow_Frame_3
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.14649682}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 746
+      y: 337
+      width: 109
+      height: 157
+    spriteID: 98906cf47fb66a34eb8b87e2ed25997a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 746, y: 337}
+  - name: The Tarnished Widow_Frame_4
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.15384616}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 746
+      y: 1161
+      width: 109
+      height: 156
+    spriteID: 7336a317a96c2ad47b232d5271dadb0a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 746, y: 1161}
+  - name: The Tarnished Widow_Frame_5
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 4
+      width: 109
+      height: 155
+    spriteID: 36197234554f33243bdc530cd892655a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 4}
+  - name: The Tarnished Widow_Frame_6
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16883117}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 1471
+      width: 109
+      height: 154
+    spriteID: 0f268ce71201e7b4392e784693eb2aef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 1471}
+  - name: The Tarnished Widow_Frame_7
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 976
+      width: 109
+      height: 153
+    spriteID: 33681be490ce8a24b9c3edffdf51b5d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 976}
+  - name: The Tarnished Widow_Frame_8
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 1137
+      width: 109
+      height: 153
+    spriteID: 5e567658c9f7aab46b8db891c4042705
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 1137}
+  - name: The Tarnished Widow_Frame_9
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16883117}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 1633
+      width: 109
+      height: 154
+    spriteID: 3d060e23f6f36ef449cb89573820ad82
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 1633}
+  - name: The Tarnished Widow_Frame_10
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16883117}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 1795
+      width: 109
+      height: 154
+    spriteID: c8205baefb11c494784b2c5707fd2150
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 1795}
+  - name: The Tarnished Widow_Frame_11
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 167
+      width: 109
+      height: 155
+    spriteID: 1e391c13c9688994ea2040e8d4a1cc84
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 167}
+  - name: The Tarnished Widow_Frame_12
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 1298
+      width: 109
+      height: 153
+    spriteID: 5125df45ea85b7e4a8c24803ab3ac596
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 1298}
+  - name: The Tarnished Widow_Frame_13
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 330
+      width: 109
+      height: 155
+    spriteID: 4fb1da183f40c4f47945eaa887c99a47
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 330}
+  - name: The Tarnished Widow_Frame_14
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.14649682}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 746
+      y: 502
+      width: 109
+      height: 157
+    spriteID: 890109a7e53362b4194936ca47d3c4f7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 746, y: 502}
+  - name: The Tarnished Widow_Frame_15
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.13924052}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 629
+      y: 1886
+      width: 109
+      height: 158
+    spriteID: 26b19067e67ae4c48ac11f62cfcee3a6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 629, y: 1886}
+  - name: The Tarnished Widow_Frame_16
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.13207547}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 629
+      y: 1719
+      width: 109
+      height: 159
+    spriteID: bc6639e49f48e684181244ec6b98fb0a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 629, y: 1719}
+  - name: The Tarnished Widow_Frame_17
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16883117}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 4
+      width: 109
+      height: 154
+    spriteID: 9ef214bb4bb9dff48a299262334bf851
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 4}
+  - name: The Tarnished Widow_Frame_18
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 1459
+      width: 109
+      height: 153
+    spriteID: 282daf485698d9c4180bc6d3379081a9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 1459}
+  - name: The Tarnished Widow_Frame_19
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16883117}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 166
+      width: 109
+      height: 154
+    spriteID: c837f09254b792843bec1b2a9feb75d9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 166}
+  - name: The Tarnished Widow_Frame_20
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.15384616}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 746
+      y: 1325
+      width: 109
+      height: 156
+    spriteID: b14d42854e7396c44bd88184da18143f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 746, y: 1325}
+  - name: The Tarnished Widow_Frame_21
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.14649682}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 746
+      y: 667
+      width: 109
+      height: 157
+    spriteID: be9f91ea7bec79a4cb70a37037c17789
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 746, y: 667}
+  - name: The Tarnished Widow_Frame_22
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.13924052}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 746
+      y: 171
+      width: 109
+      height: 158
+    spriteID: 48adc56cb079ca341a45a91c078ffb8b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 746, y: 171}
+  - name: The Tarnished Widow_Frame_23
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 493
+      width: 109
+      height: 155
+    spriteID: 75993c137519acc4a8f04511158bd113
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 493}
+  - name: The Tarnished Widow_Frame_24
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 1620
+      width: 109
+      height: 153
+    spriteID: b3dba971a4f05b549a5470f5b0960bf4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 1620}
+  - name: The Tarnished Widow_Frame_25
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.12499999}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 629
+      y: 1551
+      width: 109
+      height: 160
+    spriteID: 2c8f55fa6490eb3459bda5b8fd46ac83
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 629, y: 1551}
+  - name: The Tarnished Widow_Frame_26
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.11801242}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 629
+      y: 1382
+      width: 109
+      height: 161
+    spriteID: a42f899e47f6afb4882b722829f90465
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 629, y: 1382}
+  - name: The Tarnished Widow_Frame_27
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.11111111}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 629
+      y: 1042
+      width: 109
+      height: 162
+    spriteID: 4bd07cfdedbd9874fb137658408efa1d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 629, y: 1042}
+  - name: The Tarnished Widow_Frame_28
+    originalName: 
+    pivot: {x: 0.4065041, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 1151
+      width: 123
+      height: 153
+    spriteID: 74a7c4ca8c6da8a438eca40e5572748a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 1151}
+  - name: The Tarnished Widow_Frame_29
+    originalName: 
+    pivot: {x: 0.3846154, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 165
+      width: 130
+      height: 153
+    spriteID: c887ca5cc095d8d439dc7bcb548835a2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 165}
+  - name: The Tarnished Widow_Frame_30
+    originalName: 
+    pivot: {x: 0.3787879, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 4
+      width: 132
+      height: 153
+    spriteID: a7b28accd62d2df44bca289da6519eed
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 4}
+  - name: The Tarnished Widow_Frame_31
+    originalName: 
+    pivot: {x: 0.37593985, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 1805
+      width: 133
+      height: 153
+    spriteID: 6ecb2f770c387ee4ea94f78004c56a5a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 1805}
+  - name: The Tarnished Widow_Frame_32
+    originalName: 
+    pivot: {x: 0.3703704, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 1287
+      width: 135
+      height: 153
+    spriteID: a0ed6b28b341b204a9e071540955f82d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 1287}
+  - name: The Tarnished Widow_Frame_33
+    originalName: 
+    pivot: {x: 0.36231884, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 569
+      width: 138
+      height: 153
+    spriteID: f1dc3fe028835ba47a574e96041e2a43
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 569}
+  - name: The Tarnished Widow_Frame_34
+    originalName: 
+    pivot: {x: 0.35971224, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 4
+      width: 139
+      height: 153
+    spriteID: 6639c18371874414f97655970943a43a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 4}
+  - name: The Tarnished Widow_Frame_35
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 1781
+      width: 109
+      height: 153
+    spriteID: 8150bc0c471cc5a40a83da3a148fa207
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 1781}
+  - name: The Tarnished Widow_Frame_36
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1097
+      y: 4
+      width: 109
+      height: 153
+    spriteID: 0b08fa7097f99f243ad3f7d5c3a8d757
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1097, y: 4}
+  - name: The Tarnished Widow_Frame_37
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1097
+      y: 165
+      width: 109
+      height: 153
+    spriteID: feecea06eae95ce4fa4c3ea7e390c66b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1097, y: 165}
+  - name: The Tarnished Widow_Frame_38
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1097
+      y: 326
+      width: 109
+      height: 153
+    spriteID: 467302a1151fcbd4598164052df4f436
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1097, y: 326}
+  - name: The Tarnished Widow_Frame_39
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1097
+      y: 487
+      width: 109
+      height: 153
+    spriteID: e7a6b9b6f21a6364c9fd102fcfa21aec
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1097, y: 487}
+  - name: The Tarnished Widow_Frame_40
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1097
+      y: 648
+      width: 109
+      height: 153
+    spriteID: 459287ce5ceac63418308af5a7353e8a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1097, y: 648}
+  - name: The Tarnished Widow_Frame_41
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16883117}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 328
+      width: 109
+      height: 154
+    spriteID: 8ff17eeebc0f6d746a17bd4d64040e08
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 328}
+  - name: The Tarnished Widow_Frame_42
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 656
+      width: 109
+      height: 155
+    spriteID: 95b844210deb1b94187e4039a2e06ef0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 656}
+  - name: The Tarnished Widow_Frame_43
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1097
+      y: 809
+      width: 109
+      height: 153
+    spriteID: 12c816bbd66fd524eb48d3ef9059fb1a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1097, y: 809}
+  - name: The Tarnished Widow_Frame_44
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1097
+      y: 970
+      width: 109
+      height: 153
+    spriteID: e5fc11a896052374eac22f4d05b71425
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1097, y: 970}
+  - name: The Tarnished Widow_Frame_45
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16883117}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 490
+      width: 109
+      height: 154
+    spriteID: b66cb99b29b0f2f4290860281ef05ea0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 490}
+  - name: The Tarnished Widow_Frame_46
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16883117}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 652
+      width: 109
+      height: 154
+    spriteID: 2a8cc018628d9cb45be052c5509a1c8f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 652}
+  - name: The Tarnished Widow_Frame_47
+    originalName: 
+    pivot: {x: 0.3937008, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 668
+      width: 127
+      height: 153
+    spriteID: 0d1f3d52a43c6b247a72df443b842069
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 668}
+  - name: The Tarnished Widow_Frame_48
+    originalName: 
+    pivot: {x: 0.3703704, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 1448
+      width: 135
+      height: 153
+    spriteID: 6b8444993f0b3bf43bac6f45a3dda513
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 1448}
+  - name: The Tarnished Widow_Frame_49
+    originalName: 
+    pivot: {x: 0.3448276, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 187
+      width: 145
+      height: 153
+    spriteID: 19486fcd69be60741a979c8944c1cf3b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 187}
+  - name: The Tarnished Widow_Frame_50
+    originalName: 
+    pivot: {x: 0.3424658, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 170
+      y: 1864
+      width: 146
+      height: 153
+    spriteID: b3efdc79a84f31a4c9a0cd1a3048c886
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 170, y: 1864}
+  - name: The Tarnished Widow_Frame_51
+    originalName: 
+    pivot: {x: 0.33783787, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 170
+      y: 1542
+      width: 148
+      height: 153
+    spriteID: f9b2cf65740ad5a49997ce3a035d8fa3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 170, y: 1542}
+  - name: The Tarnished Widow_Frame_52
+    originalName: 
+    pivot: {x: 0.4166667, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 1312
+      width: 120
+      height: 153
+    spriteID: 7bdb37a0f185a6e4ab63dda5e27b1538
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 1312}
+  - name: The Tarnished Widow_Frame_53
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1097
+      y: 1131
+      width: 109
+      height: 153
+    spriteID: 283e1474259f10b4fb50269e2878374d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1097, y: 1131}
+  - name: The Tarnished Widow_Frame_54
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1097
+      y: 1292
+      width: 109
+      height: 153
+    spriteID: 8a521afe44e1338499b96b6d885c3c9d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1097, y: 1292}
+  - name: The Tarnished Widow_Frame_55
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1097
+      y: 1453
+      width: 109
+      height: 153
+    spriteID: b613fb60f1f444d43a6d3b952b4ffed5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1097, y: 1453}
+  - name: The Tarnished Widow_Frame_56
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1097
+      y: 1614
+      width: 109
+      height: 153
+    spriteID: f42e0bdf6eb11784b83a5c6f2407051b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1097, y: 1614}
+  - name: The Tarnished Widow_Frame_57
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1097
+      y: 1775
+      width: 109
+      height: 153
+    spriteID: e0235ab1c9f46764ebce9140b91ba358
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1097, y: 1775}
+  - name: The Tarnished Widow_Frame_58
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1214
+      y: 4
+      width: 109
+      height: 153
+    spriteID: e385d7aa87a615c4b80abca28090eff8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1214, y: 4}
+  - name: The Tarnished Widow_Frame_59
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1214
+      y: 165
+      width: 109
+      height: 153
+    spriteID: 5c876473988a74944902311f958956db
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1214, y: 165}
+  - name: The Tarnished Widow_Frame_60
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16883117}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 814
+      width: 109
+      height: 154
+    spriteID: 56df362470714684492caca9cd756e86
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 814}
+  - name: The Tarnished Widow_Frame_61
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 819
+      width: 109
+      height: 155
+    spriteID: 579c0eb1135e0f641bc9ce6f2914a506
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 819}
+  - name: The Tarnished Widow_Frame_62
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.15384616}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 746
+      y: 1489
+      width: 109
+      height: 156
+    spriteID: 8ace43a7336a1f046860c7175f3d2f52
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 746, y: 1489}
+  - name: The Tarnished Widow_Frame_63
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.14649682}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 746
+      y: 832
+      width: 109
+      height: 157
+    spriteID: b1f282807a0cc3d4ea2f59659bdb1143
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 746, y: 832}
+  - name: The Tarnished Widow_Frame_64
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1214
+      y: 326
+      width: 109
+      height: 153
+    spriteID: f751648989eb8ae48b68cd65d3626928
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1214, y: 326}
+  - name: The Tarnished Widow_Frame_65
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1214
+      y: 487
+      width: 109
+      height: 153
+    spriteID: 73ae988b2bf64564aadd1c4e02c8f77f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1214, y: 487}
+  - name: The Tarnished Widow_Frame_66
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1214
+      y: 648
+      width: 109
+      height: 153
+    spriteID: 44f39e7903dbbb846b2cebad48c78eae
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1214, y: 648}
+  - name: The Tarnished Widow_Frame_67
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1214
+      y: 809
+      width: 109
+      height: 153
+    spriteID: 36100036e1fcf674fbc3b1440d60bcf2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1214, y: 809}
+  - name: The Tarnished Widow_Frame_68
+    originalName: 
+    pivot: {x: 0.45871562, y: 0.052631576}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 891
+      width: 109
+      height: 190
+    spriteID: 99922734a26b9ab4db2b4ac6850a2c8e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 891}
+  - name: The Tarnished Widow_Frame_69
+    originalName: 
+    pivot: {x: 0.45871562, y: 0.04255319}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 1609
+      width: 109
+      height: 188
+    spriteID: 0f5732a850eb6374cb6b02831df89cac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 1609}
+  - name: The Tarnished Widow_Frame_70
+    originalName: 
+    pivot: {x: 0.45871562, y: 0.072164945}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 165
+      width: 109
+      height: 194
+    spriteID: 1c5b14780623bb34f9e5856bd1aaa15a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 165}
+  - name: The Tarnished Widow_Frame_71
+    originalName: 
+    pivot: {x: 0.45871562, y: 0.08163265}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1822
+      width: 109
+      height: 196
+    spriteID: 9def8bf373ddd084e9bc23387c5a71cd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1822}
+  - name: The Tarnished Widow_Frame_72
+    originalName: 
+    pivot: {x: 0.45871562, y: 0.09090909}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1616
+      width: 109
+      height: 198
+    spriteID: ee24bec75ca4c67469b225b9d116be80
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1616}
+  - name: The Tarnished Widow_Frame_73
+    originalName: 
+    pivot: {x: 0.45871562, y: 0.09547738}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1409
+      width: 109
+      height: 199
+    spriteID: 6a632cc58d47c384b9671d2279442bf8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1409}
+  - name: The Tarnished Widow_Frame_74
+    originalName: 
+    pivot: {x: 0.45871562, y: 0.099999994}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1040
+      width: 109
+      height: 200
+    spriteID: f73fce5fb47c46d47a7fead4f384eec8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1040}
+  - name: The Tarnished Widow_Frame_75
+    originalName: 
+    pivot: {x: 0.45871562, y: 0.10447762}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 670
+      width: 109
+      height: 201
+    spriteID: 5844184ea91e63f4b82ca5b5c91a8573
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 670}
+  - name: The Tarnished Widow_Frame_76
+    originalName: 
+    pivot: {x: 0.45871562, y: 0.072164945}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 367
+      width: 109
+      height: 194
+    spriteID: 0e546505e855a324ca2db75f166fe503
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 367}
+  - name: The Tarnished Widow_Frame_77
+    originalName: 
+    pivot: {x: 0.45871562, y: 0.052631576}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 1089
+      width: 109
+      height: 190
+    spriteID: 8554bdc4c7646a64fa2d2da1e78438fc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 1089}
+  - name: The Tarnished Widow_Frame_78
+    originalName: 
+    pivot: {x: 0.5294118, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 730
+      width: 136
+      height: 153
+    spriteID: b1fda874d3d4ee84596da16f65abd626
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 730}
+  - name: The Tarnished Widow_Frame_79
+    originalName: 
+    pivot: {x: 0.5140845, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1248
+      width: 142
+      height: 153
+    spriteID: 4f17cb6ab283ad141b69fc539834ed01
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1248}
+  - name: The Tarnished Widow_Frame_80
+    originalName: 
+    pivot: {x: 0.51724136, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 348
+      width: 145
+      height: 153
+    spriteID: 2c18701872bd15e4ebde8e55ab4aa2e9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 348}
+  - name: The Tarnished Widow_Frame_81
+    originalName: 
+    pivot: {x: 0.5170068, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 170
+      y: 1703
+      width: 147
+      height: 153
+    spriteID: 151df8e5f20fa1c4c929aad926a80ea4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 170, y: 1703}
+  - name: The Tarnished Widow_Frame_82
+    originalName: 
+    pivot: {x: 0.53846157, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 879
+      width: 143
+      height: 153
+    spriteID: 1fb41237db19aac40a256f7fe9f78b50
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 879}
+  - name: The Tarnished Widow_Frame_83
+    originalName: 
+    pivot: {x: 0.537931, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 509
+      width: 145
+      height: 153
+    spriteID: 6a9f28d9a1421204b953a2feeaf5b036
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 509}
+  - name: The Tarnished Widow_Frame_84
+    originalName: 
+    pivot: {x: 0.5374149, y: -0.14649682}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 170
+      y: 875
+      width: 147
+      height: 157
+    spriteID: d61fbc81c277e4946bede05f57016840
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 170, y: 875}
+  - name: The Tarnished Widow_Frame_85
+    originalName: 
+    pivot: {x: 0.53543305, y: -0.15384616}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 326
+      width: 127
+      height: 156
+    spriteID: 6841794be4181d64c95dd802b2a01744
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 326}
+  - name: The Tarnished Widow_Frame_86
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 982
+      width: 109
+      height: 155
+    spriteID: 487faabaea9566241b710ffdd65aed30
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 982}
+  - name: The Tarnished Widow_Frame_87
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1214
+      y: 970
+      width: 109
+      height: 153
+    spriteID: 05cab9cf79665a148ba72556c7448bb3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1214, y: 970}
+  - name: The Tarnished Widow_Frame_88
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1214
+      y: 1131
+      width: 109
+      height: 153
+    spriteID: 0b98c0dc52ec8d44b88eb0f620048a9e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1214, y: 1131}
+  - name: The Tarnished Widow_Frame_89
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1214
+      y: 1292
+      width: 109
+      height: 153
+    spriteID: 2abc866b5ea442d44a221d21957c1dad
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1214, y: 1292}
+  - name: The Tarnished Widow_Frame_90
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1214
+      y: 1453
+      width: 109
+      height: 153
+    spriteID: 6a0ec72d87213f4429c208f2689be533
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1214, y: 1453}
+  - name: The Tarnished Widow_Frame_91
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1214
+      y: 1614
+      width: 109
+      height: 153
+    spriteID: 7b7068fe4b9068945b1390e17859e60f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1214, y: 1614}
+  - name: The Tarnished Widow_Frame_92
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1214
+      y: 1775
+      width: 109
+      height: 153
+    spriteID: f281c3ae1a136ba47a89bb448c1ab231
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1214, y: 1775}
+  - name: The Tarnished Widow_Frame_93
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.13207547}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 746
+      y: 4
+      width: 109
+      height: 159
+    spriteID: aaef88a7bb4c4ee4882df546fe503ea8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 746, y: 4}
+  - name: The Tarnished Widow_Frame_94
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.11111111}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 629
+      y: 1212
+      width: 109
+      height: 162
+    spriteID: 9244b20a9c34b81429281d6bb045a0c4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 629, y: 1212}
+  - name: The Tarnished Widow_Frame_95
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.09756097}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 629
+      y: 870
+      width: 109
+      height: 164
+    spriteID: f90ba425c398f374a99e7fe2a9f22ece
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 629, y: 870}
+  - name: The Tarnished Widow_Frame_96
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.09090909}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 629
+      y: 178
+      width: 109
+      height: 165
+    spriteID: 8ebcbc87a4d1b9d4da87584981ddcba4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 629, y: 178}
+  - name: The Tarnished Widow_Frame_97
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.084337346}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 629
+      y: 4
+      width: 109
+      height: 166
+    spriteID: 5e4c3d2ff6686244d9791002275af054
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 629, y: 4}
+  - name: The Tarnished Widow_Frame_98
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.077844314}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 1649
+      width: 109
+      height: 167
+    spriteID: f4580ba7c65de34468bc8bbea52f4647
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 1649}
+  - name: The Tarnished Widow_Frame_99
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.077844314}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 1824
+      width: 109
+      height: 167
+    spriteID: 7e6dc4d871716c04b893f2793afac2cf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 1824}
+  - name: The Tarnished Widow_Frame_100
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.071428575}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 1473
+      width: 109
+      height: 168
+    spriteID: ccc4490cc3204a043b5e5f374e8d92a0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 1473}
+  - name: The Tarnished Widow_Frame_101
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.09090909}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 629
+      y: 351
+      width: 109
+      height: 165
+    spriteID: 163a918442330a248a1f49fe87631b2b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 629, y: 351}
+  - name: The Tarnished Widow_Frame_102
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.09090909}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 629
+      y: 524
+      width: 109
+      height: 165
+    spriteID: ce654106a57372d40a3e40f68d46a44d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 629, y: 524}
+  - name: The Tarnished Widow_Frame_103
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 1145
+      width: 109
+      height: 155
+    spriteID: c2ea91b43a84216459d1c754779aa526
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 1145}
+  - name: The Tarnished Widow_Frame_104
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 1308
+      width: 109
+      height: 155
+    spriteID: 3b5ab75c60295c04fad8df15e1e0d480
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 863, y: 1308}
+  - name: The Tarnished Widow_Frame_105
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.09090909}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 629
+      y: 697
+      width: 109
+      height: 165
+    spriteID: 3076ed6acd07dfa4ea5f04a3cf2e058e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 629, y: 697}
+  - name: The Tarnished Widow_Frame_106
+    originalName: 
+    pivot: {x: 0.49137932, y: -0.05882353}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 490
+      width: 116
+      height: 170
+    spriteID: 784ee9a02b9019f48ae267669ea767f8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 490}
+  - name: The Tarnished Widow_Frame_107
+    originalName: 
+    pivot: {x: 0.5530303, y: -0.046511624}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 170
+      y: 1362
+      width: 132
+      height: 172
+    spriteID: 1f3ae96983328c143b19106ba440cfa2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 170, y: 1362}
+  - name: The Tarnished Widow_Frame_108
+    originalName: 
+    pivot: {x: 0.5448275, y: -0.040462427}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 170
+      y: 531
+      width: 145
+      height: 173
+    spriteID: 891e87d8bcbc7554ab91eaabbd297796
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 170, y: 531}
+  - name: The Tarnished Widow_Frame_109
+    originalName: 
+    pivot: {x: 0.54304636, y: -0.03448276}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 170
+      y: 349
+      width: 151
+      height: 174
+    spriteID: e9e459d445decc94498ec0e24fd79606
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 170, y: 349}
+  - name: The Tarnished Widow_Frame_110
+    originalName: 
+    pivot: {x: 0.55063295, y: -0.028571427}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 158
+      height: 175
+    spriteID: 5ee8d9e05866c0548838bc840507f6a7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: The Tarnished Widow_Frame_111
+    originalName: 
+    pivot: {x: 0.5398773, y: -0.09756097}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 170
+      y: 177
+      width: 163
+      height: 164
+    spriteID: 106a18b528826524e9fd4d54c5db990f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 170, y: 177}
+  - name: The Tarnished Widow_Frame_112
+    originalName: 
+    pivot: {x: 0.5426829, y: -0.09090909}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 170
+      y: 4
+      width: 164
+      height: 165
+    spriteID: 3f7404a4efe87ac4fa9fe25fde875a3d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 170, y: 4}
+  - name: The Tarnished Widow_Frame_113
+    originalName: 
+    pivot: {x: 0.60402685, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 170
+      y: 712
+      width: 149
+      height: 155
+    spriteID: 8a1d354b8eaa11547bf851e08f5f08b6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 170, y: 712}
+  - name: The Tarnished Widow_Frame_114
+    originalName: 
+    pivot: {x: 0.40000004, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 829
+      width: 125
+      height: 153
+    spriteID: fddf5a34e347236459c5bbd9b309fc25
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 829}
+  - name: The Tarnished Widow_Frame_115
+    originalName: 
+    pivot: {x: 0.60402685, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 170
+      y: 1040
+      width: 149
+      height: 153
+    spriteID: 32fa75d6cbee8d54e82434858ceef6a4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 170, y: 1040}
+  - name: The Tarnished Widow_Frame_116
+    originalName: 
+    pivot: {x: 0.40000004, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 990
+      width: 125
+      height: 153
+    spriteID: e2cdbd59b40ae7d498553cb8e04aa7b4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 489, y: 990}
+  - name: The Tarnished Widow_Frame_117
+    originalName: 
+    pivot: {x: 0.60402685, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 170
+      y: 1201
+      width: 149
+      height: 153
+    spriteID: dc810f1c41953f440a6bdb9b88d94d9c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 170, y: 1201}
+  - name: The Tarnished Widow_Frame_118
+    originalName: 
+    pivot: {x: 0.45871562, y: -0.17647058}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1331
+      y: 4
+      width: 109
+      height: 153
+    spriteID: 5909c895f6d9e2548b630992c8e24b20
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1331, y: 4}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -2044943287
+    name: The Tarnished Widow
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: The Tarnished Widow_Frame_0
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 25
+        width: 109
+        height: 155
+      spriteId: 8a5684458b79bf34ca5f73e1b61bf425
+    - name: The Tarnished Widow_Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 25
+        width: 109
+        height: 155
+      spriteId: 5976cdb066e71ba4a82d623db2946e2a
+    - name: The Tarnished Widow_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 24
+        width: 109
+        height: 156
+      spriteId: a7b7f1b16b6cf8d41a73e7985f9ff639
+    - name: The Tarnished Widow_Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 23
+        width: 109
+        height: 157
+      spriteId: 98906cf47fb66a34eb8b87e2ed25997a
+    - name: The Tarnished Widow_Frame_4
+      frameIndex: 4
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 24
+        width: 109
+        height: 156
+      spriteId: 7336a317a96c2ad47b232d5271dadb0a
+    - name: The Tarnished Widow_Frame_5
+      frameIndex: 5
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 25
+        width: 109
+        height: 155
+      spriteId: 36197234554f33243bdc530cd892655a
+    - name: The Tarnished Widow_Frame_6
+      frameIndex: 6
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 26
+        width: 109
+        height: 154
+      spriteId: 0f268ce71201e7b4392e784693eb2aef
+    - name: The Tarnished Widow_Frame_7
+      frameIndex: 7
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 33681be490ce8a24b9c3edffdf51b5d5
+    - name: The Tarnished Widow_Frame_8
+      frameIndex: 8
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 5e567658c9f7aab46b8db891c4042705
+    - name: The Tarnished Widow_Frame_9
+      frameIndex: 9
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 26
+        width: 109
+        height: 154
+      spriteId: 3d060e23f6f36ef449cb89573820ad82
+    - name: The Tarnished Widow_Frame_10
+      frameIndex: 10
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 26
+        width: 109
+        height: 154
+      spriteId: c8205baefb11c494784b2c5707fd2150
+    - name: The Tarnished Widow_Frame_11
+      frameIndex: 11
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 25
+        width: 109
+        height: 155
+      spriteId: 1e391c13c9688994ea2040e8d4a1cc84
+    - name: The Tarnished Widow_Frame_12
+      frameIndex: 12
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 5125df45ea85b7e4a8c24803ab3ac596
+    - name: The Tarnished Widow_Frame_13
+      frameIndex: 13
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 25
+        width: 109
+        height: 155
+      spriteId: 4fb1da183f40c4f47945eaa887c99a47
+    - name: The Tarnished Widow_Frame_14
+      frameIndex: 14
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 23
+        width: 109
+        height: 157
+      spriteId: 890109a7e53362b4194936ca47d3c4f7
+    - name: The Tarnished Widow_Frame_15
+      frameIndex: 15
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 22
+        width: 109
+        height: 158
+      spriteId: 26b19067e67ae4c48ac11f62cfcee3a6
+    - name: The Tarnished Widow_Frame_16
+      frameIndex: 16
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 21
+        width: 109
+        height: 159
+      spriteId: bc6639e49f48e684181244ec6b98fb0a
+    - name: The Tarnished Widow_Frame_17
+      frameIndex: 17
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 26
+        width: 109
+        height: 154
+      spriteId: 9ef214bb4bb9dff48a299262334bf851
+    - name: The Tarnished Widow_Frame_18
+      frameIndex: 18
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 282daf485698d9c4180bc6d3379081a9
+    - name: The Tarnished Widow_Frame_19
+      frameIndex: 19
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 26
+        width: 109
+        height: 154
+      spriteId: c837f09254b792843bec1b2a9feb75d9
+    - name: The Tarnished Widow_Frame_20
+      frameIndex: 20
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 24
+        width: 109
+        height: 156
+      spriteId: b14d42854e7396c44bd88184da18143f
+    - name: The Tarnished Widow_Frame_21
+      frameIndex: 21
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 23
+        width: 109
+        height: 157
+      spriteId: be9f91ea7bec79a4cb70a37037c17789
+    - name: The Tarnished Widow_Frame_22
+      frameIndex: 22
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 22
+        width: 109
+        height: 158
+      spriteId: 48adc56cb079ca341a45a91c078ffb8b
+    - name: The Tarnished Widow_Frame_23
+      frameIndex: 23
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 25
+        width: 109
+        height: 155
+      spriteId: 75993c137519acc4a8f04511158bd113
+    - name: The Tarnished Widow_Frame_24
+      frameIndex: 24
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: b3dba971a4f05b549a5470f5b0960bf4
+    - name: The Tarnished Widow_Frame_25
+      frameIndex: 25
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 20
+        width: 109
+        height: 160
+      spriteId: 2c8f55fa6490eb3459bda5b8fd46ac83
+    - name: The Tarnished Widow_Frame_26
+      frameIndex: 26
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 19
+        width: 109
+        height: 161
+      spriteId: a42f899e47f6afb4882b722829f90465
+    - name: The Tarnished Widow_Frame_27
+      frameIndex: 27
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 18
+        width: 109
+        height: 162
+      spriteId: 4bd07cfdedbd9874fb137658408efa1d
+    - name: The Tarnished Widow_Frame_28
+      frameIndex: 28
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 123
+        height: 153
+      spriteId: 74a7c4ca8c6da8a438eca40e5572748a
+    - name: The Tarnished Widow_Frame_29
+      frameIndex: 29
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 130
+        height: 153
+      spriteId: c887ca5cc095d8d439dc7bcb548835a2
+    - name: The Tarnished Widow_Frame_30
+      frameIndex: 30
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 132
+        height: 153
+      spriteId: a7b28accd62d2df44bca289da6519eed
+    - name: The Tarnished Widow_Frame_31
+      frameIndex: 31
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 133
+        height: 153
+      spriteId: 6ecb2f770c387ee4ea94f78004c56a5a
+    - name: The Tarnished Widow_Frame_32
+      frameIndex: 32
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 135
+        height: 153
+      spriteId: a0ed6b28b341b204a9e071540955f82d
+    - name: The Tarnished Widow_Frame_33
+      frameIndex: 33
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 138
+        height: 153
+      spriteId: f1dc3fe028835ba47a574e96041e2a43
+    - name: The Tarnished Widow_Frame_34
+      frameIndex: 34
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 139
+        height: 153
+      spriteId: 6639c18371874414f97655970943a43a
+    - name: The Tarnished Widow_Frame_35
+      frameIndex: 35
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 8150bc0c471cc5a40a83da3a148fa207
+    - name: The Tarnished Widow_Frame_36
+      frameIndex: 36
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 0b08fa7097f99f243ad3f7d5c3a8d757
+    - name: The Tarnished Widow_Frame_37
+      frameIndex: 37
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: feecea06eae95ce4fa4c3ea7e390c66b
+    - name: The Tarnished Widow_Frame_38
+      frameIndex: 38
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 467302a1151fcbd4598164052df4f436
+    - name: The Tarnished Widow_Frame_39
+      frameIndex: 39
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: e7a6b9b6f21a6364c9fd102fcfa21aec
+    - name: The Tarnished Widow_Frame_40
+      frameIndex: 40
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 459287ce5ceac63418308af5a7353e8a
+    - name: The Tarnished Widow_Frame_41
+      frameIndex: 41
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 26
+        width: 109
+        height: 154
+      spriteId: 8ff17eeebc0f6d746a17bd4d64040e08
+    - name: The Tarnished Widow_Frame_42
+      frameIndex: 42
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 25
+        width: 109
+        height: 155
+      spriteId: 95b844210deb1b94187e4039a2e06ef0
+    - name: The Tarnished Widow_Frame_43
+      frameIndex: 43
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 12c816bbd66fd524eb48d3ef9059fb1a
+    - name: The Tarnished Widow_Frame_44
+      frameIndex: 44
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: e5fc11a896052374eac22f4d05b71425
+    - name: The Tarnished Widow_Frame_45
+      frameIndex: 45
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 26
+        width: 109
+        height: 154
+      spriteId: b66cb99b29b0f2f4290860281ef05ea0
+    - name: The Tarnished Widow_Frame_46
+      frameIndex: 46
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 26
+        width: 109
+        height: 154
+      spriteId: 2a8cc018628d9cb45be052c5509a1c8f
+    - name: The Tarnished Widow_Frame_47
+      frameIndex: 47
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 127
+        height: 153
+      spriteId: 0d1f3d52a43c6b247a72df443b842069
+    - name: The Tarnished Widow_Frame_48
+      frameIndex: 48
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 135
+        height: 153
+      spriteId: 6b8444993f0b3bf43bac6f45a3dda513
+    - name: The Tarnished Widow_Frame_49
+      frameIndex: 49
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 145
+        height: 153
+      spriteId: 19486fcd69be60741a979c8944c1cf3b
+    - name: The Tarnished Widow_Frame_50
+      frameIndex: 50
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 146
+        height: 153
+      spriteId: b3efdc79a84f31a4c9a0cd1a3048c886
+    - name: The Tarnished Widow_Frame_51
+      frameIndex: 51
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 148
+        height: 153
+      spriteId: f9b2cf65740ad5a49997ce3a035d8fa3
+    - name: The Tarnished Widow_Frame_52
+      frameIndex: 52
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 120
+        height: 153
+      spriteId: 7bdb37a0f185a6e4ab63dda5e27b1538
+    - name: The Tarnished Widow_Frame_53
+      frameIndex: 53
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 283e1474259f10b4fb50269e2878374d
+    - name: The Tarnished Widow_Frame_54
+      frameIndex: 54
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 8a521afe44e1338499b96b6d885c3c9d
+    - name: The Tarnished Widow_Frame_55
+      frameIndex: 55
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: b613fb60f1f444d43a6d3b952b4ffed5
+    - name: The Tarnished Widow_Frame_56
+      frameIndex: 56
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: f42e0bdf6eb11784b83a5c6f2407051b
+    - name: The Tarnished Widow_Frame_57
+      frameIndex: 57
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: e0235ab1c9f46764ebce9140b91ba358
+    - name: The Tarnished Widow_Frame_58
+      frameIndex: 58
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: e385d7aa87a615c4b80abca28090eff8
+    - name: The Tarnished Widow_Frame_59
+      frameIndex: 59
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 5c876473988a74944902311f958956db
+    - name: The Tarnished Widow_Frame_60
+      frameIndex: 60
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 26
+        width: 109
+        height: 154
+      spriteId: 56df362470714684492caca9cd756e86
+    - name: The Tarnished Widow_Frame_61
+      frameIndex: 61
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 25
+        width: 109
+        height: 155
+      spriteId: 579c0eb1135e0f641bc9ce6f2914a506
+    - name: The Tarnished Widow_Frame_62
+      frameIndex: 62
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 24
+        width: 109
+        height: 156
+      spriteId: 8ace43a7336a1f046860c7175f3d2f52
+    - name: The Tarnished Widow_Frame_63
+      frameIndex: 63
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 23
+        width: 109
+        height: 157
+      spriteId: b1f282807a0cc3d4ea2f59659bdb1143
+    - name: The Tarnished Widow_Frame_64
+      frameIndex: 64
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: f751648989eb8ae48b68cd65d3626928
+    - name: The Tarnished Widow_Frame_65
+      frameIndex: 65
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 73ae988b2bf64564aadd1c4e02c8f77f
+    - name: The Tarnished Widow_Frame_66
+      frameIndex: 66
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 44f39e7903dbbb846b2cebad48c78eae
+    - name: The Tarnished Widow_Frame_67
+      frameIndex: 67
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 36100036e1fcf674fbc3b1440d60bcf2
+    - name: The Tarnished Widow_Frame_68
+      frameIndex: 68
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: -10
+        width: 109
+        height: 190
+      spriteId: 99922734a26b9ab4db2b4ac6850a2c8e
+    - name: The Tarnished Widow_Frame_69
+      frameIndex: 69
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: -8
+        width: 109
+        height: 188
+      spriteId: 0f5732a850eb6374cb6b02831df89cac
+    - name: The Tarnished Widow_Frame_70
+      frameIndex: 70
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: -14
+        width: 109
+        height: 194
+      spriteId: 1c5b14780623bb34f9e5856bd1aaa15a
+    - name: The Tarnished Widow_Frame_71
+      frameIndex: 71
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: -16
+        width: 109
+        height: 196
+      spriteId: 9def8bf373ddd084e9bc23387c5a71cd
+    - name: The Tarnished Widow_Frame_72
+      frameIndex: 72
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: -18
+        width: 109
+        height: 198
+      spriteId: ee24bec75ca4c67469b225b9d116be80
+    - name: The Tarnished Widow_Frame_73
+      frameIndex: 73
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: -19
+        width: 109
+        height: 199
+      spriteId: 6a632cc58d47c384b9671d2279442bf8
+    - name: The Tarnished Widow_Frame_74
+      frameIndex: 74
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: -20
+        width: 109
+        height: 200
+      spriteId: f73fce5fb47c46d47a7fead4f384eec8
+    - name: The Tarnished Widow_Frame_75
+      frameIndex: 75
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: -21
+        width: 109
+        height: 201
+      spriteId: 5844184ea91e63f4b82ca5b5c91a8573
+    - name: The Tarnished Widow_Frame_76
+      frameIndex: 76
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: -14
+        width: 109
+        height: 194
+      spriteId: 0e546505e855a324ca2db75f166fe503
+    - name: The Tarnished Widow_Frame_77
+      frameIndex: 77
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: -10
+        width: 109
+        height: 190
+      spriteId: 8554bdc4c7646a64fa2d2da1e78438fc
+    - name: The Tarnished Widow_Frame_78
+      frameIndex: 78
+      additiveSortOrder: 0
+      cellRect:
+        x: 35
+        y: 27
+        width: 136
+        height: 153
+      spriteId: b1fda874d3d4ee84596da16f65abd626
+    - name: The Tarnished Widow_Frame_79
+      frameIndex: 79
+      additiveSortOrder: 0
+      cellRect:
+        x: 34
+        y: 27
+        width: 142
+        height: 153
+      spriteId: 4f17cb6ab283ad141b69fc539834ed01
+    - name: The Tarnished Widow_Frame_80
+      frameIndex: 80
+      additiveSortOrder: 0
+      cellRect:
+        x: 32
+        y: 27
+        width: 145
+        height: 153
+      spriteId: 2c18701872bd15e4ebde8e55ab4aa2e9
+    - name: The Tarnished Widow_Frame_81
+      frameIndex: 81
+      additiveSortOrder: 0
+      cellRect:
+        x: 31
+        y: 27
+        width: 147
+        height: 153
+      spriteId: 151df8e5f20fa1c4c929aad926a80ea4
+    - name: The Tarnished Widow_Frame_82
+      frameIndex: 82
+      additiveSortOrder: 0
+      cellRect:
+        x: 30
+        y: 27
+        width: 143
+        height: 153
+      spriteId: 1fb41237db19aac40a256f7fe9f78b50
+    - name: The Tarnished Widow_Frame_83
+      frameIndex: 83
+      additiveSortOrder: 0
+      cellRect:
+        x: 29
+        y: 27
+        width: 145
+        height: 153
+      spriteId: 6a9f28d9a1421204b953a2feeaf5b036
+    - name: The Tarnished Widow_Frame_84
+      frameIndex: 84
+      additiveSortOrder: 0
+      cellRect:
+        x: 28
+        y: 23
+        width: 147
+        height: 157
+      spriteId: d61fbc81c277e4946bede05f57016840
+    - name: The Tarnished Widow_Frame_85
+      frameIndex: 85
+      additiveSortOrder: 0
+      cellRect:
+        x: 39
+        y: 24
+        width: 127
+        height: 156
+      spriteId: 6841794be4181d64c95dd802b2a01744
+    - name: The Tarnished Widow_Frame_86
+      frameIndex: 86
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 25
+        width: 109
+        height: 155
+      spriteId: 487faabaea9566241b710ffdd65aed30
+    - name: The Tarnished Widow_Frame_87
+      frameIndex: 87
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 05cab9cf79665a148ba72556c7448bb3
+    - name: The Tarnished Widow_Frame_88
+      frameIndex: 88
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 0b98c0dc52ec8d44b88eb0f620048a9e
+    - name: The Tarnished Widow_Frame_89
+      frameIndex: 89
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 2abc866b5ea442d44a221d21957c1dad
+    - name: The Tarnished Widow_Frame_90
+      frameIndex: 90
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 6a0ec72d87213f4429c208f2689be533
+    - name: The Tarnished Widow_Frame_91
+      frameIndex: 91
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 7b7068fe4b9068945b1390e17859e60f
+    - name: The Tarnished Widow_Frame_92
+      frameIndex: 92
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: f281c3ae1a136ba47a89bb448c1ab231
+    - name: The Tarnished Widow_Frame_93
+      frameIndex: 93
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 21
+        width: 109
+        height: 159
+      spriteId: aaef88a7bb4c4ee4882df546fe503ea8
+    - name: The Tarnished Widow_Frame_94
+      frameIndex: 94
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 18
+        width: 109
+        height: 162
+      spriteId: 9244b20a9c34b81429281d6bb045a0c4
+    - name: The Tarnished Widow_Frame_95
+      frameIndex: 95
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 16
+        width: 109
+        height: 164
+      spriteId: f90ba425c398f374a99e7fe2a9f22ece
+    - name: The Tarnished Widow_Frame_96
+      frameIndex: 96
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 15
+        width: 109
+        height: 165
+      spriteId: 8ebcbc87a4d1b9d4da87584981ddcba4
+    - name: The Tarnished Widow_Frame_97
+      frameIndex: 97
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 14
+        width: 109
+        height: 166
+      spriteId: 5e4c3d2ff6686244d9791002275af054
+    - name: The Tarnished Widow_Frame_98
+      frameIndex: 98
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 13
+        width: 109
+        height: 167
+      spriteId: f4580ba7c65de34468bc8bbea52f4647
+    - name: The Tarnished Widow_Frame_99
+      frameIndex: 99
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 13
+        width: 109
+        height: 167
+      spriteId: 7e6dc4d871716c04b893f2793afac2cf
+    - name: The Tarnished Widow_Frame_100
+      frameIndex: 100
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 12
+        width: 109
+        height: 168
+      spriteId: ccc4490cc3204a043b5e5f374e8d92a0
+    - name: The Tarnished Widow_Frame_101
+      frameIndex: 101
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 15
+        width: 109
+        height: 165
+      spriteId: 163a918442330a248a1f49fe87631b2b
+    - name: The Tarnished Widow_Frame_102
+      frameIndex: 102
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 15
+        width: 109
+        height: 165
+      spriteId: ce654106a57372d40a3e40f68d46a44d
+    - name: The Tarnished Widow_Frame_103
+      frameIndex: 103
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 25
+        width: 109
+        height: 155
+      spriteId: c2ea91b43a84216459d1c754779aa526
+    - name: The Tarnished Widow_Frame_104
+      frameIndex: 104
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 25
+        width: 109
+        height: 155
+      spriteId: 3b5ab75c60295c04fad8df15e1e0d480
+    - name: The Tarnished Widow_Frame_105
+      frameIndex: 105
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 15
+        width: 109
+        height: 165
+      spriteId: 3076ed6acd07dfa4ea5f04a3cf2e058e
+    - name: The Tarnished Widow_Frame_106
+      frameIndex: 106
+      additiveSortOrder: 0
+      cellRect:
+        x: 50
+        y: 10
+        width: 116
+        height: 170
+      spriteId: 784ee9a02b9019f48ae267669ea767f8
+    - name: The Tarnished Widow_Frame_107
+      frameIndex: 107
+      additiveSortOrder: 0
+      cellRect:
+        x: 34
+        y: 8
+        width: 132
+        height: 172
+      spriteId: 1f3ae96983328c143b19106ba440cfa2
+    - name: The Tarnished Widow_Frame_108
+      frameIndex: 108
+      additiveSortOrder: 0
+      cellRect:
+        x: 28
+        y: 7
+        width: 145
+        height: 173
+      spriteId: 891e87d8bcbc7554ab91eaabbd297796
+    - name: The Tarnished Widow_Frame_109
+      frameIndex: 109
+      additiveSortOrder: 0
+      cellRect:
+        x: 25
+        y: 6
+        width: 151
+        height: 174
+      spriteId: e9e459d445decc94498ec0e24fd79606
+    - name: The Tarnished Widow_Frame_110
+      frameIndex: 110
+      additiveSortOrder: 0
+      cellRect:
+        x: 20
+        y: 5
+        width: 158
+        height: 175
+      spriteId: 5ee8d9e05866c0548838bc840507f6a7
+    - name: The Tarnished Widow_Frame_111
+      frameIndex: 111
+      additiveSortOrder: 0
+      cellRect:
+        x: 19
+        y: 16
+        width: 163
+        height: 164
+      spriteId: 106a18b528826524e9fd4d54c5db990f
+    - name: The Tarnished Widow_Frame_112
+      frameIndex: 112
+      additiveSortOrder: 0
+      cellRect:
+        x: 18
+        y: 15
+        width: 164
+        height: 165
+      spriteId: 3f7404a4efe87ac4fa9fe25fde875a3d
+    - name: The Tarnished Widow_Frame_113
+      frameIndex: 113
+      additiveSortOrder: 0
+      cellRect:
+        x: 17
+        y: 25
+        width: 149
+        height: 155
+      spriteId: 8a1d354b8eaa11547bf851e08f5f08b6
+    - name: The Tarnished Widow_Frame_114
+      frameIndex: 114
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 125
+        height: 153
+      spriteId: fddf5a34e347236459c5bbd9b309fc25
+    - name: The Tarnished Widow_Frame_115
+      frameIndex: 115
+      additiveSortOrder: 0
+      cellRect:
+        x: 17
+        y: 27
+        width: 149
+        height: 153
+      spriteId: 32fa75d6cbee8d54e82434858ceef6a4
+    - name: The Tarnished Widow_Frame_116
+      frameIndex: 116
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 125
+        height: 153
+      spriteId: e2cdbd59b40ae7d498553cb8e04aa7b4
+    - name: The Tarnished Widow_Frame_117
+      frameIndex: 117
+      additiveSortOrder: 0
+      cellRect:
+        x: 17
+        y: 27
+        width: 149
+        height: 153
+      spriteId: dc810f1c41953f440a6bdb9b88d94d9c
+    - name: The Tarnished Widow_Frame_118
+      frameIndex: 118
+      additiveSortOrder: 0
+      cellRect:
+        x: 57
+        y: 27
+        width: 109
+        height: 153
+      spriteId: 5909c895f6d9e2548b630992c8e24b20
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 214, y: 203}
