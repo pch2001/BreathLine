@@ -46,23 +46,23 @@ public class FinalBoss : MonoBehaviour
 
         float dist = Vector2.Distance(transform.position, player.position); // °Å¸®
 
-        //if (dist < meleeRange)
-        //{
-        //    StartCoroutine(Attack1());
-        //}
-        //else if (dist < rangeAttackRange)
-        //{
-        //    StartCoroutine(Attack2());
-        //}
-        //else
-        //{
-        //   FollowPlayer();
-        //}
-
-        if (canTeleport)
+        if (dist < meleeRange)
         {
-            StartCoroutine(TeleportAndAOE());
+            StartCoroutine(Attack1());
         }
+        else if (dist < rangeAttackRange)
+        {
+            StartCoroutine(Attack2());
+        }
+        else
+        {
+            FollowPlayer();
+        }
+
+        //if (canTeleport)
+        //{
+        //    StartCoroutine(TeleportAndAOE());
+        //}
     }
 
 
