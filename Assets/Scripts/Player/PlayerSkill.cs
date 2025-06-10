@@ -88,27 +88,27 @@ public class PlayerSkill : MonoBehaviour
         piriStartTime = Time.time;
         isSoftPiriStart = false;
         isSoftPiriPlayed = false;
-        RequestMoveSpeed?.Invoke(0f); // 이동 중지
+        RequestMoveSpeed?.Invoke(0.5f); // 이동 중지
         RequestAnimTrigger?.Invoke(PlayerAnimTrigger.Sad); // 피리 부는 듯한 연출
         RequestAnimSpeed?.Invoke(0f); // 피리 부는 모습으로 애니메이션 멈춤
     }
 
     public void ReleasePiri() // 연주버튼 입력 시간에 따른 연주 분기 조건 (분노의 악장 + 평화의 악장 실패시)
     {
-            float duration = Time.time - piriStartTime; // 연주버튼 누른 시간
+        float duration = Time.time - piriStartTime; // 연주버튼 누른 시간
 
-            if (duration <= 0.3f)
-            {
-                StartCoroutine(PlayShortPiri());
-            }
-            else if (duration > 0.4f && duration < SoftPiriKeyDownTime)
-            {
-                PlaySoftPiriCanceled();
-            }
+        if (duration <= 0.3f)
+        {
+            StartCoroutine(PlayShortPiri());
+        }
+        else if (duration > 0.4f && duration < SoftPiriKeyDownTime)
+        {
+            PlaySoftPiriCanceled();
+        }
 
-            RequestAnimSpeed?.Invoke(1f);
-            RequestMoveSpeed?.Invoke(2.5f); // 이동속도 2.5로 변경
-            StartCoroutine(RestoreSpeedAfterDelay(0.5f)); // 0.5초동안 잠시 이동속도 감소
+        RequestAnimSpeed?.Invoke(1f);
+        RequestMoveSpeed?.Invoke(2.5f); // 이동속도 2.5로 변경
+        StartCoroutine(RestoreSpeedAfterDelay(0.5f)); // 0.5초동안 잠시 이동속도 감소
     }
 
     public void CheckSoftPiri() // 평화의 악장 차징시간 도달 확인 
@@ -123,7 +123,7 @@ public class PlayerSkill : MonoBehaviour
 
                 audioSource.clip = piriClips["Peace"];
                 audioSource.time = 0f;
-                RequestMoveSpeed?.Invoke(0f); // 이동 중지
+                RequestMoveSpeed?.Invoke(1.5f); // 이동 중지
                 audioSource.Play(); // 평화의 악장 연주 시작
                 isSoftPiriStart = true;
             }
@@ -203,7 +203,7 @@ public class PlayerSkill : MonoBehaviour
 
     public IEnumerator WolfAppear(bool isExist) // 늑대 등장 구현
     {
-        if(!wolfMoveReady) yield break; // 이동 쿨타임시 조작 불가능(너무 빈번한 이동 방지)
+        if (!wolfMoveReady) yield break; // 이동 쿨타임시 조작 불가능(너무 빈번한 이동 방지)
 
         wolfMoveReady = false;
         StartCoroutine(WolfMoveCool()); // 이동 쿨타임 시작
@@ -214,10 +214,10 @@ public class PlayerSkill : MonoBehaviour
 
         float timer = 0f;
 
-        if(mousePosition.x > playerCtrl.transform.position.x)
+        if (mousePosition.x > playerCtrl.transform.position.x)
         {
             wolfSpriteRenderer.flipX = false;
-            isStartRight = Vector2.left * 4; 
+            isStartRight = Vector2.left * 4;
         }
         else
         {
@@ -270,7 +270,7 @@ public class PlayerSkill : MonoBehaviour
     }
     public IEnumerator WolfAttack() // 늑대 공격 구현
     {
-        if(wolfAttackReady)
+        if (wolfAttackReady)
         {
             wolfAttackReady = false;
             StartCoroutine(WolfAttackCool()); // 쿨타임 코루틴 실행
@@ -302,16 +302,16 @@ public class PlayerSkill : MonoBehaviour
         }
         wolfEyesAnim.SetBool("wolfDamaged", wolfIsDamaged);
         wolfEyes.enabled = true; // 늑대 눈 나타내기기
-           
+
         yield return StartCoroutine(FadeCoroutine(0.0f, 0.3f)); // FadeOut
     }
 
     public void WolfGuard() // 늑대 가드 구현
     {
-        if(!wolfIsDamaged)
+        if (!wolfIsDamaged)
         {
             wolfIsDamaged = true; // 늑대부상 변수 (등장중일 경우, 코루틴 탈출)
-            
+
             StartCoroutine(WolfHide(true));
             StartCoroutine(WolfGuardEffect()); // 가드 이펙트 코루틴 실행 
             StartCoroutine(WolfGuardCool()); // 가드 쿨타임 코루틴 실행
@@ -326,7 +326,7 @@ public class PlayerSkill : MonoBehaviour
         yield return new WaitForSeconds(0.4f); // 0.4초 후 사라짐
         guardImg.SetActive(false);
     }
-    
+
     private IEnumerator WolfMoveCool() // 늑대 이동 쿨타임 코루틴
     {
         yield return new WaitForSeconds(1f);

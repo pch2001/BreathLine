@@ -16,7 +16,7 @@ public class PlayerCtrl : MonoBehaviour
     public SpriteRenderer spriteRenderer; // Sprite 반전용
     private PlayerInputAction playerinputAction; // 강화된 Input 방식 사용
     private float moveSpeed = 5f; // 이동속도
-    private float jumpForce = 12f; // 점프력
+    public float jumpForce = 12f; // 점프력
     private bool isGrounded = true; // 착지 여부
     private bool isPressingPiri = false; // 피리 연주 여부
     private bool dontmove = true;//플레이 고정시
@@ -43,22 +43,22 @@ public class PlayerCtrl : MonoBehaviour
     {
         dontmove = true;// 대화시 움직임 멈추기 위해 true = 움직이는 상태
         // inputAction 활성화
-        playerinputAction.Enable(); 
+        playerinputAction.Enable();
 
         // PlayerCtrl 변수 변경 이벤트
         playerSkill.RequestMoveSpeed += OnSetMoveSpeed;
         playerSkill.RequestAnimTrigger += OnSetAnimTrigger;
         playerSkill.RequestAnimSpeed += OnSetAnimSpeed;
-       
+
         playerSkill.RequestWolfAnimTrigger += OnSetWolfAnimTrigger;
         playerSkill.RequestWolfState += OnSetWolfState;
         playerSkill.RequestWolfStartAttack += SetWolfAttackCoolTime;
-        
+
         // PlayerInputAction 이벤트
         playerinputAction.Player.Jump.performed += OnJump;
-        playerinputAction.Player.PlayPiri.started += OnStartPiri; 
+        playerinputAction.Player.PlayPiri.started += OnStartPiri;
         playerinputAction.Player.PlayPiri.canceled += OnReleasePiri;
-       
+
         playerinputAction.Wolf.Move.performed += OnWolfMove;
         playerinputAction.Wolf.Attack.performed += OnWolfAttack;
     }
@@ -68,11 +68,11 @@ public class PlayerCtrl : MonoBehaviour
         dontmove = false;// 대화시 움직임 멈추기 위해 faalse = 못 움직이는 상태
 
         // inputAction 비활성화
-        playerinputAction.Disable(); 
+        playerinputAction.Disable();
     }
 
     // 소녀 연결 이벤트
-    private void OnSetMoveSpeed(float speed) 
+    private void OnSetMoveSpeed(float speed)
     {
         moveSpeed = speed;
     }
@@ -88,12 +88,12 @@ public class PlayerCtrl : MonoBehaviour
     }
 
     // 늑대 연결 이벤트
-    private void OnSetWolfAnimTrigger(string triggerName) 
+    private void OnSetWolfAnimTrigger(string triggerName)
     {
         wolfAnimator.SetTrigger(triggerName);
     }
 
-    private void OnSetWolfState(WolfState state) 
+    private void OnSetWolfState(WolfState state)
     {
         currentWolfState = state;
     }
@@ -130,9 +130,9 @@ public class PlayerCtrl : MonoBehaviour
             animator.SetBool("isMove", false);
 
         // 좌우 반전
-        if (h > 0) 
+        if (h > 0)
             spriteRenderer.flipX = false;
-        else if(h < 0) 
+        else if (h < 0)
             spriteRenderer.flipX = true;
     }
 
@@ -142,13 +142,13 @@ public class PlayerCtrl : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
-            animator.SetTrigger("isJump");  
+            animator.SetTrigger("isJump");
         }
     }
 
     private void OnJumpEnd() // 점프 애니메이션 종료시, 잠시 그 상태로 멈춤
     {
-        animator.speed = 0f; 
+        animator.speed = 0f;
     }
 
     private void OnStartPiri(InputAction.CallbackContext context) // 연주버튼을 눌렀을 때 실행
@@ -186,7 +186,7 @@ public class PlayerCtrl : MonoBehaviour
 
         if (currentWolfState == WolfState.Hide) // 늑대가 Hide 상태일 때, 늑대 등장
         {
-            StartCoroutine(playerSkill.WolfAppear(false));    
+            StartCoroutine(playerSkill.WolfAppear(false));
         }
         else if (currentWolfState == WolfState.Idle)// 늑대가 Hide상태x, 기존 위치 -> 늑대 새로운 위치 등장
         {
@@ -201,7 +201,7 @@ public class PlayerCtrl : MonoBehaviour
 
     private void OnWolfAttack(InputAction.CallbackContext context) // 늑대 공격 구현, 마우스 우클릭 시 실행
     {
-        if(currentWolfState == WolfState.Idle) // Hide상태가 아닐때만 실행
+        if (currentWolfState == WolfState.Idle) // Hide상태가 아닐때만 실행
         {
             StartCoroutine(playerSkill.WolfAttack());
             wolfExitTimer = 0f;
@@ -209,13 +209,13 @@ public class PlayerCtrl : MonoBehaviour
     }
     private void OnWolfHide() // 늑대 Hide 구현
     {
-        if (currentWolfState != WolfState.Idle) return; 
+        if (currentWolfState != WolfState.Idle) return;
 
         if (wolfExitTimer >= 4.0f) // 아무런 동작 없이 4초 이상 흐르면 실행
         {
             StartCoroutine(playerSkill.WolfHide(false)); // 늑대 자동 퇴장
         }
-        else if(currentWolfState == WolfState.Idle) // 늑대 등장 후, wolfExitTimer 계속 증가
+        else if (currentWolfState == WolfState.Idle) // 늑대 등장 후, wolfExitTimer 계속 증가
         {
             wolfExitTimer += Time.deltaTime;
         }
