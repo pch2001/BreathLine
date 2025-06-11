@@ -59,10 +59,10 @@ public class FinalBoss : MonoBehaviour
             FollowPlayer();
         }
 
-        //if (canTeleport)
-        //{
-        //    StartCoroutine(TeleportAndAOE());
-        //}
+        if (canTeleport)
+        {
+            StartCoroutine(TeleportAndAOE());
+        }
     }
 
 

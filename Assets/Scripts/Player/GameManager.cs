@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public PollutionStage currentStageData; // 현재 오염도 단계 데이터
     public int currentStageIndex; // 현재 오염도 단계
     [SerializeField] RectTransform pollutionGauge; // 오염도 UI 
+    
+    public bool isReturned = false; // 회귀 상태 여부
 
     public Vector3 savePoint; // 세이브 포인트 위치
 
@@ -43,7 +45,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Pollution = 0; // 오염도값 초기화
-        currentStageIndex = 0;
+        currentStageIndex = -1;
         AddPolution(0); // 오염도 UI 초기화
     }
 
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     public void AddPolution(float data)
     {
+        Debug.Log("오염도가 증가합니다!");
         Pollution += data;
         pollutionGauge.sizeDelta 
             = new Vector2(pollutionGauge.sizeDelta.x, Mathf.Clamp01(pollution / 100f) * 700f);
