@@ -257,6 +257,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy")) // 적과 충돌시 데미지 or 가드
         {
+            Debug.LogWarning("적과 충돌했습니다!");
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy 기본 클래스 가져옴
             if (enemy != null)
             {

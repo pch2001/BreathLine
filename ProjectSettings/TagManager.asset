@@ -11,6 +11,7 @@ TagManager:
   - WolfAttack
   - Attack
   - WolfAppear
+  - Fall
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - UI
   - Enemy
   - Player
-  - 
+  - Attack
   - 
   - 
   - 
