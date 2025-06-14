@@ -12,6 +12,9 @@ TagManager:
   - Attack
   - WolfAppear
   - Fall
+  - EchoGuard
+  - PurifyStep
+  - SavePoint
   layers:
   - Default
   - TransparentFX

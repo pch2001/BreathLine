@@ -48,6 +48,7 @@ public abstract class EnemyBase : MonoBehaviour
     public bool attackMode = false; // 적 공격 상태 여부(경계 <-> 추격)
     public bool isStune = false; // 스턴 상태 여부
     public bool isDead = false; // 죽음 여부
+    public bool enemyIsReturn; // // 적 회귀 상태 설정
 
     void Awake()
     {

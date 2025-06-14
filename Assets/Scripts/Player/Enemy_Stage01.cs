@@ -12,15 +12,18 @@ public class Enemy_Stage01 : EnemyBase
     {
         maxHp = 50f; // 적 체력 설정
         currentHp = 15f; // 적 체력 초기화
-        damage = 10f; // 적 공격력 설정 
+        damage = 20f; // 적 공격력 설정 
         maxGroggyCnt = 3; // 최대 그로기 게이지 3개로 설정
         currentGroggyCnt = 0; // 현재 그로기 개수 초기화
         rigidBody.drag = 5f; // 기본 마찰력 설정
         moveSpeed = defaultMoveSpeed;
         attackMode = false; // 기본 공격모드 false
+        GameManager.Instance.isReturned = enemyIsReturn; // 적 회귀 상태 설정
 
-        groggyUI.SetupGroggySpriteGauge(maxGroggyCnt); // 그로기 슬롯 초기화
-
+        if (GameManager.Instance.isReturned) // 회귀 후, 그로기 슬롯 초기화 
+        {
+            groggyUI.SetupGroggySpriteGauge(maxGroggyCnt);
+        }
     }
 
     private void Update()

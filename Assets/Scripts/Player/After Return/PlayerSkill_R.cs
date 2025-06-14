@@ -15,7 +15,7 @@ public class PlayerSkill_R : MonoBehaviour
     [SerializeField] private AudioClip angerMelody; // 분노의 악장 음원
     [SerializeField] private AudioClip peaceMelody; // 평화의 악장 음원
     [SerializeField] private AudioClip peaceCancelMelody; // 평화의 악장 실패 음원
-    
+
     [SerializeField] private GameObject AngerAttackArea; // 소녀 분노의 악장 공격 범위
     [SerializeField] private GameObject PeaceAttackArea; //  소녀 평화의 악장 공격 범위
     [SerializeField] private GameObject EchoGuardAttackArea; //  소녀 에코가드 공격 범위
@@ -40,10 +40,11 @@ public class PlayerSkill_R : MonoBehaviour
     public event Action<float> RequestEchoGuardStart; // playerCtrl에게 에코가드 실행 알림 이벤트
     public event Action<float> RequestPuriFyStepStart; // playerCtrl에게 정화의 걸음 실행 알림 이벤트
     public event Action<bool> RequestisPurifing; // playerCtrl의 isPurify 변수 변경
-    
+    public event Action<float> RequestSetSpriteColor; // playerCtrl의 Sprite 색상을 오염도 변경에 따른 설정 이벤트
+
     private void Awake()
     {
-        playerCtrl = GetComponent<PlayerCtrl_R>();    
+        playerCtrl = GetComponent<PlayerCtrl_R>();
     }
 
     private void OnEnable()
@@ -85,20 +86,20 @@ public class PlayerSkill_R : MonoBehaviour
 
     public void ReleasePiri() // 연주버튼 입력 시간에 따른 연주 분기 조건 (분노의 악장 + 평화의 악장 실패시)
     {
-            float duration = Time.time - piriStartTime; // 연주버튼 누른 시간
+        float duration = Time.time - piriStartTime; // 연주버튼 누른 시간
 
-            if (duration <= 0.3f)
-            {
-                StartCoroutine(PlayShortPiri());
-            }
-            else if (duration > 0.4f && duration < SoftPiriKeyDownTime)
-            {
-                PlaySoftPiriCanceled();
-            }
+        if (duration <= 0.3f)
+        {
+            StartCoroutine(PlayShortPiri());
+        }
+        else if (duration > 0.4f && duration < SoftPiriKeyDownTime)
+        {
+            PlaySoftPiriCanceled();
+        }
 
-            RequestAnimSpeed?.Invoke(1f);
-            RequestMoveSpeed?.Invoke(2.5f); // 이동속도 2.5로 변경
-            StartCoroutine(RestoreSpeedAfterDelay(0.5f)); // 0.5초동안 잠시 이동속도 감소
+        RequestAnimSpeed?.Invoke(1f);
+        RequestMoveSpeed?.Invoke(2.5f); // 이동속도 2.5로 변경
+        StartCoroutine(RestoreSpeedAfterDelay(0.5f)); // 0.5초동안 잠시 이동속도 감소
     }
 
     public void CheckSoftPiri() // 평화의 악장 차징시간 도달 확인 
@@ -162,8 +163,7 @@ public class PlayerSkill_R : MonoBehaviour
         float brightness = (255f - playerPollution * 30f) / 255f;
         brightness = Mathf.Clamp01(brightness); // 0~1 사이로 보정
 
-        playerCtrl.spriteRenderer.color = new Color(brightness, brightness, brightness, playerCtrl.spriteRenderer.color.a);
-        // 이제부터 오염도에 따라 소녀 색상 변화
+        RequestSetSpriteColor?.Invoke(brightness); // 이제부터 오염도에 따라 소녀 색상 변화
     }
 
     private IEnumerator RestoreSpeedAfterDelay(float delay) // 일정시간 후 원래속도로 복귀
@@ -190,7 +190,7 @@ public class PlayerSkill_R : MonoBehaviour
         if (echoGuardReady)
         {
             Debug.Log("에코가드 실행!");
-         
+
             echoGuardReady = false;
             StartCoroutine(EchoGuardCoolTimer()); // 쿨타임 코루틴 실행
 
@@ -213,10 +213,10 @@ public class PlayerSkill_R : MonoBehaviour
 
     public void PurifyStepStart() // 정화의 걸음 시작 함수
     {
-        if (purifyStepReady) 
+        if (purifyStepReady)
         {
             Debug.Log("소녀가 정화의 걸음을 시작합니다."); // 애니메이션 추가해야 해! -> 애니메이션 bool값 만들어서 실행, 해당동작 loop로 만들어서 사용
-            purifyStepReady = false; 
+            purifyStepReady = false;
             RequestisPurifing?.Invoke(true); // 정화의 걸음 시작
             RequestMoveSpeed?.Invoke(2.5f); // 정화의 걸음 속도로 변경
             purifyRange.SetActive(true); // 정화 범위 활성화

@@ -22,13 +22,19 @@ public class PlayerCtrl_R : MonoBehaviour
     private Coroutine purifySteoCoolRoutine; // 정화의 걸음 쿨타임 코루틴
     public Image purifyStepCool; // 정화의 걸음 쿨타임 UI 
 
+    public Vector3 savePoint; // 현재 스테이지에서 사용할 임시 세이브 포인트
+
+    private Color originColor; // 소녀 스프라이트 색상
+    private Color damagedColor = new Color(0.2f, 0.2f, 0.2f); // 소녀 피격시 깜빡일 때 색상
+
     float h; // 플레이어 좌우 이동값
     public float moveSpeed = 5f; // 이동속도
     public float jumpForce = 12f; // 점프력
     private bool isGrounded = true; // 착지 여부
     private bool isPressingPiri = false; // 피리 연주 여부
-    private bool isDamaged = false; // 플레이어 피격 상태시
     public bool isPurifying = false; // 정화의 걸음 여부
+    public float damagedTime = 2f; // 피격 반응 유지 시간
+    private float blinkInterval = 0.15f; // 피격시 한번 깜빡하는 시간
 
     private bool dontmove = true;//플레이 고정시
 
@@ -44,9 +50,9 @@ public class PlayerCtrl_R : MonoBehaviour
     public void OnEnable()
     {
         dontmove = true;// 대화시 움직임 멈추기 위해 true = 움직이는 상태
-        
+
         // inputAction 활성화
-        playerinputAction.Enable(); 
+        playerinputAction.Enable();
 
         // PlayerCtrl 변수 변경 이벤트
         playerSkill.RequestMoveSpeed += OnSetMoveSpeed;
@@ -55,10 +61,11 @@ public class PlayerCtrl_R : MonoBehaviour
         playerSkill.RequestEchoGuardStart += SetEchoGuardCoolTime;
         playerSkill.RequestPuriFyStepStart += SetPurifyStepCoolTime;
         playerSkill.RequestisPurifing += SetisPurifing;
+        playerSkill.RequestSetSpriteColor += OnSetSpriteColor;
 
         // PlayerInputAction 이벤트
         playerinputAction.Player.Jump.performed += OnJump;
-        playerinputAction.Player.PlayPiri.started += OnStartPiri; 
+        playerinputAction.Player.PlayPiri.started += OnStartPiri;
         playerinputAction.Player.PlayPiri.canceled += OnReleasePiri;
         playerinputAction.Player.EchoGuard.performed += OnEchoGuard;
         playerinputAction.Player.PurifyingStep.started += OnPurifyStepStart;
@@ -71,11 +78,11 @@ public class PlayerCtrl_R : MonoBehaviour
         dontmove = false;// 대화시 움직임 멈추기 위해 faalse = 못 움직이는 상태
 
         // inputAction 비활성화
-        playerinputAction.Disable(); 
+        playerinputAction.Disable();
     }
 
     // 소녀 연결 이벤트
-    private void OnSetMoveSpeed(float speed) 
+    private void OnSetMoveSpeed(float speed)
     {
         moveSpeed = speed;
     }
@@ -89,10 +96,11 @@ public class PlayerCtrl_R : MonoBehaviour
     {
         animator.speed = speed;
     }
-    
+
     private void Start()
     {
         playerSkill.OnUpdateStageData(); // 연결된 음원 딕셔너리에 초기화
+        GameManager.Instance.isReturned = true; // 회귀 후로 설정 변경
     }
 
     void Update()
@@ -104,7 +112,7 @@ public class PlayerCtrl_R : MonoBehaviour
 
     private void OnPlayerMove()
     {
-        if(!dontmove) return; // 스크립트 발생시 이동 X
+        if (!dontmove) return; // 스크립트 발생시 이동 X
 
         if (!isPurifying) // 정화의 걸음시 입력 기준 변경 및 겹치는 애니메이션 방지
         {
@@ -121,10 +129,10 @@ public class PlayerCtrl_R : MonoBehaviour
         // 이동 구현
         rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
         // 좌우 반전
-        if (h > 0) 
+        if (h > 0)
             spriteRenderer.flipX = false;
-        else if(h < 0) 
-            spriteRenderer.flipX = true;        
+        else if (h < 0)
+            spriteRenderer.flipX = true;
     }
 
     private void OnJump(InputAction.CallbackContext context) // 점프
@@ -133,13 +141,19 @@ public class PlayerCtrl_R : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
-            animator.SetTrigger("isJump");  
+            animator.SetTrigger("isJump");
         }
     }
 
     private void OnJumpEnd() // 점프 애니메이션 종료시, 잠시 그 상태로 멈춤
     {
-        animator.speed = 0f; 
+        animator.speed = 0f;
+    }
+
+    private void OnSetSpriteColor(float brightness) // 오염도 변경시 기존 색상 저장 및 sprite 변경
+    {
+        spriteRenderer.color = new Color(brightness, brightness, brightness, spriteRenderer.color.a);
+        originColor = spriteRenderer.color; // 현재 색상을 변경
     }
 
     private void OnStartPiri(InputAction.CallbackContext context) // 연주버튼을 눌렀을 때 실행
@@ -173,7 +187,7 @@ public class PlayerCtrl_R : MonoBehaviour
         if (!isPressingPiri) // 피리 연주시가 아닐 경우
         {
             StartCoroutine(playerSkill.EchoGuard());
-        } 
+        }
     }
 
     private void SetEchoGuardCoolTime(float duration)
@@ -228,7 +242,7 @@ public class PlayerCtrl_R : MonoBehaviour
 
     private void UpdatePurifyStep() // 정화의 걸음 갱신 함수
     {
-        if(!isPurifying) return;
+        if (!isPurifying) return;
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         h = (mousePos.x - transform.position.x) > 0 ? 1 : -1;
@@ -258,25 +272,54 @@ public class PlayerCtrl_R : MonoBehaviour
         purifyStepCool.fillAmount = 1f;
     }
 
-    private IEnumerator OnDamaged() // 소녀 피격 시작 함수
+    private IEnumerator OnDamagedStart(float enemyDamage) // 소녀 피격 시작 함수
     {
-        isDamaged = true; // 소녀 피격 상태 활성화
+        Debug.Log("소녀 피격! 소녀의 오염도가 증가합니다!");
+        GameManager.Instance.AddPolution(enemyDamage); // 적 공격력만큼 오염도 증가
 
-        // 깜빡이는 효과
-        while (isDamaged) 
+        if (GameManager.Instance.Pollution < 100f) // 오염도가 다 차지 않았을 경우
         {
+            // Player 레이어(7번)와 Enemy 레이어(6번) 사이 충돌을 무시
+            Physics2D.IgnoreLayerCollision(7, 6, true);
 
-            spriteRenderer.color = new Color(0.2f, 0.2f, 0.2f, spriteRenderer.color.a);
-            yield return new WaitForSeconds(0.5f);
-            spriteRenderer.color = new Color(0.2f, 0.2f, 0.2f, spriteRenderer.color.a);
+            animator.SetTrigger(PlayerAnimTrigger.Hit);
+
+            // 피격시 연주, 에코가드, 정화의 걸음 비활성화
+            playerinputAction.Player.PlayPiri.Disable();
+            playerinputAction.Player.EchoGuard.Disable();
+            playerinputAction.Player.PurifyingStep.Disable();
+
+            // 깜빡이는 효과
+            float elapsed = 0f; // 경과된 정도
+            while (elapsed < damagedTime)
+            {
+                spriteRenderer.color = damagedColor;
+                yield return new WaitForSeconds(blinkInterval);
+                spriteRenderer.color = originColor;
+                yield return new WaitForSeconds(blinkInterval);
+                elapsed += blinkInterval * 2;
+            }
+
+            OnDamagedEnd();
         }
-
-        GameManager.Instance.AddPolution(0f); // 플레이어 색상 복구
+        else // 오염도가 가득 찼을 경우 
+        {
+            Debug.LogWarning("소녀가 쓰러집니다.. GameOver");
+            Time.timeScale = 0f;
+        }
     }
 
     public void OnDamagedEnd() // 소녀 피격 종료 함수
     {
-        isDamaged = false; // 소녀 피격 상태 해제
+        // Player 레이어(7번)와 Enemy 레이어(6번) 사이 충돌을 다시 허용
+        Physics2D.IgnoreLayerCollision(7, 6, false);
+
+        spriteRenderer.color = originColor;
+
+        // 피격시 연주, 에코가드, 정화의 걸음 복구
+        playerinputAction.Player.PlayPiri.Enable();
+        playerinputAction.Player.EchoGuard.Enable();
+        playerinputAction.Player.PurifyingStep.Enable();
     }
 
     private void OnCollisionEnter2D(Collision2D collision) // 물리 충돌만 구현
@@ -285,6 +328,11 @@ public class PlayerCtrl_R : MonoBehaviour
         {
             animator.speed = 1f; // 다시 애니메이션 동작
             isGrounded = true;
+        }
+        else if (collision.gameObject.CompareTag("Fall")) // 추락 판정시
+        {
+            Debug.Log("최근 세이브 포인트로 이동");
+            transform.position = savePoint;
         }
     }
 
@@ -297,13 +345,16 @@ public class PlayerCtrl_R : MonoBehaviour
             {
                 if (!enemy.attackMode || enemy.isStune || enemy.isDead) return; // 적의 공격 모드가 false or 스턴, 사망 상태일 경우 충돌 X
 
-                Debug.Log("소녀 피격! 소녀의 오염도가 증가합니다!");
-                animator.SetTrigger(PlayerAnimTrigger.Hit);
+                StartCoroutine(OnDamagedStart(enemy.damage)); // 피격 반응 구현
             }
             else
             {
                 Debug.Log("해당 적은 EnemyBase 클래스를 상속하지 않았습니다! 연결해유");
             }
+        }
+        else if (collision.gameObject.CompareTag("SavePoint"))
+        {
+            savePoint = collision.transform.position; // 세이브 포인트 저장
         }
     }
 }
