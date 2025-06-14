@@ -1,21 +1,21 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using KoreanTyper; //ÅØ½ºÆ® Ãâ·Â ÆÄÀÏ
-using UnityEngine.InputSystem; //ÀÔ·Â ¸·´Â°Å
+using KoreanTyper; //í…ìŠ¤íŠ¸ ì¶œë ¥ íŒŒì¼
+using UnityEngine.InputSystem; //ì…ë ¥ ë§‰ëŠ”ê±°
 public class Story_one : MonoBehaviour
 {
     private PlayerCtrl playerCtrl;
 
-    //´ë»ç Ãâ·Â
+    //ëŒ€ì‚¬ ì¶œë ¥
     public GameObject girlImage;
     public GameObject wolfImage;
     public GameObject sideImage;
     public Text printText1;
     public Text printText2;
 
-    List<List<string>> dialoguescript;//´ë»ç ½ºÅ©¸³Æ® ÀúÀå¼Ò
+    List<List<string>> dialoguescript;//ëŒ€ì‚¬ ìŠ¤í¬ë¦½íŠ¸ ì €ì¥ì†Œ
 
 
     void Start()
@@ -23,16 +23,16 @@ public class Story_one : MonoBehaviour
 
         dialoguescript = new List<List<string>>
         {
-        new List<string> { "g:.....", "g:¸Ó¸® ¾ÆÆÄ...", "g:¿©±â°¡ ¾îµğÁö?", "w:¾È³ç", "g:Çä! ³Í ¸ğ¾ß? Àâ¾Æ¸ÔÁö¸¶ ³­ ¸À ¾ø´Ü ¸»ÀÌ¾ß", "w:³Î Àâ¾Æ ¸ÔÀ» »ı°¢Àº ¾ø¾î.. \n ±æÀ» ÀÒÀº°Å °°Àºµ¥ ³»°¡ µµ¿ÍÁÙ±î?\n ³¯ µû¶ó ¾ÕÀ¸·Î°¡ÀÚ", "g:ÀÏ´Ü ¾ÕÀ¸·Î °¡ÀÚ.." },
-        new List<string> { "w:Á¶½ÉÇØ!", "w:¿©±ä À§ÇèÇØ.", "w:Àú±â¸ó½ºÅÍµéÀ» Á¶½ÉÇØ¼­ Áö³ª°¡ÀÚ" , "g:´Ù¸¥ ¹æ¹ıÀº ¾øÀ»±î?"},
-        new List<string> { "w:Àú À½Ç¥¿¡ ¼ÕÀ» ´ëº¸ÀÚ!", "g:(¼ÕÀ» ´ëº¸ÀÚ À½Ç¥¾ÈÀ¸·Î »¡·Á µé¾î°¡ ±â¾ïÀÌ Àç»ı µÈ´Ù..)" }
+        new List<string> { "g:.....", "g:ë¨¸ë¦¬ ì•„íŒŒ...", "g:ì—¬ê¸°ê°€ ì–´ë””ì§€?", "w:ì•ˆë…•", "g:í—‰! ë„Œ ëª¨ì•¼? ì¡ì•„ë¨¹ì§€ë§ˆ ë‚œ ë§› ì—†ë‹¨ ë§ì´ì•¼", "w:ë„ ì¡ì•„ ë¨¹ì„ ìƒê°ì€ ì—†ì–´.. \n ê¸¸ì„ ìƒì€ê±° ê°™ì€ë° ë‚´ê°€ ë„ì™€ì¤„ê¹Œ?\n ë‚  ë”°ë¼ ì•ìœ¼ë¡œê°€ì", "g:ì¼ë‹¨ ì•ìœ¼ë¡œ ê°€ì.." },
+        new List<string> { "w:ì¡°ì‹¬í•´!", "w:ì—¬ê¸´ ìœ„í—˜í•´.", "w:ì €ê¸°ëª¬ìŠ¤í„°ë“¤ì„ ì¡°ì‹¬í•´ì„œ ì§€ë‚˜ê°€ì" , "g:ë‹¤ë¥¸ ë°©ë²•ì€ ì—†ì„ê¹Œ?"},
+        new List<string> { "w:ì € ìŒí‘œì— ì†ì„ ëŒ€ë³´ì!", "g:(ì†ì„ ëŒ€ë³´ì ìŒí‘œì•ˆìœ¼ë¡œ ë¹¨ë ¤ ë“¤ì–´ê°€ ê¸°ì–µì´ ì¬ìƒ ëœë‹¤..)" }
         };
 
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Player"))  // Æ¯Á¤ ÅÂ±×·Î È®ÀÎ
+        if (collider.gameObject.CompareTag("Player"))  // íŠ¹ì • íƒœê·¸ë¡œ í™•ì¸
         {
             sideImage.SetActive(true);
 
@@ -46,7 +46,7 @@ public class Story_one : MonoBehaviour
 
     public IEnumerator TypingText(int index)
     {
-        GameObject playerCode = GameObject.FindWithTag("Player"); // Player ÅÂ±× ÇÊ¿ä!
+        GameObject playerCode = GameObject.FindWithTag("Player"); // Player íƒœê·¸ í•„ìš”!
         playerCtrl = playerCode.GetComponent<PlayerCtrl>();
         playerCtrl.OnDisable();
 
@@ -62,7 +62,7 @@ public class Story_one : MonoBehaviour
         Vector3 camStartPos = cam.transform.position;
         Vector3 camTargetPos = new Vector3(player.position.x, player.position.y, cam.transform.position.z);
 
-        //È®´ë
+        //í™•ëŒ€
         while (elapsed < zoomDuration)
         {
             cam.orthographicSize = Mathf.Lerp(startZoom, targetZoom, elapsed / zoomDuration);
@@ -74,8 +74,8 @@ public class Story_one : MonoBehaviour
         cam.orthographicSize = targetZoom;
         cam.transform.position = camTargetPos;
 
-        //ÅØ½ºÆ® Ãâ·Â
-        // ´ë»ç Ãâ·Â
+        //í…ìŠ¤íŠ¸ ì¶œë ¥
+        // ëŒ€ì‚¬ ì¶œë ¥
         for (int t = 0; t < dialoguescript[index].Count; t++)
         {
             string line = dialoguescript[index][t];
@@ -86,7 +86,7 @@ public class Story_one : MonoBehaviour
             string speaker = parts[0].Trim();
             string dialogue = parts[1].Trim();
 
-            // ¸»Ç³¼± ºĞ±â
+            // ë§í’ì„  ë¶„ê¸°
             if (speaker == "g")
             {
                 girlImage.SetActive(true);
@@ -114,13 +114,13 @@ public class Story_one : MonoBehaviour
 
             yield return new WaitForSeconds(2f);
         }
-        // Wait 1 second at the end | ¸¶Áö¸·¿¡ 2ÃÊ Ãß°¡ ´ë±âÇÔ
+        // Wait 1 second at the end | ë§ˆì§€ë§‰ì— 2ì´ˆ ì¶”ê°€ ëŒ€ê¸°í•¨
         yield return new WaitForSeconds(1f);
 
         playerCtrl.OnEnable();
         yield return new WaitForSeconds(0.3f);
 
-        //È®´ëµÈ Ä«¸Ş¶ó µÇµ¹¸®±â 
+        //í™•ëŒ€ëœ ì¹´ë©”ë¼ ë˜ëŒë¦¬ê¸° 
         elapsed = 0f;
         while (elapsed < zoomDuration)
         {

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,77 +8,83 @@ public abstract class EnemyBase : MonoBehaviour
     protected Animator animator;
     protected SpriteRenderer spriteRenderer;
     protected BoxCollider2D boxCollider;
-    protected GameObject player; // ÇÃ·¹ÀÌ¾î ¿ÀºêÁ§Æ® È®ÀÎ¿ë
+    protected AudioSource audioSource;
+    protected GameObject player; // í”Œë ˆì´ì–´ ì˜¤ë¸Œì íŠ¸ í™•ì¸ìš©
 
-    private Color originalColor; // ÇöÀç SpriteRender »ö»ó ÀúÀå
+    private Color originalColor; // í˜„ì¬ SpriteRender ìƒ‰ìƒ ì €ì¥
     private Color currentColor;
 
-    public GameObject hitEffect; // ÇÇ°İ ÀÌÆåÆ®
-    public GameObject dieEffect; // Die ÀÌÆåÆ®
-    public GameObject enemyFadeEffect; // »ç¶óÁú ¶§ ÀÌÆåÆ®
-    [SerializeField] private Transform enemyHpGauge; // Àû Hp(¿À¿°µµ) UI
+    public GameObject hitEffect; // í”¼ê²© ì´í™íŠ¸
+    public GameObject dieEffect; // Die ì´í™íŠ¸
+    public GameObject enemyFadeEffect; // ì‚¬ë¼ì§ˆ ë•Œ ì´í™íŠ¸
+    [SerializeField] private Transform enemyHpGauge; // ì  Hp(ì˜¤ì—¼ë„) UI
 
-    public float maxHp; // Àû ÃÖ´ë HP (ÃÖ´ë ¿À¿°µµ)
+    public float maxHp; // ì  ìµœëŒ€ HP (ìµœëŒ€ ì˜¤ì—¼ë„)
     [SerializeField] private float _currentHp;
-    public float currentHp // ÇöÀç Àû HP (ÇöÀç ¿À¿°µµ)
+    public float currentHp // í˜„ì¬ ì  HP (í˜„ì¬ ì˜¤ì—¼ë„)
     {
         get => _currentHp;
         set
         {
             _currentHp = Mathf.Clamp(value, 0f, maxHp);
-            UpdateHpGauge(); // hp °ÔÀÌÁö ¾÷µ¥ÀÌÆ®
+            UpdateHpGauge(); // hp ê²Œì´ì§€ ì—…ë°ì´íŠ¸
         }
     }
 
-    public float defaultMoveSpeed; // Àû ±âº» ÀÌµ¿¼Óµµ
+    public float defaultMoveSpeed; // ì  ê¸°ë³¸ ì´ë™ì†ë„
     [SerializeField] private float _moveSpeed;
-    public float moveSpeed // Àû ÇöÀç ÀÌµ¿¼Óµµ
+    public float moveSpeed // ì  í˜„ì¬ ì´ë™ì†ë„
     {
         get => _moveSpeed;
         set => _moveSpeed = Mathf.Clamp(value, 0f, defaultMoveSpeed);
     }
 
-    public float decreaseHpSpeed; // Àû HP(¿À¿°µµ) °¨¼Ò ¼Óµµ
-    public float damage; // Àû °ø°İ·Â
+    public float decreaseHpSpeed; // ì  HP(ì˜¤ì—¼ë„) ê°ì†Œ ì†ë„
+    public float damage; // ì  ê³µê²©ë ¥
+    public int maxGroggyCnt; // ìµœëŒ€ ê·¸ë¡œê¸° ê²Œì´ì§€ ê°œìˆ˜
+    public int currentGroggyCnt; // í˜„ì¬ ê·¸ë¡œê¸° ê²Œì´ì§€ ê°œìˆ˜
+    public EnemyGroggyUI groggyUI; // ê·¸ë¡œê¸° UI ì˜¤ë¸Œì íŠ¸
 
-    public bool attackMode = false; // Àû °ø°İ »óÅÂ ¿©ºÎ(°æ°è <-> Ãß°İ)
-    public bool isStune = false; // ½ºÅÏ »óÅÂ ¿©ºÎ
-    public bool isDead = false; // Á×À½ ¿©ºÎ
-    
+    public bool attackMode = false; // ì  ê³µê²© ìƒíƒœ ì—¬ë¶€(ê²½ê³„ <-> ì¶”ê²©)
+    public bool isStune = false; // ìŠ¤í„´ ìƒíƒœ ì—¬ë¶€
+    public bool isDead = false; // ì£½ìŒ ì—¬ë¶€
+
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
+        groggyUI = GetComponentInChildren<EnemyGroggyUI>();
         player = GameObject.FindGameObjectWithTag("Player");
 
         originalColor = spriteRenderer.color;
     }
 
-    public virtual IEnumerator Stunned(float delay) // Àû ±âÀı ¹İÀÀ ±¸Çö
+    public virtual IEnumerator Stunned(float delay) // ì  ê¸°ì ˆ ë°˜ì‘ êµ¬í˜„
     {
         moveSpeed = 0;
-        isStune = true; // Àá½Ã ½ºÅÏ »óÅÂ
+        isStune = true; // ì ì‹œ ìŠ¤í„´ ìƒíƒœ
         currentColor = spriteRenderer.color;
         spriteRenderer.color = new Color(currentColor.r * 0.5f, currentColor.g * 0.5f, currentColor.b * 0.5f, currentColor.a);
-        animator.SetBool("isRun", false); // Àá½Ã Idle ¸ğ¼Ç
+        animator.SetBool("isRun", false); // ì ì‹œ Idle ëª¨ì…˜
 
         yield return new WaitForSeconds(delay);
-        
-        moveSpeed = defaultMoveSpeed; // ÀÌµ¿¼Óµµ º¹±¸
-        isStune = false; // ½ºÅÏ »óÅÂ ÇØÁ¦
-        spriteRenderer.color = originalColor; // »ö»ó º¹±¸
+
+        moveSpeed = defaultMoveSpeed; // ì´ë™ì†ë„ ë³µêµ¬
+        isStune = false; // ìŠ¤í„´ ìƒíƒœ í•´ì œ
+        spriteRenderer.color = originalColor; // ìƒ‰ìƒ ë³µêµ¬
     }
 
-    public virtual IEnumerator EnemyFade(float duration) // ÆòÈ­ÀÇ ¾ÇÀåÀ¸·Î Àû »ç¶óÁü ÇÔ¼ö
+    public virtual IEnumerator EnemyFade(float duration) // í‰í™”ì˜ ì•…ì¥ìœ¼ë¡œ ì  ì‚¬ë¼ì§ í•¨ìˆ˜
     {
         float startAlpha = spriteRenderer.color.a;
         float elapsedTime = 0f;
 
-        isDead = true; // Á×À½ »óÅÂ·Î º¯°æ
+        isDead = true; // ì£½ìŒ ìƒíƒœë¡œ ë³€ê²½
         enemyFadeEffect.SetActive(true);
-        defaultMoveSpeed = 0f; // ÀÌµ¿ ºÒ°¡´É
+        defaultMoveSpeed = 0f; // ì´ë™ ë¶ˆê°€ëŠ¥
         animator.SetBool("isRun", false);
 
         while (elapsedTime < duration)
@@ -89,31 +95,35 @@ public abstract class EnemyBase : MonoBehaviour
             yield return null;
         }
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0);
-        
-        gameObject.SetActive(false); // Àû ºñÈ°¼ºÈ­
+
+        gameObject.SetActive(false); // ì  ë¹„í™œì„±í™”
     }
 
-    public virtual IEnumerator Damaged() // ÇÇ°İ½Ã ¹İÀÀ ±¸Çö
+    public virtual IEnumerator Damaged() // í”¼ê²©ì‹œ ë°˜ì‘ êµ¬í˜„
     {
-        if (currentHp >= maxHp) yield break; // »ç¸Á ÀÌÆåÆ®¿Í Ãæµ¹ÇÏ¿© hp Áõ°¡ ¹æÁö
+        if (currentHp >= maxHp) yield break; // ì‚¬ë§ ì´í™íŠ¸ì™€ ì¶©ëŒí•˜ì—¬ hp ì¦ê°€ ë°©ì§€
 
-        currentHp += player.GetComponent<PlayerSkill>().playerDamage;
-        Debug.Log("ÇöÀç ¿À¿°µµ : " + currentHp);
+        if (GameManager.Instance.isReturned) // íšŒê·€ í›„ í”Œë ˆì´ì–´ ë°ë¯¸ì§€ ì—°ê²°
+            currentHp += player.GetComponent<PlayerSkill_R>().playerDamage;
+        else // íšŒê·€ ì „ í”Œë ˆì´ì–´ ë°ë¯¸ì§€ ì—°ê²°
+            currentHp += player.GetComponent<PlayerSkill>().playerDamage;
 
-        if (currentHp < maxHp) // ÇÇ°İ ¹İÀÀ
+        Debug.Log("í˜„ì¬ ì˜¤ì—¼ë„ : " + currentHp);
+
+        if (currentHp < maxHp) // í”¼ê²© ë°˜ì‘
         {
-            Debug.Log("ÀûÀÌ °ø°İÀ¸·Î ÀÎÇØ ÇÇÇØ¸¦ ÀÔ½À´Ï´Ù.");
-            StartCoroutine(Stunned(0.7f)); // 0.7ÃÊ °æÁ÷
-            animator.SetTrigger("Damaged"); // ÇÇ°İ ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
-            hitEffect.SetActive(true); // ÇÇ°İ ÀÌÆåÆ® È°¼ºÈ­
+            Debug.Log("ì ì´ ê³µê²©ìœ¼ë¡œ ì¸í•´ í”¼í•´ë¥¼ ì…ìŠµë‹ˆë‹¤.");
+            StartCoroutine(Stunned(0.7f)); // 0.7ì´ˆ ê²½ì§
+            animator.SetTrigger("Damaged"); // í”¼ê²© ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
+            hitEffect.SetActive(true); // í”¼ê²© ì´í™íŠ¸ í™œì„±í™”
 
             yield return new WaitForSeconds(0.2f);
 
-            hitEffect.SetActive(false); // ÇÇ°İ ÀÌÆåÆ® ºñÈ°¼ºÈ­
+            hitEffect.SetActive(false); // í”¼ê²© ì´í™íŠ¸ ë¹„í™œì„±í™”
         }
-        else // »ç¸Á ¹İÀÀ 
+        else // ì‚¬ë§ ë°˜ì‘ 
         {
-            Debug.Log("ÀûÀÌ °íÅë½º·´°Ô ¼Ò¸êÇÕ´Ï´Ù...");
+            Debug.Log("ì ì´ ê³ í†µìŠ¤ëŸ½ê²Œ ì†Œë©¸í•©ë‹ˆë‹¤...");
             isDead = true;
             moveSpeed = 0f;
             animator.SetTrigger("Die");
@@ -121,50 +131,66 @@ public abstract class EnemyBase : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
 
             dieEffect.SetActive(false);
-            gameObject.SetActive(false); // Àû ºñÈ°¼ºÈ­
+            gameObject.SetActive(false); // ì  ë¹„í™œì„±í™”
         }
     }
 
-    public virtual void PushBack(float dir) // ¹Ğ°İ ¹İÀÀ ±¸Çö
+    public virtual void PushBack(float dir) // ë°€ê²© ë°˜ì‘ êµ¬í˜„
     {
         if (dir > 0)
             rigidBody.AddForce(Vector2.right * 650);
         else
-            rigidBody.AddForce(Vector2.left * 650); // µÚ·Î ÀÏÁ¤ °Å¸® ¹Ğ°İ
-        
-        StartCoroutine(Stunned(3f)); // 3ÃÊ°£ ±âÀı
+            rigidBody.AddForce(Vector2.left * 650); // ë’¤ë¡œ ì¼ì • ê±°ë¦¬ ë°€ê²©
+
+        StartCoroutine(Stunned(5f)); // 5ì´ˆê°„ ê¸°ì ˆ
+
+        if (GameManager.Instance.isReturned) // ëŠ‘ëŒ€ì˜ ë°€ê²©ì´ ì•„ë‹Œ ì—ì½”ê°€ë“œë¡œ ì¸í•œ ê·¸ë¡œê¸° ë°€ê²©ì¼ ë•Œ ì¶”ê°€ê¸°ëŠ¥ 
+        {
+            groggyUI.ResetGroggyState(); // ê·¸ë¡œê¸° ë‚´ìš© ì´ˆê¸°í™”
+            currentGroggyCnt = 0;
+        }
     }
 
-    private void UpdateHpGauge() // Àû hp(¿À¿°µµ) °ÔÀÌÁö ¾÷µ¥ÀÌÆ®
+    public virtual void EchoGuardPushBack(float dir) // ì—ì½”ê°€ë“œ ë°€ê²© ë°˜ì‘ êµ¬í˜„
+    {
+        if (dir > 0)
+            rigidBody.AddForce(Vector2.right * 450);
+        else
+            rigidBody.AddForce(Vector2.left * 450); // ë’¤ë¡œ ì¼ì • ê±°ë¦¬ ë°€ê²©
+
+        StartCoroutine(Stunned(1.5f)); // 1.5ì´ˆê°„ ê¸°ì ˆ
+    }
+
+    private void UpdateHpGauge() // ì  hp(ì˜¤ì—¼ë„) ê²Œì´ì§€ ì—…ë°ì´íŠ¸
     {
         float hpRatio = currentHp / maxHp;
         enemyHpGauge.localScale = new Vector2(hpRatio, enemyHpGauge.localScale.y);
-            
+
     }
 
-    protected abstract void HandlerTriggerEnter(Collider2D collision); // Ãæµ¹½Ã ¹üÀ§ ÁÖº¯(Enter) ´ã´ç ÇÔ¼ö
-    protected abstract void HandlerTriggerStay(Collider2D collision); // Ãæµ¹½Ã ¹üÀ§ ³»(Stay) ´ã´ç ÇÔ¼ö
+    protected abstract void HandlerTriggerEnter(Collider2D collision); // ì¶©ëŒì‹œ ë²”ìœ„ ì£¼ë³€(Enter) ë‹´ë‹¹ í•¨ìˆ˜
+    protected abstract void HandlerTriggerStay(Collider2D collision); // ì¶©ëŒì‹œ ë²”ìœ„ ë‚´(Stay) ë‹´ë‹¹ í•¨ìˆ˜
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(isDead) return; // »ç¸Á½Ã Ãæµ¹Ã¼Å© X
+        if (isDead) return; // ì‚¬ë§ì‹œ ì¶©ëŒì²´í¬ X
 
-        HandlerTriggerEnter(collision); // ±¸Ã¼ÀûÀÎ Ãæµ¹ Ã³¸®°úÁ¤Àº ÀÚ½Ä ½ºÅ©¸³Æ®¿¡°Ô ¸Ã±è!
+        HandlerTriggerEnter(collision); // êµ¬ì²´ì ì¸ ì¶©ëŒ ì²˜ë¦¬ê³¼ì •ì€ ìì‹ ìŠ¤í¬ë¦½íŠ¸ì—ê²Œ ë§¡ê¹€!
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (isDead) return;
 
-        HandlerTriggerStay(collision); // À§¿¡¿Í µ¿ÀÏÇÏÁö¸¸ ÀÌ¶§´Â ¹üÀ§ ¿ÀºêÁ§Æ® »ı¼º½Ã ÀûÀÌ ÀÌ¹Ì ¹üÀ§ ³»ºÎ¿¡ ÀÖÀ» °æ¿ì (³»¿ë µ¿ÀÏ)
+        HandlerTriggerStay(collision); // ìœ„ì—ì™€ ë™ì¼í•˜ì§€ë§Œ ì´ë•ŒëŠ” ë²”ìœ„ ì˜¤ë¸Œì íŠ¸ ìƒì„±ì‹œ ì ì´ ì´ë¯¸ ë²”ìœ„ ë‚´ë¶€ì— ìˆì„ ê²½ìš° (ë‚´ìš© ë™ì¼)
     }
 
     public virtual void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("WolfAppear"))
+        if (collision.gameObject.CompareTag("WolfAppear") || collision.gameObject.CompareTag("PurifyStep"))
         {
-            Debug.Log("ÀûÀÌ ´Á´ëÀÇ ¹üÀ§¸¦ ¹ş¾î³³´Ï´Ù");
-            moveSpeed = defaultMoveSpeed; // ±âÁ¸ ¼Óµµ
+            Debug.Log("ì ì´ ë²”ìœ„ë¥¼ ë²—ì–´ë‚©ë‹ˆë‹¤");
+            moveSpeed = defaultMoveSpeed; // ê¸°ì¡´ ì†ë„
         }
     }
 }

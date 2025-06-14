@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,21 +13,21 @@ public class PlayerCtrl : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     private PlayerSkill playerSkill;
-    public SpriteRenderer spriteRenderer; // Sprite ¹İÀü¿ë
-    private PlayerInputAction playerinputAction; // °­È­µÈ Input ¹æ½Ä »ç¿ë
-    private float moveSpeed = 5f; // ÀÌµ¿¼Óµµ
-    public float jumpForce = 12f; // Á¡ÇÁ·Â
-    private bool isGrounded = true; // ÂøÁö ¿©ºÎ
-    private bool isPressingPiri = false; // ÇÇ¸® ¿¬ÁÖ ¿©ºÎ
-    private bool dontmove = true;//ÇÃ·¹ÀÌ °íÁ¤½Ã
+    public SpriteRenderer spriteRenderer; // Sprite ë°˜ì „ìš©
+    private PlayerInputAction playerinputAction; // ê°•í™”ëœ Input ë°©ì‹ ì‚¬ìš©
+    private float moveSpeed = 5f; // ì´ë™ì†ë„
+    public float jumpForce = 12f; // ì í”„ë ¥
+    private bool isGrounded = true; // ì°©ì§€ ì—¬ë¶€
+    private bool isPressingPiri = false; // í”¼ë¦¬ ì—°ì£¼ ì—¬ë¶€
+    private bool dontmove = true;//í”Œë ˆì´ ê³ ì •ì‹œ
 
-    public GameObject wolf; // ´Á´ë °ÔÀÓ ¿ÀºêÁ§Æ®
-    public Animator wolfAnimator; // ´Á´ë ¾Ö´Ï¸ŞÀÌÅÍ
-    public float wolfExitTimer = 0f; // ´Á´ë Hide Å¸ÀÌ¸Ó, 5f°¡ µÇ¸é Hide½ÇÇà
-    public WolfState currentWolfState = WolfState.Idle; // ÇöÀç ´Á´ë »óÅÂ È®ÀÎ (WolfState Å¬·¡½º)
+    public GameObject wolf; // ëŠ‘ëŒ€ ê²Œì„ ì˜¤ë¸Œì íŠ¸
+    public Animator wolfAnimator; // ëŠ‘ëŒ€ ì• ë‹ˆë©”ì´í„°
+    public float wolfExitTimer = 0f; // ëŠ‘ëŒ€ Hide íƒ€ì´ë¨¸, 5fê°€ ë˜ë©´ Hideì‹¤í–‰
+    public WolfState currentWolfState = WolfState.Idle; // í˜„ì¬ ëŠ‘ëŒ€ ìƒíƒœ í™•ì¸ (WolfState í´ë˜ìŠ¤)
 
-    public Image wolfAttackCool; // ´Á´ë °ø°İ ÄğÅ¸ÀÓ UI 
-    private Coroutine wolfAttackCoolRoutine; // ´Á´ë °ø°İ ÄğÅ¸ÀÓ ÄÚ·çÆ¾
+    public Image wolfAttackCool; // ëŠ‘ëŒ€ ê³µê²© ì¿¨íƒ€ì„ UI 
+    private Coroutine wolfAttackCoolRoutine; // ëŠ‘ëŒ€ ê³µê²© ì¿¨íƒ€ì„ ì½”ë£¨í‹´
 
     private void Awake()
     {
@@ -41,38 +41,38 @@ public class PlayerCtrl : MonoBehaviour
 
     public void OnEnable()
     {
-        dontmove = true;// ´ëÈ­½Ã ¿òÁ÷ÀÓ ¸ØÃß±â À§ÇØ true = ¿òÁ÷ÀÌ´Â »óÅÂ
-        // inputAction È°¼ºÈ­
-        playerinputAction.Enable();
+        dontmove = true;// ëŒ€í™”ì‹œ ì›€ì§ì„ ë©ˆì¶”ê¸° ìœ„í•´ true = ì›€ì§ì´ëŠ” ìƒíƒœ
+        // inputAction í™œì„±í™”
+        playerinputAction.Enable(); 
 
-        // PlayerCtrl º¯¼ö º¯°æ ÀÌº¥Æ®
+        // PlayerCtrl ë³€ìˆ˜ ë³€ê²½ ì´ë²¤íŠ¸
         playerSkill.RequestMoveSpeed += OnSetMoveSpeed;
         playerSkill.RequestAnimTrigger += OnSetAnimTrigger;
         playerSkill.RequestAnimSpeed += OnSetAnimSpeed;
-
+       
         playerSkill.RequestWolfAnimTrigger += OnSetWolfAnimTrigger;
         playerSkill.RequestWolfState += OnSetWolfState;
         playerSkill.RequestWolfStartAttack += SetWolfAttackCoolTime;
-
-        // PlayerInputAction ÀÌº¥Æ®
+        
+        // PlayerInputAction ì´ë²¤íŠ¸
         playerinputAction.Player.Jump.performed += OnJump;
-        playerinputAction.Player.PlayPiri.started += OnStartPiri;
+        playerinputAction.Player.PlayPiri.started += OnStartPiri; 
         playerinputAction.Player.PlayPiri.canceled += OnReleasePiri;
-
+       
         playerinputAction.Wolf.Move.performed += OnWolfMove;
         playerinputAction.Wolf.Attack.performed += OnWolfAttack;
     }
 
     public void OnDisable()
     {
-        dontmove = false;// ´ëÈ­½Ã ¿òÁ÷ÀÓ ¸ØÃß±â À§ÇØ faalse = ¸ø ¿òÁ÷ÀÌ´Â »óÅÂ
+        dontmove = false;// ëŒ€í™”ì‹œ ì›€ì§ì„ ë©ˆì¶”ê¸° ìœ„í•´ faalse = ëª» ì›€ì§ì´ëŠ” ìƒíƒœ
 
-        // inputAction ºñÈ°¼ºÈ­
-        playerinputAction.Disable();
+        // inputAction ë¹„í™œì„±í™”
+        playerinputAction.Disable(); 
     }
 
-    // ¼Ò³à ¿¬°á ÀÌº¥Æ®
-    private void OnSetMoveSpeed(float speed)
+    // ì†Œë…€ ì—°ê²° ì´ë²¤íŠ¸
+    private void OnSetMoveSpeed(float speed) 
     {
         moveSpeed = speed;
     }
@@ -87,27 +87,27 @@ public class PlayerCtrl : MonoBehaviour
         animator.speed = speed;
     }
 
-    // ´Á´ë ¿¬°á ÀÌº¥Æ®
-    private void OnSetWolfAnimTrigger(string triggerName)
+    // ëŠ‘ëŒ€ ì—°ê²° ì´ë²¤íŠ¸
+    private void OnSetWolfAnimTrigger(string triggerName) 
     {
         wolfAnimator.SetTrigger(triggerName);
     }
 
-    private void OnSetWolfState(WolfState state)
+    private void OnSetWolfState(WolfState state) 
     {
         currentWolfState = state;
     }
 
     private void Start()
     {
-        playerSkill.OnUpdateStageData(); // ¿¬°áµÈ À½¿ø µñ¼Å³Ê¸®¿¡ ÃÊ±âÈ­
+        playerSkill.OnUpdateStageData(); // ì—°ê²°ëœ ìŒì› ë”•ì…”ë„ˆë¦¬ì— ì´ˆê¸°í™”
     }
 
     void Update()
     {
-        OnPlaySoftPiri(); // ÆòÈ­ÀÇ ¾ÇÀå ¿¬ÁÖ Â÷Â¡ È®ÀÎ
-        OnPlayerMove(); // ÀÌµ¿ ±¸Çö
-        OnWolfHide(); // ´Á´ë ¼û±è ±¸Çö
+        OnPlaySoftPiri(); // í‰í™”ì˜ ì•…ì¥ ì—°ì£¼ ì°¨ì§• í™•ì¸
+        OnPlayerMove(); // ì´ë™ êµ¬í˜„
+        OnWolfHide(); // ëŠ‘ëŒ€ ìˆ¨ê¹€ êµ¬í˜„
     }
 
     float h;
@@ -117,7 +117,7 @@ public class PlayerCtrl : MonoBehaviour
         if (dontmove)
         {
             h = Input.GetAxisRaw("Horizontal");
-            // ÁÂ¿ì ÀÌµ¿
+            // ì¢Œìš° ì´ë™
             rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
         }
         else
@@ -129,93 +129,93 @@ public class PlayerCtrl : MonoBehaviour
         else
             animator.SetBool("isMove", false);
 
-        // ÁÂ¿ì ¹İÀü
-        if (h > 0)
+        // ì¢Œìš° ë°˜ì „
+        if (h > 0) 
             spriteRenderer.flipX = false;
-        else if (h < 0)
+        else if(h < 0) 
             spriteRenderer.flipX = true;
     }
 
-    private void OnJump(InputAction.CallbackContext context) // Á¡ÇÁ
+    private void OnJump(InputAction.CallbackContext context) // ì í”„
     {
-        if (isGrounded && !isPressingPiri) // ÂøÁö½Ã + ¿¬ÁÖ°¡ ¾Æ´Ò¶§¸¸ Á¡ÇÁ °¡´É
+        if (isGrounded && !isPressingPiri) // ì°©ì§€ì‹œ + ì—°ì£¼ê°€ ì•„ë‹ë•Œë§Œ ì í”„ ê°€ëŠ¥
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
-            animator.SetTrigger("isJump");
+            animator.SetTrigger("isJump");  
         }
     }
 
-    private void OnJumpEnd() // Á¡ÇÁ ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á½Ã, Àá½Ã ±× »óÅÂ·Î ¸ØÃã
+    private void OnJumpEnd() // ì í”„ ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œì‹œ, ì ì‹œ ê·¸ ìƒíƒœë¡œ ë©ˆì¶¤
     {
-        animator.speed = 0f;
+        animator.speed = 0f; 
     }
 
-    private void OnStartPiri(InputAction.CallbackContext context) // ¿¬ÁÖ¹öÆ°À» ´­·¶À» ¶§ ½ÇÇà
+    private void OnStartPiri(InputAction.CallbackContext context) // ì—°ì£¼ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ ì‹¤í–‰
     {
-        if (isGrounded) // ÂøÁö½Ã¿¡¸¸ °¡´É
+        if (isGrounded) // ì°©ì§€ì‹œì—ë§Œ ê°€ëŠ¥
         {
             playerSkill.StartPiri();
-            isPressingPiri = true; // ÇÇ¸® ¿¬ÁÖ ½ÃÀÛ
+            isPressingPiri = true; // í”¼ë¦¬ ì—°ì£¼ ì‹œì‘
         }
     }
 
-    private void OnReleasePiri(InputAction.CallbackContext context) // ¿¬ÁÖ¹öÆ°À» ¶¼¾úÀ» ¶§ ½ÇÇà
+    private void OnReleasePiri(InputAction.CallbackContext context) // ì—°ì£¼ë²„íŠ¼ì„ ë–¼ì—ˆì„ ë•Œ ì‹¤í–‰
     {
-        if (isGrounded && isPressingPiri) // ÂøÁö + ¿¬ÁÖ½Ã¿¡¸¸ °¡´É
+        if (isGrounded && isPressingPiri) // ì°©ì§€ + ì—°ì£¼ì‹œì—ë§Œ ê°€ëŠ¥
         {
             playerSkill.ReleasePiri();
-            isPressingPiri = false; // ÇÇ¸® ¿¬ÁÖ Á¾·á
+            isPressingPiri = false; // í”¼ë¦¬ ì—°ì£¼ ì¢…ë£Œ
         }
     }
 
-    private void OnPlaySoftPiri() // ÆòÈ­ÀÇ ¾ÇÀå ¿¬ÁÖ Â÷Â¡ È®ÀÎ
+    private void OnPlaySoftPiri() // í‰í™”ì˜ ì•…ì¥ ì—°ì£¼ ì°¨ì§• í™•ì¸
     {
-        if (isPressingPiri) // ÇÇ¸® ¿¬ÁÖ½Ã¿¡ È®ÀÎ
+        if (isPressingPiri) // í”¼ë¦¬ ì—°ì£¼ì‹œì— í™•ì¸
         {
             playerSkill.CheckSoftPiri();
         }
     }
 
-    //¿©±â¼­ºÎÅÍ ´Á´ë ¼±¾ğºÎ
-    private void OnWolfMove(InputAction.CallbackContext context) // ´Á´ë ¿òÁ÷ÀÓ ±¸Çö, ¸¶¿ì½º ÁÂÅ¬¸¯ ½Ã ½ÇÇà
+    //ì—¬ê¸°ì„œë¶€í„° ëŠ‘ëŒ€ ì„ ì–¸ë¶€
+    private void OnWolfMove(InputAction.CallbackContext context) // ëŠ‘ëŒ€ ì›€ì§ì„ êµ¬í˜„, ë§ˆìš°ìŠ¤ ì¢Œí´ë¦­ ì‹œ ì‹¤í–‰
     {
-        if (currentWolfState == WolfState.Damaged) return; // ´Á´ë ºÎ»ó½Ã Á¶ÀÛ ºÒ°¡´É
+        if (currentWolfState == WolfState.Damaged) return; // ëŠ‘ëŒ€ ë¶€ìƒì‹œ ì¡°ì‘ ë¶ˆê°€ëŠ¥
 
         wolfExitTimer = 0f;
 
-        if (currentWolfState == WolfState.Hide) // ´Á´ë°¡ Hide »óÅÂÀÏ ¶§, ´Á´ë µîÀå
+        if (currentWolfState == WolfState.Hide) // ëŠ‘ëŒ€ê°€ Hide ìƒíƒœì¼ ë•Œ, ëŠ‘ëŒ€ ë“±ì¥
         {
-            StartCoroutine(playerSkill.WolfAppear(false));
+            StartCoroutine(playerSkill.WolfAppear(false));    
         }
-        else if (currentWolfState == WolfState.Idle)// ´Á´ë°¡ Hide»óÅÂx, ±âÁ¸ À§Ä¡ -> ´Á´ë »õ·Î¿î À§Ä¡ µîÀå
+        else if (currentWolfState == WolfState.Idle)// ëŠ‘ëŒ€ê°€ Hideìƒíƒœx, ê¸°ì¡´ ìœ„ì¹˜ -> ëŠ‘ëŒ€ ìƒˆë¡œìš´ ìœ„ì¹˜ ë“±ì¥
         {
             StartCoroutine(playerSkill.WolfAppear(true));
         }
     }
 
-    private void OnWolfGuard() // ´Á´ë °¡µå ±¸Çö
+    private void OnWolfGuard() // ëŠ‘ëŒ€ ê°€ë“œ êµ¬í˜„
     {
         playerSkill.WolfGuard();
     }
 
-    private void OnWolfAttack(InputAction.CallbackContext context) // ´Á´ë °ø°İ ±¸Çö, ¸¶¿ì½º ¿ìÅ¬¸¯ ½Ã ½ÇÇà
+    private void OnWolfAttack(InputAction.CallbackContext context) // ëŠ‘ëŒ€ ê³µê²© êµ¬í˜„, ë§ˆìš°ìŠ¤ ìš°í´ë¦­ ì‹œ ì‹¤í–‰
     {
-        if (currentWolfState == WolfState.Idle) // Hide»óÅÂ°¡ ¾Æ´Ò¶§¸¸ ½ÇÇà
+        if(currentWolfState == WolfState.Idle) // Hideìƒíƒœê°€ ì•„ë‹ë•Œë§Œ ì‹¤í–‰
         {
             StartCoroutine(playerSkill.WolfAttack());
             wolfExitTimer = 0f;
         }
     }
-    private void OnWolfHide() // ´Á´ë Hide ±¸Çö
+    private void OnWolfHide() // ëŠ‘ëŒ€ Hide êµ¬í˜„
     {
-        if (currentWolfState != WolfState.Idle) return;
+        if (currentWolfState != WolfState.Idle) return; 
 
-        if (wolfExitTimer >= 4.0f) // ¾Æ¹«·± µ¿ÀÛ ¾øÀÌ 4ÃÊ ÀÌ»ó Èå¸£¸é ½ÇÇà
+        if (wolfExitTimer >= 4.0f) // ì•„ë¬´ëŸ° ë™ì‘ ì—†ì´ 4ì´ˆ ì´ìƒ íë¥´ë©´ ì‹¤í–‰
         {
-            StartCoroutine(playerSkill.WolfHide(false)); // ´Á´ë ÀÚµ¿ ÅğÀå
+            StartCoroutine(playerSkill.WolfHide(false)); // ëŠ‘ëŒ€ ìë™ í‡´ì¥
         }
-        else if (currentWolfState == WolfState.Idle) // ´Á´ë µîÀå ÈÄ, wolfExitTimer °è¼Ó Áõ°¡
+        else if(currentWolfState == WolfState.Idle) // ëŠ‘ëŒ€ ë“±ì¥ í›„, wolfExitTimer ê³„ì† ì¦ê°€
         {
             wolfExitTimer += Time.deltaTime;
         }
@@ -223,14 +223,14 @@ public class PlayerCtrl : MonoBehaviour
 
     private void SetWolfAttackCoolTime(float duration)
     {
-        // Áßº¹ ½ÇÇà ¹æÁö
+        // ì¤‘ë³µ ì‹¤í–‰ ë°©ì§€
         if (wolfAttackCoolRoutine != null)
             StopCoroutine(wolfAttackCoolRoutine);
 
         wolfAttackCoolRoutine = StartCoroutine(WolfAttackCooldownRoutine(duration));
     }
 
-    private IEnumerator WolfAttackCooldownRoutine(float duration) // durationÀº ´Á´ë °ø°İ ÄğÅ¸ÀÓ
+    private IEnumerator WolfAttackCooldownRoutine(float duration) // durationì€ ëŠ‘ëŒ€ ê³µê²© ì¿¨íƒ€ì„
     {
         float elapsed = 0f;
 
@@ -244,37 +244,37 @@ public class PlayerCtrl : MonoBehaviour
         wolfAttackCool.fillAmount = 1f;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) // ¹°¸® Ãæµ¹¸¸ ±¸Çö
+    private void OnCollisionEnter2D(Collision2D collision) // ë¬¼ë¦¬ ì¶©ëŒë§Œ êµ¬í˜„
     {
-        if (collision.gameObject.CompareTag("Ground")) // ¹Ù´Ú°ú Ãæµ¹½Ã °ª ÃÊ±âÈ­
+        if (collision.gameObject.CompareTag("Ground")) // ë°”ë‹¥ê³¼ ì¶©ëŒì‹œ ê°’ ì´ˆê¸°í™”
         {
-            animator.speed = 1f; // ´Ù½Ã ¾Ö´Ï¸ŞÀÌ¼Ç µ¿ÀÛ
+            animator.speed = 1f; // ë‹¤ì‹œ ì• ë‹ˆë©”ì´ì…˜ ë™ì‘
             isGrounded = true;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // ÁÖµÈ Ãæµ¹Àº Trigger¿¡¼­ °è»ê
+    private void OnTriggerEnter2D(Collider2D collision) // ì£¼ëœ ì¶©ëŒì€ Triggerì—ì„œ ê³„ì‚°
     {
-        if (collision.gameObject.CompareTag("Enemy")) // Àû°ú Ãæµ¹½Ã µ¥¹ÌÁö or °¡µå
+        if (collision.gameObject.CompareTag("Enemy")) // ì ê³¼ ì¶©ëŒì‹œ ë°ë¯¸ì§€ or ê°€ë“œ
         {
-            EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy ±âº» Å¬·¡½º °¡Á®¿È
+            EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy ê¸°ë³¸ í´ë˜ìŠ¤ ê°€ì ¸ì˜´
             if (enemy != null)
             {
-                if (!enemy.attackMode || enemy.isStune || enemy.isDead) return; // ÀûÀÇ °ø°İ ¸ğµå°¡ false or ½ºÅÏ, »ç¸Á »óÅÂÀÏ °æ¿ì Ãæµ¹ X
+                if (!enemy.attackMode || enemy.isStune || enemy.isDead) return; // ì ì˜ ê³µê²© ëª¨ë“œê°€ false or ìŠ¤í„´, ì‚¬ë§ ìƒíƒœì¼ ê²½ìš° ì¶©ëŒ X
 
-                if (currentWolfState != WolfState.Damaged) // ´Á´ë º¸È£ °¡´É
+                if (currentWolfState != WolfState.Damaged) // ëŠ‘ëŒ€ ë³´í˜¸ ê°€ëŠ¥
                 {
-                    animator.SetTrigger(PlayerAnimTrigger.Hit); // ¼Ò³à ÇÇ°İ ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
-                    OnWolfGuard(); // °¡µå ½ÇÇà
+                    animator.SetTrigger(PlayerAnimTrigger.Hit); // ì†Œë…€ í”¼ê²© ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
+                    OnWolfGuard(); // ê°€ë“œ ì‹¤í–‰
                 }
                 else
                 {
-                    Debug.Log("¼Ò³à ÇÇ°İ! GameOver...");
+                    Debug.Log("ì†Œë…€ í”¼ê²©! GameOver...");
                 }
             }
             else
             {
-                Debug.Log("ÇØ´ç ÀûÀº EnemyBase Å¬·¡½º¸¦ »ó¼ÓÇÏÁö ¾Ê¾Ò½À´Ï´Ù! ¿¬°áÇØÀ¯");
+                Debug.Log("í•´ë‹¹ ì ì€ EnemyBase í´ë˜ìŠ¤ë¥¼ ìƒì†í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤! ì—°ê²°í•´ìœ ");
             }
         }
     }

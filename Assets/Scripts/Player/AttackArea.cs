@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackArea : MonoBehaviour
 {
-    public int attackGlobalID = 0; // Áßº¹ Ãæµ¹ÆÇÁ¤ ¹æÁö ID(ÇØ´ç ID°ªÀ» °¡Áø Àû¸¸ Ãæµ¹¹İÀÀ)
+    public int attackGlobalID = 0; // ì¤‘ë³µ ì¶©ëŒíŒì • ë°©ì§€ ID(í•´ë‹¹ IDê°’ì„ ê°€ì§„ ì ë§Œ ì¶©ëŒë°˜ì‘)
 
     private void OnEnable() 
     {
-        attackGlobalID++; // È°¼ºÈ­µÉ ¶§ ÃÊ±âÈ­
+        attackGlobalID++; // í™œì„±í™”ë  ë•Œ ì´ˆê¸°í™”
     }
 }

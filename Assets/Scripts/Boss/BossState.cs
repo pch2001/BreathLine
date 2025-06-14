@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,37 +11,37 @@ public class BossState : MonoBehaviour
 
     public float HP = 10;
     public float maxHP = 10;
-    public float moveSpeed = 4f; // ÀÌµ¿ ¼Óµµ
+    public float moveSpeed = 4f; // ì´ë™ ì†ë„
 
     private Animator anim;
     private Transform player;
-    public GameObject attackArea1; // °ø°İ ÆÇÁ¤ ¿ÀºêÁ§Æ® (BoxCollider2D µî)
-    public GameObject attackArea2; // °ø°İ ÆÇÁ¤ ¿ÀºêÁ§Æ® (BoxCollider2D µî)
-    public GameObject attackArea3; // °ø°İ ÆÇÁ¤ ¿ÀºêÁ§Æ® (BoxCollider2D µî)
+    public GameObject attackArea1; // ê³µê²© íŒì • ì˜¤ë¸Œì íŠ¸ (BoxCollider2D ë“±)
+    public GameObject attackArea2; // ê³µê²© íŒì • ì˜¤ë¸Œì íŠ¸ (BoxCollider2D ë“±)
+    public GameObject attackArea3; // ê³µê²© íŒì • ì˜¤ë¸Œì íŠ¸ (BoxCollider2D ë“±)
 
     public GameObject[] boomArea;
 
     private bool isAttacking;
     private bool dontmove = true;
 
-    public GameObject notePrefab;  // Inspector¿¡¼­ ÇÒ´çÇÒ À½Ç¥ ÇÁ¸®ÆÕ
-    public Image fillImage; // Image ÄÄÆ÷³ÍÆ®, Inspector¿¡¼­ ÇÒ´ç
+    public GameObject notePrefab;  // Inspectorì—ì„œ í• ë‹¹í•  ìŒí‘œ í”„ë¦¬íŒ¹
+    public Image fillImage; // Image ì»´í¬ë„ŒíŠ¸, Inspectorì—ì„œ í• ë‹¹
     
-    public GameObject[] attackAreas; // °ø°İ ¹üÀ§ ¿ÀºêÁ§Æ® ¹è¿­ 
+    public GameObject[] attackAreas; // ê³µê²© ë²”ìœ„ ì˜¤ë¸Œì íŠ¸ ë°°ì—´ 
 
     void Start()
     {
 
         isAttacking = false;
-        //attackArea1.SetActive(false); // ½ÃÀÛ ½Ã °ø°İ ¹üÀ§ ²¨µÎ±â
-        //attackArea2.SetActive(false); // ½ÃÀÛ ½Ã °ø°İ ¹üÀ§ ²¨µÎ±â
-        //attackArea3.SetActive(false); // ½ÃÀÛ ½Ã °ø°İ ¹üÀ§ ²¨µÎ±â
+        //attackArea1.SetActive(false); // ì‹œì‘ ì‹œ ê³µê²© ë²”ìœ„ êº¼ë‘ê¸°
+        //attackArea2.SetActive(false); // ì‹œì‘ ì‹œ ê³µê²© ë²”ìœ„ êº¼ë‘ê¸°
+        //attackArea3.SetActive(false); // ì‹œì‘ ì‹œ ê³µê²© ë²”ìœ„ êº¼ë‘ê¸°
         boomArea[0].SetActive(false);
         boomArea[1].SetActive(false);
         boomArea[2].SetActive(false);
         boomArea[3].SetActive(false);
 
-        isdie = true; //º¸½º Á×¾ú´ÂÁö È®ÀÎ
+        isdie = true; //ë³´ìŠ¤ ì£½ì—ˆëŠ”ì§€ í™•ì¸
         anim = GetComponent<Animator>();
         GameObject playerObj = GameObject.FindWithTag("Player");
         if (playerObj != null)
@@ -63,24 +63,24 @@ public class BossState : MonoBehaviour
 
         float stopDistance = 1f;
 
-        // xÃà °Å¸®¸¸ ºñ±³ (yÃà ¹«½Ã)
+        // xì¶• ê±°ë¦¬ë§Œ ë¹„êµ (yì¶• ë¬´ì‹œ)
         float distanceX = Mathf.Abs(player.position.x - transform.position.x);
         if (distanceX <= stopDistance && !isAttacking)
         {
             Attack();
 
-            Debug.Log("°ø°İ");
+            Debug.Log("ê³µê²©");
             return;
         }
 
-        // ¹æÇâ °è»ê (xÃà¸¸)
+        // ë°©í–¥ ê³„ì‚° (xì¶•ë§Œ)
         float directionX = Mathf.Sign(player.position.x - transform.position.x);
-        Vector3 moveDir = new Vector3(directionX, 0f, 0f); // xÃà ¹æÇâ¸¸
+        Vector3 moveDir = new Vector3(directionX, 0f, 0f); // xì¶• ë°©í–¥ë§Œ
 
-        // ÀÌµ¿
+        // ì´ë™
         transform.position += moveDir * moveSpeed * Time.deltaTime;
 
-        // ÁÂ¿ì ¹İÀü
+        // ì¢Œìš° ë°˜ì „
         Vector3 scale = transform.localScale;
         scale.x = directionX < 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
         transform.localScale = scale;
@@ -125,7 +125,7 @@ public class BossState : MonoBehaviour
             {
                 dontmove = false;
                 anim.SetTrigger("isHit");
-                Debug.Log("º¸½º HP: " + HP);
+                Debug.Log("ë³´ìŠ¤ HP: " + HP);
                 HP--;
                 Invoke(nameof(SetMove), 0.5f);
                 fillImage.fillAmount = HP / maxHP;
@@ -136,13 +136,13 @@ public class BossState : MonoBehaviour
     }
     private void HandleDeath()
     {
-        // À½Ç¥ »ı¼º
+        // ìŒí‘œ ìƒì„±
         if (notePrefab != null)
         {
             Instantiate(notePrefab, transform.position, Quaternion.identity);
         }
 
-        // º¸½º Á¦°Å
+        // ë³´ìŠ¤ ì œê±°
         Destroy(gameObject);
     }
     private void SetMove()
@@ -152,26 +152,26 @@ public class BossState : MonoBehaviour
 
     public void SetAttack(int attacknum)
     {
-       // Debug.Log("°ø°İ ¹øÈ£: " + attacknum);
+       // Debug.Log("ê³µê²© ë²ˆí˜¸: " + attacknum);
         GameObject targetArea = attackAreas[attacknum];
         attack attackScript = targetArea.GetComponent<attack>();
 
         if (attackScript != null)
         {
-            attackScript.isAttacking = true; // °ø°İ »óÅÂ·Î ¼³Á¤
+            attackScript.isAttacking = true; // ê³µê²© ìƒíƒœë¡œ ì„¤ì •
         }
     }
 
     public void SetNoAttack(int attacknum)
     {
-      //  Debug.Log("°ø°İ ¹øÈ£: " + attacknum);
+      //  Debug.Log("ê³µê²© ë²ˆí˜¸: " + attacknum);
 
         GameObject targetArea = attackAreas[attacknum];
         attack attackScript = targetArea.GetComponent<attack>();
 
         if (attackScript != null)
         {
-            attackScript.isAttacking = false; // °ø°İ »óÅÂ·Î ¼³Á¤
+            attackScript.isAttacking = false; // ê³µê²© ìƒíƒœë¡œ ì„¤ì •
         }
     }
 
@@ -197,7 +197,7 @@ public class BossState : MonoBehaviour
         anim.SetTrigger("attack2");
         yield return new WaitForSeconds(0.7f);
 
-        // °ø°İ Áö¼Ó ½Ã°£ ´ë±â
+        // ê³µê²© ì§€ì† ì‹œê°„ ëŒ€ê¸°
         if (dontmove)
         {
             //attackArea2.SetActive(true);
@@ -229,7 +229,7 @@ public class BossState : MonoBehaviour
 
         if (attackScript != null)
         {
-            attackScript.isAttacking = true; // °ø°İ »óÅÂ·Î ¼³Á¤
+            attackScript.isAttacking = true; // ê³µê²© ìƒíƒœë¡œ ì„¤ì •
         }
         if (dontmove)
         {
@@ -247,7 +247,7 @@ public class BossState : MonoBehaviour
 
         if (attackScript != null)
         {
-            attackScript.isAttacking = false; // °ø°İ »óÅÂ·Î ¼³Á¤
+            attackScript.isAttacking = false; // ê³µê²© ìƒíƒœë¡œ ì„¤ì •
         }
 
         boomArea[num].SetActive(false);

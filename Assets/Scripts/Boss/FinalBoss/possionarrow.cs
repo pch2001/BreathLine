@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class possionarrow : MonoBehaviour
 {
     public float moveSpeed = 15f;
-    public GameObject spawnEffectPrefab; // »ı¼ºµÉ ¿ÀºêÁ§Æ® (¿¹: µ¶ È¿°ú)
+    public GameObject spawnEffectPrefab; // ìƒì„±ë  ì˜¤ë¸Œì íŠ¸ (ì˜ˆ: ë… íš¨ê³¼)
 
     private Vector2 targetPosition;
     private bool hasLanded = false;

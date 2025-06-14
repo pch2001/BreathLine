@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,44 +10,44 @@ public class PlayerSkill : MonoBehaviour
     private PlayerCtrl playerCtrl;
 
     [SerializeField] private AudioSource audioSource;
-    private Dictionary<string, AudioClip> piriClips; // À½¿ø ÀúÀå Dictionary
-    [SerializeField] private AudioClip angerMelody; // ºĞ³ëÀÇ ¾ÇÀå À½¿ø
-    [SerializeField] private AudioClip peaceMelody; // ÆòÈ­ÀÇ ¾ÇÀå À½¿ø
-    [SerializeField] private AudioClip peaceCancelMelody; // ÆòÈ­ÀÇ ¾ÇÀå ½ÇÆĞ À½¿ø
+    private Dictionary<string, AudioClip> piriClips; // ìŒì› ì €ì¥ Dictionary
+    [SerializeField] private AudioClip angerMelody; // ë¶„ë…¸ì˜ ì•…ì¥ ìŒì›
+    [SerializeField] private AudioClip peaceMelody; // í‰í™”ì˜ ì•…ì¥ ìŒì›
+    [SerializeField] private AudioClip peaceCancelMelody; // í‰í™”ì˜ ì•…ì¥ ì‹¤íŒ¨ ìŒì›
 
-    public float playerDamage; // ÇÃ·¹ÀÌ¾îÀÇ °ø°İ·Â
-    private float piriStartTime; // ÇÇ¸®¿¬ÁÖ ½ÃÀÛ ½Ã°£
-    private bool isSoftPiriPlayed = false; // ÆòÈ­ÀÇ ¾ÇÀå ¿¬ÁÖ°¡ ¿Ï·áµÇ¾ú´ÂÁö
-    private bool isSoftPiriStart = false; // ÆòÈ­ÀÇ ¾ÇÀå ¿¬ÁÖ°¡ ½ÃÀÛµÇ¾ú´ÂÁö
-    [SerializeField] private float SoftPiriKeyDownTime; // ÆòÈ­ÀÇ ¾ÇÀå Å°´Ù¿î ½Ã°£
-    private bool isRestoreSpeed = false; // RestoreSpeedAfterDelay ÄÚ·çÆ¾ÇÔ¼ö Áßº¹½ÇÇà ¹æÁö ÇÃ·¡±×
+    public float playerDamage; // í”Œë ˆì´ì–´ì˜ ê³µê²©ë ¥
+    private float piriStartTime; // í”¼ë¦¬ì—°ì£¼ ì‹œì‘ ì‹œê°„
+    private bool isSoftPiriPlayed = false; // í‰í™”ì˜ ì•…ì¥ ì—°ì£¼ê°€ ì™„ë£Œë˜ì—ˆëŠ”ì§€
+    private bool isSoftPiriStart = false; // í‰í™”ì˜ ì•…ì¥ ì—°ì£¼ê°€ ì‹œì‘ë˜ì—ˆëŠ”ì§€
+    [SerializeField] private float SoftPiriKeyDownTime; // í‰í™”ì˜ ì•…ì¥ í‚¤ë‹¤ìš´ ì‹œê°„
+    private bool isRestoreSpeed = false; // RestoreSpeedAfterDelay ì½”ë£¨í‹´í•¨ìˆ˜ ì¤‘ë³µì‹¤í–‰ ë°©ì§€ í”Œë˜ê·¸
 
-    private SpriteRenderer wolfSpriteRenderer; // ´Á´ë ½ºÇÁ¶óÀÌÆ® ¹İÀü¿ë
-    public GameObject guardImg; // ´Á´ë °¡µå ÀÌ¹ÌÁö
-    public Animator wolfEyesAnim; // ´Á´ë ´« ¾Ö´Ï¸ŞÀÌÅÍ
-    [SerializeField] private SpriteRenderer wolfEyes; // ´Á´ë ´« ½ºÇÁ¶óÀÌÆ®
+    private SpriteRenderer wolfSpriteRenderer; // ëŠ‘ëŒ€ ìŠ¤í”„ë¼ì´íŠ¸ ë°˜ì „ìš©
+    public GameObject guardImg; // ëŠ‘ëŒ€ ê°€ë“œ ì´ë¯¸ì§€
+    public Animator wolfEyesAnim; // ëŠ‘ëŒ€ ëˆˆ ì• ë‹ˆë©”ì´í„°
+    [SerializeField] private SpriteRenderer wolfEyes; // ëŠ‘ëŒ€ ëˆˆ ìŠ¤í”„ë¼ì´íŠ¸
 
-    [SerializeField] private GameObject AngerAttackArea; // ¼Ò³à ºĞ³ëÀÇ ¾ÇÀå °ø°İ ¹üÀ§
-    [SerializeField] private GameObject PeaceAttackArea; //  ¼Ò³à ÆòÈ­ÀÇ ¾ÇÀå °ø°İ ¹üÀ§
-    [SerializeField] private GameObject PeaceWaitingEffect; //  ¼Ò³à ÆòÈ­ÀÇ ¾ÇÀå ÁØºñ ÀÌÆåÆ®
-    [SerializeField] private GameObject wolfAppearArea; // ´Á´ë ÁÂÅ¬¸¯ °ø°İ ¹üÀ§
-    [SerializeField] private GameObject wolfAttackArea; // ´Á´ë ¿ìÅ¬¸¯ °ø°İ ¹üÀ§
+    [SerializeField] private GameObject AngerAttackArea; // ì†Œë…€ ë¶„ë…¸ì˜ ì•…ì¥ ê³µê²© ë²”ìœ„
+    [SerializeField] private GameObject PeaceAttackArea; //  ì†Œë…€ í‰í™”ì˜ ì•…ì¥ ê³µê²© ë²”ìœ„
+    [SerializeField] private GameObject PeaceWaitingEffect; //  ì†Œë…€ í‰í™”ì˜ ì•…ì¥ ì¤€ë¹„ ì´í™íŠ¸
+    [SerializeField] private GameObject wolfAppearArea; // ëŠ‘ëŒ€ ì¢Œí´ë¦­ ê³µê²© ë²”ìœ„
+    [SerializeField] private GameObject wolfAttackArea; // ëŠ‘ëŒ€ ìš°í´ë¦­ ê³µê²© ë²”ìœ„
 
-    private bool wolfMoveReady = true; // ´Á´ë ÀÌµ¿ ÄğÅ¸ÀÓ
-    private bool wolfAttackReady = true; // ´Á´ë °ø°İ ÄğÅ¸ÀÓ
-    private bool wolfIsDamaged = false; // ´Á´ë ºÎ»ó »óÅÂ È®ÀÎ
+    private bool wolfMoveReady = true; // ëŠ‘ëŒ€ ì´ë™ ì¿¨íƒ€ì„
+    private bool wolfAttackReady = true; // ëŠ‘ëŒ€ ê³µê²© ì¿¨íƒ€ì„
+    private bool wolfIsDamaged = false; // ëŠ‘ëŒ€ ë¶€ìƒ ìƒíƒœ í™•ì¸
 
-    private float wolfPolution = 1f; // ´Á´ë ¿À¿°µµ °è¼ö
-    private float wolfFadeoutTime = 0.3f; // ÁÂÅ¬¸¯½Ã ´Á´ë°¡ »ç¶óÁö´Â ½Ã°£
-    private float wolfFadeinTime = 1f; // ÁÂÅ¬¸¯½Ã ´Á´ë°¡ ³ªÅ¸³ª´Â ½Ã°£
+    private float wolfPolution = 1f; // ëŠ‘ëŒ€ ì˜¤ì—¼ë„ ê³„ìˆ˜
+    private float wolfFadeoutTime = 0.3f; // ì¢Œí´ë¦­ì‹œ ëŠ‘ëŒ€ê°€ ì‚¬ë¼ì§€ëŠ” ì‹œê°„
+    private float wolfFadeinTime = 1f; // ì¢Œí´ë¦­ì‹œ ëŠ‘ëŒ€ê°€ ë‚˜íƒ€ë‚˜ëŠ” ì‹œê°„
 
-    public event Action<float> RequestMoveSpeed; // playerCtrlÀÇ moveSpeed º¯¼ö º¯°æ ÀÌº¥Æ®
-    public event Action<string> RequestAnimTrigger; // playerCtrlÀÇ ¾Ö´Ï¸ŞÀÌ¼Ç Trigger º¯°æ ÀÌº¥Æ®
-    public event Action<float> RequestAnimSpeed; // playerCtrlÀÇ animator Àç»ı¼Óµµ º¯°æ ÀÌº¥Æ®
+    public event Action<float> RequestMoveSpeed; // playerCtrlì˜ moveSpeed ë³€ìˆ˜ ë³€ê²½ ì´ë²¤íŠ¸
+    public event Action<string> RequestAnimTrigger; // playerCtrlì˜ ì• ë‹ˆë©”ì´ì…˜ Trigger ë³€ê²½ ì´ë²¤íŠ¸
+    public event Action<float> RequestAnimSpeed; // playerCtrlì˜ animator ì¬ìƒì†ë„ ë³€ê²½ ì´ë²¤íŠ¸
 
-    public event Action<string> RequestWolfAnimTrigger; // ´Á´ëÀÇ ¾Ö´Ï¸ŞÀÌ¼Ç Trigger º¯°æ ÀÌº¥Æ®
-    public event Action<WolfState> RequestWolfState; // ´Á´ë »óÅÂ º¯°æ ÀÌº¥Æ®
-    public event Action<float> RequestWolfStartAttack; // ´Á´ë °ø°İ ¾Ë¸² ÀÌº¥Æ®
+    public event Action<string> RequestWolfAnimTrigger; // ëŠ‘ëŒ€ì˜ ì• ë‹ˆë©”ì´ì…˜ Trigger ë³€ê²½ ì´ë²¤íŠ¸
+    public event Action<WolfState> RequestWolfState; // ëŠ‘ëŒ€ ìƒíƒœ ë³€ê²½ ì´ë²¤íŠ¸
+    public event Action<float> RequestWolfStartAttack; // ëŠ‘ëŒ€ ê³µê²© ì•Œë¦¼ ì´ë²¤íŠ¸
 
     private void Awake()
     {
@@ -62,11 +62,11 @@ public class PlayerSkill : MonoBehaviour
             GameManager.Instance.RequestCurrentStage += OnUpdateStageData;
     }
 
-    private IEnumerator PlayShortPiri() // ºĞ³ëÀÇ ¾ÇÀå ±¸Çö
+    private IEnumerator PlayShortPiri() // ë¶„ë…¸ì˜ ì•…ì¥ êµ¬í˜„
     {
-        Debug.Log("ÇÇ¸®·Î [ºĞ³ëÀÇ ¾ÇÀå]À» ¿¬ÁÖÇÕ´Ï´Ù!");
+        Debug.Log("í”¼ë¦¬ë¡œ [ë¶„ë…¸ì˜ ì•…ì¥]ì„ ì—°ì£¼í•©ë‹ˆë‹¤!");
         PlayPiriSound("Anger");
-        RequestMoveSpeed?.Invoke(0.5f); // ÀÌµ¿¼Óµµ 0.5·Î º¯°æ
+        RequestMoveSpeed?.Invoke(0.5f); // ì´ë™ì†ë„ 0.5ë¡œ ë³€ê²½
         RestoreSpeedAfterDelay(0.5f);
 
         AngerAttackArea.SetActive(true);
@@ -76,27 +76,27 @@ public class PlayerSkill : MonoBehaviour
         AngerAttackArea.SetActive(false);
     }
 
-    private void PlaySoftPiriCanceled() // ÆòÈ­ÀÇ ¾ÇÀå Ãë¼Ò ½Ã
+    private void PlaySoftPiriCanceled() // í‰í™”ì˜ ì•…ì¥ ì·¨ì†Œ ì‹œ
     {
-        Debug.Log("[ÆòÈ­ÀÇ ¾ÇÀå] ¿¬ÁÖ ½ÇÆĞ...");
-        PeaceWaitingEffect.SetActive(false); // ÆòÈ­ÀÇ ¾ÇÀå ÁØºñ ÀÌÆåÆ® Á¾·á
+        Debug.Log("[í‰í™”ì˜ ì•…ì¥] ì—°ì£¼ ì‹¤íŒ¨...");
+        PeaceWaitingEffect.SetActive(false); // í‰í™”ì˜ ì•…ì¥ ì¤€ë¹„ ì´í™íŠ¸ ì¢…ë£Œ
         audioSource.Stop();
         PlayPiriSound("PeaceFail");
     }
 
-    public void StartPiri() // ¿¬ÁÖ¹öÆ° ÀÔ·Â½Ã ¸ğ¼Ç ½ÇÇà ¹× º¯¼ö°ª ÀúÀå
+    public void StartPiri() // ì—°ì£¼ë²„íŠ¼ ì…ë ¥ì‹œ ëª¨ì…˜ ì‹¤í–‰ ë° ë³€ìˆ˜ê°’ ì €ì¥
     {
         piriStartTime = Time.time;
         isSoftPiriStart = false;
         isSoftPiriPlayed = false;
-        RequestMoveSpeed?.Invoke(0.5f); // ÀÌµ¿ ÁßÁö
-        RequestAnimTrigger?.Invoke(PlayerAnimTrigger.Sad); // ÇÇ¸® ºÎ´Â µíÇÑ ¿¬Ãâ
-        RequestAnimSpeed?.Invoke(0f); // ÇÇ¸® ºÎ´Â ¸ğ½ÀÀ¸·Î ¾Ö´Ï¸ŞÀÌ¼Ç ¸ØÃã
+        RequestMoveSpeed?.Invoke(0.5f); // ì´ë™ ì¤‘ì§€
+        RequestAnimTrigger?.Invoke(PlayerAnimTrigger.Sad); // í”¼ë¦¬ ë¶€ëŠ” ë“¯í•œ ì—°ì¶œ
+        RequestAnimSpeed?.Invoke(0f); // í”¼ë¦¬ ë¶€ëŠ” ëª¨ìŠµìœ¼ë¡œ ì• ë‹ˆë©”ì´ì…˜ ë©ˆì¶¤
     }
 
-    public void ReleasePiri() // ¿¬ÁÖ¹öÆ° ÀÔ·Â ½Ã°£¿¡ µû¸¥ ¿¬ÁÖ ºĞ±â Á¶°Ç (ºĞ³ëÀÇ ¾ÇÀå + ÆòÈ­ÀÇ ¾ÇÀå ½ÇÆĞ½Ã)
+    public void ReleasePiri() // ì—°ì£¼ë²„íŠ¼ ì…ë ¥ ì‹œê°„ì— ë”°ë¥¸ ì—°ì£¼ ë¶„ê¸° ì¡°ê±´ (ë¶„ë…¸ì˜ ì•…ì¥ + í‰í™”ì˜ ì•…ì¥ ì‹¤íŒ¨ì‹œ)
     {
-        float duration = Time.time - piriStartTime; // ¿¬ÁÖ¹öÆ° ´©¸¥ ½Ã°£
+        float duration = Time.time - piriStartTime; // ì—°ì£¼ë²„íŠ¼ ëˆ„ë¥¸ ì‹œê°„
 
         if (duration <= 0.3f)
         {
@@ -108,42 +108,42 @@ public class PlayerSkill : MonoBehaviour
         }
 
         RequestAnimSpeed?.Invoke(1f);
-        RequestMoveSpeed?.Invoke(2.5f); // ÀÌµ¿¼Óµµ 2.5·Î º¯°æ
-        StartCoroutine(RestoreSpeedAfterDelay(0.5f)); // 0.5ÃÊµ¿¾È Àá½Ã ÀÌµ¿¼Óµµ °¨¼Ò
+        RequestMoveSpeed?.Invoke(2.5f); // ì´ë™ì†ë„ 2.5ë¡œ ë³€ê²½
+        StartCoroutine(RestoreSpeedAfterDelay(0.5f)); // 0.5ì´ˆë™ì•ˆ ì ì‹œ ì´ë™ì†ë„ ê°ì†Œ
     }
 
-    public void CheckSoftPiri() // ÆòÈ­ÀÇ ¾ÇÀå Â÷Â¡½Ã°£ µµ´Ş È®ÀÎ 
+    public void CheckSoftPiri() // í‰í™”ì˜ ì•…ì¥ ì°¨ì§•ì‹œê°„ ë„ë‹¬ í™•ì¸ 
     {
-        if (!isSoftPiriPlayed) // ÇÇ¸® ¿¬ÁÖ½Ã && ÆòÈ­ÀÇ ¾ÇÀå ¿¬ÁÖ ¿Ï·á ¿©ºÎ
+        if (!isSoftPiriPlayed) // í”¼ë¦¬ ì—°ì£¼ì‹œ && í‰í™”ì˜ ì•…ì¥ ì—°ì£¼ ì™„ë£Œ ì—¬ë¶€
         {
             float duration = Time.time - piriStartTime;
             if (duration > 0.4f && !isSoftPiriStart)
             {
-                Debug.Log("[ÆòÈ­ÀÇ ¾ÇÀå] ¿¬ÁÖ ½ÃÀÛ");
-                PeaceWaitingEffect.SetActive(true); // ÆòÈ­ÀÇ ¾ÇÀå ÁØºñ ÀÌÆåÆ® È°¼ºÈ­
+                Debug.Log("[í‰í™”ì˜ ì•…ì¥] ì—°ì£¼ ì‹œì‘");
+                PeaceWaitingEffect.SetActive(true); // í‰í™”ì˜ ì•…ì¥ ì¤€ë¹„ ì´í™íŠ¸ í™œì„±í™”
 
                 audioSource.clip = piriClips["Peace"];
                 audioSource.time = 0f;
-                RequestMoveSpeed?.Invoke(1.5f); // ÀÌµ¿ ÁßÁö
-                audioSource.Play(); // ÆòÈ­ÀÇ ¾ÇÀå ¿¬ÁÖ ½ÃÀÛ
+                RequestMoveSpeed?.Invoke(1.5f); // ì´ë™ ì¤‘ì§€
+                audioSource.Play(); // í‰í™”ì˜ ì•…ì¥ ì—°ì£¼ ì‹œì‘
                 isSoftPiriStart = true;
             }
             if (duration > SoftPiriKeyDownTime)
             {
-                StartCoroutine(PlaySoftPiri()); // ÆòÈ­ÀÇ ¾ÇÀå ¿¬ÁÖ ¼º°ø
+                StartCoroutine(PlaySoftPiri()); // í‰í™”ì˜ ì•…ì¥ ì—°ì£¼ ì„±ê³µ
             }
         }
     }
 
     private IEnumerator PlaySoftPiri()
     {
-        Debug.Log("ÇÇ¸®·Î [ÆòÈ­ÀÇ ¾ÇÀå]À» ¿¬ÁÖÇØ³À´Ï´Ù.");
-        PeaceWaitingEffect.SetActive(false); // ÆòÈ­ÀÇ ¾ÇÀå ÁØºñ ÀÌÆåÆ® Á¾·á
+        Debug.Log("í”¼ë¦¬ë¡œ [í‰í™”ì˜ ì•…ì¥]ì„ ì—°ì£¼í•´ëƒ…ë‹ˆë‹¤.");
+        PeaceWaitingEffect.SetActive(false); // í‰í™”ì˜ ì•…ì¥ ì¤€ë¹„ ì´í™íŠ¸ ì¢…ë£Œ
 
-        audioSource.time = 9f; // ÆòÈ­ÀÇ ¾ÇÀå ³¡ºÎºĞ(8.5ÃÊ)À¸·Î ÀÌµ¿ (ÀÜÀ½µµ Ç¥Çö)
+        audioSource.time = 9f; // í‰í™”ì˜ ì•…ì¥ ëë¶€ë¶„(8.5ì´ˆ)ìœ¼ë¡œ ì´ë™ (ì”ìŒë„ í‘œí˜„)
         RequestAnimSpeed?.Invoke(1f);
         RequestAnimTrigger?.Invoke(PlayerAnimTrigger.Happy);
-        RequestMoveSpeed?.Invoke(2.5f); // ÀÌµ¿¼Óµµ 2.5·Î º¯°æ
+        RequestMoveSpeed?.Invoke(2.5f); // ì´ë™ì†ë„ 2.5ë¡œ ë³€ê²½
         isSoftPiriPlayed = true;
 
         PeaceAttackArea.SetActive(true);
@@ -152,14 +152,14 @@ public class PlayerSkill : MonoBehaviour
 
         PeaceAttackArea.SetActive(false);
 
-        StartCoroutine(RestoreSpeedAfterDelay(0.5f)); // 0.5ÃÊµ¿¾È Àá½Ã ÀÌµ¿¼Óµµ °¨¼Ò
+        StartCoroutine(RestoreSpeedAfterDelay(0.5f)); // 0.5ì´ˆë™ì•ˆ ì ì‹œ ì´ë™ì†ë„ ê°ì†Œ
     }
 
-    public void OnUpdateStageData()  // ¿À¿°µµ º¯°æ¿¡ µû¸¥ µ¥ÀÌÅÍ ¾÷µ¥ÀÌÆ® (ex. ¿¬°áµÈ À½¿øµé µñ¼Å³Ê¸®¿¡ ÃÊ±âÈ­)
+    public void OnUpdateStageData()  // ì˜¤ì—¼ë„ ë³€ê²½ì— ë”°ë¥¸ ë°ì´í„° ì—…ë°ì´íŠ¸ (ex. ì—°ê²°ëœ ìŒì›ë“¤ ë”•ì…”ë„ˆë¦¬ì— ì´ˆê¸°í™”)
     {
-        angerMelody = GameManager.Instance.currentStageData.anger_audioClip; // ¿À¿°µµ ½ºÅ×ÀÌÁö¿¡ µû¸¥ À½¿øÀ¸·Î ±³Ã¼
+        angerMelody = GameManager.Instance.currentStageData.anger_audioClip; // ì˜¤ì—¼ë„ ìŠ¤í…Œì´ì§€ì— ë”°ë¥¸ ìŒì›ìœ¼ë¡œ êµì²´
         peaceMelody = GameManager.Instance.currentStageData.peace_audioClip;
-        wolfPolution = GameManager.Instance.currentStageData.wolfCoefficient;
+        wolfPolution = GameManager.Instance.currentStageData.pollution_Coefficient;
 
         AngerAttackArea.transform.localScale = Vector3.one * GameManager.Instance.currentStageData.anger_range;
         PeaceAttackArea.transform.localScale = Vector3.one * GameManager.Instance.currentStageData.peace_range;
@@ -171,18 +171,18 @@ public class PlayerSkill : MonoBehaviour
         piriClips.Add("PeaceFail", peaceCancelMelody);
 
         float brightness = (255f - wolfPolution * 30f) / 255f;
-        brightness = Mathf.Clamp01(brightness); // 0~1 »çÀÌ·Î º¸Á¤
+        brightness = Mathf.Clamp01(brightness); // 0~1 ì‚¬ì´ë¡œ ë³´ì •
 
         wolfSpriteRenderer.color = new Color(brightness, brightness, brightness, wolfSpriteRenderer.color.a);
     }
 
-    private IEnumerator RestoreSpeedAfterDelay(float delay) // ÀÏÁ¤½Ã°£ ÈÄ ¿ø·¡¼Óµµ·Î º¹±Í
+    private IEnumerator RestoreSpeedAfterDelay(float delay) // ì¼ì •ì‹œê°„ í›„ ì›ë˜ì†ë„ë¡œ ë³µê·€
     {
-        if (isRestoreSpeed) yield break; // ÇÔ¼ö Áßº¹ ½ÇÇà ¹æÁö
+        if (isRestoreSpeed) yield break; // í•¨ìˆ˜ ì¤‘ë³µ ì‹¤í–‰ ë°©ì§€
         isRestoreSpeed = true;
 
         yield return new WaitForSeconds(delay);
-        RequestMoveSpeed?.Invoke(5f); // ±âÁ¸ ¼Óµµ·Î º¯°æ
+        RequestMoveSpeed?.Invoke(5f); // ê¸°ì¡´ ì†ë„ë¡œ ë³€ê²½
         isRestoreSpeed = false;
     }
 
@@ -195,23 +195,23 @@ public class PlayerSkill : MonoBehaviour
         }
     }
 
-    //¿©±â¼­ºÎÅÍ ´Á´ë ±¸ÇöºÎ
+    //ì—¬ê¸°ì„œë¶€í„° ëŠ‘ëŒ€ êµ¬í˜„ë¶€
 
     private float EaseOutExpo(float t)
     {
         return t == 0 ? 0 : Mathf.Pow(2, 15 * (t - 1));
     }
 
-    public IEnumerator WolfAppear(bool isExist) // ´Á´ë µîÀå ±¸Çö
+    public IEnumerator WolfAppear(bool isExist) // ëŠ‘ëŒ€ ë“±ì¥ êµ¬í˜„
     {
-        if (!wolfMoveReady) yield break; // ÀÌµ¿ ÄğÅ¸ÀÓ½Ã Á¶ÀÛ ºÒ°¡´É(³Ê¹« ºó¹øÇÑ ÀÌµ¿ ¹æÁö)
+        if (!wolfMoveReady) yield break; // ì´ë™ ì¿¨íƒ€ì„ì‹œ ì¡°ì‘ ë¶ˆê°€ëŠ¥(ë„ˆë¬´ ë¹ˆë²ˆí•œ ì´ë™ ë°©ì§€)
 
         wolfMoveReady = false;
-        StartCoroutine(WolfMoveCool()); // ÀÌµ¿ ÄğÅ¸ÀÓ ½ÃÀÛ
-        wolfEyes.enabled = false; // ÇÃ·¹ÀÌ¾î À§ ´Á´ë ´« ¼û±è
+        StartCoroutine(WolfMoveCool()); // ì´ë™ ì¿¨íƒ€ì„ ì‹œì‘
+        wolfEyes.enabled = false; // í”Œë ˆì´ì–´ ìœ„ ëŠ‘ëŒ€ ëˆˆ ìˆ¨ê¹€
 
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); //¸¶¿ì½º À§Ä¡ ¹ŞÀ½
-        Vector2 isStartRight; // ´Á´ë Ã¹µîÀå½Ã ´õÇÒ ´ÜÀ§ º¤ÅÍ
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); //ë§ˆìš°ìŠ¤ ìœ„ì¹˜ ë°›ìŒ
+        Vector2 isStartRight; // ëŠ‘ëŒ€ ì²«ë“±ì¥ì‹œ ë”í•  ë‹¨ìœ„ ë²¡í„°
 
         float timer = 0f;
 
@@ -226,33 +226,33 @@ public class PlayerSkill : MonoBehaviour
             isStartRight = Vector2.right * 4;
         }
 
-        if (isExist) // ´Á´ë ÀÌ¹Ì µîÀå½Ã
+        if (isExist) // ëŠ‘ëŒ€ ì´ë¯¸ ë“±ì¥ì‹œ
         {
-            // ´Á´ë ±âÁ¸ À§Ä¡¿¡¼­ »ç¶óÁö´Â ¿¬Ãâ
-            Debug.Log("´Á´ë°¡ »ç¶óÁı´Ï´Ù!");
+            // ëŠ‘ëŒ€ ê¸°ì¡´ ìœ„ì¹˜ì—ì„œ ì‚¬ë¼ì§€ëŠ” ì—°ì¶œ
+            Debug.Log("ëŠ‘ëŒ€ê°€ ì‚¬ë¼ì§‘ë‹ˆë‹¤!");
             RequestWolfAnimTrigger?.Invoke("Hide");
-            wolfAppearArea.SetActive(false); // ´Á´ë µîÀå È¿°ú Á¾·á
+            wolfAppearArea.SetActive(false); // ëŠ‘ëŒ€ ë“±ì¥ íš¨ê³¼ ì¢…ë£Œ
 
             while (timer < wolfFadeoutTime)
             {
                 timer += Time.deltaTime;
-                float newAlpha = Mathf.Lerp(1f, 0f, timer / wolfFadeoutTime); // ¼±ÇüÀûÀ¸·Î fade out º¯È­
+                float newAlpha = Mathf.Lerp(1f, 0f, timer / wolfFadeoutTime); // ì„ í˜•ì ìœ¼ë¡œ fade out ë³€í™”
                 wolfSpriteRenderer.color = new Color(wolfSpriteRenderer.color.r, wolfSpriteRenderer.color.g, wolfSpriteRenderer.color.b, newAlpha);
                 yield return null;
             }
             wolfSpriteRenderer.color = new Color(wolfSpriteRenderer.color.r, wolfSpriteRenderer.color.g, wolfSpriteRenderer.color.b, 0f);
-            timer = 0f; // Å¸ÀÌ¸Ó ÃÊ±âÈ­
+            timer = 0f; // íƒ€ì´ë¨¸ ì´ˆê¸°í™”
         }
 
-        // »õ·Î¿î À§Ä¡·Î ³ªÅ¸³ª´Â ¿¬Ãâ
-        Debug.Log("´Á´ë°¡ ³ªÅ¸³³´Ï´Ù!");
-        RequestWolfState(WolfState.Idle); // ´Á´ë Idle »óÅÂ·Î º¯°æ
-        playerCtrl.wolf.transform.position = mousePosition + isStartRight; // ´Á´ë Ãâ¹ßÁ¡
+        // ìƒˆë¡œìš´ ìœ„ì¹˜ë¡œ ë‚˜íƒ€ë‚˜ëŠ” ì—°ì¶œ
+        Debug.Log("ëŠ‘ëŒ€ê°€ ë‚˜íƒ€ë‚©ë‹ˆë‹¤!");
+        RequestWolfState(WolfState.Idle); // ëŠ‘ëŒ€ Idle ìƒíƒœë¡œ ë³€ê²½
+        playerCtrl.wolf.transform.position = mousePosition + isStartRight; // ëŠ‘ëŒ€ ì¶œë°œì 
         RequestWolfAnimTrigger?.Invoke("Move");
         while (timer < wolfFadeinTime)
         {
             timer += Time.deltaTime;
-            float newAlpha = EaseOutExpo(timer); // ºñ¼±ÇüÀûÀ¸·Î µÚ·Î °¥¼ö·Ï ºü¸£°Ô fade in 
+            float newAlpha = EaseOutExpo(timer); // ë¹„ì„ í˜•ì ìœ¼ë¡œ ë’¤ë¡œ ê°ˆìˆ˜ë¡ ë¹ ë¥´ê²Œ fade in 
             wolfSpriteRenderer.color = new Color(wolfSpriteRenderer.color.r, wolfSpriteRenderer.color.g, wolfSpriteRenderer.color.b, newAlpha);
             playerCtrl.wolf.transform.position
             = Vector2.Lerp(playerCtrl.wolf.transform.position, mousePosition, EaseOutExpo(timer));
@@ -260,100 +260,100 @@ public class PlayerSkill : MonoBehaviour
 
             if (wolfIsDamaged)
             {
-                Debug.Log("µîÀå Áß ´Á´ë°¡ ¼Ò³à °çÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù!");
-                playerCtrl.wolf.transform.position = playerCtrl.transform.position; // ¼Ò³à À§Ä¡·Î ÀÌµ¿
-                yield break; // ´Á´ë ºÎ»ó½Ã ÇÔ¼ö ½ÇÇà ÁßÁö
+                Debug.Log("ë“±ì¥ ì¤‘ ëŠ‘ëŒ€ê°€ ì†Œë…€ ê³ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤!");
+                playerCtrl.wolf.transform.position = playerCtrl.transform.position; // ì†Œë…€ ìœ„ì¹˜ë¡œ ì´ë™
+                yield break; // ëŠ‘ëŒ€ ë¶€ìƒì‹œ í•¨ìˆ˜ ì‹¤í–‰ ì¤‘ì§€
             }
         }
-        wolfAppearArea.SetActive(true); // ´Á´ë µîÀå È¿°ú ½ÃÀÛ (ÀûÀ» µĞÈ­½ÃÅ´)
+        wolfAppearArea.SetActive(true); // ëŠ‘ëŒ€ ë“±ì¥ íš¨ê³¼ ì‹œì‘ (ì ì„ ë‘”í™”ì‹œí‚´)
         wolfSpriteRenderer.color = new Color(wolfSpriteRenderer.color.r, wolfSpriteRenderer.color.g, wolfSpriteRenderer.color.b, 1f);
         playerCtrl.wolf.transform.position = mousePosition;
     }
-    public IEnumerator WolfAttack() // ´Á´ë °ø°İ ±¸Çö
+    public IEnumerator WolfAttack() // ëŠ‘ëŒ€ ê³µê²© êµ¬í˜„
     {
         if (wolfAttackReady)
         {
             wolfAttackReady = false;
-            StartCoroutine(WolfAttackCool()); // ÄğÅ¸ÀÓ ÄÚ·çÆ¾ ½ÇÇà
+            StartCoroutine(WolfAttackCool()); // ì¿¨íƒ€ì„ ì½”ë£¨í‹´ ì‹¤í–‰
 
             RequestWolfAnimTrigger?.Invoke("Attack");
             yield return new WaitForSeconds(0.4f);
 
-            wolfAppearArea.SetActive(false); // ´Á´ë »ó½Ã ÀÌÆåÆ® ÁßÁö
+            wolfAppearArea.SetActive(false); // ëŠ‘ëŒ€ ìƒì‹œ ì´í™íŠ¸ ì¤‘ì§€
             wolfAttackArea.SetActive(true);
-            yield return new WaitForSeconds(0.4f); // °ø°İ ¸ğ¼Ç ´ë±â
+            yield return new WaitForSeconds(0.4f); // ê³µê²© ëª¨ì…˜ ëŒ€ê¸°
 
             wolfAttackArea.SetActive(false);
-            wolfAppearArea.SetActive(true); // ´Á´ë »ó½Ã ÀÌÆåÆ® ½ÇÇà
+            wolfAppearArea.SetActive(true); // ëŠ‘ëŒ€ ìƒì‹œ ì´í™íŠ¸ ì‹¤í–‰
             RequestWolfState(WolfState.Idle);
         }
     }
-    public IEnumerator WolfHide(bool isGuarded) // ´Á´ë Hide ±¸Çö, ¸Å°³º¯¼ö´Â ´Á´ë °¡µå¸¦ ÅëÇØ È£ÃâµÈ HideÀÎÁö ±¸º°
+    public IEnumerator WolfHide(bool isGuarded) // ëŠ‘ëŒ€ Hide êµ¬í˜„, ë§¤ê°œë³€ìˆ˜ëŠ” ëŠ‘ëŒ€ ê°€ë“œë¥¼ í†µí•´ í˜¸ì¶œëœ Hideì¸ì§€ êµ¬ë³„
     {
         RequestWolfAnimTrigger?.Invoke("Hide");
         RequestWolfState(WolfState.Hide);
-        wolfAppearArea.SetActive(false); // ´Á´ë µîÀå È¿°ú Á¾·á
+        wolfAppearArea.SetActive(false); // ëŠ‘ëŒ€ ë“±ì¥ íš¨ê³¼ ì¢…ë£Œ
 
         if (isGuarded)
         {
-            wolfSpriteRenderer.flipX = playerCtrl.spriteRenderer.flipX; // ¼Ò³à¿Í °°Àº ¹æÇâÀ» ¹Ù¶óº½
-            playerCtrl.wolf.transform.position = playerCtrl.transform.position; // ¼Ò³à À§Ä¡·Î ÀÌµ¿
-            RequestWolfState(WolfState.Damaged); // ´Á´ë »óÅÂ º¯È­(Damaged)
+            wolfSpriteRenderer.flipX = playerCtrl.spriteRenderer.flipX; // ì†Œë…€ì™€ ê°™ì€ ë°©í–¥ì„ ë°”ë¼ë´„
+            playerCtrl.wolf.transform.position = playerCtrl.transform.position; // ì†Œë…€ ìœ„ì¹˜ë¡œ ì´ë™
+            RequestWolfState(WolfState.Damaged); // ëŠ‘ëŒ€ ìƒíƒœ ë³€í™”(Damaged)
             yield return StartCoroutine(FadeCoroutine(1.0f, 0.4f)); // FadeIn
         }
         wolfEyesAnim.SetBool("wolfDamaged", wolfIsDamaged);
-        wolfEyes.enabled = true; // ´Á´ë ´« ³ªÅ¸³»±â±â
+        wolfEyes.enabled = true; // ëŠ‘ëŒ€ ëˆˆ ë‚˜íƒ€ë‚´ê¸°ê¸°
 
         yield return StartCoroutine(FadeCoroutine(0.0f, 0.3f)); // FadeOut
     }
 
-    public void WolfGuard() // ´Á´ë °¡µå ±¸Çö
+    public void WolfGuard() // ëŠ‘ëŒ€ ê°€ë“œ êµ¬í˜„
     {
         if (!wolfIsDamaged)
         {
-            wolfIsDamaged = true; // ´Á´ëºÎ»ó º¯¼ö (µîÀåÁßÀÏ °æ¿ì, ÄÚ·çÆ¾ Å»Ãâ)
+            wolfIsDamaged = true; // ëŠ‘ëŒ€ë¶€ìƒ ë³€ìˆ˜ (ë“±ì¥ì¤‘ì¼ ê²½ìš°, ì½”ë£¨í‹´ íƒˆì¶œ)
 
             StartCoroutine(WolfHide(true));
-            StartCoroutine(WolfGuardEffect()); // °¡µå ÀÌÆåÆ® ÄÚ·çÆ¾ ½ÇÇà 
-            StartCoroutine(WolfGuardCool()); // °¡µå ÄğÅ¸ÀÓ ÄÚ·çÆ¾ ½ÇÇà
+            StartCoroutine(WolfGuardEffect()); // ê°€ë“œ ì´í™íŠ¸ ì½”ë£¨í‹´ ì‹¤í–‰ 
+            StartCoroutine(WolfGuardCool()); // ê°€ë“œ ì¿¨íƒ€ì„ ì½”ë£¨í‹´ ì‹¤í–‰
 
         }
     }
 
-    private IEnumerator WolfGuardEffect() // ´Á´ë °¡µå ÀÌÆåÆ®Æ® ÄÚ·çÆ¾
+    private IEnumerator WolfGuardEffect() // ëŠ‘ëŒ€ ê°€ë“œ ì´í™íŠ¸íŠ¸ ì½”ë£¨í‹´
     {
         guardImg.transform.position = this.transform.position;
         guardImg.SetActive(true);
-        yield return new WaitForSeconds(0.4f); // 0.4ÃÊ ÈÄ »ç¶óÁü
+        yield return new WaitForSeconds(0.4f); // 0.4ì´ˆ í›„ ì‚¬ë¼ì§
         guardImg.SetActive(false);
     }
 
-    private IEnumerator WolfMoveCool() // ´Á´ë ÀÌµ¿ ÄğÅ¸ÀÓ ÄÚ·çÆ¾
+    private IEnumerator WolfMoveCool() // ëŠ‘ëŒ€ ì´ë™ ì¿¨íƒ€ì„ ì½”ë£¨í‹´
     {
         yield return new WaitForSeconds(1f);
         wolfMoveReady = true;
     }
 
-    private IEnumerator WolfAttackCool() // ´Á´ë °ø°İ ÄğÅ¸ÀÓ ÄÚ·çÆ¾
+    private IEnumerator WolfAttackCool() // ëŠ‘ëŒ€ ê³µê²© ì¿¨íƒ€ì„ ì½”ë£¨í‹´
     {
-        RequestWolfStartAttack(2.5f); // PlayerCtrl¿¡°Ô ´Á´ë °ø°İÇßÀ½À» ¾Ë¸² (UI µ¿±âÈ­)
+        RequestWolfStartAttack(2.5f); // PlayerCtrlì—ê²Œ ëŠ‘ëŒ€ ê³µê²©í–ˆìŒì„ ì•Œë¦¼ (UI ë™ê¸°í™”)
         yield return new WaitForSeconds(2.5f);
         wolfAttackReady = true;
     }
-    private IEnumerator WolfGuardCool() // ´Á´ë °¡µå ÄğÅ¸ÀÓ ÄÚ·çÆ¾, ¼º°ø ÈÄ ÄğÅ¸ÀÓµ¿¾È ´Á´ë Á¦¾î ºÒ°¡
+    private IEnumerator WolfGuardCool() // ëŠ‘ëŒ€ ê°€ë“œ ì¿¨íƒ€ì„ ì½”ë£¨í‹´, ì„±ê³µ í›„ ì¿¨íƒ€ì„ë™ì•ˆ ëŠ‘ëŒ€ ì œì–´ ë¶ˆê°€
     {
-        Debug.Log("´Á´ë ºÎ»ó! È¸º¹Áß");
+        Debug.Log("ëŠ‘ëŒ€ ë¶€ìƒ! íšŒë³µì¤‘");
         wolfEyesAnim.SetBool("wolfDamaged", wolfIsDamaged);
 
         yield return new WaitForSeconds(5.0f);
 
-        Debug.Log("´Á´ë È¸º¹!");
+        Debug.Log("ëŠ‘ëŒ€ íšŒë³µ!");
         RequestWolfState(WolfState.Hide);
-        wolfIsDamaged = false; // ´Á´ë ºÎ»ó È¸º¹
+        wolfIsDamaged = false; // ëŠ‘ëŒ€ ë¶€ìƒ íšŒë³µ
         wolfEyesAnim.SetBool("wolfDamaged", wolfIsDamaged);
     }
 
-    private IEnumerator FadeCoroutine(float targetAlpha, float duration) // ´Á´ëÀÇ fade in/outÀ» À§ÇÑ ÇÔ¼ö, targetAlpha´Â Åõ¸íµµ, durationÀº ½ÇÇà½Ã°£
+    private IEnumerator FadeCoroutine(float targetAlpha, float duration) // ëŠ‘ëŒ€ì˜ fade in/outì„ ìœ„í•œ í•¨ìˆ˜, targetAlphaëŠ” íˆ¬ëª…ë„, durationì€ ì‹¤í–‰ì‹œê°„
     {
         float startAlpha = wolfSpriteRenderer.color.a;
         float elapsedTime = 0f;

@@ -1,16 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FinalBoss : MonoBehaviour
 {
     public float moveSpeed = 2f;
-    public float meleeRange = 5f;   // ±Ù°Å¸® °ø°İ ¹üÀ§
-    public float rangeAttackRange = 15f; //¿ø°Å¸® °ø°İ ¹üÀ§
+    public float meleeRange = 5f;   // ê·¼ê±°ë¦¬ ê³µê²© ë²”ìœ„
+    public float rangeAttackRange = 15f; //ì›ê±°ë¦¬ ê³µê²© ë²”ìœ„
     public float teleportCooldown = 10f;
 
-    public GameObject arrow; // ¿ø°Å¸® °ø°İ¿ë È­»ì ÇÁ¸®ÆÕ
-    public Transform[] teleportPositions; // ¼ø°£ÀÌµ¿ À§Ä¡
+    public GameObject arrow; // ì›ê±°ë¦¬ ê³µê²©ìš© í™”ì‚´ í”„ë¦¬íŒ¹
+    public Transform[] teleportPositions; // ìˆœê°„ì´ë™ ìœ„ì¹˜
 
     //public GameObject
 
@@ -44,7 +44,7 @@ public class FinalBoss : MonoBehaviour
         scale.x = direction.x < 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
         transform.localScale = scale;
 
-        float dist = Vector2.Distance(transform.position, player.position); // °Å¸®
+        float dist = Vector2.Distance(transform.position, player.position); // ê±°ë¦¬
 
         if (dist < meleeRange)
         {
@@ -79,7 +79,7 @@ public class FinalBoss : MonoBehaviour
             {
               
                 anim.SetTrigger("Hit");
-                Debug.Log("º¸½º HP: " + HP);
+                Debug.Log("ë³´ìŠ¤ HP: " + HP);
                 HP--;
                 //fillImage.fillAmount = HP / maxHP;
 
@@ -93,7 +93,7 @@ public class FinalBoss : MonoBehaviour
         Vector2 direction = (player.position - transform.position).normalized;
         transform.position += (Vector3)(direction * moveSpeed * Time.deltaTime);
 
-        // ÁÂ¿ì ¹İÀü
+        // ì¢Œìš° ë°˜ì „
         
     }
 
@@ -101,7 +101,7 @@ public class FinalBoss : MonoBehaviour
     {
         isAttacking = true;
         anim.SetTrigger("attack1");
-        yield return new WaitForSeconds(0.5f); // °ø°İ ½Ã°£
+        yield return new WaitForSeconds(0.5f); // ê³µê²© ì‹œê°„
 
         isAttacking = false;
     }
@@ -129,13 +129,13 @@ public class FinalBoss : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
 
-        // ¼ø°£ÀÌµ¿ À§Ä¡ Áß ·£´ı ¼±ÅÃ
+        // ìˆœê°„ì´ë™ ìœ„ì¹˜ ì¤‘ ëœë¤ ì„ íƒ
         Transform targetPos = teleportPositions[Random.Range(0, teleportPositions.Length)];
         yield return new WaitForSeconds(1f);
 
         transform.position = targetPos.position;
 
-        // ´Ù½Ã ³ªÅ¸³ª±â
+        // ë‹¤ì‹œ ë‚˜íƒ€ë‚˜ê¸°
         GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<Collider2D>().enabled = true;
 
@@ -154,9 +154,9 @@ public class FinalBoss : MonoBehaviour
                 attackPoints[i].SetActive(false);
             }
         }
-        yield return new WaitForSeconds(3f); // Àá±ñ ´ë±â
+        yield return new WaitForSeconds(3f); // ì ê¹ ëŒ€ê¸°
 
-        // Â¦¼ö ÀÎµ¦½º (0, 2, 4...) °ø°İ
+        // ì§ìˆ˜ ì¸ë±ìŠ¤ (0, 2, 4...) ê³µê²©
         for (int i = 0; i < attackPoints.Length; i++)
         {
             if (i % 2 == 1)

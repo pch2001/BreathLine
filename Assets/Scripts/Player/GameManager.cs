@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,64 +7,64 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private float pollution; // ¿À¿°µµ º¯¼ö
+    [SerializeField] private float pollution; // ì˜¤ì—¼ë„ ë³€ìˆ˜
     public float Pollution
     {
         get => pollution;
         set
         {
-            pollution = Mathf.Clamp(value, 0f, 100f); // ¿À¿°µµ 0~100À¸·Î Á¦ÇÑ
+            pollution = Mathf.Clamp(value, 0f, 100f); // ì˜¤ì—¼ë„ 0~100ìœ¼ë¡œ ì œí•œ
             UpdateStageData(pollution);
         }
     }
 
-    public List<PollutionStage> pollutionStages; // ¿À¿°µµ ´Ü°èº° µ¥ÀÌÅÍ ÀúÀå ¸®½ºÆ®
-    public PollutionStage currentStageData; // ÇöÀç ¿À¿°µµ ´Ü°è µ¥ÀÌÅÍ
-    public int currentStageIndex; // ÇöÀç ¿À¿°µµ ´Ü°è
-    [SerializeField] RectTransform pollutionGauge; // ¿À¿°µµ UI 
-    
-    public bool isReturned = false; // È¸±Í »óÅÂ ¿©ºÎ
+    public List<PollutionStage> pollutionStages; // ì˜¤ì—¼ë„ ë‹¨ê³„ë³„ ë°ì´í„° ì €ì¥ ë¦¬ìŠ¤íŠ¸
+    public PollutionStage currentStageData; // í˜„ì¬ ì˜¤ì—¼ë„ ë‹¨ê³„ ë°ì´í„°
+    public int currentStageIndex; // í˜„ì¬ ì˜¤ì—¼ë„ ë‹¨ê³„
+    [SerializeField] RectTransform pollutionGauge; // ì˜¤ì—¼ë„ UI 
 
-    public Vector3 savePoint; // ¼¼ÀÌºê Æ÷ÀÎÆ® À§Ä¡
+    public bool isReturned = false; // íšŒê·€ ìƒíƒœ ì—¬ë¶€
 
-    public event Action RequestCurrentStage; // »õ·Î¿î PollutionStage °ªÀ¸·Î º¯°æ ÀÌº¥Æ®
-    
+    public Vector3 savePoint; // ì„¸ì´ë¸Œ í¬ì¸íŠ¸ ìœ„ì¹˜
+
+    public event Action RequestCurrentStage; // ìƒˆë¡œìš´ PollutionStage ê°’ìœ¼ë¡œ ë³€ê²½ ì´ë²¤íŠ¸
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject); // GameManager ÆÄ±« ¹æÁö
+            DontDestroyOnLoad(this.gameObject); // GameManager íŒŒê´´ ë°©ì§€
         }
         else
         {
-            Destroy(gameObject); // ÀÌ¹Ì ÀÖÀ¸¸é GameManager ÆÄ±«
+            Destroy(gameObject); // ì´ë¯¸ ìˆìœ¼ë©´ GameManager íŒŒê´´
         }
     }
 
     private void Start()
     {
-        Pollution = 0; // ¿À¿°µµ°ª ÃÊ±âÈ­
+        Pollution = 0; // ì˜¤ì—¼ë„ê°’ ì´ˆê¸°í™”
         currentStageIndex = -1;
-        AddPolution(0); // ¿À¿°µµ UI ÃÊ±âÈ­
+        AddPolution(0); // ì˜¤ì—¼ë„ UI ì´ˆê¸°í™”
     }
 
-    private void UpdateStageData(float pollution) // ¿À¿°µµ ´Ü°è ¾÷µ¥ÀÌÆ®
+    private void UpdateStageData(float pollution) // ì˜¤ì—¼ë„ ë‹¨ê³„ ì—…ë°ì´íŠ¸
     {
-        int index = Mathf.Clamp((int)(pollution / 20), 0, 4); // ¿À¿°µµ 0~100 °ªÀ» 0~4´Ü°è(5´Ü°è)·Î ³ª´® (º¯°æo)
+        int index = Mathf.Clamp((int)(pollution / 20), 0, 4); // ì˜¤ì—¼ë„ 0~100 ê°’ì„ 0~4ë‹¨ê³„(5ë‹¨ê³„)ë¡œ ë‚˜ëˆ” (ë³€ê²½o)
         currentStageData = pollutionStages[index];
-        if (currentStageIndex == index) return; // ¿À¿°µµ ´Ü°è°¡ º¯°æµÉ ¶§ ³»¿ë ÃÊ±âÈ­
+        if (currentStageIndex == index) return; // ì˜¤ì—¼ë„ ë‹¨ê³„ê°€ ë³€ê²½ë  ë•Œ ë‚´ìš© ì´ˆê¸°í™”
 
         currentStageIndex = index;
-        RequestCurrentStage.Invoke(); // PlayerSkillÀÇ OnUpdateStageData() ÇÔ¼ö ½ÇÇà
+        RequestCurrentStage.Invoke(); // PlayerSkillì˜ OnUpdateStageData() í•¨ìˆ˜ ì‹¤í–‰
     }
 
     public void AddPolution(float data)
     {
-        Debug.Log("¿À¿°µµ°¡ Áõ°¡ÇÕ´Ï´Ù!");
+        Debug.Log("ì˜¤ì—¼ë„ê°€ ì¦ê°€í•©ë‹ˆë‹¤!");
         Pollution += data;
-        pollutionGauge.sizeDelta 
-            = new Vector2(pollutionGauge.sizeDelta.x, Mathf.Clamp01(pollution / 100f) * 700f);
+        pollutionGauge.sizeDelta
+            = new Vector2(pollutionGauge.sizeDelta.x, Mathf.Clamp01(pollution / 100f) * 1000f);
         Debug.Log(currentStageIndex);
     }
 }

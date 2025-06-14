@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class cobweb : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("∞≈πÃ¡Ÿ ¥Í¿Ω");
+            Debug.Log("Í±∞ÎØ∏Ï§Ñ ÎãøÏùå");
         }
     }
 

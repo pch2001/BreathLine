@@ -1,22 +1,22 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable] // ¿¡µğÅÍ»ó¿¡¼­ ¼öÁ¤ °¡´É
+[System.Serializable] // ì—ë””í„°ìƒì—ì„œ ìˆ˜ì • ê°€ëŠ¥
 public class PollutionStage
 {
-    [Header("ÇÇ¸® ¿¬ÁÖ - ºĞ³ëÀÇ ¾ÇÀå")]
-    public float anger_damage; // ºĞ³ëÀÇ ¾ÇÀå µ¥¹ÌÁö
-    public float anger_range; // ºĞ³ëÀÇ ¾ÇÀå ½ºÅ³ ¹üÀ§
-    public AudioClip anger_audioClip; // ºĞ³ëÀÇ ¾ÇÀå ¿Àµğ¿À Å¬¸³
-    public GameObject anger_effect; // ºĞ³ëÀÇ ¾ÇÀå ÀÌÆåÆ®
+    [Header("í”¼ë¦¬ ì—°ì£¼ - ë¶„ë…¸ì˜ ì•…ì¥")]
+    public float anger_damage; // ë¶„ë…¸ì˜ ì•…ì¥ ë°ë¯¸ì§€
+    public float anger_range; // ë¶„ë…¸ì˜ ì•…ì¥ ìŠ¤í‚¬ ë²”ìœ„
+    public AudioClip anger_audioClip; // ë¶„ë…¸ì˜ ì•…ì¥ ì˜¤ë””ì˜¤ í´ë¦½
+    public GameObject anger_effect; // ë¶„ë…¸ì˜ ì•…ì¥ ì´í™íŠ¸
 
-    [Header("ÇÇ¸® ¿¬ÁÖ - ÆòÈ­ÀÇ ¾ÇÀå")]
-    public float peace_cooldown; // ÆòÈ­ÀÇ ¾ÇÀå »ç¿ë ÄğÅ¸ÀÓ
-    public float peace_range; // ÆòÈ­ÀÇ ¾ÇÀå ½ºÅ³ ¹üÀ§
-    public AudioClip peace_audioClip; // ÆòÈ­ÀÇ ¾ÇÀå ¿Àµğ¿À Å¬¸³
-    public GameObject peace_effect; // ÆòÈ­ÀÇ ¾ÇÀå ÀÌÆåÆ®
+    [Header("í”¼ë¦¬ ì—°ì£¼ - í‰í™”ì˜ ì•…ì¥")]
+    public float peace_cooldown; // í‰í™”ì˜ ì•…ì¥ ì‚¬ìš© ì¿¨íƒ€ì„
+    public float peace_range; // í‰í™”ì˜ ì•…ì¥ ìŠ¤í‚¬ ë²”ìœ„
+    public AudioClip peace_audioClip; // í‰í™”ì˜ ì•…ì¥ ì˜¤ë””ì˜¤ í´ë¦½
+    public GameObject peace_effect; // í‰í™”ì˜ ì•…ì¥ ì´í™íŠ¸
 
-    [Header("´Á´ë »óÅÂ º¯È­ °è¼ö")]
-    public float wolfCoefficient;
+    [Header("ì˜¤ì—¼ë„ ìƒíƒœ ë³€í™” ê³„ìˆ˜")]
+    public float pollution_Coefficient;
 }

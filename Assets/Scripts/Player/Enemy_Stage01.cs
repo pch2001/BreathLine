@@ -1,187 +1,221 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 public class Enemy_Stage01 : EnemyBase
 {
-    public bool isLooking = false; // ÇÃ·¹ÀÌ¾î°¡ ÀûÀÇ ½Ã¾ß¿¡ µé¾î¿Ô´ÂÁö
-    public int attackID = 0; // Àû Áßº¹ Ãæµ¹ ÆÇÁ¤ ¹æÁö
+    public bool isLooking = false; // í”Œë ˆì´ì–´ê°€ ì ì˜ ì‹œì•¼ì— ë“¤ì–´ì™”ëŠ”ì§€
+    public int attackID = 0; // ì  ì¤‘ë³µ ì¶©ëŒ íŒì • ë°©ì§€
 
     private void Start()
     {
-        maxHp = 50f; // Àû Ã¼·Â ¼³Á¤
-        currentHp = 0f; // Àû Ã¼·Â ÃÊ±âÈ­
-        damage = 10f; // Àû °ø°İ·Â ¼³Á¤ 
-        rigidBody.drag = 5f; // ±âº» ¸¶Âû·Â ¼³Á¤
-        moveSpeed = defaultMoveSpeed; 
-        attackMode = false; // ±âº» °ø°İ¸ğµå false
+        maxHp = 50f; // ì  ì²´ë ¥ ì„¤ì •
+        currentHp = 15f; // ì  ì²´ë ¥ ì´ˆê¸°í™”
+        damage = 10f; // ì  ê³µê²©ë ¥ ì„¤ì • 
+        maxGroggyCnt = 3; // ìµœëŒ€ ê·¸ë¡œê¸° ê²Œì´ì§€ 3ê°œë¡œ ì„¤ì •
+        currentGroggyCnt = 0; // í˜„ì¬ ê·¸ë¡œê¸° ê°œìˆ˜ ì´ˆê¸°í™”
+        rigidBody.drag = 5f; // ê¸°ë³¸ ë§ˆì°°ë ¥ ì„¤ì •
+        moveSpeed = defaultMoveSpeed;
+        attackMode = false; // ê¸°ë³¸ ê³µê²©ëª¨ë“œ false
+
+        groggyUI.SetupGroggySpriteGauge(maxGroggyCnt); // ê·¸ë¡œê¸° ìŠ¬ë¡¯ ì´ˆê¸°í™”
+
     }
 
     private void Update()
     {
-        if(moveSpeed == 2) // ´Á´ë µîÀå½Ã ¿À¿°µµ °¨¼Ò
-            currentHp -= 5f * Time.deltaTime; // 1ÃÊ¿¡ 5 Hp¾¿ °¨¼Ò
-        
-        if (!isLooking || player == null || isStune || isDead ) return;
-        // ÀûÀÌ ÇÃ·¹ÀÌ¾î¸¦ ¹Ù¶óº¸°í ÀÖÀ» °æ¿ì
+        if (moveSpeed == 2) // ëŠ‘ëŒ€ ë“±ì¥ or ì •í™”ì˜ ê±¸ìŒì‹œ ì˜¤ì—¼ë„ ê°ì†Œ
+            currentHp -= 10f * Time.deltaTime; // 1ì´ˆì— 10 Hpì”© ê°ì†Œ
+
+        if (!isLooking || player == null || isStune || isDead) return;
+        // ì ì´ í”Œë ˆì´ì–´ë¥¼ ë°”ë¼ë³´ê³  ìˆì„ ê²½ìš°
         Vector2 direction = (player.transform.position - transform.position).normalized;
-        if (direction.x > 0) 
+        if (direction.x > 0)
             spriteRenderer.flipX = false;
-        else 
+        else
             spriteRenderer.flipX = true;
-        
-        if (!attackMode) return; 
-        // °ø°İ ¸ğµå or ½ºÅÏ »óÅÂ°¡ ¾Æ´Ò °æ¿ì
+
+        if (!attackMode) return;
+        // ê³µê²© ëª¨ë“œ or ìŠ¤í„´ ìƒíƒœê°€ ì•„ë‹ ê²½ìš°
         Vector2 velocity = new Vector2(direction.x * moveSpeed, rigidBody.velocity.y);
-        rigidBody.velocity = velocity; // Àû ÀÌµ¿
+        rigidBody.velocity = velocity; // ì  ì´ë™
 
-        animator.SetBool("isRun", Mathf.Abs(velocity.x) > 0.1f); // ¼Óµµ¿¡ µû¸¥ ¾Ö´Ï¸ŞÀÌ¼Ç Á¦¾î
+        animator.SetBool("isRun", Mathf.Abs(velocity.x) > 0.1f); // ì†ë„ì— ë”°ë¥¸ ì• ë‹ˆë©”ì´ì…˜ ì œì–´
     }
 
-    protected override void HandlerTriggerEnter(Collider2D collision) // Ãæµ¹ Ã³¸® ´ã´ç 
+    protected override void HandlerTriggerEnter(Collider2D collision) // ì¶©ëŒ ì²˜ë¦¬ ë‹´ë‹¹ 
     {
         if (collision.gameObject.CompareTag("AngerMelody"))
         {
             var attackArea = collision.GetComponent<AttackArea>();
-            if (!isLooking || attackArea == null || attackArea.attackGlobalID == attackID) return; // ÀûÀÌ º¸°íÀÖÁö ¾ÊÀ» ¶§ ÇÇ°İ + ÀÌ¹Ì ¹üÀ§ Ãæµ¹ ¿Ï·á½Ã ¸®ÅÏ
+            if (!isLooking || attackArea == null || attackArea.attackGlobalID == attackID) return; // ì ì´ ë³´ê³ ìˆì§€ ì•Šì„ ë•Œ í”¼ê²© + ì´ë¯¸ ë²”ìœ„ ì¶©ëŒ ì™„ë£Œì‹œ ë¦¬í„´
             attackID = attackArea.attackGlobalID;
 
-            Debug.Log("ºĞ³ëÀÇ ¾ÇÀåÀÌ ÀûÀ» °ø°İÇÕ´Ï´Ù!!");
-            
-            if (!attackMode) // attackMode°¡ ºñÈ°¼ºÈ­ µÇ¾îÀÖÀ» ¶§ ÇÇ°İ½Ã
+            Debug.Log("ë¶„ë…¸ì˜ ì•…ì¥ì´ ì ì„ ê³µê²©í•©ë‹ˆë‹¤!!");
+
+            if (!attackMode) // attackModeê°€ ë¹„í™œì„±í™” ë˜ì–´ìˆì„ ë•Œ í”¼ê²©ì‹œ
             {
-                AttackMode(); // °ø°İ¸ğµå È°¼ºÈ­
-            }
-            StartCoroutine(Damaged()); 
-        }
-        else if (collision.gameObject.CompareTag("PeaceMelody"))
-        {
-            if (!attackMode) return; // °ø°İ¸ğµå°¡ ¾Æ´Ò °æ¿ì ÆòÈ­ÀÇ ¾ÇÀå ¹«½Ã
-
-            if(currentHp > 0) // Àû ¿À¿°µµ°¡ Á¸ÀçÇÒ °æ¿ì, ¿À¿°µµ ÃÊ±âÈ­
-            {
-                currentHp = 0;
-                DeActivateAttackMode(); // Àû ÃÊ±â »óÅÂ·Î µÇµ¹¸²
-            }
-            else
-            {
-                Debug.Log("ÆòÈ­ÀÇ ¾ÇÀåÀÌ ÀûÀ» ¾È½É½ÃÅµ´Ï´Ù.");
-                StartCoroutine(EnemyFade(3f)); // ÀûÀÌ ÃµÃµÈ÷ »ç¶óÁü
-            }
-
-        }
-        else if (collision.gameObject.CompareTag("WolfAttack"))
-        {
-            if (!attackMode || isStune) return;
-
-            Debug.Log("´Á´ëÀÇ °ø°İÀÌ ÀûÀ» ±âÀı½ÃÅµ´Ï´Ù!");
-            currentHp -= 20f; // Àû ¿À¿°µµ Áï½Ã 20 °¨¼Ò 
-            float pushBackDir = transform.position.x - collision.transform.position.x; // ÀûÀÌ ¹Ğ°İµÉ ¹æÇâ °è»ê
-            PushBack(pushBackDir);
-        }
-        else if (collision.gameObject.CompareTag("WolfAppear"))
-        {
-            if (!attackMode) return;
-
-            Debug.Log("´Á´ë°¡ ÀûÀ» ÁøÁ¤½ÃÅµ´Ï´Ù");
-            moveSpeed = 2f;
-        }
-        else if (collision.gameObject.CompareTag("Player"))
-        {
-            if (!isLooking) 
-            {
-                isLooking = true; // ÇÃ·¹ÀÌ¾î°¡ ÀûÀÇ ½Ã¾ß¿¡ µé¾î¿ÔÀ»¶§ ¹İÀÀ
-                Debug.Log("ÀûÀÌ ÇÃ·¹ÀÌ¾î¸¦ ¹Ù¶óº¾´Ï´Ù.");
-            } 
-
-            if (!attackMode || isStune) return; // °ø°İ¸ğµå°¡ ¾Æ´Ñ »óÈ² or ½ºÅÏ »óÈ²¿¡¼­ Ãæµ¹½Ã ¹«½Ã
-
-            Debug.Log("Àû ÇÃ·¹ÀÌ¾î¿¡°Ô ÇÇÇØ¸¦ ÀÔÈü´Ï´Ù!");
-            StartCoroutine(Die());
-        }
-    }
-
-    protected override void HandlerTriggerStay(Collider2D collision) // Ãæµ¹ Ã³¸® ´ã´ç 
-    {
-        if (collision.gameObject.CompareTag("AngerMelody"))
-        {
-            var attackArea = collision.GetComponent<AttackArea>();
-            if (!isLooking || attackArea == null || attackArea.attackGlobalID == attackID) return; // ÀÌ¹Ì ¹üÀ§ Ãæµ¹ ¿Ï·á½Ã ¸®ÅÏ
-            attackID = attackArea.attackGlobalID;
-
-            Debug.Log("ºĞ³ëÀÇ ¾ÇÀåÀÌ ÀûÀ» °ø°İÇÕ´Ï´Ù!!");
-
-            if (!attackMode) // attackMode°¡ ºñÈ°¼ºÈ­ µÇ¾îÀÖÀ» ¶§ ÇÇ°İ½Ã
-            {
-                AttackMode(); // °ø°İ¸ğµå È°¼ºÈ­
+                AttackMode(); // ê³µê²©ëª¨ë“œ í™œì„±í™”
             }
             StartCoroutine(Damaged());
         }
         else if (collision.gameObject.CompareTag("PeaceMelody"))
         {
-            if (!attackMode) return; // °ø°İ¸ğµå°¡ ¾Æ´Ò °æ¿ì ÆòÈ­ÀÇ ¾ÇÀå ¹«½Ã
+            if (!attackMode) return; // ê³µê²©ëª¨ë“œê°€ ì•„ë‹ ê²½ìš° í‰í™”ì˜ ì•…ì¥ ë¬´ì‹œ
 
-            Debug.Log("ÆòÈ­ÀÇ ¾ÇÀåÀÌ ÀûÀ» ¾È½É½ÃÅµ´Ï´Ù.");
-            
-            isLooking = false;
-            StartCoroutine(EnemyFade(3f)); // ÀûÀÌ ÃµÃµÈ÷ »ç¶óÁü
+            if (currentHp > 0) // ì  ì˜¤ì—¼ë„ê°€ ì¡´ì¬í•  ê²½ìš°, ì˜¤ì—¼ë„ ì´ˆê¸°í™”
+            {
+                currentHp = 0;
+                DeActivateAttackMode(); // ì  ì´ˆê¸° ìƒíƒœë¡œ ë˜ëŒë¦¼
+            }
+            else
+            {
+                Debug.Log("í‰í™”ì˜ ì•…ì¥ì´ ì ì„ ì•ˆì‹¬ì‹œí‚µë‹ˆë‹¤.");
+                StartCoroutine(EnemyFade(3f)); // ì ì´ ì²œì²œíˆ ì‚¬ë¼ì§
+            }
+
         }
         else if (collision.gameObject.CompareTag("WolfAttack"))
         {
             if (!attackMode || isStune) return;
 
-            Debug.Log("´Á´ëÀÇ °ø°İÀÌ ÀûÀ» ±âÀı½ÃÅµ´Ï´Ù!");
-            float pushBackDir = transform.position.x - collision.transform.position.x; // ÀûÀÌ ¹Ğ°İµÉ ¹æÇâ °è»ê
+            Debug.Log("ëŠ‘ëŒ€ì˜ ê³µê²©ì´ ì ì„ ê¸°ì ˆì‹œí‚µë‹ˆë‹¤!");
+            currentHp -= 20f; // ì  ì˜¤ì—¼ë„ ì¦‰ì‹œ 20 ê°ì†Œ 
+            float pushBackDir = transform.position.x - collision.transform.position.x; // ì ì´ ë°€ê²©ë  ë°©í–¥ ê³„ì‚°
+            PushBack(pushBackDir);
+        }
+        else if (collision.gameObject.CompareTag("WolfAppear") || collision.gameObject.CompareTag("PurifyStep"))
+        {
+            if (!attackMode) return;
+
+            Debug.Log("ì ì„ ì§„ì •ì‹œí‚µë‹ˆë‹¤");
+            moveSpeed = 2f;
+        }
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            if (!isLooking)
+            {
+                isLooking = true; // í”Œë ˆì´ì–´ê°€ ì ì˜ ì‹œì•¼ì— ë“¤ì–´ì™”ì„ë•Œ ë°˜ì‘
+                Debug.Log("ì ì´ í”Œë ˆì´ì–´ë¥¼ ë°”ë¼ë´…ë‹ˆë‹¤.");
+            }
+
+            if (!attackMode || isStune) return; // ê³µê²©ëª¨ë“œê°€ ì•„ë‹Œ ìƒí™© or ìŠ¤í„´ ìƒí™©ì—ì„œ ì¶©ëŒì‹œ ë¬´ì‹œ
+
+            Debug.Log("ì  í”Œë ˆì´ì–´ì—ê²Œ í”¼í•´ë¥¼ ì…í™ë‹ˆë‹¤!");
+            StartCoroutine(Die());
+        }
+        else if (collision.gameObject.CompareTag("EchoGuard"))
+        {
+            if (!attackMode || isStune) return;
+
+            if (currentGroggyCnt < maxGroggyCnt - 1) // ê·¸ë¡œê¸° ê²Œì´ì§€ê°€ 2ê°œ ì´ìƒ ë‚¨ì•˜ì„ ê²½ìš°
+            {
+                Debug.Log("ì†Œë…€ê°€ ì ì˜ ê³µê²©ì„ ë°©ì–´í•´ëƒ…ë‹ˆë‹¤!");
+                groggyUI.AddGroggyState(); // ê·¸ë¡œê¸° ìŠ¤íƒ ì¦ê°€
+                currentGroggyCnt++;
+                audioSource.Play(); // íŒ¨ë§ ì†Œë¦¬ ì¬ìƒ
+                float pushBackDir = transform.position.x - collision.transform.position.x; // ì ì´ ë°€ê²©ë  ë°©í–¥ ê³„ì‚°
+                EchoGuardPushBack(pushBackDir);
+            }
+            else // ë‚¨ì€ ê·¸ë¡œê¸° ê²Œì´ì§€ê°€ 1ê°œì¼ ê²½ìš°
+            {
+                Debug.Log("ì ì´ ì ì‹œ ê·¸ë¡œê¸° ìƒíƒœì— ë¹ ì§‘ë‹ˆë‹¤!");
+                groggyUI.AddGroggyState(); // ê·¸ë¡œê¸° ìŠ¤íƒ ì¦ê°€
+                audioSource.Play(); // íŒ¨ë§ ì†Œë¦¬ ì¬ìƒ
+                float pushBackDir = transform.position.x - collision.transform.position.x; // ì ì´ ë°€ê²©ë  ë°©í–¥ ê³„ì‚°
+                PushBack(pushBackDir);
+            }
+        }
+    }
+
+    protected override void HandlerTriggerStay(Collider2D collision) // ì¶©ëŒ ì²˜ë¦¬ ë‹´ë‹¹ 
+    {
+        if (collision.gameObject.CompareTag("AngerMelody"))
+        {
+            var attackArea = collision.GetComponent<AttackArea>();
+            if (!isLooking || attackArea == null || attackArea.attackGlobalID == attackID) return; // ì´ë¯¸ ë²”ìœ„ ì¶©ëŒ ì™„ë£Œì‹œ ë¦¬í„´
+            attackID = attackArea.attackGlobalID;
+
+            Debug.Log("ë¶„ë…¸ì˜ ì•…ì¥ì´ ì ì„ ê³µê²©í•©ë‹ˆë‹¤!!");
+
+            if (!attackMode) // attackModeê°€ ë¹„í™œì„±í™” ë˜ì–´ìˆì„ ë•Œ í”¼ê²©ì‹œ
+            {
+                AttackMode(); // ê³µê²©ëª¨ë“œ í™œì„±í™”
+            }
+            StartCoroutine(Damaged());
+        }
+        else if (collision.gameObject.CompareTag("PeaceMelody"))
+        {
+            if (!attackMode) return; // ê³µê²©ëª¨ë“œê°€ ì•„ë‹ ê²½ìš° í‰í™”ì˜ ì•…ì¥ ë¬´ì‹œ
+
+            Debug.Log("í‰í™”ì˜ ì•…ì¥ì´ ì ì„ ì•ˆì‹¬ì‹œí‚µë‹ˆë‹¤.");
+
+            isLooking = false;
+            StartCoroutine(EnemyFade(3f)); // ì ì´ ì²œì²œíˆ ì‚¬ë¼ì§
+        }
+        else if (collision.gameObject.CompareTag("WolfAttack"))
+        {
+            if (!attackMode || isStune) return;
+
+            Debug.Log("ëŠ‘ëŒ€ì˜ ê³µê²©ì´ ì ì„ ê¸°ì ˆì‹œí‚µë‹ˆë‹¤!");
+            float pushBackDir = transform.position.x - collision.transform.position.x; // ì ì´ ë°€ê²©ë  ë°©í–¥ ê³„ì‚°
             PushBack(pushBackDir);
             StartCoroutine(Stunned(3f));
+        }
+        else if (collision.gameObject.CompareTag("WolfAppear") || collision.gameObject.CompareTag("PurifyStep"))
+        {
+            if (!attackMode) return;
+
+            Debug.Log("ì ì„ ì§„ì •ì‹œí‚µë‹ˆë‹¤");
+            moveSpeed = 2f;
         }
     }
 
     public override void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("WolfAppear") && attackMode)
+        if ((collision.gameObject.CompareTag("WolfAppear") || collision.gameObject.CompareTag("PurifyStep")) && attackMode)
         {
-            Debug.Log("ÀûÀÌ ´Á´ëÀÇ ¹üÀ§¸¦ ¹ş¾î³³´Ï´Ù");
-            moveSpeed = defaultMoveSpeed; // ±âÁ¸ ¼Óµµ
+            Debug.Log("ì ì´ ë²”ìœ„ë¥¼ ë²—ì–´ë‚©ë‹ˆë‹¤");
+            moveSpeed = defaultMoveSpeed; // ê¸°ì¡´ ì†ë„
         }
-        else if(collision.gameObject.CompareTag("Player") && isLooking)
+        else if (collision.gameObject.CompareTag("Player") && isLooking)
         {
-            AttackMode(); // °ø°İ¸ğµå È°¼ºÈ­
+            AttackMode(); // ê³µê²©ëª¨ë“œ í™œì„±í™”
         }
     }
 
-    private IEnumerator Die() // 1½ºÅ×ÀÌÁö ÀÏ¹İ ¸ó½ºÅÍÀÇ Æ¯¼º(ÀÚÆø)¿¡ ÇÊ¿ä
+    private IEnumerator Die() // 1ìŠ¤í…Œì´ì§€ ì¼ë°˜ ëª¬ìŠ¤í„°ì˜ íŠ¹ì„±(ìí­)ì— í•„ìš”
     {
-        Debug.Log("ÀûÀÌ °íÅë½º·´°Ô ¼Ò¸êÇÕ´Ï´Ù...");
+        Debug.Log("ì ì´ ê³ í†µìŠ¤ëŸ½ê²Œ ì†Œë©¸í•©ë‹ˆë‹¤...");
         moveSpeed = 0f;
         animator.SetTrigger("Die");
         dieEffect.SetActive(true);
         yield return new WaitForSeconds(0.5f);
 
         dieEffect.SetActive(false);
-        gameObject.SetActive(false); // Àû ºñÈ°¼ºÈ­
+        gameObject.SetActive(false); // ì  ë¹„í™œì„±í™”
     }
 
-    private void AttackMode() // °ø°İ ¸ğµå È°¼ºÈ­
+    private void AttackMode() // ê³µê²© ëª¨ë“œ í™œì„±í™”
     {
-        Debug.Log("ÀûÀÌ ÇÃ·¹ÀÌ¾î¿¡°Ô ´Ş·Áµì´Ï´Ù!");
+        Debug.Log("ì ì´ í”Œë ˆì´ì–´ì—ê²Œ ë‹¬ë ¤ë“­ë‹ˆë‹¤!");
         attackMode = true;
-        boxCollider.size = new Vector2(0.03f, 0.23f); // ÇÇ°İ ¹üÀ§ Å©±â º¯°æ (ÇÃ·¹ÀÌ¾î ÀÎ½Ä ¹üÀ§ -> Àû Ãæµ¹ ¹üÀ§)
-        boxCollider.offset = new Vector2(0f, 0.125f); // ÇÇ°İ ¹üÀ§ À§Ä¡ º¯°æ
+        boxCollider.size = new Vector2(0.03f, 0.23f); // í”¼ê²© ë²”ìœ„ í¬ê¸° ë³€ê²½ (í”Œë ˆì´ì–´ ì¸ì‹ ë²”ìœ„ -> ì  ì¶©ëŒ ë²”ìœ„)
+        boxCollider.offset = new Vector2(0f, 0.125f); // í”¼ê²© ë²”ìœ„ ìœ„ì¹˜ ë³€ê²½
         moveSpeed = defaultMoveSpeed;
     }
 
-    private void DeActivateAttackMode() // °ø°İ ¸ğµå ÇØÁ¦ ±¸Çö
+    private void DeActivateAttackMode() // ê³µê²© ëª¨ë“œ í•´ì œ êµ¬í˜„
     {
-        Debug.Log("ÀûÀÌ ÁøÁ¤µË´Ï´Ù...");
+        Debug.Log("ì ì´ ì§„ì •ë©ë‹ˆë‹¤...");
 
         isLooking = false;
         attackMode = false;
         animator.SetBool("isRun", false);
-        boxCollider.size = new Vector2(1.5f, 1f); // ÇÇ°İ ¹üÀ§ Å©±â º¯°æ (Àû Ãæµ¹ ¹üÀ§ -> ÇÃ·¹ÀÌ¾î ÀÎ½Ä ¹üÀ§)
-        boxCollider.offset = new Vector2(0f, 0.51f); // ÇÇ°İ ¹üÀ§ À§Ä¡ º¯°æ
+        boxCollider.size = new Vector2(1.5f, 1f); // í”¼ê²© ë²”ìœ„ í¬ê¸° ë³€ê²½ (ì  ì¶©ëŒ ë²”ìœ„ -> í”Œë ˆì´ì–´ ì¸ì‹ ë²”ìœ„)
+        boxCollider.offset = new Vector2(0f, 0.51f); // í”¼ê²© ë²”ìœ„ ìœ„ì¹˜ ë³€ê²½
 
-        StartCoroutine(Stunned(3f)); // 3ÃÊ°£ ±âÀı
+        StartCoroutine(Stunned(3f)); // 3ì´ˆê°„ ê¸°ì ˆ
     }
 }

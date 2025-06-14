@@ -1,8 +1,8 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class PlayerAnimTrigger // ÇÃ·¹ÀÌ¾î Trigger ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·ù
+public static class PlayerAnimTrigger // í”Œë ˆì´ì–´ Trigger ì• ë‹ˆë©”ì´ì…˜ ì¢…ë¥˜
 {
     public const string Sad = "isSad";
     public const string Happy = "isHappy";
