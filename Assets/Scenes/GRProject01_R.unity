@@ -3195,6 +3195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1200477892}
+  - component: {fileID: 1200477893}
   m_Layer: 0
   m_Name: Groggy UI
   m_TagString: Untagged
@@ -3221,6 +3222,27 @@ RectTransform:
   m_AnchoredPosition: {x: -0.07, y: 0.245}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1200477893
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200477891}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 62727441189a48d458a360c748b5f3eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1357596944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3937,7 +3959,7 @@ GameObject:
   - component: {fileID: 1705535823}
   - component: {fileID: 1705535822}
   m_Layer: 0
-  m_Name: 1
+  m_Name: TextBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16932,6 +16954,6 @@ SceneRoots:
   - {fileID: 755907465450564475}
   - {fileID: 1938134038}
   - {fileID: 1190326355}
+  - {fileID: 1915353981}
   - {fileID: 1705535825}
   - {fileID: 6047327280576004317}
-  - {fileID: 1915353981}
