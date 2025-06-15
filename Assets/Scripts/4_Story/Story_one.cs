@@ -12,6 +12,7 @@ public class Story_one : MonoBehaviour
     public GameObject girlImage;
     public GameObject wolfImage;
     public GameObject sideImage;
+    public GameObject textbehind;
     public Text printText1;
     public Text printText2;
 
@@ -73,7 +74,7 @@ public class Story_one : MonoBehaviour
 
         cam.orthographicSize = targetZoom;
         cam.transform.position = camTargetPos;
-
+        textbehind.SetActive(true);
         //텍스트 출력
         // 대사 출력
         for (int t = 0; t < dialoguescript[index].Count; t++)
@@ -134,6 +135,7 @@ public class Story_one : MonoBehaviour
         cam.orthographicSize = startZoom;
         cam.transform.position = camStartPos;
 
+        textbehind.SetActive(false);
         sideImage.SetActive(false);
         girlImage.SetActive(false);
         wolfImage.SetActive(false);
