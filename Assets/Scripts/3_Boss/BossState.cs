@@ -15,11 +15,11 @@ public class BossState : MonoBehaviour
 
     private Animator anim;
     private Transform player;
-    public GameObject attackArea1; // 공격 판정 오브젝트 (BoxCollider2D 등)
-    public GameObject attackArea2; // 공격 판정 오브젝트 (BoxCollider2D 등)
-    public GameObject attackArea3; // 공격 판정 오브젝트 (BoxCollider2D 등)
-
-    public GameObject[] boomArea;
+    //public GameObject attackArea1; // 공격 판정 오브젝트
+    public GameObject attackArea2;
+    public GameObject attackArea3;
+   
+    public GameObject[] boomArea; //3번째패턴 공격 범위
 
     private bool isAttacking;
     private bool dontmove = true;
@@ -68,8 +68,6 @@ public class BossState : MonoBehaviour
         if (distanceX <= stopDistance && !isAttacking)
         {
             Attack();
-
-            Debug.Log("공격");
             return;
         }
 
@@ -89,8 +87,6 @@ public class BossState : MonoBehaviour
 
     void Attack()
     {
-        //StartCoroutine(Attack3());
-
         if (num < 3)
         {
             StartCoroutine(Attack1());
@@ -152,7 +148,12 @@ public class BossState : MonoBehaviour
 
     public void SetAttack(int attacknum)
     {
-       // Debug.Log("공격 번호: " + attacknum);
+        Collider2D col = attackAreas[attacknum].GetComponent<Collider2D>();
+        col.enabled = false;
+        col.enabled = true;
+
+        Debug.Log("공격 번호: " + attacknum);
+
         GameObject targetArea = attackAreas[attacknum];
         attack attackScript = targetArea.GetComponent<attack>();
 
@@ -160,11 +161,13 @@ public class BossState : MonoBehaviour
         {
             attackScript.isAttacking = true; // 공격 상태로 설정
         }
+
+
     }
 
     public void SetNoAttack(int attacknum)
     {
-      //  Debug.Log("공격 번호: " + attacknum);
+        //Debug.Log("공격 번호: " + attacknum);
 
         GameObject targetArea = attackAreas[attacknum];
         attack attackScript = targetArea.GetComponent<attack>();
@@ -182,9 +185,7 @@ public class BossState : MonoBehaviour
 
         if (dontmove)
         {
-            Collider2D col = attackArea1.GetComponent<Collider2D>();
-            col.enabled = false;
-            col.enabled = true;
+         
         }
         yield return new WaitForSeconds(1.2f);
         isAttacking = false;
