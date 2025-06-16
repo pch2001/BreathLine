@@ -1962,6 +1962,56 @@ PrefabInstance:
       addedObject: {fileID: 1146796660}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc3fa566daed41f4e9083ee8cb612ca2, type: 3}
+--- !u!1 &718753226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 718753228}
+  - component: {fileID: 718753227}
+  m_Layer: 0
+  m_Name: ThunderStop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &718753227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718753226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40d09c8221c8174fb20ae72839f87b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thunderPrefab: {fileID: 8903480543076556420, guid: e95c1ff621efe3646b00d2ac087c303c, type: 3}
+  audioSource: {fileID: 1671051438}
+  audioClipKnock:
+  - {fileID: 8300000, guid: ffac087a6f4686a44b81b621680fbf62, type: 3}
+  - {fileID: 8300000, guid: 2e54aa92f93ce9c41ae7794471e90843, type: 3}
+  - {fileID: 8300000, guid: 1ee9bb632d3a5534d9ea28fe6e9731c6, type: 3}
+--- !u!4 &718753228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718753226}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -70.61447, y: -1.3267164, z: -0.14545232}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &722064593
 GameObject:
   m_ObjectHideFlags: 0
@@ -4340,6 +4390,11 @@ Transform:
   - {fileID: 638674081}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1671051438 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4287093767090491400, guid: 93686b5b6a133ed4fa29883bef6f2202, type: 3}
+  m_PrefabInstance: {fileID: 1366525912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1672856671
 GameObject:
   m_ObjectHideFlags: 0
@@ -7316,3 +7371,4 @@ SceneRoots:
   - {fileID: 967316897}
   - {fileID: 2083502883}
   - {fileID: 1482801503}
+  - {fileID: 718753228}
