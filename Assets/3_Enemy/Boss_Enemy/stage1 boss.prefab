@@ -1253,7 +1253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: a3e0ab6f8137c474cabb2f5271a7ac45, type: 3}
       propertyPath: m_SpriteSortPoint
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: a3e0ab6f8137c474cabb2f5271a7ac45, type: 3}
       propertyPath: m_LocalScale.x
@@ -1390,7 +1390,6 @@ MonoBehaviour:
   HP: 10
   maxHP: 10
   moveSpeed: 2
-  attackArea1: {fileID: 5712559286574133336}
   attackArea2: {fileID: 5435962934500587839}
   attackArea3: {fileID: 8852678549634415015}
   boomArea:
