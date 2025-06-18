@@ -305,12 +305,14 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
             // Player 레이어(7번)와 Enemy 레이어(6번) 사이 충돌을 무시
             Physics2D.IgnoreLayerCollision(7, 6, true);
 
-            animator.SetTrigger(PlayerAnimTrigger.Hit);
+            if(!isPurifying) // 정화의 걸음시에는 피격 애니메이션 무시
+                animator.SetTrigger(PlayerAnimTrigger.Hit);
 
             // 피격시 연주, 에코가드, 정화의 걸음 비활성화
             playerinputAction.Player.PlayPiri.Disable();
             playerinputAction.Player.EchoGuard.Disable();
-            playerinputAction.Player.PurifyingStep.Disable();
+            if (!isPurifying) // 정화의 걸음시에 피격시 영향x
+                playerinputAction.Player.PurifyingStep.Disable();
 
             // 깜빡이는 효과
             float elapsed = 0f; // 경과된 정도
