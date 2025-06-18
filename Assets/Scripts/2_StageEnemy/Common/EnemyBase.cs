@@ -17,6 +17,7 @@ public abstract class EnemyBase : MonoBehaviour
     public GameObject hitEffect; // 피격 이펙트
     public GameObject dieEffect; // Die 이펙트
     public GameObject enemyFadeEffect; // 사라질 때 이펙트
+    public GameObject echoGuardEffect; // 에코가드 성공 이펙트
     [SerializeField] private Transform enemyHpGauge; // 적 Hp(오염도) UI
 
     public float maxHp; // 적 최대 HP (최대 오염도)
@@ -41,14 +42,21 @@ public abstract class EnemyBase : MonoBehaviour
 
     public float decreaseHpSpeed; // 적 HP(오염도) 감소 속도
     public float damage; // 적 공격력
+    public float pollutionDegree; // 처치시 오염도 오르는 정도
+    public float pollutionResist = 1; // 오염도 감소 비율
     public int maxGroggyCnt; // 최대 그로기 게이지 개수
     public int currentGroggyCnt; // 현재 그로기 게이지 개수
     public EnemyGroggyUI groggyUI; // 그로기 UI 오브젝트
+    public Coroutine attackCoroutine; // 스턴, 사망시 코루틴 중간 탈출
 
     public bool attackMode = false; // 적 공격 상태 여부(경계 <-> 추격)
     public bool isStune = false; // 스턴 상태 여부
     public bool isDead = false; // 죽음 여부
     public bool enemyIsReturn; // // 적 회귀 상태 설정
+    public bool isAttacking = false; // 공격 간격 제한 변수
+
+    public bool isPurifying = false; // 정화 중인지(늑대 등장, 정화의 걸음)
+    public bool isReadyPeaceMelody = false; // 평화의 멜로디 준비중인지 (준비파동 계산)
 
     void Awake()
     {
@@ -69,6 +77,7 @@ public abstract class EnemyBase : MonoBehaviour
         isStune = true; // 잠시 스턴 상태
         currentColor = spriteRenderer.color;
         spriteRenderer.color = new Color(currentColor.r * 0.5f, currentColor.g * 0.5f, currentColor.b * 0.5f, currentColor.a);
+        CancelAttack(); // 공격 중인 경우 취소
         animator.SetBool("isRun", false); // 잠시 Idle 모션
 
         yield return new WaitForSeconds(delay);
@@ -129,6 +138,7 @@ public abstract class EnemyBase : MonoBehaviour
             moveSpeed = 0f;
             animator.SetTrigger("Die");
             dieEffect.SetActive(true);
+            GameManager.Instance.AddPolution(pollutionDegree);
             yield return new WaitForSeconds(0.5f);
 
             dieEffect.SetActive(false);
@@ -167,6 +177,18 @@ public abstract class EnemyBase : MonoBehaviour
         float hpRatio = currentHp / maxHp;
         enemyHpGauge.localScale = new Vector2(hpRatio, enemyHpGauge.localScale.y);
 
+    }
+
+    private void CancelAttack()
+    {
+        if (attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine); 
+            hitEffect.SetActive(false);
+            attackCoroutine = null;
+            isAttacking = false;
+            Debug.LogWarning("공격 강제 종료!");
+        }
     }
 
     protected abstract void HandlerTriggerEnter(Collider2D collision); // 충돌시 범위 주변(Enter) 담당 함수

@@ -15,6 +15,11 @@ TagManager:
   - EchoGuard
   - PurifyStep
   - SavePoint
+  - platform
+  - ground
+  - enemys
+  - EnemyAttack
+  - PeaceWaiting
   layers:
   - Default
   - TransparentFX
@@ -24,8 +29,8 @@ TagManager:
   - UI
   - Enemy
   - Player
-  - Attack
-  - 
+  - PlayerAttack
+  - EnemyAttack
   - 
   - 
   - 

@@ -66,7 +66,7 @@ public class PlayerSkill_R : MonoBehaviour
         AngerAttackArea.SetActive(false);
     }
 
-    private void PlaySoftPiriCanceled() // 평화의 악장 취소 시
+    public void PlaySoftPiriCanceled() // 평화의 악장 취소 시
     {
         Debug.Log("[평화의 악장] 연주 실패...");
         PeaceWaitingEffect.SetActive(false); // 평화의 악장 준비 이펙트 종료

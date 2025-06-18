@@ -8,25 +8,28 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
-public class PlayerCtrl : MonoBehaviour
+public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 {
     private Animator animator;
     private Rigidbody2D rb;
     private PlayerSkill playerSkill;
     public SpriteRenderer spriteRenderer; // Sprite 반전용
-    private PlayerInputAction playerinputAction; // 강화된 Input 방식 사용
-    private float moveSpeed = 5f; // 이동속도
+    public PlayerInputAction playerinputAction; // 강화된 Input 방식 사용
+
+    float h; // 플레이어 좌우 이동값
+    public float moveSpeed = 5f; // 이동속도
     public float jumpForce = 12f; // 점프력
     private bool isGrounded = true; // 착지 여부
-    private bool isPressingPiri = false; // 피리 연주 여부
-    public float damagedTime = 2f; // 피격 반응 유지 시간
+    public bool isPressingPiri { get; private set; } = false; // 피리 연주 여부
+    public bool isDamaged = false; // 현재 피격상태 여부
+    public float damagedTime = 1f; // 피격 반응 유지 시간
     private float blinkInterval = 0.15f; // 피격시 한번 깜빡하는 시간
 
     private Color originColor = new Color(1f, 1f, 1f); // 소녀 스프라이트 색상
     private Color damagedColor = new Color(0.5f, 0.5f, 0.5f); // 소녀 피격시 깜빡일 때 색상
 
     public Vector3 savePoint; // 현재 스테이지에서 사용할 임시 세이브 포인트
-    private bool dontmove = true;//플레이 고정시
+    public bool isLocked = false; // 상호작용시 행동 제한
 
     public GameObject wolf; // 늑대 게임 오브젝트
     public Animator wolfAnimator; // 늑대 애니메이터
@@ -48,7 +51,8 @@ public class PlayerCtrl : MonoBehaviour
 
     public void OnEnable()
     {
-        dontmove = true;// 대화시 움직임 멈추기 위해 true = 움직이는 상태
+        isLocked = false; // 움직임 제한 해제
+
         // inputAction 활성화
         playerinputAction.Enable();
 
@@ -65,14 +69,13 @@ public class PlayerCtrl : MonoBehaviour
         playerinputAction.Player.Jump.performed += OnJump;
         playerinputAction.Player.PlayPiri.started += OnStartPiri;
         playerinputAction.Player.PlayPiri.canceled += OnReleasePiri;
-
         playerinputAction.Wolf.Move.performed += OnWolfMove;
         playerinputAction.Wolf.Attack.performed += OnWolfAttack;
     }
 
     public void OnDisable()
     {
-        dontmove = false;// 대화시 움직임 멈추기 위해 faalse = 못 움직이는 상태
+        isLocked = true;// 대화시 움직임 못 움직이는 상태
 
         // inputAction 비활성화
         playerinputAction.Disable();
@@ -112,30 +115,26 @@ public class PlayerCtrl : MonoBehaviour
 
     void Update()
     {
+        if (isLocked) return; // 행동 제한 변수 활성화시 제한
+
         OnPlaySoftPiri(); // 평화의 악장 연주 차징 확인
         OnPlayerMove(); // 이동 구현
         OnWolfHide(); // 늑대 숨김 구현
     }
 
-    float h;
-
     private void OnPlayerMove()
     {
-        if (dontmove)
-        {
-            h = Input.GetAxisRaw("Horizontal");
-            // 좌우 이동
-            rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
-        }
-        else
-        {
-            h = 0;
-        }
+        // 좌우 방향 기준
+        h = Input.GetAxisRaw("Horizontal");
+
+        // 애니메이션 변경
         if (h != 0)
             animator.SetBool("isMove", true);
         else
             animator.SetBool("isMove", false);
 
+        // 이동 구현
+        rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
         // 좌우 반전
         if (h > 0)
             spriteRenderer.flipX = false;
@@ -156,6 +155,20 @@ public class PlayerCtrl : MonoBehaviour
     private void OnJumpEnd() // 점프 애니메이션 종료시, 잠시 그 상태로 멈춤
     {
         animator.speed = 0f;
+    }
+
+    private void OnStartInteract(InputAction.CallbackContext context)
+    {
+        moveSpeed = 0f; // 이동 제한
+        isLocked = true;
+        playerinputAction.Player.PlayPiri.Disable(); // 피리 사용 제한
+    }
+
+    private void OnStopInteract(InputAction.CallbackContext context)
+    {
+        moveSpeed = 5f; // 이동 제한 해제
+        isLocked = false;
+        playerinputAction.Player.PlayPiri.Enable(); // 피리 사용 제한 해제
     }
 
     private void OnStartPiri(InputAction.CallbackContext context) // 연주버튼을 눌렀을 때 실행
@@ -253,6 +266,8 @@ public class PlayerCtrl : MonoBehaviour
 
     private IEnumerator OnDamagedStart() // 소녀 피격 시작 함수
     {
+        isDamaged = true; // 피격상태 시작
+
         // 피격시 연주 비활성화
         playerinputAction.Player.PlayPiri.Disable();
 
@@ -282,7 +297,23 @@ public class PlayerCtrl : MonoBehaviour
 
         // 피격시 연주, 에코가드, 정화의 걸음 복구
         playerinputAction.Player.PlayPiri.Enable();
+
+        isDamaged = false; // 피격상태 종료
     }
+
+    private IEnumerator GameOver() // GameOver시 함수
+    {
+        Debug.LogWarning("소녀가 쓰러집니다.. GameOver");
+        Debug.LogWarning("GameOver표시 + 게임오버 UI 표시 추가");
+
+        Time.timeScale = 0.5f; // 시간 느려지는 연출
+        yield return new WaitForSeconds(1f);
+
+        Time.timeScale = 1f;
+        GameManager.Instance.Pollution = 0f;
+        GameManager.Instance.AddPolution(0f); // 오염도 UI 초기화
+    }
+
     private void OnCollisionEnter2D(Collision2D collision) // 물리 충돌만 구현
     {
         if (collision.gameObject.CompareTag("Ground")) // 바닥과 충돌시 값 초기화
@@ -313,13 +344,31 @@ public class PlayerCtrl : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("소녀 피격! GameOver...");
-                    //Time.timeScale = 0f;
+                    GameManager.Instance.StartCoroutine(GameOver()); // 게임 오버 실행
                 }
             }
             else
             {
                 Debug.Log("해당 적은 EnemyBase 클래스를 상속하지 않았습니다! 연결해유");
+            }
+        }
+        else if (collision.gameObject.CompareTag("EnemyAttack"))
+        {
+            if (isDamaged) return; // 소녀 피격 상태시 충돌 X
+
+            if (isPressingPiri) // 평화의 연주중이었을 경우 캔슬
+            {
+                playerSkill.PlaySoftPiriCanceled();
+            }
+
+            if (currentWolfState != WolfState.Damaged) // 늑대 보호 가능
+            {
+                StartCoroutine(OnDamagedStart()); // 소녀 피격 상태 구현
+                OnWolfGuard(); // 가드 실행
+            }
+            else
+            {
+                GameManager.Instance.StartCoroutine(GameOver()); // 게임 오버 실행
             }
         }
         else if (collision.gameObject.CompareTag("SavePoint"))

@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41be8d8db6dc5d74a946501496e8b9d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackGlobalID: 0
+  attackGlobalID: 1
 --- !u!50 &8879111292196754446
 Rigidbody2D:
   serializedVersion: 4
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 677107371375778531}
   m_Layer: 0
   m_Name: PeaceWaitng
-  m_TagString: Untagged
+  m_TagString: PeaceWaiting
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -531,9 +531,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  moveSpeed: 5
   jumpForce: 12
+  isDamaged: 0
   damagedTime: 2
   savePoint: {x: -82, y: -1.5, z: 0}
+  isLocked: 0
   wolf: {fileID: 0}
   wolfAnimator: {fileID: 0}
   wolfExitTimer: 0
