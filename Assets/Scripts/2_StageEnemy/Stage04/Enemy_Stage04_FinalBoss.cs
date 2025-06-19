@@ -74,7 +74,8 @@ public class Enemy_Stage04_FinalBoss : EnemyBase // Ghowl 스크립트
             if (attackArea == null || attackArea.attackGlobalID == angerAttackID) return; // 이미 범위 충돌 완료시 리턴
             angerAttackID = attackArea.attackGlobalID;
 
-            Debug.Log("분노의 악장이 적을 공격합니다!!");
+            Debug.Log("분노의 악장이 적을 공격합니다!!"); 
+            AttackRange0.SetActive(false);
 
             if (!attackMode) // attackMode가 비활성화 되어있을 때 피격시
             {
@@ -90,6 +91,7 @@ public class Enemy_Stage04_FinalBoss : EnemyBase // Ghowl 스크립트
             if (attackArea == null || attackArea.attackGlobalID == peaceAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
             peaceAttackID = attackArea.attackGlobalID;
 
+            AttackRange0.SetActive(false);
             currentHp -= 20f;
             if (currentHp <= 0) 
             {
@@ -103,6 +105,7 @@ public class Enemy_Stage04_FinalBoss : EnemyBase // Ghowl 스크립트
             if (!attackMode || isStune) return;
 
             Debug.Log("늑대의 공격이 적을 기절시킵니다!");
+            AttackRange0.SetActive(false);
             if (currentHp - 20f >= 5) // 최대 5까지 오염도 감소
                 currentHp -= 20f; // 적 오염도 즉시 20 감소 
             else
@@ -143,6 +146,7 @@ public class Enemy_Stage04_FinalBoss : EnemyBase // Ghowl 스크립트
             angerAttackID = attackArea.attackGlobalID;
 
             Debug.Log("분노의 악장이 적을 공격합니다!!");
+            AttackRange0.SetActive(false);
 
             if (!attackMode) // attackMode가 비활성화 되어있을 때 피격시
             {
@@ -158,6 +162,7 @@ public class Enemy_Stage04_FinalBoss : EnemyBase // Ghowl 스크립트
             if (attackArea == null || attackArea.attackGlobalID == peaceAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
             peaceAttackID = attackArea.attackGlobalID;
 
+            AttackRange0.SetActive(false);
             currentHp -= 20f;
             if (currentHp <= 0)
             {
