@@ -591,8 +591,6 @@ GameObject:
   - component: {fileID: 8601603752189894765}
   - component: {fileID: 3562911982440021254}
   - component: {fileID: 2939082263519435651}
-  - component: {fileID: 821328413380088944}
-  - component: {fileID: 5108678392026879666}
   m_Layer: 6
   m_Name: EnemyR 04_FinalBoss
   m_TagString: Enemy
@@ -898,58 +896,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &821328413380088944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5903500037709918095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6abfc1c39c223245ad517db4ff458a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gaugeSlotPrefab: {fileID: 4742191342057869665, guid: 69f24a16795d5374f8f5362dc9bb83ca, type: 3}
-  slotParent: {fileID: 6382302317339526731}
---- !u!114 &5108678392026879666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5903500037709918095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00b0b1ccc94a49048b879e3623f5245a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffect: {fileID: 3925358223583043151}
-  dieEffect: {fileID: 2680660725718886892}
-  enemyFadeEffect: {fileID: 5663446368982362223}
-  echoGuardEffect: {fileID: 7496641527196415508}
-  enemyHpGauge: {fileID: 9161282114936379599}
-  maxHp: 0
-  _currentHp: 0
-  defaultMoveSpeed: 4.5
-  _moveSpeed: 4.5
-  decreaseHpSpeed: 0
-  damage: 0
-  pollutionDegree: 0
-  pollutionResist: 1
-  maxGroggyCnt: 0
-  currentGroggyCnt: 0
-  groggyUI: {fileID: 0}
-  attackMode: 0
-  isStune: 0
-  isDead: 0
-  enemyIsReturn: 1
-  isAttacking: 0
-  isPurifying: 0
-  isReadyPeaceMelody: 0
-  AttackRange0: {fileID: 7650140603341426574}
-  angerAttackID: 0
-  peaceAttackID: 1
 --- !u!1 &7496641527196415508
 GameObject:
   m_ObjectHideFlags: 0

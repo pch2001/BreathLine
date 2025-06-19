@@ -11,9 +11,10 @@ public class attack : MonoBehaviour
 
     public bool isAttacking = false; // 공격 중인지 여부
 
+
     void Start()
     {
-        isAttacking = false;
+        //isAttacking = false;
     }
 
 
