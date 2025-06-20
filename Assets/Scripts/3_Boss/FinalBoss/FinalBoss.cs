@@ -38,7 +38,7 @@ public class FinalBoss : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").transform;
         anim = GetComponent<Animator>();
-        StartCoroutine(Attack3());
+        //StartCoroutine(Attack3());
 
     }
     int count = 0;
@@ -56,7 +56,7 @@ public class FinalBoss : MonoBehaviour
 
         //StartCoroutine(TeleportAndAOE());
         //StartCoroutine(Attack1());
-        //StartCoroutine(Attack2());
+        StartCoroutine(Attack2());
 
         //if (canTeleport && count == 5)
         //{
