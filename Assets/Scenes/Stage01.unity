@@ -14715,11 +14715,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  moveSpeed: 5
   jumpForce: 12
+  isDamaged: 0
   damagedTime: 2
   savePoint: {x: 0, y: 0, z: 0}
-  wolf: {fileID: 0}
-  wolfAnimator: {fileID: 0}
+  isLocked: 0
+  wolf: {fileID: 6612437039033754726}
+  wolfAnimator: {fileID: 808752335182681939}
   wolfExitTimer: 0
   currentWolfState: 0
   wolfAttackCool: {fileID: 0}

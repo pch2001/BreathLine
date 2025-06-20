@@ -42,7 +42,6 @@ public class FinalBoss : MonoBehaviour
 
     }
     int count = 0;
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (isAttacking || player == null) return;
@@ -56,29 +55,29 @@ public class FinalBoss : MonoBehaviour
 
         //StartCoroutine(TeleportAndAOE());
         //StartCoroutine(Attack1());
-        StartCoroutine(Attack2());
+        // StartCoroutine(Attack2());
 
-        //if (canTeleport && count == 5)
-        //{
-        //    StartCoroutine(TeleportAndAOE());
-        //}
-        //if (dist < meleeRange)
-        //{
-        //    count++;
-        //    StartCoroutine(Attack1());
-        //}
-        //else if (dist < rangeAttackRange)
-        //{
-        //    count++;
-        //    StartCoroutine(Attack2());
-        //}
-        //else
-        //{
-        //    FollowPlayer();
-        //}
+        if (canTeleport && count == 5)
+        {
+            StartCoroutine(TeleportAndAOE());
+        }
+        if (dist < meleeRange)
+        {
+            count++;
+            StartCoroutine(Attack1());
+        }
+        else if (dist < rangeAttackRange)
+        {
+            count++;
+            StartCoroutine(Attack2());
+        }
+        else
+        {
+            FollowPlayer();
+        }
     }
 
-
+   
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("AngerMelody") && !isAttacking)
@@ -94,8 +93,6 @@ public class FinalBoss : MonoBehaviour
                 anim.SetTrigger("Hit");
                 Debug.Log("보스 HP: " + HP);
                 HP--;
-                //fillImage.fillAmount = HP / maxHP;
-
             }
 
         }

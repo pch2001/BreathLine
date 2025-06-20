@@ -430,7 +430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 498863693578146361, guid: f9f4d9fe324d7e5478a7f8ce5d980208, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3924489283407713674, guid: f9f4d9fe324d7e5478a7f8ce5d980208, type: 3}
       propertyPath: m_Constraints
@@ -629,6 +629,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7828307962833066714, guid: bc3fa566daed41f4e9083ee8cb612ca2, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7991374731404970939, guid: bc3fa566daed41f4e9083ee8cb612ca2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.989995
@@ -644,6 +648,14 @@ PrefabInstance:
     - target: {fileID: 8851337900085051750, guid: bc3fa566daed41f4e9083ee8cb612ca2, type: 3}
       propertyPath: m_Offset.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851337900085051750, guid: bc3fa566daed41f4e9083ee8cb612ca2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851337900085051750, guid: bc3fa566daed41f4e9083ee8cb612ca2, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1055406177103303504, guid: bc3fa566daed41f4e9083ee8cb612ca2, type: 3}
@@ -1414,7 +1426,7 @@ PrefabInstance:
       objectReference: {fileID: 5726156861267478573}
     - target: {fileID: 2171147030354614151, guid: 93686b5b6a133ed4fa29883bef6f2202, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -82
+      value: -59.08
       objectReference: {fileID: 0}
     - target: {fileID: 2171147030354614151, guid: 93686b5b6a133ed4fa29883bef6f2202, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1723,6 +1735,10 @@ PrefabInstance:
     - target: {fileID: 5903500037709918095, guid: 2153e4177eae5fc40a60fa0b521dab68, type: 3}
       propertyPath: m_Name
       value: EnemyR 04_FinalBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903500037709918095, guid: 2153e4177eae5fc40a60fa0b521dab68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2701,7 +2717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &6165928428926444289
 SpriteRenderer:
   m_ObjectHideFlags: 0

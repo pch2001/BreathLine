@@ -36,15 +36,16 @@ public class FinalBoos_Spawn : MonoBehaviour
         transform.localScale = scale;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("ºÎ‹HÈû");
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("ÀÚÆø °ø°Ý");
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 0.3f);
         }
     }
+   
   
 
 }
