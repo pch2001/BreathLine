@@ -48,7 +48,7 @@ public class Enemy_Stage04_FinalBoss : EnemyBase // Ghowl 스크립트
         }
     }
     int count = 0;
-    private void Update()
+    private void FixedUpdate()
     {
         if (isPurifying && currentHp > 5f) // 늑대 등장 or 정화의 걸음시 오염도 감소(최대 5까지 감소)
             currentHp -= 5f * Time.deltaTime; // 1초에 5 Hp씩 감소
