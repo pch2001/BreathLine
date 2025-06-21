@@ -46,10 +46,10 @@ public class PlayerSkill_R : MonoBehaviour
     {
         playerCtrl = GetComponent<PlayerCtrl_R>();
     }
-
-    private void OnEnable()
+    private void Start()
     {
-        GameManager.Instance.RequestCurrentStage += OnUpdateStageData; // 변화된 오염도 상태로 초기화
+        if (GameManager.Instance != null)
+            GameManager.Instance.RequestCurrentStage += OnUpdateStageData;
     }
 
     private IEnumerator PlayShortPiri() // 분노의 악장 구현

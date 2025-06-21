@@ -24,12 +24,8 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
     public bool isDamaged = false; // 현재 피격상태 여부
     public float damagedTime = 1f; // 피격 반응 유지 시간
     private float blinkInterval = 0.15f; // 피격시 한번 깜빡하는 시간
-
     private Color originColor = new Color(1f, 1f, 1f); // 소녀 스프라이트 색상
     private Color damagedColor = new Color(0.5f, 0.5f, 0.5f); // 소녀 피격시 깜빡일 때 색상
-
-    public Vector3 savePoint; // 현재 스테이지에서 사용할 임시 세이브 포인트
-    public bool isLocked = false; // 상호작용시 행동 제한
 
     public GameObject wolf; // 늑대 게임 오브젝트
     public Animator wolfAnimator; // 늑대 애니메이터
@@ -38,6 +34,9 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 
     public Image wolfAttackCool; // 늑대 공격 쿨타임 UI 
     private Coroutine wolfAttackCoolRoutine; // 늑대 공격 쿨타임 코루틴
+
+    public Vector3 savePoint; // 현재 스테이지에서 사용할 임시 세이브 포인트
+    public bool isLocked; // 상호작용시 행동 제한
 
     private void Awake()
     {
@@ -51,7 +50,7 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 
     public void OnEnable()
     {
-        isLocked = false; // 움직임 제한 해제
+        isLocked = true; // 움직임 제한
 
         // inputAction 활성화
         playerinputAction.Enable();
@@ -75,7 +74,7 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 
     public void OnDisable()
     {
-        isLocked = true;// 대화시 움직임 못 움직이는 상태
+        isLocked = false;// 대화시 움직임 제한 해제
 
         // inputAction 비활성화
         playerinputAction.Disable();
@@ -110,7 +109,10 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 
     private void Start()
     {
+        isLocked = false;
+
         playerSkill.OnUpdateStageData(); // 연결된 음원 딕셔너리에 초기화
+        GameManager.Instance.isReturned = false; // 회귀 후로 설정 변경
     }
 
     void Update()

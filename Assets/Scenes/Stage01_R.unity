@@ -252,6 +252,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecb2fec3119109149a59784899ba60ab, type: 3}
+--- !u!4 &109462199 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9161282114936379599, guid: 2153e4177eae5fc40a60fa0b521dab68, type: 3}
+  m_PrefabInstance: {fileID: 1210036413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &146752257
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +346,57 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &343101736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5903500037709918095, guid: 2153e4177eae5fc40a60fa0b521dab68, type: 3}
+  m_PrefabInstance: {fileID: 1210036413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &343101744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343101736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b0b1ccc94a49048b879e3623f5245a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 1875852039}
+  dieEffect: {fileID: 0}
+  enemyFadeEffect: {fileID: 1639697417}
+  echoGuardEffect: {fileID: 2061274819}
+  enemyHpGauge: {fileID: 109462199}
+  maxHp: 0
+  _currentHp: 0
+  defaultMoveSpeed: 0
+  _moveSpeed: 0
+  decreaseHpSpeed: 0
+  damage: 0
+  pollutionDegree: 0
+  pollutionResist: 1
+  maxGroggyCnt: 0
+  currentGroggyCnt: 0
+  groggyUI: {fileID: 0}
+  attackMode: 0
+  isStune: 0
+  isDead: 0
+  enemyIsReturn: 1
+  isAttacking: 0
+  isPurifying: 0
+  isReadyPeaceMelody: 0
+  AttackRange0: {fileID: 0}
+  angerAttackID: 0
+  peaceAttackID: 1
+  baseattack: {fileID: 0}
+  possionPoint: {fileID: 0}
+  arrow: {fileID: 0}
+  attackPoints: []
+  teleportPositions: []
+  thunderObj: {fileID: 0}
+  warningZonePrefab: {fileID: 0}
+  spawnBoss: {fileID: 0}
 --- !u!4 &384582060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3136220577159741344, guid: d0376f8428a3e2d408d99b365a28a7a9, type: 3}
@@ -664,10 +720,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyR 04_FinalBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 5903500037709918095, guid: 2153e4177eae5fc40a60fa0b521dab68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5903500037709918095, guid: 2153e4177eae5fc40a60fa0b521dab68, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 343101744}
   m_SourcePrefab: {fileID: 100100000, guid: 2153e4177eae5fc40a60fa0b521dab68, type: 3}
 --- !u!82 &1473526935
 AudioSource:
@@ -840,6 +903,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525503906}
   m_CullTransparentMesh: 1
+--- !u!1 &1639697417 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5663446368982362223, guid: 2153e4177eae5fc40a60fa0b521dab68, type: 3}
+  m_PrefabInstance: {fileID: 1210036413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1677521504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3136220577159741344, guid: d0376f8428a3e2d408d99b365a28a7a9, type: 3}
@@ -999,6 +1067,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7518008954172497499, guid: bb4e2813c93d5a34bb8590f4365017ae, type: 3}
   m_PrefabInstance: {fileID: 3362769529771218909}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1875852039 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3925358223583043151, guid: 2153e4177eae5fc40a60fa0b521dab68, type: 3}
+  m_PrefabInstance: {fileID: 1210036413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1915353979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1206,11 @@ BoxCollider2D:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3136220577159741344, guid: d0376f8428a3e2d408d99b365a28a7a9, type: 3}
   m_PrefabInstance: {fileID: 3474134664115806309}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2061274819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7496641527196415508, guid: 2153e4177eae5fc40a60fa0b521dab68, type: 3}
+  m_PrefabInstance: {fileID: 1210036413}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2071831711 stripped
 Transform:

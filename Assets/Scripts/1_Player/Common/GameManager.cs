@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         if (currentStageIndex == index) return; // 오염도 단계가 변경될 때 내용 초기화
 
         currentStageIndex = index;
-        RequestCurrentStage.Invoke(); // PlayerSkill의 OnUpdateStageData() 함수 실행
+        RequestCurrentStage?.Invoke(); // PlayerSkill의 OnUpdateStageData() 함수 실행
     }
 
     public void AddPolution(float data)
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("오염도가 증가합니다!");
         Pollution += data;
         pollutionGauge.sizeDelta
-            = new Vector2(pollutionGauge.sizeDelta.x, Mathf.Clamp01(pollution / 100f) * 1000f);
+            = new Vector2(pollutionGauge.sizeDelta.x, Mathf.Clamp01(pollution / 100f) * (isReturned ? 1000f : 700f));
         Debug.Log(currentStageIndex);
     }
 }

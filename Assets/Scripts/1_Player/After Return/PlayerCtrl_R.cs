@@ -39,7 +39,7 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
     public float damagedTime = 1f; // 피격 반응 유지 시간
     private float blinkInterval = 0.15f; // 피격시 한번 깜빡하는 시간
 
-    public bool isLocked = false; // 상호작용시 행동 제한
+    public bool isLocked; // 상호작용시 행동 제한
 
     private void Awake()
     {
@@ -52,7 +52,7 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
 
     public void OnEnable()
     {
-        isLocked = false; // 움직임 제한 해제
+        isLocked = true; // 움직임 제한 해제
 
         // inputAction 활성화
         playerinputAction.Enable();
@@ -78,7 +78,7 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
 
     public void OnDisable()
     {
-        isLocked = true;// 대화시 움직임 못 움직이는 상태
+        isLocked = false;// 대화시 움직임 못 움직이는 상태
 
         // inputAction 비활성화
         playerinputAction.Disable();
@@ -102,6 +102,8 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
 
     private void Start()
     {
+        isLocked = false;
+
         playerSkill.OnUpdateStageData(); // 연결된 음원 딕셔너리에 초기화
         GameManager.Instance.isReturned = true; // 회귀 후로 설정 변경
     }
@@ -305,14 +307,12 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
             // Player 레이어(7번)와 Enemy 레이어(6번) 사이 충돌을 무시
             Physics2D.IgnoreLayerCollision(7, 6, true);
 
-            if(!isPurifying) // 정화의 걸음시에는 피격 애니메이션 무시
-                animator.SetTrigger(PlayerAnimTrigger.Hit);
+            animator.SetTrigger(PlayerAnimTrigger.Hit);
 
             // 피격시 연주, 에코가드, 정화의 걸음 비활성화
             playerinputAction.Player.PlayPiri.Disable();
             playerinputAction.Player.EchoGuard.Disable();
-            if (!isPurifying) // 정화의 걸음시에 피격시 영향x
-                playerinputAction.Player.PurifyingStep.Disable();
+            playerinputAction.Player.PurifyingStep.Disable();
 
             // 깜빡이는 효과
             float elapsed = 0f; // 경과된 정도
