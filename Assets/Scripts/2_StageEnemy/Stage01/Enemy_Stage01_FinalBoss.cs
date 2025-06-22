@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 public class Enemy_Stage01_FinalBoss : EnemyBase
 {
 
@@ -21,6 +22,8 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
     public GameObject notePrefab;  // Inspector에서 할당할 음표 프리팹
 
     public GameObject[] attackAreas; // 공격 범위 오브젝트 배열 
+    public bool healmode = false; // 힐모드 여부
+
 
     void Start()
     {
@@ -76,31 +79,31 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
         if (isAttacking) return;
 
 
+        StartCoroutine(HealBoss());
+        //if (count == 7)
+        //{
+        //    StartCoroutine(HealBoss());
+        //}
+        //else if (count > 5 && count < 7)
+        //{
+        //    count++;
+        //    StartCoroutine(Attack3());
+        //}
+        //else if (count > 2 && count <= 4)
+        //{
+        //    count++;
+        //    StartCoroutine(Attack2());
+        //}
+        //else
+        //{
+        //    count++;
+        //    StartCoroutine(Attack1());
 
-        if (count == 7)
-        {
-            StartCoroutine(HealBoss());
-        }
-        else if (count > 5 && count < 7)
-        {
-            count++;
-            StartCoroutine(Attack3());
-        }
-        else if (count > 2 && count <= 4)
-        {
-            count++;
-            StartCoroutine(Attack2());
-        }
-        else
-        {
-            count++;
-            StartCoroutine(Attack1());
-
-        }
+        //}
 
 
-    } 
-     protected override void HandlerTriggerEnter(Collider2D collision) // 충돌 처리 담당 
+    }
+    protected override void HandlerTriggerEnter(Collider2D collision) // 충돌 처리 담당 
     {
         if (collision.gameObject.CompareTag("AngerMelody"))
         {
@@ -120,6 +123,7 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
         }
         else if (collision.gameObject.CompareTag("PeaceMelody"))
         {
+            healmode = false; // 힐모드 해제
             if (!attackMode) return; // 공격모드가 아닐 경우 평화의 악장 무시
 
             var attackArea = collision.GetComponent<AttackArea>();
@@ -188,6 +192,8 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
         }
         else if (collision.gameObject.CompareTag("PeaceMelody"))
         {
+            healmode = false; // 힐모드 해제
+
             if (!attackMode) return; // 공격모드가 아닐 경우 평화의 악장 무시
 
             var attackArea = collision.GetComponent<AttackArea>();
@@ -392,10 +398,17 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
     IEnumerator HealBoss()
     {
         isAttacking = true;
-
+        healmode = true;
         animator.SetTrigger("heal");
-        yield return new WaitForSeconds(3f);
+
+        while (healmode)
+        {
+            yield return new WaitForSeconds(0.5f);
+
+        }
         isAttacking = false;
+        animator.SetTrigger("idle");
+
 
     }
 
