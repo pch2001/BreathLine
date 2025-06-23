@@ -20,6 +20,7 @@ public class Enemy_Stage04_FinalBoss : EnemyBase // Ghowl 스크립트
     public GameObject arrow; // 원거리 공격용 화살 프리팹
 
     public GameObject[] attackPoints; //거미 다리공격 위치
+    public GameObject[] attackPoints_attack;
     public Transform[] teleportPositions; // 순간이동 위치
 
     public GameObject thunderObj; // 번개 공격 프리팹
@@ -77,27 +78,27 @@ public class Enemy_Stage04_FinalBoss : EnemyBase // Ghowl 스크립트
         //animator.SetBool("isRun", Mathf.Abs(velocity.x) > 0.1f); // 속도에 따른 애니메이션 제어
 
         if (isAttacking) return;
-       // StartCoroutine("TeleportAndAOE");
+        StartCoroutine("TeleportAndAOE");
 
-        if (count == 7)
-        {
-            StartCoroutine(TeleportAndAOE());
-        }
-        else if (count >5 && count < 7)
-        {
-            count++;
-            StartCoroutine(Attack3());
-        }
-        else if (count >2 && count <=4)
-        {
-            count++;
-            StartCoroutine(Attack2());
-        }else
-        {
-            count++;
-            StartCoroutine(Attack1());
+        //if (count == 7)
+        //{
+        //    StartCoroutine(TeleportAndAOE());
+        //}
+        //else if (count >5 && count < 7)
+        //{
+        //    count++;
+        //    StartCoroutine(Attack3());
+        //}
+        //else if (count >2 && count <=4)
+        //{
+        //    count++;
+        //    StartCoroutine(Attack2());
+        //}else
+        //{
+        //    count++;
+        //    StartCoroutine(Attack1());
 
-        }
+        //}
 
         // 일정 범위에 도달시 공격 실해
         //if (Vector2.Distance(gameObject.transform.position, player.transform.position) < 3f)
@@ -417,27 +418,54 @@ public class Enemy_Stage04_FinalBoss : EnemyBase // Ghowl 스크립트
         yield return new WaitForSeconds(1.5f);
 
         //============================================
-        for (int i = 0; i < attackPoints.Length; i++)
-        {
-            if (i % 2 == 1)
-            {
-                StartCoroutine(ThunderWarning(attackPoints[i].transform.position));
-            }
-        }
-        yield return new WaitForSeconds(3f);
+
+        attackPoints[0].SetActive(true);
+        attackPoints[2].SetActive(true); 
+        attackPoints[4].SetActive(true);
+        attackPoints[1].SetActive(false);
+        attackPoints[3].SetActive(false);
+        attackPoints[5].SetActive(false);
+
+        yield return new WaitForSeconds(1f);
+
+        attackPoints_attack[0].SetActive(true);
+        attackPoints_attack[2].SetActive(true);
+        attackPoints_attack[4].SetActive(true);
+
+
+        yield return new WaitForSeconds(0.5f);
+        attackPoints_attack[0].SetActive(false);
+        attackPoints_attack[2].SetActive(false);
+        attackPoints_attack[4].SetActive(false);
+
+        yield return new WaitForSeconds(0.3f);
 
         // 짝수 공격
-        for (int i = 0; i < attackPoints.Length; i++)
-        {
-            if (i % 2 == 0)
-            {
-                StartCoroutine(ThunderWarning(attackPoints[i].transform.position));
-            }
-        }
+
+        attackPoints[0].SetActive(false);
+        attackPoints[2].SetActive(false);
+        attackPoints[4].SetActive(false);
+        attackPoints[1].SetActive(true);
+        attackPoints[3].SetActive(true);
+        attackPoints[5].SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        attackPoints_attack[1].SetActive(true);
+        attackPoints_attack[3].SetActive(true);
+        attackPoints_attack[5].SetActive(true);
+
+
+        yield return new WaitForSeconds(0.5f);
+        attackPoints_attack[1].SetActive(false);
+        attackPoints_attack[3].SetActive(false);
+        attackPoints_attack[5].SetActive(false);
+
+        yield return new WaitForSeconds(0.3f);
 
         //============================================
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         animator.SetTrigger("attack3_2");
 
         for (int i = 0; i < attackPoints.Length; i++)
@@ -450,27 +478,4 @@ public class Enemy_Stage04_FinalBoss : EnemyBase // Ghowl 스크립트
         isAttacking = false;
     }
 
-    IEnumerator ThunderWarning(Vector3 position)
-    {
-        GameObject warning = Instantiate(warningZonePrefab, position, Quaternion.identity);
-        SpriteRenderer sr = warning.GetComponent<SpriteRenderer>();
-
-        float duration = 1.5f;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            float alpha = Mathf.PingPong(Time.time * 3f, 1f);
-            sr.color = new Color(1f, 0f, 0f, alpha); // 빨간색 깜빡임
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        Destroy(warning);
-
-        GameObject thunders = Instantiate(thunderObj, position, Quaternion.identity);
-
-        yield return new WaitForSeconds(1f);
-        Destroy(thunders);
-    }
 }
