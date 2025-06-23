@@ -41,6 +41,7 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
 
     public bool isLocked; // 상호작용시 행동 제한
 
+    public bool isPase4 = false; // 최종 보스 페이즈4 여부
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -111,10 +112,12 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
     void Update()
     {
         if (isLocked) return; // 행동 제한 변수 활성화시 제한
+        if (!isPase4) return; // 페이즈4가 활성화되면 공격제한
+
+        OnPlayerMove(); // 이동 구현
 
         OnPlaySoftPiri(); // 평화의 악장 연주 차징 확인
         UpdatePurifyStep(); // 정화의 걸음시 방향 갱신
-        OnPlayerMove(); // 이동 구현
     }
 
     private void OnPlayerMove()

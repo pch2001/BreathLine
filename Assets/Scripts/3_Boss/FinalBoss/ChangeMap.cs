@@ -13,9 +13,13 @@ public class ChangeMap : MonoBehaviour
     private Camera mainCam;
     private Vector3 originalCamPos;
 
+    private PlayerCtrl_R playerCtrl;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerCtrl = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl_R>();
+
         mainCam = Camera.main;
         if (mainCam != null)
         {
@@ -23,12 +27,59 @@ public class ChangeMap : MonoBehaviour
         }
     }
     // Update is called once per frame
+    int number = 0;
     void Update()
     {
+  
         if (Input.GetKeyDown(KeyCode.M))
         {
-            StartCoroutine(ShakeCamera(1.5f, 1f));
+            playerCtrl.isPase4 = true;
+
+            number++;
+            Pase(number);
         }
+    }
+    public void Pase(int number)
+    {
+        switch(number)
+        {
+            case 1:
+                StartCoroutine(ShakeCamera(1.5f, 1f));
+                Time.timeScale = 0.7f;
+                break;
+            case 2:
+                Time.timeScale = 1.0f;
+                StartCoroutine(ShakeCamera(1.5f, 1f));
+                break;
+            case 3:
+                Pase3();
+                break;
+            case 4:
+                StartCoroutine(Pase4());
+                break;
+            default:
+                Debug.LogWarning("Invalid pase number: " + number);
+                break;
+        }
+    }
+  
+    public void Pase3()
+    {
+        StartCoroutine(ShakeCamera(1.5f, 1f));
+        Debug.Log("플레이어 공격 X");
+        playerCtrl.isPase4 = true;
+    }
+
+    IEnumerator Pase4()
+    {
+        playerCtrl.isPase4 = false;
+
+        yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));
+        yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));
+        yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));
+        yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));
+
+
     }
 
     IEnumerator ShakeCamera(float duration, float magnitude)
