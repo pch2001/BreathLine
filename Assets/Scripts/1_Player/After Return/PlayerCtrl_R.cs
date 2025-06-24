@@ -112,7 +112,7 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
     void Update()
     {
         if (isLocked) return; // 행동 제한 변수 활성화시 제한
-        if (!isPase4) return; // 페이즈4가 활성화되면 공격제한
+        //if (isPase4) return; // 페이즈4가 활성화되면 공격제한
 
         OnPlayerMove(); // 이동 구현
 
