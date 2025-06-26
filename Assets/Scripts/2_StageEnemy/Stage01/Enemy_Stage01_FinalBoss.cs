@@ -7,9 +7,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 public class Enemy_Stage01_FinalBoss : EnemyBase
 {
-
-
-    Vector2 direction; // 적이 바라보는 방향
     private InputAction playerInteraction;
     public int angerAttackID = 0; // 분노의 악장 중복 충돌 판정 방지
     public int peaceAttackID = 1; // 평화의 악장 중복 충돌 판정 방지
@@ -281,38 +278,6 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
         boxCollider.offset = new Vector2(0f, 0f); // 피격 범위 위치 변경
 
         StartCoroutine(Stunned(3f)); // 3초간 기절
-    }
-
-    private IEnumerator EchoGuardSuccess(Collider2D collision) 
-    {
-
-        if (currentGroggyCnt < maxGroggyCnt - 1) // 그로기 게이지가 2개 이상 남았을 경우
-        {
-            Debug.Log("소녀가 적의 공격을 방어해냅니다!");
-            groggyUI.AddGroggyState(); // 그로기 스택 증가
-            currentGroggyCnt++;
-            audioSource.Play(); // 패링 소리 재생
-            float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
-            EchoGuardPushBack(pushBackDir);
-        }
-        else // 남은 그로기 게이지가 1개일 경우
-        {
-            Debug.Log("적이 잠시 그로기 상태에 빠집니다!");
-
-            if (currentHp - 20f >= 5) // 최대 5까지 오염도 감소
-                currentHp -= 15f; // 적 오염도 즉시 20 감소 
-            else
-                currentHp = 5f;
-            groggyUI.AddGroggyState(); // 그로기 스택 증가
-            audioSource.Play(); // 패링 소리 재생
-            float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
-            PushBack(pushBackDir);
-
-            echoGuardEffect.SetActive(true); // 에코가드 성공 이펙트 활성화
-            yield return new WaitForSeconds(0.4f);
-
-            echoGuardEffect.SetActive(false); // 에코가드 이펙트 비활성화
-        }
     }
 
     public void SetAttack(int attacknum)

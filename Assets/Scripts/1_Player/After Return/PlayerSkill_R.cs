@@ -28,6 +28,7 @@ public class PlayerSkill_R : MonoBehaviour
     [SerializeField] private float SoftPiriKeyDownTime; // 평화의 악장 키다운 시간
     private bool isRestoreSpeed = false; // RestoreSpeedAfterDelay 코루틴함수 중복실행 방지 플래그
     private float playerPollution = 1f; // 소녀 오염도 계수
+    public bool isEchoGuarding = false; // 에코가드 여부
     private bool echoGuardReady = true; // 에코가드 쿨타임 확인
 
     [SerializeField] private float purifyDuration = 2f; // 정화의 걸음 최대 지속시간
@@ -190,6 +191,7 @@ public class PlayerSkill_R : MonoBehaviour
         if (echoGuardReady)
         {
             Debug.Log("에코가드 실행!");
+            isEchoGuarding = true; // 에코가드 실행중
 
             echoGuardReady = false;
             StartCoroutine(EchoGuardCoolTimer()); // 쿨타임 코루틴 실행
@@ -197,10 +199,12 @@ public class PlayerSkill_R : MonoBehaviour
             RequestAnimTrigger?.Invoke(PlayerAnimTrigger.Sad);
             RequestMoveSpeed?.Invoke(0f); // 이동속도 0으로 변경
             EchoGuardAttackArea.SetActive(true);
-            yield return new WaitForSeconds(0.1f); // 일정시간 에코가드 활성화 유지
+            yield return new WaitForSeconds(0.3f); // 일정시간 에코가드 활성화 유지
 
             EchoGuardAttackArea.SetActive(false);
             yield return new WaitForSeconds(0.3f);
+
+            isEchoGuarding = false; // 에코가드 실행 종료
             RequestMoveSpeed?.Invoke(5f); // 기존 속도로 변경
         }
     }

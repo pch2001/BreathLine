@@ -14,13 +14,12 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
     [SerializeField] private Enemy_Stage01_1 linkedGhowl;
     private PlayerCtrlBase playerCtrlBase;
 
-    [SerializeField] private float patrolRange = 5f; // 패트롤 최대 반경
-    [SerializeField] private float patrolMinRange = 3f; // 패트롤 최소 반경
-    [SerializeField] private float patrolSpeed = 2f; // 패트롤 속도
-    private Vector2 direction; // 적 이동 방향
-    private float startPos; // 시작 위치 저장
-    public Vector2 targetPos; // 목표 위치 저장
-    private bool isMoving = true; // 이동중인지 확인(패트롤 중 멈춤 표현)
+    [SerializeField] private float patrolrange = 5f; // 패트롤 최대 반경
+    [SerializeField] private float patrolMinirange = 3f; // 패트롤 최소 반경
+    private Vector2 dir; // 적 이동 방향
+    private float startpos; // 시작 위치 저장
+    public Vector2 targetpos; // 목표 위치 저장
+    private bool ismoving = true; // 이동중인지 확인(패트롤 중 멈춤 표현)
 
     private void Start()
     {
@@ -41,8 +40,8 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
                 playerCtrlBase = player.GetComponent<PlayerCtrl_R>() as PlayerCtrlBase;
         }
 
-        startPos = transform.position.x;
-        ChooseNextPatrolPoint(); // 다음 목적지 설정
+        startpos = transform.position.x;
+        ChooseNextpatrolPoint(); // 다음 목적지 설정
 
         if (GameManager.Instance.isReturned) // 회귀 후, 그로기 슬롯 초기화 
         {
@@ -52,20 +51,20 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
 
     private void Update()
     {
-        if ((moveSpeed == 2 || isReadyPeaceMelody) && currentHp > 5f) // 늑대 등장 or 정화의 걸음시 오염도 감소(최대 5까지 감소)
+        if (isPurifying && currentHp > 5f) // 늑대 등장 or 정화의 걸음시 오염도 감소(최대 5까지 감소)
             currentHp -= 5f * Time.deltaTime; // 1초에 5 Hp씩 감소
 
         if (isReadyPeaceMelody && currentHp > 5f) // 평화의 악장 준비파동 피격시 오염도 감소(최대 5까지)
             currentHp -= 2f * Time.deltaTime; // 1초에 2Hp씩 감소
 
-        if (!isMoving || isDead) return;
-
-        Vector2 velocity = new Vector2(direction.x * patrolSpeed, rigidBody.velocity.y);
-        rigidBody.velocity = velocity; // 적 이동
+        Vector2 velocity = new Vector2(dir.x * moveSpeed, rigidBody.velocity.y);
         animator.SetBool("isRun", Mathf.Abs(velocity.x) > 0.1f); // 속도에 따른 애니메이션 제어
 
+        if (!ismoving || isDead) return;
+        rigidBody.velocity = velocity; // 적 이동
 
-        if (Vector2.Distance(transform.position, targetPos) < 1f) 
+
+        if (Vector2.Distance(transform.position, targetpos) < 1f) 
         {
             StartCoroutine(PauseBeforeNextMove()); // 다음 패트롤 전 잠시 멈춤
         }
@@ -122,6 +121,7 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
             if (!attackMode) return;
 
             Debug.Log("적을 진정시킵니다");
+            isPurifying = true;
             moveSpeed = 2f;
         }
         else if (collision.gameObject.CompareTag("PeaceWaiting") && playerCtrlBase != null && playerCtrlBase.isPressingPiri)
@@ -129,9 +129,8 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
             if (linkedGhowl != null)
             {
                 Debug.Log("스피터가 소리를 질러 구울을 자극합니다!");
-                linkedGhowl.AttackMode(); // 구울 공격모드 전환
+                StartCoroutine(linkedGhowl.AttackMode()); // 구울 공격모드 전환
             }
-            StartCoroutine(Die()); // 스피터는 자폭
             isReadyPeaceMelody = true; // 평화의 악장 준비 파동 시작
         }
         else if (collision.gameObject.CompareTag("Player"))
@@ -169,6 +168,12 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
                 PushBack(pushBackDir);
             }
         }
+        else if (collision.gameObject.CompareTag("EnemyProjectile"))
+        {
+            var enemy = collision.gameObject.GetComponent<EnemyAttackBase>(); // EnemyAttack 기본 클래스 가져옴
+            Debug.Log("적이 반사된 공격에 피해를 입습니다!");
+            StartCoroutine(Damaged());
+        }
     }
 
     protected override void HandlerTriggerStay(Collider2D collision) // 충돌 처리 담당 
@@ -195,7 +200,6 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
             if (!isLooking || attackArea == null || attackArea.attackGlobalID == peaceAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
             peaceAttackID = attackArea.attackGlobalID;
 
-            Debug.LogWarning("여러번 나오면 안되는데");
             currentHp -= 10f;
             if (currentHp <= 0)
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
@@ -215,6 +219,7 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
         {
             if (!attackMode) return;
 
+            isPurifying = true;
             moveSpeed = 2f;
         }
     }
@@ -225,6 +230,7 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
         {
             Debug.Log("적이 범위를 벗어납니다");
             moveSpeed = defaultMoveSpeed; // 기존 속도
+            isPurifying = false;
         }
         else if (collision.gameObject.CompareTag("PeaceWaiting"))
         {
@@ -270,41 +276,37 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
         StartCoroutine(Stunned(3f)); // 3초간 기절
     }
 
-    private void ChooseNextPatrolPoint() // 패트롤 다음 이동 목표지점 설정
+    private void ChooseNextpatrolPoint() // 패트롤 다음 이동 목표지점 설정
     {
         float randomX;
         
         if (Random.value < 0.5f) // 50%확률로 이동 방향 설정
         {
-            // 왼쪽 방향: -patrolRange ~ -patrolMinRange
-            randomX = Random.Range(-patrolRange, -patrolMinRange);
+            // 왼쪽 방향: -patrolrange ~ -patrolMinirange
+            randomX = Random.Range(-patrolrange, -patrolMinirange);
         }
         else
         {
-            // 오른쪽 방향: patrolMinRange ~ patrolRange
-            randomX = Random.Range(patrolMinRange, patrolRange);
+            // 오른쪽 방향: patrolMinirange ~ patrolrange
+            randomX = Random.Range(patrolMinirange, patrolrange);
         }
 
-        targetPos = new Vector2(startPos + randomX, transform.position.y);
-        direction = (targetPos - (Vector2)transform.position).normalized; // 패트롤 할 방향 설정
+        targetpos = new Vector2(startpos + randomX, transform.position.y);
+        dir = (targetpos - (Vector2)transform.position).normalized; // 패트롤 할 방향 설정
         
-        if (direction.x > 0)
+        if (dir.x > 0)
             spriteRenderer.flipX = false;
         else
             spriteRenderer.flipX = true;
-
-        Debug.Log("StartPos: " + startPos);
-        Debug.Log("Direction: " + direction);
-        Debug.Log("TargetPos: " + targetPos);
     }
 
     private IEnumerator PauseBeforeNextMove()
     {
-        isMoving = false;
-        patrolSpeed = 0f;
+        ismoving = false;
+        moveSpeed = 0f;
         yield return new WaitForSeconds(1f); // 1초 대기
-        ChooseNextPatrolPoint(); // 다음 목표 지점 설정
-        isMoving = true;
-        patrolSpeed = 2f;
+        ChooseNextpatrolPoint(); // 다음 목표 지점 설정
+        ismoving = true;
+        moveSpeed = 2f;
     }
 }

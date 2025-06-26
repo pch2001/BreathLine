@@ -67,8 +67,7 @@ public class BossState : MonoBehaviour
         float distanceX = Mathf.Abs(player.position.x - transform.position.x);
         if (distanceX <= stopDistance && !isAttacking)
         {
-            StartCoroutine("HealBoss");
-            //Attack();
+            Attack();
             return;
         }
 
@@ -222,16 +221,6 @@ public class BossState : MonoBehaviour
         isAttacking = false;
     }
 
-    IEnumerator HealBoss()
-    {
-        isAttacking = true;
-
-        anim.SetTrigger("heal");
-        yield return new WaitForSeconds(3f);
-        isAttacking = false;
-
-    }
-
     public void ActiveBoom(int num)
     {
         boomArea[num].SetActive(true);
@@ -266,7 +255,7 @@ public class BossState : MonoBehaviour
 
     }
 
-    //public void is
+
     IEnumerator cooltime()
     {
         isAttacking = true;

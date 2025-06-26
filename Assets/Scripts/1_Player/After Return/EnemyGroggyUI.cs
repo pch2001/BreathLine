@@ -33,7 +33,7 @@ public class EnemyGroggyUI : MonoBehaviour
         slotList[currentGauge].color = activatedColor; // 활성화 색상
         currentGauge++;
 
-        if (currentGauge >= maxGauge)
+        if(currentGauge >= maxGauge)
         {
             Debug.Log("UI가 그로기 상태를 표시합니다.");
         }
@@ -44,6 +44,6 @@ public class EnemyGroggyUI : MonoBehaviour
         Debug.Log("초기화 했어요");
         currentGauge = 0;
         foreach (var img in slotList)
-            img.color = Color.gray;
+            img.color = Color.gray; 
     }
 }

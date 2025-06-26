@@ -18,8 +18,16 @@ TagManager:
   - platform
   - ground
   - enemys
-  - EnemyAttack
   - PeaceWaiting
+  - Seed
+  - Ignore
+  - GhoulCamp
+  - EnemySight
+  - EnemyAttackRange
+  - EnemyProjectile
+  - EnemyAttack_NoGroggy
+  - EnemyAttack
+  - EnemySealAttack
   layers:
   - Default
   - TransparentFX

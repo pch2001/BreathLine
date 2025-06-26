@@ -28,14 +28,10 @@ public class EnemyProjectile : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("PlayerAttack"); // Enemy와 충돌하는 레이어로 변경
             currentTimer = destroyTime; // 타이머 초기화
         }
-        else if (collision.gameObject.CompareTag("EchoGuard"))
+        else if (collision.gameObject.CompareTag("EchoGuard") || collision.gameObject.CompareTag("WolfAppear") || collision.gameObject.CompareTag("WolfAttack"))
         {
-            Debug.Log("에코가드로 적의 공격을 방어합니다!");
+            Debug.Log("적의 공격을 방어합니다!");
             currentTimer = 0f;
-        }
-        else if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
-        {
-            currentTimer = 0.5f;
         }
     }
 }

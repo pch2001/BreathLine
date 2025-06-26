@@ -10,15 +10,23 @@ public abstract class EnemyBase : MonoBehaviour
     protected BoxCollider2D boxCollider;
     protected AudioSource audioSource;
     protected GameObject player; // 플레이어 오브젝트 확인용
+    public GameObject enemySight; // 적 경계 범위 
 
-    private Color originalColor; // 현재 SpriteRender 색상 저장
-    private Color currentColor;
-
-    public GameObject hitEffect; // 피격 이펙트
+    public GameObject hitEffect; // 공격 전조 이펙트(그로기 up)
+    public GameObject hitEffect_noGroggy; // 공격 전조 이펙트(그로기x)
     public GameObject dieEffect; // Die 이펙트
     public GameObject enemyFadeEffect; // 사라질 때 이펙트
     public GameObject echoGuardEffect; // 에코가드 성공 이펙트
     [SerializeField] private Transform enemyHpGauge; // 적 Hp(오염도) UI
+    public EnemyGroggyUI groggyUI; // 그로기 UI 오브젝트
+    public Coroutine attackCoroutine; // 스턴, 사망시 코루틴 중간 탈출
+    protected delegate IEnumerator AttackPattern();
+    protected AttackPattern[] attackPatterns; // 저장할 Attack 코루틴 함수 배열
+    [SerializeField] public List<GameObject> attackObjects = new List<GameObject>(); // 공격패턴 오브젝트 리스트
+    protected GameObject currentAttack;
+
+    private Color originalColor; // 현재 SpriteRender 색상 저장
+    private Color currentColor;
 
     public float maxHp; // 적 최대 HP (최대 오염도)
     [SerializeField] private float _currentHp;
@@ -40,23 +48,140 @@ public abstract class EnemyBase : MonoBehaviour
         set => _moveSpeed = Mathf.Clamp(value, 0f, defaultMoveSpeed);
     }
 
-    public float decreaseHpSpeed; // 적 HP(오염도) 감소 속도
+    public bool isPatrol
+    {
+        get => _isPatrol;
+        set
+        {
+            _isPatrol = value; // 변경된 값 적용
+
+            if(isDead || isStune) return; // 죽음시 리턴
+
+            if (_isPatrol) // Patrol Mode로 변경할 경우
+            {
+                isMoving = false; // 패트롤 모드 - 경계 상태부터 실행
+            }
+            else // Attack Mode로 변경할 경우
+            {
+                isAttackRange = false; // 공격 모드 - 플레이어 추격 상태부터 실행
+            }
+        }
+    }
+
+    [SerializeField] private bool _isMoving; // 패트롤 중 현재 이동중인지 경계중인지
+    public bool isMoving
+    {
+        get => _isMoving;
+        set
+        {
+            _isMoving = value; // 변경된 값 적용
+            
+            if (isDead || isStune) return; // 죽음시 리턴
+
+            if (isMoving) // 패트롤 모드 - 이동 상태 함수 실행
+            {
+                MoveToTarget(); // 범위 내 랜덤 설정한 위치를 향해 이동
+            }
+            else // 패트롤 모드 - 경계 상태 함수 실행
+            {
+                StartCoroutine(LookAround()); // 일정 시간 멈춰 주변을 확인
+            }
+        }
+    }
+
+    [SerializeField] private bool _isAttackRange; // 현재 공격 범위 안에 있는지 여부
+    public bool isAttackRange
+    {
+        get => _isAttackRange;
+        set
+        {
+            _isAttackRange = value; // 변경된 값 적용
+
+            if (isDead || isStune) return; // 죽음시 리턴
+
+            if (isAttackRange) // 공격 모드 - 공격 실행 함수
+            {
+                if (!isAttacking) // 공격 중복 실행 방지
+                {
+                    targetPos = transform.position; // 공격시 목적지를 자신으로 설정(이동x)
+                    int rand = Random.Range(0, attackPatterns.Length);
+                    attackCoroutine = StartCoroutine(attackPatterns[rand]()); // 공격 패턴 중 랜덤으로 실행
+                }
+                else
+                {
+                    moveSpeed = 0f;
+                }
+            }
+        }
+        // 공격 모드 - 적 추격 상태는 Update 함수에서 구현
+    }
+
+    protected float pollutionDegree; // 처치시 오염도 오르는 정도
+    protected float pollutionResist = 1; // 오염도 감소 비율
+    protected bool isAttacking = false; // 공격 간격 제한 변수
+    protected Vector2 direction; // 적 이동 방향
+    protected Vector2 startPos; // 시작 위치 저장
+    public Vector2 targetPos; // 목표 위치 저장
+
+    [SerializeField] private float patrolRange = 5f; // 패트롤 최대 반경
+    [SerializeField] private float patrolMinRange = 3f; // 패트롤 최소 반경
+    [SerializeField] private bool _isPatrol; // 패트롤 모드인지 공격모드인지 여부
+
     public float damage; // 적 공격력
-    public float pollutionDegree; // 처치시 오염도 오르는 정도
-    public float pollutionResist = 1; // 오염도 감소 비율
     public int maxGroggyCnt; // 최대 그로기 게이지 개수
     public int currentGroggyCnt; // 현재 그로기 게이지 개수
-    public EnemyGroggyUI groggyUI; // 그로기 UI 오브젝트
-    public Coroutine attackCoroutine; // 스턴, 사망시 코루틴 중간 탈출
-
     public bool attackMode = false; // 적 공격 상태 여부(경계 <-> 추격)
     public bool isStune = false; // 스턴 상태 여부
     public bool isDead = false; // 죽음 여부
     public bool enemyIsReturn; // // 적 회귀 상태 설정
-    public bool isAttacking = false; // 공격 간격 제한 변수
-
     public bool isPurifying = false; // 정화 중인지(늑대 등장, 정화의 걸음)
     public bool isReadyPeaceMelody = false; // 평화의 멜로디 준비중인지 (준비파동 계산)
+
+    protected void MoveToTarget() // 패트롤 모드 - 이동 상태 함수
+    {
+        moveSpeed = defaultMoveSpeed; // 이동 복구
+        animator.SetBool("isRun", true); // 애니메이션 Run 상태
+    }
+
+    protected IEnumerator LookAround() // 패트롤 모드 - 경계 상태 함수
+    {
+        moveSpeed = 0f;
+        animator.SetBool("isRun", false); // 애니메이션 Idle 상태
+
+        yield return new WaitForSeconds(1f); // 1초 대기
+        ChooseNextPatrolPoint(); // 다음 목표 지점 설정
+
+        isMoving = true;
+    }
+
+    protected void ChooseNextPatrolPoint() // 패트롤 다음 이동 목표지점 설정
+    {
+        float randomX;
+
+        if (Random.value < 0.5f) // 50%확률로 이동 방향 설정
+        {
+            // 왼쪽 방향: -patrolRange ~ -patrolMinRange
+            randomX = Random.Range(-patrolRange, -patrolMinRange);
+        }
+        else
+        {
+            // 오른쪽 방향: patrolMinRange ~ patrolRange
+            randomX = Random.Range(patrolMinRange, patrolRange);
+        }
+
+        targetPos = new Vector2(startPos.x + randomX, transform.position.y);
+        direction = (targetPos - (Vector2)transform.position).normalized; // 패트롤 할 방향 설정
+
+        if (direction.x > 0)
+            spriteRenderer.flipX = false;
+        else
+            spriteRenderer.flipX = true;
+    }
+    protected void EvaluateCurrentState() // 프로퍼티 현재 상태 확인 함수
+    {
+        isMoving = isMoving;
+        isAttackRange = isAttackRange;
+    }
 
     void Awake()
     {
@@ -85,6 +210,7 @@ public abstract class EnemyBase : MonoBehaviour
         moveSpeed = defaultMoveSpeed; // 이동속도 복구
         isStune = false; // 스턴 상태 해제
         spriteRenderer.color = originalColor; // 색상 복구
+        EvaluateCurrentState(); // 적 상태 적용 함수
     }
 
     public virtual IEnumerator EnemyFade(float duration) // 평화의 악장으로 적 사라짐 함수
@@ -181,14 +307,69 @@ public abstract class EnemyBase : MonoBehaviour
 
     private void CancelAttack()
     {
-        if (attackCoroutine != null)
+        if (attackCoroutine != null && currentAttack != null)
         {
-            StopCoroutine(attackCoroutine); 
+            StopCoroutine(attackCoroutine);
+            currentAttack.SetActive(false);
             hitEffect.SetActive(false);
+            hitEffect_noGroggy.SetActive(false);
             attackCoroutine = null;
             isAttacking = false;
             Debug.LogWarning("공격 강제 종료!");
         }
+    }
+
+    protected IEnumerator MoveToTarget(Vector2 startPos, Vector3 targetPos, float duration)
+    {
+        float elapsed = 0f; // 타이머
+        while (elapsed < duration)
+        {
+            transform.position = Vector3.Lerp(startPos, targetPos, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = targetPos; // 위치 정리
+    }
+
+    public IEnumerator EchoGuardSuccess(Collider2D collision) // EnemyAttack 공격 방어시
+    {
+        if(currentAttack != null)
+            currentAttack.SetActive(false); // 최근 적 공격 범위 off (에코가드시 범위 취소)
+
+        if (currentGroggyCnt < maxGroggyCnt - 1) // 그로기 게이지가 2개 이상 남았을 경우
+        {
+            Debug.Log("소녀가 적의 공격을 방어해냅니다!");
+            groggyUI.AddGroggyState(); // 그로기 스택 증가
+            currentGroggyCnt++;
+            audioSource.Play(); // 패링 소리 재생
+            float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
+            EchoGuardPushBack(pushBackDir);
+        }
+        else // 남은 그로기 게이지가 1개일 경우
+        {
+            Debug.Log("적이 잠시 그로기 상태에 빠집니다!");
+
+            if (currentHp - 20f >= 5) // 최대 5까지 오염도 감소
+                currentHp -= 15f; // 적 오염도 즉시 20 감소 
+            else
+                currentHp = 5f;
+            groggyUI.AddGroggyState(); // 그로기 스택 증가
+            audioSource.Play(); // 패링 소리 재생
+            float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
+            PushBack(pushBackDir);
+
+            echoGuardEffect.SetActive(true); // 에코가드 성공 이펙트 활성화
+            yield return new WaitForSeconds(0.4f);
+
+            echoGuardEffect.SetActive(false); // 에코가드 이펙트 비활성화
+        }
+    }
+
+    public void EchoGuardSuccess_NoGloogy(Collider2D collision) // EnemyAttack_NoGroggy 공격 방어시
+    {
+        Debug.LogWarning("해당 공격은 그로기가 올라기지 않습니다!");
+        float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
+        EchoGuardPushBack(pushBackDir);
     }
 
     protected abstract void HandlerTriggerEnter(Collider2D collision); // 충돌시 범위 주변(Enter) 담당 함수

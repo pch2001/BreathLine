@@ -74,9 +74,9 @@ ScriptedImporter:
     fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
-    defaultPivotSpace: 0
-    defaultPivotAlignment: 7
-    customPivotPosition: {x: 0.5, y: 0.5}
+    defaultPivotSpace: 1
+    defaultPivotAlignment: 9
+    customPivotPosition: {x: 0.4, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
@@ -87,9 +87,9 @@ ScriptedImporter:
     fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
-    defaultPivotSpace: 0
-    defaultPivotAlignment: 7
-    customPivotPosition: {x: 0.5, y: 0.5}
+    defaultPivotSpace: 1
+    defaultPivotAlignment: 9
+    customPivotPosition: {x: 0.4, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638856891015412560
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Spitter_Frame_0
     originalName: 
-    pivot: {x: -0.08823536, y: -0.03846154}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -143,7 +143,7 @@ ScriptedImporter:
     uvTransform: {x: 94, y: 164}
   - name: Spitter_Frame_1
     originalName: 
-    pivot: {x: -0.08823536, y: -0.04}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -163,7 +163,7 @@ ScriptedImporter:
     uvTransform: {x: 69, y: 138}
   - name: Spitter_Frame_2
     originalName: 
-    pivot: {x: -0.08823536, y: -0.03846154}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -183,7 +183,7 @@ ScriptedImporter:
     uvTransform: {x: 94, y: 198}
   - name: Spitter_Frame_3
     originalName: 
-    pivot: {x: -0.08823536, y: -0.037037037}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -203,7 +203,7 @@ ScriptedImporter:
     uvTransform: {x: 42, y: 205}
   - name: Spitter_Frame_4
     originalName: 
-    pivot: {x: -0.08823536, y: -0.037037037}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -223,7 +223,7 @@ ScriptedImporter:
     uvTransform: {x: 69, y: 34}
   - name: Spitter_Frame_5
     originalName: 
-    pivot: {x: -0.027777862, y: -0.037037037}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -243,7 +243,7 @@ ScriptedImporter:
     uvTransform: {x: 42, y: 68}
   - name: Spitter_Frame_6
     originalName: 
-    pivot: {x: -0.027777862, y: -0.03846154}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -263,7 +263,7 @@ ScriptedImporter:
     uvTransform: {x: 42, y: 103}
   - name: Spitter_Frame_7
     originalName: 
-    pivot: {x: -0.08823536, y: -0.03846154}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -283,7 +283,7 @@ ScriptedImporter:
     uvTransform: {x: 69, y: 104}
   - name: Spitter_Frame_8
     originalName: 
-    pivot: {x: -0.08823536, y: -0.04}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -303,7 +303,7 @@ ScriptedImporter:
     uvTransform: {x: 69, y: 171}
   - name: Spitter_Frame_9
     originalName: 
-    pivot: {x: -0.027777862, y: -0.03846154}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -323,7 +323,7 @@ ScriptedImporter:
     uvTransform: {x: 42, y: 137}
   - name: Spitter_Frame_10
     originalName: 
-    pivot: {x: 0.026315778, y: -0.03846154}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -343,7 +343,7 @@ ScriptedImporter:
     uvTransform: {x: 42, y: 34}
   - name: Spitter_Frame_11
     originalName: 
-    pivot: {x: -0.027777862, y: -0.04}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -363,7 +363,7 @@ ScriptedImporter:
     uvTransform: {x: 94, y: 98}
   - name: Spitter_Frame_12
     originalName: 
-    pivot: {x: -0.08823536, y: -0.04}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -383,7 +383,7 @@ ScriptedImporter:
     uvTransform: {x: 69, y: 204}
   - name: Spitter_Frame_13
     originalName: 
-    pivot: {x: -0.08823536, y: -0.037037037}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -403,7 +403,7 @@ ScriptedImporter:
     uvTransform: {x: 69, y: 69}
   - name: Spitter_Frame_14
     originalName: 
-    pivot: {x: -0.027777862, y: -0.03846154}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -423,7 +423,7 @@ ScriptedImporter:
     uvTransform: {x: 42, y: 171}
   - name: Spitter_Frame_15
     originalName: 
-    pivot: {x: -0.027777862, y: -0.04}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -443,7 +443,7 @@ ScriptedImporter:
     uvTransform: {x: 94, y: 131}
   - name: Spitter_Frame_16
     originalName: 
-    pivot: {x: -0.029411852, y: -0.04347826}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -463,7 +463,7 @@ ScriptedImporter:
     uvTransform: {x: 121, y: 67}
   - name: Spitter_Frame_17
     originalName: 
-    pivot: {x: 0.08620692, y: -0.02777778}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -483,7 +483,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 140}
   - name: Spitter_Frame_18
     originalName: 
-    pivot: {x: 0.04999998, y: -0.027027026}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -503,7 +503,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 50}
   - name: Spitter_Frame_19
     originalName: 
-    pivot: {x: 0.04999998, y: -0.02631579}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -523,7 +523,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Spitter_Frame_20
     originalName: 
-    pivot: {x: 0.017241372, y: -0.027027026}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -543,7 +543,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 95}
   - name: Spitter_Frame_21
     originalName: 
-    pivot: {x: -0.029411852, y: -0.04}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -563,7 +563,7 @@ ScriptedImporter:
     uvTransform: {x: 121, y: 34}
   - name: Spitter_Frame_22
     originalName: 
-    pivot: {x: 0.18421054, y: 0}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -583,7 +583,7 @@ ScriptedImporter:
     uvTransform: {x: 94, y: 34}
   - name: Spitter_Frame_23
     originalName: 
-    pivot: {x: 0.08823526, y: -0.045454547}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -603,7 +603,7 @@ ScriptedImporter:
     uvTransform: {x: 185, y: 4}
   - name: Spitter_Frame_24
     originalName: 
-    pivot: {x: 0.031249987, y: -0.045454547}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -623,7 +623,7 @@ ScriptedImporter:
     uvTransform: {x: 210, y: 4}
   - name: Spitter_Frame_25
     originalName: 
-    pivot: {x: 0.18421054, y: 0}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -643,7 +643,7 @@ ScriptedImporter:
     uvTransform: {x: 94, y: 66}
   - name: Spitter_Frame_26
     originalName: 
-    pivot: {x: 0.6515151, y: -0.09090909}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -663,7 +663,7 @@ ScriptedImporter:
     uvTransform: {x: 42, y: 4}
   - name: Spitter_Frame_27
     originalName: 
-    pivot: {x: 0.78333336, y: -0.09090909}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -683,7 +683,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 184}
   - name: Spitter_Frame_28
     originalName: 
-    pivot: {x: 0.87500006, y: -0.04347826}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -703,7 +703,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 214}
   - name: Spitter_Frame_29
     originalName: 
-    pivot: {x: 0.9444445, y: -0.045454547}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -723,7 +723,7 @@ ScriptedImporter:
     uvTransform: {x: 83, y: 4}
   - name: Spitter_Frame_30
     originalName: 
-    pivot: {x: 0.9821429, y: -0.15}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -743,7 +743,7 @@ ScriptedImporter:
     uvTransform: {x: 118, y: 4}
   - name: Spitter_Frame_31
     originalName: 
-    pivot: {x: 1.1956521, y: -0.15}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -763,7 +763,7 @@ ScriptedImporter:
     uvTransform: {x: 154, y: 4}
   - name: Spitter_Frame_32
     originalName: 
-    pivot: {x: 2.85, y: -0.15789475}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1089,7 +1089,31 @@ ScriptedImporter:
       spriteId: 9d7509bcca958324d8fbca5b8be7f31e
     linkedCells: []
     parentIndex: -1
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 

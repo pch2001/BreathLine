@@ -5,4 +5,5 @@ using UnityEngine;
 public class EnemyAttackBase : MonoBehaviour
 {
     public float attackDamage = 0;
+    public GameObject enemyOrigin;
 }

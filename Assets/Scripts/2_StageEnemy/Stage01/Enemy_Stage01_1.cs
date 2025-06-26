@@ -35,7 +35,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
 
     private void Update()
     {
-        if ((moveSpeed == 2 || isReadyPeaceMelody) && currentHp > 5f) // 늑대 등장 or 정화의 걸음시 오염도 감소(최대 5까지 감소)
+        if (isPurifying && currentHp > 5f) // 늑대 등장 or 정화의 걸음시 오염도 감소(최대 5까지 감소)
             currentHp -= 5f * Time.deltaTime; // 1초에 5 Hp씩 감소
 
         if (isReadyPeaceMelody && currentHp > 5f) // 평화의 악장 준비파동 피격시 오염도 감소(최대 5까지)
@@ -69,7 +69,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
 
             if (!attackMode) // attackMode가 비활성화 되어있을 때 피격시
             {
-                AttackMode(); // 공격모드 활성화
+                StartCoroutine(AttackMode()); // 공격모드 활성화
             }
             StartCoroutine(Damaged());
         }
@@ -80,6 +80,8 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
             var attackArea = collision.GetComponent<AttackArea>();
             if (!isLooking || attackArea == null || attackArea.attackGlobalID == peaceAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
             peaceAttackID = attackArea.attackGlobalID;
+
+            Debug.Log("평화의 악장이 적을 안심시킵니다.");
 
             currentHp -= 20f;
             if (currentHp <= 0) 
@@ -106,7 +108,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         else if (collision.gameObject.CompareTag("WolfAppear") || collision.gameObject.CompareTag("PurifyStep"))
         {
             if (!attackMode) return;
-
+            isPurifying = true;
             Debug.Log("적을 진정시킵니다");
             moveSpeed = 2f;
         }
@@ -132,9 +134,15 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         }
         else if (collision.gameObject.CompareTag("EchoGuard"))
         {
-            if (!attackMode || isStune) return;
+            if (isStune) return;
 
-            StartCoroutine(EchoGuardSuccess(collision));
+            EchoGuardSuccess_NoGloogy(collision);
+        }
+        else if (collision.gameObject.CompareTag("EnemyProjectile"))
+        {
+            var enemy = collision.gameObject.GetComponent<EnemyAttackBase>(); // EnemyAttack 기본 클래스 가져옴
+            Debug.Log("적이 반사된 공격에 피해를 입습니다!");
+            StartCoroutine(Damaged());
         }
     }
 
@@ -150,7 +158,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
 
             if (!attackMode) // attackMode가 비활성화 되어있을 때 피격시
             {
-                AttackMode(); // 공격모드 활성화
+                StartCoroutine(AttackMode()); // 공격모드 활성화
             }
             StartCoroutine(Damaged());
         }
@@ -161,6 +169,8 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
             var attackArea = collision.GetComponent<AttackArea>();
             if (!isLooking || attackArea == null || attackArea.attackGlobalID == peaceAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
             peaceAttackID = attackArea.attackGlobalID;
+
+            Debug.Log("평화의 악장이 적을 안심시킵니다.");
 
             currentHp -= 20f;
             if (currentHp <= 0)
@@ -183,7 +193,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         else if (collision.gameObject.CompareTag("WolfAppear") || collision.gameObject.CompareTag("PurifyStep"))
         {
             if (!attackMode) return;
-
+            isPurifying = true;
             moveSpeed = 2f;
         }
     }
@@ -194,6 +204,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         {
             Debug.Log("적이 범위를 벗어납니다");
             moveSpeed = defaultMoveSpeed; // 기존 속도
+            isPurifying = false;
         }
         else if (collision.gameObject.CompareTag("PeaceWaiting"))
         {
@@ -206,7 +217,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         {
             isDead = true;
             StartCoroutine(linkedSpitter.Die()); // 연결된 Spitter 제거
-            StartCoroutine(Die());
+            StartCoroutine(DieAfterDelay(2f)); // 2초 지연후 Die 함수 실행
         }
     }
 
@@ -222,13 +233,21 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         gameObject.SetActive(false); // 적 비활성화
     }
 
-    public void AttackMode() // 공격 모드 활성화
+    public IEnumerator AttackMode() // 공격 모드 활성화
     {
-        StartCoroutine(linkedSpitter.Die()); // 연결된 Spitter 제거
-        Debug.Log("적이 플레이어에게 달려듭니다!");
+        Debug.Log("적이 울부짖습니다!");
         animator.SetTrigger("Attack");
+        linkedSpitter.moveSpeed = 0f;
         isLooking = true;
         attackMode = true;
+        moveSpeed = 0f;
+        yield return new WaitForSeconds(1f);
+
+        Debug.Log("적이 플레이어에게 달려듭니다!");
+        gameObject.SetActive(false);
+        gameObject.SetActive(true); // 오브젝트를 껐다 켜 충돌 판정 초기화
+
+        StartCoroutine(linkedSpitter.Die()); // 연결된 Spitter 제거
         boxCollider.size = new Vector2(0.03f, 0.23f); // 피격 범위 크기 변경 (플레이어 인식 범위 -> 적 충돌 범위)
         boxCollider.offset = new Vector2(0f, 0f); // 피격 범위 위치 변경
         moveSpeed = defaultMoveSpeed;
@@ -247,35 +266,9 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         StartCoroutine(Stunned(3f)); // 3초간 기절
     }
 
-    private IEnumerator EchoGuardSuccess(Collider2D collision) 
+    private IEnumerator DieAfterDelay(float delay) // 지연 사망시
     {
-
-        if (currentGroggyCnt < maxGroggyCnt - 1) // 그로기 게이지가 2개 이상 남았을 경우
-        {
-            Debug.Log("소녀가 적의 공격을 방어해냅니다!");
-            groggyUI.AddGroggyState(); // 그로기 스택 증가
-            currentGroggyCnt++;
-            audioSource.Play(); // 패링 소리 재생
-            float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
-            EchoGuardPushBack(pushBackDir);
-        }
-        else // 남은 그로기 게이지가 1개일 경우
-        {
-            Debug.Log("적이 잠시 그로기 상태에 빠집니다!");
-
-            if (currentHp - 20f >= 5) // 최대 5까지 오염도 감소
-                currentHp -= 15f; // 적 오염도 즉시 20 감소 
-            else
-                currentHp = 5f;
-            groggyUI.AddGroggyState(); // 그로기 스택 증가
-            audioSource.Play(); // 패링 소리 재생
-            float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
-            PushBack(pushBackDir);
-
-            echoGuardEffect.SetActive(true); // 에코가드 성공 이펙트 활성화
-            yield return new WaitForSeconds(0.4f);
-
-            echoGuardEffect.SetActive(false); // 에코가드 이펙트 비활성화
-        }
+        yield return new WaitForSeconds(delay);
+        yield return StartCoroutine(Die());
     }
 }

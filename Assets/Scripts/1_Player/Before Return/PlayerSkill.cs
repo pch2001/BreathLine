@@ -94,6 +94,7 @@ public class PlayerSkill : MonoBehaviour
         RequestAnimSpeed?.Invoke(0f); // 피리 부는 모습으로 애니메이션 멈춤
     }
 
+
     public void ReleasePiri() // 연주버튼 입력 시간에 따른 연주 분기 조건 (분노의 악장 + 평화의 악장 실패시)
     {
         float duration = Time.time - piriStartTime; // 연주버튼 누른 시간
