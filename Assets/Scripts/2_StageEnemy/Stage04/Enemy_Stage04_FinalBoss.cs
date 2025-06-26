@@ -78,27 +78,28 @@ public class Enemy_Stage04_FinalBoss : EnemyBase // Ghowl 스크립트
         //animator.SetBool("isRun", Mathf.Abs(velocity.x) > 0.1f); // 속도에 따른 애니메이션 제어
 
         if (isAttacking) return;
-        StartCoroutine("TeleportAndAOE");
+        //StartCoroutine("TeleportAndAOE");
 
-        //if (count == 7)
-        //{
-        //    StartCoroutine(TeleportAndAOE());
-        //}
-        //else if (count >5 && count < 7)
-        //{
-        //    count++;
-        //    StartCoroutine(Attack3());
-        //}
-        //else if (count >2 && count <=4)
-        //{
-        //    count++;
-        //    StartCoroutine(Attack2());
-        //}else
-        //{
-        //    count++;
-        //    StartCoroutine(Attack1());
+        if (count == 7)
+        {
+            StartCoroutine(TeleportAndAOE());
+        }
+        else if (count > 5 && count < 7)
+        {
+            count++;
+            StartCoroutine(Attack3());
+        }
+        else if (count > 2 && count <= 4)
+        {
+            count++;
+            StartCoroutine(Attack2());
+        }
+        else
+        {
+            count++;
+            StartCoroutine(Attack1());
 
-        //}
+        }
 
         // 일정 범위에 도달시 공격 실해
         //if (Vector2.Distance(gameObject.transform.position, player.transform.position) < 3f)

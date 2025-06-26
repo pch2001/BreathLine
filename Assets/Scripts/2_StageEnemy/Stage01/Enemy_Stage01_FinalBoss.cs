@@ -409,7 +409,6 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
         isAttacking = false;
         animator.SetTrigger("idle");
 
-
     }
 
     public void ActiveBoom(int num)

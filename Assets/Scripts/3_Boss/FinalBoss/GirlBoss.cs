@@ -14,14 +14,30 @@ public class GirlBoss : MonoBehaviour
     public GameObject minibossSpawn;
     void Start()
     {
-        StartCoroutine(Pattern4());
+        StartCoroutine(test());
+
     }
 
     void Update()
     {
+    }
+    IEnumerator test()
+    {
+        yield return StartCoroutine(Pattern1());
+        yield return new WaitForSeconds(3f);
+        yield return StartCoroutine(Pattern2());
+        yield return new WaitForSeconds(3f);
+
+        yield return StartCoroutine(Pattern3());
+        yield return new WaitForSeconds(3f);
+
+        yield return StartCoroutine(Pattern4());
+        yield return new WaitForSeconds(3f);
+
+        yield return StartCoroutine(Pattern5());
+        yield return new WaitForSeconds(3f);
 
     }
-
     IEnumerator Pattern1()
     {
         for (int i = 0; i < 8; i++)

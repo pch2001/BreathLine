@@ -27,5 +27,11 @@ public class cobweb : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         Destroy(gameObject);
+        //플레이 속도 1초간 감소
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Destroy(gameObject);
+        //플레이 속도 1초간 감소
     }
 }
