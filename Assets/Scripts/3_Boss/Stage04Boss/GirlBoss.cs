@@ -14,8 +14,8 @@ public class GirlBoss : MonoBehaviour
     public GameObject minibossSpawn;
     void Start()
     {
-        StartCoroutine(test());
-
+        // StartCoroutine(test());Pattern3
+        StartCoroutine(Pattern5()); 
     }
 
     void Update()
@@ -125,12 +125,13 @@ public class GirlBoss : MonoBehaviour
 
         float duration = 1.5f;
         float elapsed = 0f;
+        Vector3 strikePos = target.transform.position;
 
         while (elapsed < duration)
         {
             // ´ë»ó À§Ä¡ ÃßÀû
-            Vector3 targetPos = target.transform.position;
-            tracerange.transform.position = targetPos;
+            strikePos = target.transform.position; 
+            tracerange.transform.position = strikePos;
             tracerange.transform.rotation = rotation;
 
             // »¡°£»ö ±ôºýÀÓ
@@ -145,7 +146,6 @@ public class GirlBoss : MonoBehaviour
         tracerange.SetActive(false);
 
         // ¸¶Áö¸· À§Ä¡¿¡ ³«·Ú »ý¼º
-        Vector3 strikePos = target.transform.position;
         GameObject thunders = Instantiate(thunder, strikePos, rotation);
 
         yield return new WaitForSeconds(1f);

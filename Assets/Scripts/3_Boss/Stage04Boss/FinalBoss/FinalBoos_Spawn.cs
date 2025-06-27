@@ -38,11 +38,14 @@ public class FinalBoos_Spawn : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("ºÎ‹HÈû");
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("ÀÚÆø °ø°Ý");
             Destroy(this.gameObject, 0.3f);
+        }
+        if (collision.gameObject.CompareTag("AngerMelody") || collision.gameObject.CompareTag("PeaceMelody"))
+        {
+            Destroy(this.gameObject);
         }
     }
    
