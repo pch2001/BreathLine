@@ -21,7 +21,7 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
     public GameObject[] attackAreas; // 공격 범위 오브젝트 배열 
     public bool healmode = false; // 힐모드 여부
 
-
+    [SerializeField]
     private int count;
 
     void Start()

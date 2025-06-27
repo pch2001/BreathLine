@@ -1229,9 +1229,9 @@ GameObject:
   - component: {fileID: 421199668}
   - component: {fileID: 421199667}
   - component: {fileID: 421199666}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pushObject
-  m_TagString: Untagged
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1280,7 +1280,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2711,6 +2711,7 @@ MonoBehaviour:
   thunder: {fileID: 8903480543076556420, guid: e95c1ff621efe3646b00d2ac087c303c, type: 3}
   player: {fileID: 2125538940}
   minibossSpawn: {fileID: 7908577749357144811, guid: d2c3837eb0fed034e803178b318dd381, type: 3}
+  pushObject: {fileID: 421199664}
 --- !u!212 &943608104
 SpriteRenderer:
   m_ObjectHideFlags: 0
