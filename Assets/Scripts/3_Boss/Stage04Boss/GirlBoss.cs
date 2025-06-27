@@ -12,10 +12,14 @@ public class GirlBoss : MonoBehaviour
     public GameObject player;
 
     public GameObject minibossSpawn;
+        public GameObject pushObject;
+
     void Start()
     {
         // StartCoroutine(test());Pattern3
-        StartCoroutine(Pattern5()); 
+        pushObject.SetActive(false);
+
+        StartCoroutine(Pattern4()); 
     }
 
     void Update()
@@ -35,6 +39,9 @@ public class GirlBoss : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         yield return StartCoroutine(Pattern5());
+        yield return new WaitForSeconds(3f);
+
+        yield return StartCoroutine(Pattern6());
         yield return new WaitForSeconds(3f);
 
     }
@@ -66,11 +73,18 @@ public class GirlBoss : MonoBehaviour
 
     IEnumerator Pattern4()
     {
-        for(int i =0; i<linerange.Length; i++)
+        for(int i =0; i<10; i++)
         {
+            int randomIndex = Random.Range(0, linerange.Length);
+            Quaternion dir = linerange[randomIndex].transform.rotation;
+            Vector3 pos = linerange[randomIndex].transform.position;
+
+            StartCoroutine(ThunderWarning1(randomIndex, pos, dir));
+
+            yield return new WaitForSeconds(0.3f);
 
         }
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
     }
 
     IEnumerator Pattern5()//거미 소환
@@ -84,6 +98,17 @@ public class GirlBoss : MonoBehaviour
             Instantiate(minibossSpawn, spawnPos, Quaternion.identity);
         }
         yield return new WaitForSeconds(3f);
+
+    }
+
+    IEnumerator Pattern6()//밀치기
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        pushObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.3f);
+        pushObject.SetActive(false);
 
     }
 
@@ -112,11 +137,7 @@ public class GirlBoss : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(thunders);
     }
-    IEnumerator ThunderWarning2(int index, Vector3 position, Quaternion rotation)
-    {
-        yield return new WaitForSeconds(1f);
-
-    }
+   
 
     IEnumerator ThunderWarning3(GameObject target, Quaternion rotation)
     {

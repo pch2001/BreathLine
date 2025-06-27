@@ -22,6 +22,8 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
     public bool healmode = false; // 힐모드 여부
 
 
+    private int count;
+
     void Start()
     {
         maxHp = 100f; // 적 체력 설정
@@ -46,9 +48,9 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
         boomArea[2].SetActive(false);
         boomArea[3].SetActive(false);
 
+        count = 0;
     }
 
-    int count = 0;
     void FixedUpdate()
     {
         if (isPurifying && currentHp > 5f) // 늑대 등장 or 정화의 걸음시 오염도 감소(최대 5까지 감소)
