@@ -57,7 +57,7 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 
     public void OnEnable()
     {
-        isLocked = true; // 움직임 제한
+        isLocked = false; // 움직임 제한
 
         // inputAction 활성화
         playerinputAction.Enable();
@@ -81,8 +81,8 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 
     public void OnDisable()
     {
-        isLocked = false;// 대화시 움직임 제한 해제
-
+        isLocked = true;// 대화시 움직임 제한 해제
+        animator.SetTrigger("Idle");
         // inputAction 비활성화
         playerinputAction.Disable();
     }
