@@ -1,0 +1,2055 @@
+fileFormatVersion: 2
+guid: cfb9174567f60444c8404c69328d62f5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Stone_Building_01
+  - first:
+      213: 21300002
+    second: Stone_Wall_Fragment_01
+  - first:
+      213: 21300004
+    second: Stone_Stair_01
+  - first:
+      213: 21300006
+    second: Stone_Stair_02
+  - first:
+      213: 21300008
+    second: Stone_Stair_03
+  - first:
+      213: 21300010
+    second: Stone_Stair_04
+  - first:
+      213: 21300012
+    second: Metal_Fence_01
+  - first:
+      213: 21300014
+    second: Metal_Fence_02
+  - first:
+      213: 21300016
+    second: Metal_Fence_03
+  - first:
+      213: 21300018
+    second: Metal_Fence_04
+  - first:
+      213: 21300020
+    second: Metal_Fence_05
+  - first:
+      213: 21300022
+    second: Metal_Fence_06
+  - first:
+      213: 21300024
+    second: Metal_Mounting_02
+  - first:
+      213: 21300026
+    second: Metal_Mounting_01
+  - first:
+      213: 21300028
+    second: Metal_Fence_03
+  - first:
+      213: 21300030
+    second: Stone_Arch_Back
+  - first:
+      213: 21300032
+    second: Metal_Fence_07
+  - first:
+      213: 21300034
+    second: Stone_Arch_Front
+  - first:
+      213: 21300036
+    second: Stone_Wall_01
+  - first:
+      213: 21300038
+    second: House_Wall_01
+  - first:
+      213: 21300040
+    second: House_Wall_02
+  - first:
+      213: 21300042
+    second: House_Wall_03
+  - first:
+      213: 21300044
+    second: House_Wall_04
+  - first:
+      213: 21300046
+    second: House_Wall_05
+  - first:
+      213: 21300048
+    second: House_Wall_06
+  - first:
+      213: 21300050
+    second: Breakable_Floor_01
+  - first:
+      213: 21300052
+    second: Breakable_Floor_02
+  - first:
+      213: 21300054
+    second: Breakable_Floor_03
+  - first:
+      213: 21300056
+    second: Breakable_Floor_04
+  - first:
+      213: 21300058
+    second: Breakable_Floor_05
+  - first:
+      213: 21300060
+    second: Breakable_Floor_06
+  - first:
+      213: 21300062
+    second: Wall_Arch_01
+  - first:
+      213: 21300064
+    second: Wall_Arch_02
+  - first:
+      213: 21300066
+    second: Wall_Arch_03
+  - first:
+      213: 21300068
+    second: Wall_Arch_Shadow_01
+  - first:
+      213: 21300070
+    second: Wall_Arch_Shadow_02
+  - first:
+      213: 21300072
+    second: House_Wall_07
+  - first:
+      213: 21300074
+    second: Stone_Pillar_01
+  - first:
+      213: 21300076
+    second: Stone_Pillar_02
+  - first:
+      213: 21300078
+    second: Stone_Pillar_03
+  - first:
+      213: 21300080
+    second: Metal_Spikes_01
+  - first:
+      213: 21300082
+    second: Metal_Spikes_02
+  - first:
+      213: 21300084
+    second: Metal_Spikes_03
+  - first:
+      213: 21300086
+    second: Metal_Spikes_04
+  - first:
+      213: 21300088
+    second: Metal_Spikes_05
+  - first:
+      213: 21300090
+    second: Metal_Spikes_06
+  - first:
+      213: 21300092
+    second: Metal_Spikes_07
+  - first:
+      213: 21300094
+    second: Metal_Spikes_08
+  - first:
+      213: 21300096
+    second: Metal_Spikes_09
+  - first:
+      213: 21300098
+    second: Metal_Spikes_10
+  - first:
+      213: 21300100
+    second: Metal_Spikes_11
+  - first:
+      213: 21300102
+    second: Pottery_01
+  - first:
+      213: 21300104
+    second: Pottery_02
+  - first:
+      213: 21300106
+    second: Pottery_03
+  - first:
+      213: 21300108
+    second: Pottery_04
+  - first:
+      213: 21300110
+    second: Pottery_05
+  - first:
+      213: 21300112
+    second: Pottery_06
+  - first:
+      213: 21300114
+    second: Pottery_07
+  - first:
+      213: 21300116
+    second: Pottery_08
+  - first:
+      213: 21300118
+    second: Pottery_09
+  - first:
+      213: 21300120
+    second: Pottery_10
+  - first:
+      213: 21300122
+    second: Pottery_11
+  - first:
+      213: 21300124
+    second: Pottery_12
+  - first:
+      213: 21300126
+    second: Wooden_Wheel_01
+  - first:
+      213: 21300128
+    second: Wooden_Wheel_02
+  - first:
+      213: 21300130
+    second: Wooden_Wheel_03
+  - first:
+      213: 21300132
+    second: Wooden_Barrel_01
+  - first:
+      213: 21300134
+    second: Wooden_Barrel_02
+  - first:
+      213: 21300136
+    second: Wooden_Barrel_03
+  - first:
+      213: 21300138
+    second: Wooden_Barrel_04
+  - first:
+      213: 21300140
+    second: Wheat_Sack_01
+  - first:
+      213: 21300142
+    second: Wheat_Sack_02
+  - first:
+      213: 21300144
+    second: Wheat_Sack_03
+  - first:
+      213: 21300146
+    second: Wheat_Sack_04
+  - first:
+      213: 21300148
+    second: Wooden_Crate_01
+  - first:
+      213: 21300150
+    second: Wooden_Crate_02
+  - first:
+      213: 21300152
+    second: Wooden_Crate_03
+  - first:
+      213: 21300154
+    second: Wooden_Crate_04
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Stone_Building_01
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 2984
+        width: 1575
+        height: 1103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Wall_Fragment_01
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 2892
+        width: 545
+        height: 520
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Stair_01
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 3444
+        width: 769
+        height: 645
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Stair_02
+      rect:
+        serializedVersion: 2
+        x: 2438
+        y: 3455
+        width: 451
+        height: 633
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Stair_03
+      rect:
+        serializedVersion: 2
+        x: 2966
+        y: 3423
+        width: 427
+        height: 658
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Stair_04
+      rect:
+        serializedVersion: 2
+        x: 3457
+        y: 3480
+        width: 443
+        height: 554
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Fence_01
+      rect:
+        serializedVersion: 2
+        x: 2186
+        y: 3216
+        width: 158
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Fence_02
+      rect:
+        serializedVersion: 2
+        x: 2361
+        y: 3216
+        width: 129
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Fence_05
+      rect:
+        serializedVersion: 2
+        x: 2352
+        y: 3096
+        width: 200
+        height: 105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Fence_06
+      rect:
+        serializedVersion: 2
+        x: 2200
+        y: 3064
+        width: 136
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Mounting_02
+      rect:
+        serializedVersion: 2
+        x: 2200
+        y: 2960
+        width: 128
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Mounting_01
+      rect:
+        serializedVersion: 2
+        x: 2353
+        y: 2962
+        width: 182
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Fence_03
+      rect:
+        serializedVersion: 2
+        x: 2576
+        y: 3108
+        width: 260
+        height: 331
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Fence_07
+      rect:
+        serializedVersion: 2
+        x: 2551
+        y: 2782
+        width: 291
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Fence_04
+      rect:
+        serializedVersion: 2
+        x: 2853
+        y: 3068
+        width: 299
+        height: 344
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Arch_Back
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 2085
+        width: 379
+        height: 887
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Arch_Front
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 1971
+        width: 278
+        height: 991
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Wall_01
+      rect:
+        serializedVersion: 2
+        x: 3166
+        y: 2764
+        width: 266
+        height: 649
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House_Wall_01
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 2450
+        width: 614
+        height: 522
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House_Wall_02
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 2444
+        width: 646
+        height: 438
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House_Wall_03
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 1900
+        width: 614
+        height: 524
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House_Wall_04
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 1764
+        width: 680
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House_Wall_05
+      rect:
+        serializedVersion: 2
+        x: 2106
+        y: 2299
+        width: 678
+        height: 467
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House_Wall_06
+      rect:
+        serializedVersion: 2
+        x: 2859
+        y: 1920
+        width: 874
+        height: 816
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Breakable_Floor_01
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1776
+        width: 562
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Breakable_Floor_02
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1612
+        width: 561
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Breakable_Floor_03
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1486
+        width: 537
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Breakable_Floor_04
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 1349
+        width: 536
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Breakable_Floor_05
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 1159
+        width: 467
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Breakable_Floor_06
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 980
+        width: 468
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Arch_01
+      rect:
+        serializedVersion: 2
+        x: 2106
+        y: 1830
+        width: 697
+        height: 423
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Arch_02
+      rect:
+        serializedVersion: 2
+        x: 2367
+        y: 1304
+        width: 558
+        height: 413
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Arch_03
+      rect:
+        serializedVersion: 2
+        x: 2349
+        y: 857
+        width: 639
+        height: 417
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Arch_Shadow_01
+      rect:
+        serializedVersion: 2
+        x: 2340
+        y: 492
+        width: 504
+        height: 318
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Arch_Shadow_02
+      rect:
+        serializedVersion: 2
+        x: 2419
+        y: 120
+        width: 367
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House_Wall_07
+      rect:
+        serializedVersion: 2
+        x: 1381
+        y: 148
+        width: 949
+        height: 1592
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Pillar_01
+      rect:
+        serializedVersion: 2
+        x: 3512
+        y: 2796
+        width: 100
+        height: 596
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Pillar_02
+      rect:
+        serializedVersion: 2
+        x: 3672
+        y: 2791
+        width: 105
+        height: 598
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Pillar_03
+      rect:
+        serializedVersion: 2
+        x: 3863
+        y: 2795
+        width: 105
+        height: 342
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Spikes_01
+      rect:
+        serializedVersion: 2
+        x: 3295
+        y: 312
+        width: 70
+        height: 330
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Spikes_02
+      rect:
+        serializedVersion: 2
+        x: 3383
+        y: 311
+        width: 75
+        height: 301
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27305410000000000800000000000000
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Spikes_03
+      rect:
+        serializedVersion: 2
+        x: 3487
+        y: 316
+        width: 73
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47305410000000000800000000000000
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Spikes_04
+      rect:
+        serializedVersion: 2
+        x: 3582
+        y: 315
+        width: 158
+        height: 334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67305410000000000800000000000000
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Spikes_05
+      rect:
+        serializedVersion: 2
+        x: 3760
+        y: 314
+        width: 145
+        height: 293
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Spikes_06
+      rect:
+        serializedVersion: 2
+        x: 3936
+        y: 311
+        width: 159
+        height: 326
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Spikes_07
+      rect:
+        serializedVersion: 2
+        x: 2864
+        y: 270
+        width: 389
+        height: 364
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7305410000000000800000000000000
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Spikes_08
+      rect:
+        serializedVersion: 2
+        x: 3027
+        y: 696
+        width: 462
+        height: 353
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7305410000000000800000000000000
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Spikes_09
+      rect:
+        serializedVersion: 2
+        x: 3544
+        y: 680
+        width: 491
+        height: 363
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08305410000000000800000000000000
+      internalID: 21300096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Spikes_10
+      rect:
+        serializedVersion: 2
+        x: 3022
+        y: 1077
+        width: 1074
+        height: 380
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28305410000000000800000000000000
+      internalID: 21300098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Metal_Spikes_11
+      rect:
+        serializedVersion: 2
+        x: 3043
+        y: 1470
+        width: 790
+        height: 364
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48305410000000000800000000000000
+      internalID: 21300100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pottery_01
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 1655
+        width: 201
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68305410000000000800000000000000
+      internalID: 21300102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pottery_02
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 1648
+        width: 175
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88305410000000000800000000000000
+      internalID: 21300104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pottery_03
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 1648
+        width: 154
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8305410000000000800000000000000
+      internalID: 21300106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pottery_04
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 1328
+        width: 162
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8305410000000000800000000000000
+      internalID: 21300108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pottery_05
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1349
+        width: 160
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8305410000000000800000000000000
+      internalID: 21300110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pottery_06
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 1312
+        width: 188
+        height: 261
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09305410000000000800000000000000
+      internalID: 21300112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pottery_07
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1130
+        width: 289
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29305410000000000800000000000000
+      internalID: 21300114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pottery_08
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 1084
+        width: 175
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49305410000000000800000000000000
+      internalID: 21300116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pottery_09
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 1084
+        width: 174
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69305410000000000800000000000000
+      internalID: 21300118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pottery_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 877
+        width: 193
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89305410000000000800000000000000
+      internalID: 21300120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pottery_11
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 867
+        width: 164
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9305410000000000800000000000000
+      internalID: 21300122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pottery_12
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 816
+        width: 230
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9305410000000000800000000000000
+      internalID: 21300124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden_Wheel_01
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 624
+        width: 300
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9305410000000000800000000000000
+      internalID: 21300126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden_Wheel_02
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 598
+        width: 293
+        height: 338
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a305410000000000800000000000000
+      internalID: 21300128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden_Wheel_03
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 659
+        width: 290
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a305410000000000800000000000000
+      internalID: 21300130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden_Barrel_01
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 598
+        width: 143
+        height: 196
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a305410000000000800000000000000
+      internalID: 21300132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden_Barrel_02
+      rect:
+        serializedVersion: 2
+        x: 1106
+        y: 608
+        width: 141
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a305410000000000800000000000000
+      internalID: 21300134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden_Barrel_03
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 402
+        width: 121
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a305410000000000800000000000000
+      internalID: 21300136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden_Barrel_04
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 397
+        width: 129
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa305410000000000800000000000000
+      internalID: 21300138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wheat_Sack_01
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 452
+        width: 143
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca305410000000000800000000000000
+      internalID: 21300140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wheat_Sack_02
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 456
+        width: 119
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea305410000000000800000000000000
+      internalID: 21300142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wheat_Sack_03
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 454
+        width: 180
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b305410000000000800000000000000
+      internalID: 21300144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wheat_Sack_04
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 463
+        width: 130
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b305410000000000800000000000000
+      internalID: 21300146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden_Crate_01
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 200
+        width: 245
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b305410000000000800000000000000
+      internalID: 21300148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden_Crate_02
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 196
+        width: 222
+        height: 188
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b305410000000000800000000000000
+      internalID: 21300150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden_Crate_03
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 199
+        width: 197
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b305410000000000800000000000000
+      internalID: 21300152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden_Crate_04
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 213
+        width: 234
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab305410000000000800000000000000
+      internalID: 21300154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Breakable_Floor_01: 21300050
+      Breakable_Floor_02: 21300052
+      Breakable_Floor_03: 21300054
+      Breakable_Floor_04: 21300056
+      Breakable_Floor_05: 21300058
+      Breakable_Floor_06: 21300060
+      House_Wall_01: 21300038
+      House_Wall_02: 21300040
+      House_Wall_03: 21300042
+      House_Wall_04: 21300044
+      House_Wall_05: 21300046
+      House_Wall_06: 21300048
+      House_Wall_07: 21300072
+      Metal_Fence_01: 21300012
+      Metal_Fence_02: 21300014
+      Metal_Fence_03: 21300016
+      Metal_Fence_04: 21300018
+      Metal_Fence_05: 21300020
+      Metal_Fence_06: 21300022
+      Metal_Fence_07: 21300032
+      Metal_Mounting_01: 21300026
+      Metal_Mounting_02: 21300024
+      Metal_Spikes_01: 21300080
+      Metal_Spikes_02: 21300082
+      Metal_Spikes_03: 21300084
+      Metal_Spikes_04: 21300086
+      Metal_Spikes_05: 21300088
+      Metal_Spikes_06: 21300090
+      Metal_Spikes_07: 21300092
+      Metal_Spikes_08: 21300094
+      Metal_Spikes_09: 21300096
+      Metal_Spikes_10: 21300098
+      Metal_Spikes_11: 21300100
+      Pottery_01: 21300102
+      Pottery_02: 21300104
+      Pottery_03: 21300106
+      Pottery_04: 21300108
+      Pottery_05: 21300110
+      Pottery_06: 21300112
+      Pottery_07: 21300114
+      Pottery_08: 21300116
+      Pottery_09: 21300118
+      Pottery_10: 21300120
+      Pottery_11: 21300122
+      Pottery_12: 21300124
+      Stone_Arch_Back: 21300030
+      Stone_Arch_Front: 21300034
+      Stone_Building_01: 21300000
+      Stone_Pillar_01: 21300074
+      Stone_Pillar_02: 21300076
+      Stone_Pillar_03: 21300078
+      Stone_Stair_01: 21300004
+      Stone_Stair_02: 21300006
+      Stone_Stair_03: 21300008
+      Stone_Stair_04: 21300010
+      Stone_Wall_01: 21300036
+      Stone_Wall_Fragment_01: 21300002
+      Wall_Arch_01: 21300062
+      Wall_Arch_02: 21300064
+      Wall_Arch_03: 21300066
+      Wall_Arch_Shadow_01: 21300068
+      Wall_Arch_Shadow_02: 21300070
+      Wheat_Sack_01: 21300140
+      Wheat_Sack_02: 21300142
+      Wheat_Sack_03: 21300144
+      Wheat_Sack_04: 21300146
+      Wooden_Barrel_01: 21300132
+      Wooden_Barrel_02: 21300134
+      Wooden_Barrel_03: 21300136
+      Wooden_Barrel_04: 21300138
+      Wooden_Crate_01: 21300148
+      Wooden_Crate_02: 21300150
+      Wooden_Crate_03: 21300152
+      Wooden_Crate_04: 21300154
+      Wooden_Wheel_01: 21300126
+      Wooden_Wheel_02: 21300128
+      Wooden_Wheel_03: 21300130
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

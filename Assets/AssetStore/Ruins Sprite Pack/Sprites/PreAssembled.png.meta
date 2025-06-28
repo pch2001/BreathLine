@@ -1,0 +1,952 @@
+fileFormatVersion: 2
+guid: e65cec53e3392684391ce1d82e946187
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: PA_Rubbled_Floor_01
+  - first:
+      213: 21300002
+    second: PA_Rubbled_Floor_02
+  - first:
+      213: 21300004
+    second: PA_Rubbled_Floor_03
+  - first:
+      213: 21300006
+    second: PA_Rubbled_Floor_04
+  - first:
+      213: 21300008
+    second: PA_Rubbled_Floor_05
+  - first:
+      213: 21300010
+    second: PA_Rubbled_Floor_06
+  - first:
+      213: 21300012
+    second: PA_Rubbled_Floor_07
+  - first:
+      213: 21300014
+    second: PA_Rubbled_Floor_08
+  - first:
+      213: 21300016
+    second: PA_Stone_Floor_01
+  - first:
+      213: 21300018
+    second: PA_Stone_Floor_02
+  - first:
+      213: 21300020
+    second: PA_Stone_Floor_03
+  - first:
+      213: 21300022
+    second: PA_Stone_Floor_04
+  - first:
+      213: 21300024
+    second: PA_Dirt_Floor_01
+  - first:
+      213: 21300026
+    second: PA_Dirt_Floor_02
+  - first:
+      213: 21300028
+    second: PA_Dirt_Floor_03
+  - first:
+      213: 21300030
+    second: PA_Dirt_Floor_04
+  - first:
+      213: 21300032
+    second: PA_Dirt_Floor_05
+  - first:
+      213: 21300034
+    second: PA_Dirt_Floor_06
+  - first:
+      213: 21300036
+    second: PA_Dirt_Floor_07
+  - first:
+      213: 21300038
+    second: PA_Dirt_Floor_08
+  - first:
+      213: 21300040
+    second: PA_Stone_Floor_05
+  - first:
+      213: 21300042
+    second: PA_Stone_Floor_06
+  - first:
+      213: 21300044
+    second: PA_Stone_Floor_07
+  - first:
+      213: 21300046
+    second: PA_Stone_Floor_08
+  - first:
+      213: 21300048
+    second: PA_Stone_Floor_09
+  - first:
+      213: 21300050
+    second: PA_Stone_Floor_10
+  - first:
+      213: 21300052
+    second: PA_Stone_Floor_11
+  - first:
+      213: 21300054
+    second: PA_Stone_Floor_12
+  - first:
+      213: 21300056
+    second: PA_Stone_Floor_13
+  - first:
+      213: 21300058
+    second: PA_Stone_Floor_14
+  - first:
+      213: 21300060
+    second: PA_Stone_Floor_15
+  - first:
+      213: 21300062
+    second: PA_Rubbled_Floor_09
+  - first:
+      213: 21300064
+    second: PA_Rubbled_Floor_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PA_Rubbled_Floor_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3605
+        width: 845
+        height: 487
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Rubbled_Floor_02
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 3064
+        width: 728
+        height: 543
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Rubbled_Floor_03
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 2507
+        width: 713
+        height: 551
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Rubbled_Floor_04
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 1918
+        width: 748
+        height: 585
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Rubbled_Floor_05
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 1395
+        width: 768
+        height: 509
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Rubbled_Floor_06
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 892
+        width: 758
+        height: 476
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Rubbled_Floor_07
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 240
+        width: 880
+        height: 632
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Rubbled_Floor_08
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 3607
+        width: 822
+        height: 484
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_01
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 3155
+        width: 749
+        height: 449
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_02
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 2684
+        width: 689
+        height: 460
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_03
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 2335
+        width: 664
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_04
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 1859
+        width: 664
+        height: 447
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Dirt_Floor_01
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 1388
+        width: 963
+        height: 452
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Dirt_Floor_02
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 819
+        width: 958
+        height: 549
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Dirt_Floor_03
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 302
+        width: 951
+        height: 504
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Dirt_Floor_04
+      rect:
+        serializedVersion: 2
+        x: 1721
+        y: 3512
+        width: 798
+        height: 577
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Dirt_Floor_05
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 3048
+        width: 922
+        height: 446
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Dirt_Floor_06
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 2480
+        width: 950
+        height: 566
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Dirt_Floor_07
+      rect:
+        serializedVersion: 2
+        x: 1685
+        y: 1954
+        width: 936
+        height: 514
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Dirt_Floor_08
+      rect:
+        serializedVersion: 2
+        x: 1808
+        y: 1317
+        width: 833
+        height: 577
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_05
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 840
+        width: 724
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_06
+      rect:
+        serializedVersion: 2
+        x: 1887
+        y: 340
+        width: 644
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_07
+      rect:
+        serializedVersion: 2
+        x: 2552
+        y: 3752
+        width: 722
+        height: 330
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_08
+      rect:
+        serializedVersion: 2
+        x: 2599
+        y: 3240
+        width: 646
+        height: 459
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_09
+      rect:
+        serializedVersion: 2
+        x: 2657
+        y: 2176
+        width: 780
+        height: 1038
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_10
+      rect:
+        serializedVersion: 2
+        x: 2667
+        y: 1059
+        width: 775
+        height: 1091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_11
+      rect:
+        serializedVersion: 2
+        x: 2679
+        y: 555
+        width: 734
+        height: 485
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_12
+      rect:
+        serializedVersion: 2
+        x: 2707
+        y: 10
+        width: 725
+        height: 502
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_13
+      rect:
+        serializedVersion: 2
+        x: 3532
+        y: 20
+        width: 457
+        height: 726
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_14
+      rect:
+        serializedVersion: 2
+        x: 3487
+        y: 800
+        width: 585
+        height: 785
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Stone_Floor_15
+      rect:
+        serializedVersion: 2
+        x: 3508
+        y: 2496
+        width: 493
+        height: 773
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Rubbled_Floor_09
+      rect:
+        serializedVersion: 2
+        x: 3523
+        y: 1631
+        width: 513
+        height: 758
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PA_Rubbled_Floor_10
+      rect:
+        serializedVersion: 2
+        x: 3527
+        y: 3320
+        width: 548
+        height: 768
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PA_Dirt_Floor_01: 21300024
+      PA_Dirt_Floor_02: 21300026
+      PA_Dirt_Floor_03: 21300028
+      PA_Dirt_Floor_04: 21300030
+      PA_Dirt_Floor_05: 21300032
+      PA_Dirt_Floor_06: 21300034
+      PA_Dirt_Floor_07: 21300036
+      PA_Dirt_Floor_08: 21300038
+      PA_Rubbled_Floor_01: 21300000
+      PA_Rubbled_Floor_02: 21300002
+      PA_Rubbled_Floor_03: 21300004
+      PA_Rubbled_Floor_04: 21300006
+      PA_Rubbled_Floor_05: 21300008
+      PA_Rubbled_Floor_06: 21300010
+      PA_Rubbled_Floor_07: 21300012
+      PA_Rubbled_Floor_08: 21300014
+      PA_Rubbled_Floor_09: 21300062
+      PA_Rubbled_Floor_10: 21300064
+      PA_Stone_Floor_01: 21300016
+      PA_Stone_Floor_02: 21300018
+      PA_Stone_Floor_03: 21300020
+      PA_Stone_Floor_04: 21300022
+      PA_Stone_Floor_05: 21300040
+      PA_Stone_Floor_06: 21300042
+      PA_Stone_Floor_07: 21300044
+      PA_Stone_Floor_08: 21300046
+      PA_Stone_Floor_09: 21300048
+      PA_Stone_Floor_10: 21300050
+      PA_Stone_Floor_11: 21300052
+      PA_Stone_Floor_12: 21300054
+      PA_Stone_Floor_13: 21300056
+      PA_Stone_Floor_14: 21300058
+      PA_Stone_Floor_15: 21300060
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,1777 @@
+fileFormatVersion: 2
+guid: f808322d5a0ae5542b9c89d27f0ed660
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Brick_Floor_01
+  - first:
+      213: 21300002
+    second: Brick_Floor_02
+  - first:
+      213: 21300004
+    second: Brick_Floor_03
+  - first:
+      213: 21300006
+    second: Brick_Floor_04
+  - first:
+      213: 21300008
+    second: Brick_Floor_05
+  - first:
+      213: 21300010
+    second: Brick_Floor_06
+  - first:
+      213: 21300012
+    second: Brick_Floor_07
+  - first:
+      213: 21300014
+    second: Brick_Floor_08
+  - first:
+      213: 21300016
+    second: Dirt_Floor_01
+  - first:
+      213: 21300018
+    second: Dirt_Floor_02
+  - first:
+      213: 21300020
+    second: Dirt_Floor_03
+  - first:
+      213: 21300022
+    second: Dirt_Floor_04
+  - first:
+      213: 21300024
+    second: Dirt_Floor_05
+  - first:
+      213: 21300026
+    second: Stone_Fence_01
+  - first:
+      213: 21300028
+    second: Stone_Fence_02
+  - first:
+      213: 21300030
+    second: Stone_Fence_03
+  - first:
+      213: 21300032
+    second: Stone_Fence_04
+  - first:
+      213: 21300034
+    second: Stone_Bridge_Segment_01
+  - first:
+      213: 21300036
+    second: Stone_Bridge_Segment_02
+  - first:
+      213: 21300038
+    second: Stone_Bridge_Segment_03
+  - first:
+      213: 21300040
+    second: Stone_Bridge_Segment_04
+  - first:
+      213: 21300042
+    second: Stone_Bridge_Segment_05
+  - first:
+      213: 21300044
+    second: Stone_Bridge_Segment_06
+  - first:
+      213: 21300046
+    second: Stone_Bridge_Segment_07
+  - first:
+      213: 21300048
+    second: Stone_Bridge_Segment_08
+  - first:
+      213: 21300050
+    second: Stone_Bridge_01
+  - first:
+      213: 21300052
+    second: Stone_Bridge_02
+  - first:
+      213: 21300054
+    second: Stone_Tower_01
+  - first:
+      213: 21300056
+    second: Roofing_01
+  - first:
+      213: 21300058
+    second: Roofing_02
+  - first:
+      213: 21300060
+    second: Stone_Fence_05
+  - first:
+      213: 21300062
+    second: Stone_Fence_06
+  - first:
+      213: 21300064
+    second: Stone_Fence_07
+  - first:
+      213: 21300066
+    second: Stone_Fence_08
+  - first:
+      213: 21300068
+    second: Stone_Fence_09
+  - first:
+      213: 21300070
+    second: Stone_Fence_10
+  - first:
+      213: 21300072
+    second: Stone_Fence_11
+  - first:
+      213: 21300074
+    second: White_Column_01
+  - first:
+      213: 21300076
+    second: White_Column_02
+  - first:
+      213: 21300078
+    second: White_Column_03
+  - first:
+      213: 21300080
+    second: White_Column_04
+  - first:
+      213: 21300082
+    second: White_Column_05
+  - first:
+      213: 21300084
+    second: White_Column_06
+  - first:
+      213: 21300086
+    second: White_Wall_01
+  - first:
+      213: 21300088
+    second: Moss_01
+  - first:
+      213: 21300090
+    second: Moss_02
+  - first:
+      213: 21300092
+    second: Moss_03
+  - first:
+      213: 21300094
+    second: Moss_04
+  - first:
+      213: 21300096
+    second: Moss_05
+  - first:
+      213: 21300098
+    second: Moss_06
+  - first:
+      213: 21300100
+    second: Stone_Column_01
+  - first:
+      213: 21300102
+    second: Stone_Column_02
+  - first:
+      213: 21300104
+    second: Stone_Column_03
+  - first:
+      213: 21300106
+    second: Stone_Column_04
+  - first:
+      213: 21300108
+    second: Stone_Column_05
+  - first:
+      213: 21300110
+    second: Stone_Rubble_01
+  - first:
+      213: 21300112
+    second: Stone_Rubble_02
+  - first:
+      213: 21300114
+    second: Stone_Rubble_03
+  - first:
+      213: 21300116
+    second: Stone_Bridge_03
+  - first:
+      213: 21300118
+    second: Stone_Bridge_04
+  - first:
+      213: 21300120
+    second: Stone_Rubble_04
+  - first:
+      213: 21300122
+    second: Stone_Rubble_05
+  - first:
+      213: 21300124
+    second: Stone_Rubble_06
+  - first:
+      213: 21300126
+    second: Stone_Rubble_07
+  - first:
+      213: 21300128
+    second: Bridge_Rubble_01
+  - first:
+      213: 21300130
+    second: Bridge_Rubble_02
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Brick_Floor_01
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 3976
+        width: 751
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brick_Floor_02
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 3992
+        width: 456
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brick_Floor_03
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 3849
+        width: 773
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brick_Floor_04
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 3709
+        width: 342
+        height: 244
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brick_Floor_05
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3588
+        width: 385
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brick_Floor_06
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 3597
+        width: 356
+        height: 231
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brick_Floor_07
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 3430
+        width: 561
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brick_Floor_08
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 3381
+        width: 461
+        height: 305
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dirt_Floor_01
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 3710
+        width: 693
+        height: 382
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dirt_Floor_02
+      rect:
+        serializedVersion: 2
+        x: 1286
+        y: 3459
+        width: 778
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dirt_Floor_03
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 3350
+        width: 698
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dirt_Floor_04
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 3227
+        width: 734
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dirt_Floor_05
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 2862
+        width: 561
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Fence_01
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 3100
+        width: 691
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Fence_02
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 3116
+        width: 408
+        height: 248
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Fence_03
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2818
+        width: 716
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Fence_04
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 2838
+        width: 341
+        height: 247
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Bridge_Segment_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2353
+        width: 585
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Bridge_Segment_02
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 2375
+        width: 553
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Bridge_Segment_03
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1888
+        width: 672
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Bridge_Segment_04
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 1909
+        width: 621
+        height: 427
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Bridge_Segment_05
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1265
+        width: 337
+        height: 600
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Bridge_Segment_06
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 1263
+        width: 333
+        height: 609
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Bridge_Segment_07
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 1258
+        width: 325
+        height: 619
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Bridge_Segment_08
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 1251
+        width: 311
+        height: 629
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Bridge_01
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 71
+        width: 951
+        height: 1129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Bridge_02
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 53
+        width: 1072
+        height: 1133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Tower_01
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 1815
+        width: 532
+        height: 1013
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Roofing_01
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 1563
+        width: 540
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Roofing_02
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 1263
+        width: 335
+        height: 271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Fence_05
+      rect:
+        serializedVersion: 2
+        x: 2116
+        y: 3935
+        width: 752
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Fence_06
+      rect:
+        serializedVersion: 2
+        x: 2099
+        y: 3751
+        width: 916
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Fence_07
+      rect:
+        serializedVersion: 2
+        x: 2117
+        y: 3563
+        width: 287
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Fence_08
+      rect:
+        serializedVersion: 2
+        x: 2411
+        y: 3560
+        width: 534
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Fence_09
+      rect:
+        serializedVersion: 2
+        x: 2098
+        y: 3388
+        width: 908
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Fence_10
+      rect:
+        serializedVersion: 2
+        x: 2119
+        y: 3216
+        width: 813
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Fence_11
+      rect:
+        serializedVersion: 2
+        x: 2132
+        y: 3048
+        width: 826
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White_Column_01
+      rect:
+        serializedVersion: 2
+        x: 2135
+        y: 2179
+        width: 353
+        height: 853
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White_Column_02
+      rect:
+        serializedVersion: 2
+        x: 2611
+        y: 2181
+        width: 318
+        height: 853
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White_Column_03
+      rect:
+        serializedVersion: 2
+        x: 2031
+        y: 1983
+        width: 573
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White_Column_04
+      rect:
+        serializedVersion: 2
+        x: 2619
+        y: 1968
+        width: 316
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White_Column_05
+      rect:
+        serializedVersion: 2
+        x: 2143
+        y: 1360
+        width: 309
+        height: 548
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27305410000000000800000000000000
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White_Column_06
+      rect:
+        serializedVersion: 2
+        x: 2579
+        y: 1341
+        width: 301
+        height: 587
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47305410000000000800000000000000
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White_Wall_01
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 592
+        width: 599
+        height: 737
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67305410000000000800000000000000
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moss_01
+      rect:
+        serializedVersion: 2
+        x: 2075
+        y: 288
+        width: 205
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moss_02
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 44
+        width: 214
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moss_03
+      rect:
+        serializedVersion: 2
+        x: 2290
+        y: 372
+        width: 381
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7305410000000000800000000000000
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moss_04
+      rect:
+        serializedVersion: 2
+        x: 2305
+        y: 27
+        width: 307
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7305410000000000800000000000000
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moss_05
+      rect:
+        serializedVersion: 2
+        x: 2673
+        y: 343
+        width: 185
+        height: 231
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08305410000000000800000000000000
+      internalID: 21300096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moss_06
+      rect:
+        serializedVersion: 2
+        x: 2654
+        y: 21
+        width: 248
+        height: 272
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28305410000000000800000000000000
+      internalID: 21300098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Column_01
+      rect:
+        serializedVersion: 2
+        x: 3075
+        y: 3777
+        width: 551
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48305410000000000800000000000000
+      internalID: 21300100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Column_02
+      rect:
+        serializedVersion: 2
+        x: 3031
+        y: 3474
+        width: 676
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68305410000000000800000000000000
+      internalID: 21300102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Column_03
+      rect:
+        serializedVersion: 2
+        x: 3744
+        y: 3424
+        width: 327
+        height: 668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88305410000000000800000000000000
+      internalID: 21300104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Column_04
+      rect:
+        serializedVersion: 2
+        x: 3132
+        y: 2788
+        width: 351
+        height: 598
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8305410000000000800000000000000
+      internalID: 21300106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Column_05
+      rect:
+        serializedVersion: 2
+        x: 3627
+        y: 2688
+        width: 337
+        height: 687
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8305410000000000800000000000000
+      internalID: 21300108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Rubble_01
+      rect:
+        serializedVersion: 2
+        x: 2969
+        y: 2596
+        width: 427
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8305410000000000800000000000000
+      internalID: 21300110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Rubble_02
+      rect:
+        serializedVersion: 2
+        x: 2977
+        y: 2476
+        width: 220
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09305410000000000800000000000000
+      internalID: 21300112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Rubble_03
+      rect:
+        serializedVersion: 2
+        x: 2940
+        y: 2288
+        width: 405
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29305410000000000800000000000000
+      internalID: 21300114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Bridge_03
+      rect:
+        serializedVersion: 2
+        x: 2904
+        y: 1239
+        width: 1185
+        height: 697
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49305410000000000800000000000000
+      internalID: 21300116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Bridge_04
+      rect:
+        serializedVersion: 2
+        x: 2793
+        y: 490
+        width: 1293
+        height: 719
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69305410000000000800000000000000
+      internalID: 21300118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Rubble_04
+      rect:
+        serializedVersion: 2
+        x: 3052
+        y: 2016
+        width: 270
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89305410000000000800000000000000
+      internalID: 21300120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Rubble_05
+      rect:
+        serializedVersion: 2
+        x: 3376
+        y: 2439
+        width: 684
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9305410000000000800000000000000
+      internalID: 21300122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Rubble_06
+      rect:
+        serializedVersion: 2
+        x: 3454
+        y: 2192
+        width: 521
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9305410000000000800000000000000
+      internalID: 21300124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Rubble_07
+      rect:
+        serializedVersion: 2
+        x: 3469
+        y: 2024
+        width: 435
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9305410000000000800000000000000
+      internalID: 21300126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bridge_Rubble_01
+      rect:
+        serializedVersion: 2
+        x: 3043
+        y: 259
+        width: 706
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a305410000000000800000000000000
+      internalID: 21300128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bridge_Rubble_02
+      rect:
+        serializedVersion: 2
+        x: 3030
+        y: 8
+        width: 619
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a305410000000000800000000000000
+      internalID: 21300130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Brick_Floor_01: 21300000
+      Brick_Floor_02: 21300002
+      Brick_Floor_03: 21300004
+      Brick_Floor_04: 21300006
+      Brick_Floor_05: 21300008
+      Brick_Floor_06: 21300010
+      Brick_Floor_07: 21300012
+      Brick_Floor_08: 21300014
+      Bridge_Rubble_01: 21300128
+      Bridge_Rubble_02: 21300130
+      Dirt_Floor_01: 21300016
+      Dirt_Floor_02: 21300018
+      Dirt_Floor_03: 21300020
+      Dirt_Floor_04: 21300022
+      Dirt_Floor_05: 21300024
+      Moss_01: 21300088
+      Moss_02: 21300090
+      Moss_03: 21300092
+      Moss_04: 21300094
+      Moss_05: 21300096
+      Moss_06: 21300098
+      Roofing_01: 21300056
+      Roofing_02: 21300058
+      Stone_Bridge_01: 21300050
+      Stone_Bridge_02: 21300052
+      Stone_Bridge_03: 21300116
+      Stone_Bridge_04: 21300118
+      Stone_Bridge_Segment_01: 21300034
+      Stone_Bridge_Segment_02: 21300036
+      Stone_Bridge_Segment_03: 21300038
+      Stone_Bridge_Segment_04: 21300040
+      Stone_Bridge_Segment_05: 21300042
+      Stone_Bridge_Segment_06: 21300044
+      Stone_Bridge_Segment_07: 21300046
+      Stone_Bridge_Segment_08: 21300048
+      Stone_Column_01: 21300100
+      Stone_Column_02: 21300102
+      Stone_Column_03: 21300104
+      Stone_Column_04: 21300106
+      Stone_Column_05: 21300108
+      Stone_Fence_01: 21300026
+      Stone_Fence_02: 21300028
+      Stone_Fence_03: 21300030
+      Stone_Fence_04: 21300032
+      Stone_Fence_05: 21300060
+      Stone_Fence_06: 21300062
+      Stone_Fence_07: 21300064
+      Stone_Fence_08: 21300066
+      Stone_Fence_09: 21300068
+      Stone_Fence_10: 21300070
+      Stone_Fence_11: 21300072
+      Stone_Rubble_01: 21300110
+      Stone_Rubble_02: 21300112
+      Stone_Rubble_03: 21300114
+      Stone_Rubble_04: 21300120
+      Stone_Rubble_05: 21300122
+      Stone_Rubble_06: 21300124
+      Stone_Rubble_07: 21300126
+      Stone_Tower_01: 21300054
+      White_Column_01: 21300074
+      White_Column_02: 21300076
+      White_Column_03: 21300078
+      White_Column_04: 21300080
+      White_Column_05: 21300082
+      White_Column_06: 21300084
+      White_Wall_01: 21300086
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
