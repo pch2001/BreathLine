@@ -49,6 +49,8 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
         boomArea[3].SetActive(false);
 
         count = 0;
+        StartCoroutine(HealBoss());
+
     }
 
     void FixedUpdate()
@@ -78,7 +80,6 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
         if (isAttacking) return;
 
 
-        StartCoroutine(HealBoss());
         //if (count == 7)
         //{
         //    StartCoroutine(HealBoss());
@@ -370,6 +371,8 @@ public class Enemy_Stage01_FinalBoss : EnemyBase
 
         while (healmode)
         {
+            GameManager.Instance.Pollution += 0.5f;
+            //GameManager.instance.Pollution!
             yield return new WaitForSeconds(0.5f);
 
         }
