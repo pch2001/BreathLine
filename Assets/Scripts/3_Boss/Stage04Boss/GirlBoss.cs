@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GirlBoss : MonoBehaviour
@@ -24,6 +25,13 @@ public class GirlBoss : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            //playerCtrl.isPase4 = true;
+            ChangeMap changMap = FindObjectOfType<ChangeMap>();
+            changMap.Pase(1);
+            //Pase(number);
+        }
     }
     IEnumerator test()
     {
@@ -111,6 +119,7 @@ public class GirlBoss : MonoBehaviour
         pushObject.SetActive(false);
 
     }
+
 
 
     IEnumerator ThunderWarning1(int index, Vector3 position, Quaternion rotation)

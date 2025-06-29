@@ -31,13 +31,7 @@ public class ChangeMap : MonoBehaviour
     void Update()
     {
   
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            playerCtrl.isPase4 = true;
-
-            number++;
-            Pase(number);
-        }
+    
     }
     public void Pase(int number)
     {
@@ -66,7 +60,7 @@ public class ChangeMap : MonoBehaviour
     public void Pase3()
     {
         StartCoroutine(ShakeCamera(1.5f, 1f));
-        Debug.Log("플레이어 공격 X");
+        Debug.Log("결핍(봉인당하는 코드)");
         playerCtrl.isPase4 = true;
     }
 

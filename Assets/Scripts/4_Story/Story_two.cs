@@ -181,7 +181,6 @@ public class Story_two : MonoBehaviour
 
         playerCtrl.OnEnable();
 
-        yield return new WaitForSeconds(0.5f);
 
         Destroy(this.gameObject);
     }
