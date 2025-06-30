@@ -29,8 +29,13 @@ public class Story_four : MonoBehaviour
 
         dialoguescript = new List<List<string>>
         {
-        new List<string> { "w:1", "g:2", "n:3" },
-        new List<string> { "w:1", "g:2" },
+        new List<string> { "n:오염도가 체력으로 바뀌었다." },
+
+        new List<string> { "g:“잠시..만..!!! 안돼!!!!”", "n:늑대가 오염도를 버티며 쓰러진다.",
+            "w:네가 안고 있는 분노, 슬픔, 두려움. 모두…" ,
+            "w:절대로. 네 잘못이 아니야.",
+            "w:부디 너를 용서하길. 너를 구원하길."
+        },
         new List<string> { "w:1", "g:2" }
         };
 

@@ -173,7 +173,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Text
+  m_Text: 
 --- !u!222 &104887650
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -291,7 +291,7 @@ PrefabInstance:
       objectReference: {fileID: 1249572261}
     - target: {fileID: 2171147030354614151, guid: 93686b5b6a133ed4fa29883bef6f2202, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -82
+      value: -312
       objectReference: {fileID: 0}
     - target: {fileID: 2171147030354614151, guid: 93686b5b6a133ed4fa29883bef6f2202, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1103,6 +1103,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2703429463209079055, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536282779340707863, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3696059199029484344, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1281,7 +1289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8995993663460684667, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -78
+      value: -312
       objectReference: {fileID: 0}
     - target: {fileID: 8995993663460684667, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1538,7 +1546,7 @@ Transform:
   m_GameObject: {fileID: 2053245818}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -309.17, y: -5.32, z: 0}
+  m_LocalPosition: {x: -308.61, y: -5.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

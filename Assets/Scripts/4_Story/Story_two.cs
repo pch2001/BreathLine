@@ -23,15 +23,22 @@ public class Story_two : MonoBehaviour
 
     private bool isSkipping = false;
     private bool isTyping = false;
-
+    private bool ising = false;
     void Start()
     {
 
         dialoguescript = new List<List<string>>
         {
-        new List<string> { "w:1", "g:2", "n:3" },
-        new List<string> { "w:1", "g:2" },
-        new List<string> { "w:1", "g:2" }
+        new List<string> { "g:이건… 뭐지? \r\n내가 잊고 있던 기억인가…", "g:정말 그렇다면…나는 존재해선 안되는 아이였던 걸까?", "g:눈엣가시처럼, 아무 쓸모도 없는…\n보이지 말아야 할 투명한 존재…\r\n…",
+                            "g :싫어.. \r\n그렇게 살고 싶지 않아.\r\n이대로 가만히 있을 순 없어.\r\n어서 내 쓸모를 증명해야 해. ", "n: -피리의 힘이 강화됩니다. \r\n-분노의 악장 사용 시 공격력이 강화됩니다.\r\n-평화의 악장 지속 시간이 길어집니다. "
+        },
+        new List<string> { "w:괜찮니 아이야?", "g:네 아무것도 아니에요. 괜찮아요." ,
+                            "w:....",
+                            "w:그거 아니? 인간의 마음에는 비 온 후 길가의 웅덩이처럼, 고이는 물이 있어.",
+                            "w:시간이 흐르면, 그 작은 웅덩이는 스스로도 닿을 수 없는 어둠이 되지.",
+                            "w:무언가를 표현하고, 털어 놓는 게 처음은 힘들 지 몰라도.\n너라면 분명 해낼 수 있을 거라 믿어.",
+                            "g:..."
+        }
         };
 
     }
@@ -49,6 +56,9 @@ public class Story_two : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))  // 특정 태그로 확인
         {
+            if (ising) return;
+
+            ising = true;
             sideImage.SetActive(true);
 
             string objectName = gameObject.name;
@@ -146,7 +156,7 @@ public class Story_two : MonoBehaviour
                 else if (speaker == "n")
                     printText3.text = dialogue.Typing(i);
 
-                yield return new WaitForSeconds(0.03f);
+                yield return new WaitForSeconds(0.02f);
             }
             isTyping = false;
             isSkipping = false;
