@@ -14,42 +14,58 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
 {
     private Animator animator;
     private Rigidbody2D rb;
-    private PlayerSkill_R playerSkill;
     public SpriteRenderer spriteRenderer; // Sprite 반전용
     public PlayerInputAction_R playerinputAction; // 강화된 Input 방식 사용
+    private PlayerSkill_R playerSkill;
 
-    private Coroutine echoGuardCoolRoutine; // 에코가드 쿨타임 코루틴
+    [SerializeField] private AnimatorOverrideController playPiriContorller; // 변경할 애니메이터(피리 모션)
+    private RuntimeAnimatorController defaultController; // 기본 애니메이터
+    [SerializeField] private Transform groundCheck; // 캐릭터 발바닥 위치
+    [SerializeField] private LayerMask groundLayer; // 바닥으로 간주할 Layer
     public Image echoGuardCool; // 에코가드 쿨타임 UI 
-
-    private Coroutine purifySteoCoolRoutine; // 정화의 걸음 쿨타임 코루틴
     public Image purifyStepCool; // 정화의 걸음 쿨타임 UI 
-
-    private Coroutine SealAttackRoutine; // 봉인 공격 실행 코루틴
     public GameObject SealUI; // 소녀 스킬 봉인 표시 UI
-
     public Vector3 savePoint; // 현재 스테이지에서 사용할 임시 세이브 포인트
-    private Color originColor; // 소녀 스프라이트 색상
-    private Color damagedColor = new Color(0.2f, 0.2f, 0.2f); // 소녀 피격시 깜빡일 때 색상
 
     float h; // 플레이어 좌우 이동값
     public float moveSpeed = 5f; // 이동속도
-    public float jumpForce = 12f; // 점프력
+    private float jumpForce = 12f; // 점프력
     private bool isGrounded = true; // 착지 여부
-    public bool isPressingPiri { get; private set; } = false; // 피리 연주 여부
     private bool isReadyPiri = true; // 피리 연주 가능 여부 
+    public bool isPeaceMelody = false; // 평화의 악장 연주 중인지
     public bool isPurifying = false; // 정화의 걸음 여부
-    public bool isDamaged = false; // 현재 피격상태 여부
+    private bool isDamaged = false; // 현재 피격상태 여부
     public float damagedTime = 1f; // 피격 반응 유지 시간
     private float blinkInterval = 0.15f; // 피격시 한번 깜빡하는 시간
-
+    private Color originColor; // 소녀 스프라이트 색상
+    private Color damagedColor = new Color(0.2f, 0.2f, 0.2f); // 소녀 피격시 깜빡일 때 색상
+    private Coroutine echoGuardCoolRoutine; // 에코가드 쿨타임 코루틴
+    private Coroutine purifySteoCoolRoutine; // 정화의 걸음 쿨타임 코루틴
+    private Coroutine SealAttackRoutine; // 봉인 공격 실행 코루틴
+    private Coroutine speedRoutine; // 이동속도 변경 코루틴
     private bool isPushed; // 밀격 상황에서 속도 업데이트 제한
     public bool isLocked; // 상호작용시 행동 제한
-    public bool isPase4 = false;
+
+    // 피리 연주 여부 프로퍼티
+    [SerializeField] private bool _isPressingPiri = false;
+    public bool isPressingPiri // 피리 연주 여부
+    {
+        get => _isPressingPiri;
+        set
+        {
+            if (_isPressingPiri == value) return;
+            _isPressingPiri = value;
+
+            // 피리 애니메이션 전환
+            animator.runtimeAnimatorController = value ? playPiriContorller : defaultController;
+        }
+    }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        defaultController = animator.runtimeAnimatorController;
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerinputAction = new PlayerInputAction_R();
         playerSkill = GetComponent<PlayerSkill_R>();
@@ -63,13 +79,15 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
         playerinputAction.Enable();
 
         // PlayerCtrl 변수 변경 이벤트
-        playerSkill.RequestMoveSpeed += OnSetMoveSpeed;
+        playerSkill.RequestSetMoveSpeedAndTime += OnSetMoveSpeedAndTime;
+        playerSkill.RequestSetMoveSpeed += OnSetMoveSpeed;
         playerSkill.RequestAnimTrigger += OnSetAnimTrigger;
-        playerSkill.RequestAnimSpeed += OnSetAnimSpeed;
         playerSkill.RequestEchoGuardStart += SetEchoGuardCoolTime;
         playerSkill.RequestPuriFyStepStart += SetPurifyStepCoolTime;
         playerSkill.RequestisPurifing += SetisPurifing;
         playerSkill.RequestSetSpriteColor += OnSetSpriteColor;
+        playerSkill.RequestPressingPiriState += OnSetPressingPiri;
+        playerSkill.RequestPeaceMelodyActived += OnPeaceMelodyActived;
 
         // PlayerInputAction 이벤트
         playerinputAction.Player.Jump.performed += OnJump;
@@ -80,19 +98,41 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
         playerinputAction.Player.PurifyingStep.canceled += OnPurifyStepStop;
 
     }
-
     public void OnDisable()
     {
-        isLocked = true;// 대화시 움직임 못 움직이는 상태
+        animator.SetBool("isMove", false); // 대화시 Idle 상태로 전환
+
+        isLocked = true;// 대화시 움직임 제한 해제
 
         // inputAction 비활성화
         playerinputAction.Disable();
     }
 
     // 소녀 연결 이벤트
-    private void OnSetMoveSpeed(float speed)
+    public void OnSetMoveSpeed(float speed)
     {
+        if (speedRoutine != null)
+        {
+            StopCoroutine(speedRoutine);
+            speedRoutine = null;
+        }
         moveSpeed = speed;
+    }
+
+    public void OnSetMoveSpeedAndTime(float speed, float duration) // 이동속도 변경 함수
+    {
+        if (speedRoutine != null)
+            StopCoroutine(speedRoutine);
+
+        moveSpeed = speed;
+        speedRoutine = StartCoroutine(RestoreMoveSpeed(duration));
+    }
+
+    private IEnumerator RestoreMoveSpeed(float delay) // 이동속도 복귀 코루틴
+    {
+        yield return new WaitForSeconds(delay);
+        moveSpeed = 5f;
+        speedRoutine = null;
     }
 
     private void OnSetAnimTrigger(string triggerName)
@@ -100,9 +140,14 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
         animator.SetTrigger(triggerName);
     }
 
-    private void OnSetAnimSpeed(float speed)
+    private void OnSetPressingPiri(bool state)
     {
-        animator.speed = speed;
+        isPressingPiri = state;
+    }
+
+    private void OnPeaceMelodyActived(bool state)
+    {
+        isPeaceMelody = state;
     }
 
     private void Start()
@@ -115,11 +160,21 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
 
     void Update()
     {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer); // 바닥에 착지 여부 확인
+
         if (isLocked || isPushed) return; // 행동 제한 변수 활성화시 제한
 
         OnPlaySoftPiri(); // 평화의 악장 연주 차징 확인
         UpdatePurifyStep(); // 정화의 걸음시 방향 갱신
         OnPlayerMove(); // 이동 구현
+    }
+
+    private void OnDrawGizmosSelected() // 바닥 충돌 확인 기즈모 표시
+    {
+        if (groundCheck == null) return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundCheck.position, 0.2f);
     }
 
     private void OnPlayerMove()
@@ -150,7 +205,6 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
         if (isGrounded && !isPressingPiri) // 착지시 + 연주가 아닐때만 점프 가능
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            isGrounded = false;
             animator.SetTrigger("isJump");
         }
     }
@@ -170,6 +224,7 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
     {
         if (isGrounded && isReadyPiri) // 착지, 피리 준비시에만 가능
         {
+            animator.runtimeAnimatorController = playPiriContorller; // 피리부는 애니메이터로 변경
             StartCoroutine(StartPiriCool()); // 피리 연주 쿨타임 시작(0.2f);
             playerSkill.StartPiri();
             isPressingPiri = true; // 피리 연주 시작
@@ -180,7 +235,7 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
     {
         isReadyPiri = false;
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.6f);
         isReadyPiri = true;
     }
 
@@ -189,13 +244,12 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
         if (isGrounded && isPressingPiri) // 착지 + 연주시에만 가능
         {
             playerSkill.ReleasePiri();
-            isPressingPiri = false; // 피리 연주 종료
         }
     }
 
     private void OnPlaySoftPiri() // 평화의 악장 연주 차징 확인
     {
-        if (isPressingPiri) // 피리 연주시에 확인
+        if (isPressingPiri) // 피리 연주중일 때
         {
             playerSkill.CheckSoftPiri();
         }
@@ -291,18 +345,21 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
         purifyStepCool.fillAmount = 1f;
     }
 
+
+    // 충돌 관련 기능 구현
     private IEnumerator OnEnemySealAttack(float enemyDamage, float enemyPosX)
     {
-        Debug.Log("소녀의 능력이 봉인됩니다.");
-        SealUI.SetActive(true); // 스킬 봉인 UI 표시
-
-        if (!isPurifying) // 정화의 걸음시 피격 반응 무시
+        if (isPurifying) // 정화의 걸음시 봉인 공격 무시
         {
-            isPushed = true; // 밀격상태 시작
-            animator.SetTrigger(PlayerAnimTrigger.Hit);
-            rb.AddForce(Vector2.right * ((enemyPosX - transform.position.x > 0) ? -1 : 1) * 30, ForceMode2D.Impulse); // 피격시 반대방향으로 살짝 밀격됨
-
+            Debug.Log("소녀가 능력 봉인을 저항합니다.");
+            yield break;
         }
+
+        SealUI.SetActive(true); // 스킬 봉인 UI 표시
+        isPushed = true; // 밀격상태 시작
+        animator.SetTrigger(PlayerAnimTrigger.Hit);
+        rb.AddForce(Vector2.right * -Mathf.Sign(enemyPosX - transform.position.x) * 30, ForceMode2D.Impulse); // 피격시 반대방향으로 살짝 밀격됨
+
         yield return new WaitForSeconds(0.1f);
         isPushed = false; // 밀격상태 해제
 
@@ -332,6 +389,8 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
     {
         Debug.Log("소녀 피격! 소녀의 오염도가 증가합니다!");
 
+        isPeaceMelody = false;
+        isPressingPiri = false;
         if (isPurifying) // 정화의 걸음시 피격 반응 무시
         {
             isDamaged = true; // 피격상태 시작
@@ -393,6 +452,7 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
         playerinputAction.Player.EchoGuard.Enable();
         playerinputAction.Player.PurifyingStep.Enable();
 
+        moveSpeed = 5f;
         isDamaged = false; // 피격상태 종료
     }
 
@@ -414,12 +474,19 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
         if (collision.gameObject.CompareTag("Ground")) // 바닥과 충돌시 값 초기화
         {
             animator.speed = 1f; // 다시 애니메이션 동작
-            isGrounded = true;
         }
         else if (collision.gameObject.CompareTag("Fall")) // 추락 판정시
         {
             Debug.Log("최근 세이브 포인트로 이동");
             transform.position = savePoint;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision) // 발판 충돌시 동작 중지 방지
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            animator.speed = 1f; // 다시 애니메이션 동작
         }
     }
 
@@ -432,7 +499,7 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
             {
                 if (!enemy.attackMode || enemy.isStune || enemy.isDead || isDamaged) return; // 적의 공격 모드가 false or 스턴, 사망 상태일 경우 or 소녀 피격 상태시 충돌 X
 
-                if (isPressingPiri)
+                if (isPeaceMelody)
                 {
                     playerSkill.PlaySoftPiriCanceled(); // 평화의 연주중이었을 경우 캔슬
                 }
@@ -445,22 +512,26 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
         }
         else if (collision.gameObject.CompareTag("EnemyAttack")) // 에코가드 성공시 그로기 게이지를 높일 수 있는 Attack
         {
+            if (isDamaged) return; // 소녀 피격 상태시 충돌 X
+
             var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
 
             if (enemyAttack != null)
             {
-                if (isDamaged) return; // 소녀 피격 상태시 충돌 X
 
                 if (playerSkill.isEchoGuarding) // 에코가드 상태시 적 그로그 게이지 증가
                 {
                     Debug.Log("[EnemyAttack] 공격을 방어해 적의 그로기 게이지를 높입니다!");
                     StartCoroutine(enemyAttack.enemyOrigin.GetComponent<EnemyBase>().EchoGuardSuccess(collision));
+                    enemyAttack.enemyOrigin.GetComponent<EnemyBase>().CancelAttack();
                     return;
                 }
 
-                if (isPressingPiri) // 평화의 연주중이었을 경우 캔슬
+                if (isPeaceMelody) // 평화의 연주중이었을 경우 캔슬
                 {
-                    playerSkill.PlaySoftPiriCanceled(); 
+                    isPeaceMelody = false;
+                    isPressingPiri = false;
+                    playerSkill.PlaySoftPiriCanceled();
                 }
                 StartCoroutine(OnDamagedStart(enemyAttack.attackDamage * (isPurifying ? 0.2f : 1), collision.transform.position.x)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
             }
@@ -473,7 +544,6 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
         else if (collision.gameObject.CompareTag("EnemyAttack_NoGroggy")) // 에코가드 성공시에도 그로기 게이지를 높일 수 없는 Attack
         {
             var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
-
             if (enemyAttack != null)
             {
                 if (isDamaged) return; // 소녀 피격 상태시 충돌 X
@@ -481,14 +551,21 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
                 if (playerSkill.isEchoGuarding) // 에코가드 상태시 적 그로그 게이지 증가
                 {
                     Debug.Log("[EnemyAttack_NoGroggy] 공격을 방어해 적이 잠시 기절합니다!");
-                    enemyAttack.enemyOrigin.GetComponent<EnemyBase>().EchoGuardSuccess_NoGloogy(collision);
+                    if (enemyAttack.enemyOrigin != null)
+                    {
+                        enemyAttack.enemyOrigin.GetComponent<EnemyBase>().EchoGuardSuccess_NoGloogy(collision);
+                        enemyAttack.enemyOrigin.GetComponent<EnemyBase>().CancelAttack();
+                    }
                     return;
                 }
 
-                if (isPressingPiri) // 평화의 연주중이었을 경우 캔슬
+                if (isPeaceMelody) // 평화의 연주중이었을 경우 캔슬
                 {
+                    isPeaceMelody = false;
+                    isPressingPiri = false;
                     playerSkill.PlaySoftPiriCanceled();
                 }
+                Debug.LogWarning("Enemy 노 그로기와 충돌했슈");
                 StartCoroutine(OnDamagedStart(enemyAttack.attackDamage * (isPurifying ? 0.2f : 1), collision.transform.position.x)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
             }
             else
@@ -509,29 +586,39 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
                 {
                     Debug.Log("[EnemyAttack] 공격을 방어해 적의 그로기 게이지를 높입니다!");
                     StartCoroutine(enemyAttack.enemyOrigin.GetComponent<EnemyBase>().EchoGuardSuccess(collision));
+                    enemyAttack.enemyOrigin.GetComponent<EnemyBase>().CancelAttack();
+                    moveSpeed = 5f;
                     return;
                 }
 
-                if (isPressingPiri) // 평화의 연주중이었을 경우 캔슬
+                if (isPeaceMelody) // 평화의 연주중이었을 경우 캔슬
                 {
+                    isPeaceMelody = false;
+                    isPressingPiri = false;
                     playerSkill.PlaySoftPiriCanceled();
                 }
-                if(SealAttackRoutine != null)
+                if (SealAttackRoutine != null)
                 {
                     StopCoroutine(SealAttackRoutine); // 기존 실행중인 봉인 공격 중지
                 }
-                SealAttackRoutine = StartCoroutine(OnEnemySealAttack(enemyAttack.attackDamage * (isPurifying ? 0.2f : 1), collision.transform.position.x)); // 봉인공격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
+                SealAttackRoutine = StartCoroutine(OnEnemySealAttack(enemyAttack.attackDamage * (isPurifying ? 0.2f : 1), enemyAttack.enemyOrigin.transform.position.x)); // 봉인공격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
             }
             else
             {
                 Debug.Log("해당 적은 EnemyBase 클래스를 상속하지 않았습니다! 연결해유");
             }
         }
-
         else if (collision.gameObject.CompareTag("EnemyProjectile")) // 에코 가드 성공시 막기만 하는 Attack
         {
             Debug.Log("소녀가 적의 투사체에 데미지를 입습니다.");
             var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
+
+            if (isPeaceMelody) // 평화의 연주중이었을 경우 캔슬
+            {
+                isPeaceMelody = false;
+                isPressingPiri = false;
+                playerSkill.PlaySoftPiriCanceled();
+            }
             StartCoroutine(OnDamagedStart(enemyAttack.attackDamage * (isPurifying ? 0.2f : 1), collision.transform.position.x)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
 
             Destroy(collision.gameObject); // 투사체 삭제
@@ -542,7 +629,7 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
             var enemyBase = collision.gameObject.GetComponentInParent<EnemyBase>();
             if (enemyBase != null)
             {
-                enemyBase.enemySight.GetComponent<SpriteRenderer>().enabled = false; // 적 경계 범위 표시 off
+                //enemyBase.enemySight.GetComponent<SpriteRenderer>().enabled = false; // 적 경계 범위 표시 off
                 enemyBase.isPatrol = false; // 적 공격모드로 전환
             }
         }
@@ -558,6 +645,18 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
         else if (collision.gameObject.CompareTag("SavePoint"))
         {
             savePoint = collision.transform.position; // 세이브 포인트 저장
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyAttackRange"))
+        {
+            var enemyBase = collision.gameObject.GetComponentInParent<EnemyBase>();
+            if (enemyBase != null)
+            {
+                enemyBase.isAttackRange = true; // 적 공격 실행 함수 수행
+            }
         }
     }
 
@@ -579,7 +678,7 @@ public class PlayerCtrl_R : MonoBehaviour, PlayerCtrlBase
             var enemyBase = collision.gameObject.GetComponentInParent<EnemyBase>();
             if (enemyBase != null)
             {
-                enemyBase.enemySight.GetComponent<SpriteRenderer>().enabled = true; // 적 경계 범위 표시 on
+                //enemyBase.enemySight.GetComponent<SpriteRenderer>().enabled = true; // 적 경계 범위 표시 on
                 enemyBase.isPatrol = true; // 적 플레이어 추격 중단
             }
         }

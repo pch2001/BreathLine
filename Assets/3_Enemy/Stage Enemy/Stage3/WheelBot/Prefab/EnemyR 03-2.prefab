@@ -192,7 +192,7 @@ Animator:
   m_GameObject: {fileID: 1499567798526985146}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 8716522204728610077, guid: 72826ef7fde781742b97cf3a7f972b81, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7a4985b3b5820654ba724ff2ac55b501, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c4caf4659ea8d4189993bad386d621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
+  attackDamage: 0
   enemyOrigin: {fileID: 6687135812995829902}
 --- !u!1 &2219747385760729964
 GameObject:
@@ -1159,9 +1159,9 @@ MonoBehaviour:
   _isMoving: 0
   _isAttackRange: 0
   targetPos: {x: 0, y: 0}
-  patrolRange: 5
-  patrolMinRange: 3
-  _isPatrol: 0
+  patrolRange: 10
+  patrolMinRange: 8
+  _isPatrol: 1
   damage: 0
   maxGroggyCnt: 0
   currentGroggyCnt: 0
@@ -1268,7 +1268,7 @@ Animator:
   m_GameObject: {fileID: 8065363502302671430}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 4652642095226122972, guid: abc19abf9866adc459f364641857ddfa, type: 3}
+  m_Controller: {fileID: 9100000, guid: a82e9c51376936740a6148d8484cbf00, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1474,7 +1474,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.1, z: 0}
-  m_LocalScale: {x: 2, y: 0.2, z: 0.1}
+  m_LocalScale: {x: 1, y: 0.2, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3628712248318289334}

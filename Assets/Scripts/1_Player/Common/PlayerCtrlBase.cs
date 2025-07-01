@@ -4,4 +4,5 @@ using UnityEngine;
 public interface PlayerCtrlBase
 {
     bool isPressingPiri { get; }
+
 }

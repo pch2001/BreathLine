@@ -23,9 +23,9 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
 
     private void Start()
     {
-        maxHp = 100f; // 적 체력 설정
-        currentHp = 50f; // 적 체력 초기화
-        damage = 20f; // 적 공격력 설정 
+        maxHp = 60f; // 적 체력 설정
+        currentHp = 30f; // 적 체력 초기화
+        damage = 5f; // 적 공격력 설정 
         maxGroggyCnt = 3; // 최대 그로기 게이지 3개로 설정
         currentGroggyCnt = 0; // 현재 그로기 개수 초기화
         rigidBody.drag = 5f; // 기본 마찰력 설정

@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 15
+    spritePixelsToUnits: 100
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638865762215396666
+  platformSettingsDirtyTick: 638867058750383767
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -663,7 +663,7 @@ ScriptedImporter:
     uvTransform: {x: 334, y: 370}
   - name: Shadow Of Storms_Frame_37
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.6, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -683,7 +683,7 @@ ScriptedImporter:
     uvTransform: {x: 65, y: 426}
   - name: Shadow Of Storms_Frame_58
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -703,7 +703,7 @@ ScriptedImporter:
     uvTransform: {x: 177, y: 162}
   - name: Shadow Of Storms_Frame_59
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -803,7 +803,7 @@ ScriptedImporter:
     uvTransform: {x: 40, y: 426}
   - name: Shadow Of Storms_Frame_73
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.12, y: 0.2}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -823,7 +823,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Shadow Of Storms_Frame_74
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.15, y: 0.2}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -923,7 +923,7 @@ ScriptedImporter:
     uvTransform: {x: 40, y: 477}
   - name: Shadow Of Storms_Frame_79
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.6, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -963,7 +963,7 @@ ScriptedImporter:
     uvTransform: {x: 40, y: 345}
   - name: Shadow Of Storms_Frame_81
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.7, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1023,7 +1023,7 @@ ScriptedImporter:
     uvTransform: {x: 40, y: 372}
   - name: Shadow Of Storms_Frame_84
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.65, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1043,7 +1043,7 @@ ScriptedImporter:
     uvTransform: {x: 182, y: 343}
   - name: Shadow Of Storms_Frame_90
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1063,7 +1063,7 @@ ScriptedImporter:
     uvTransform: {x: 335, y: 162}
   - name: Shadow Of Storms_Frame_91
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1083,7 +1083,7 @@ ScriptedImporter:
     uvTransform: {x: 242, y: 222}
   - name: Shadow Of Storms_Frame_21
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.55, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1103,7 +1103,7 @@ ScriptedImporter:
     uvTransform: {x: 488, y: 56}
   - name: Shadow Of Storms_Frame_22
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.6, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1123,7 +1123,7 @@ ScriptedImporter:
     uvTransform: {x: 295, y: 343}
   - name: Shadow Of Storms_Frame_23
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.55, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1143,7 +1143,7 @@ ScriptedImporter:
     uvTransform: {x: 488, y: 0}
   - name: Shadow Of Storms_Frame_24
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.6, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1203,7 +1203,7 @@ ScriptedImporter:
     uvTransform: {x: 476, y: 288}
   - name: Shadow Of Storms_Frame_27
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.55, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1223,7 +1223,7 @@ ScriptedImporter:
     uvTransform: {x: 488, y: 28}
   - name: Shadow Of Storms_Frame_29
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.65, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1243,7 +1243,7 @@ ScriptedImporter:
     uvTransform: {x: 40, y: 290}
   - name: Shadow Of Storms_Frame_30
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.55, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1263,7 +1263,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 392}
   - name: Shadow Of Storms_Frame_31
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.35, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1363,7 +1363,7 @@ ScriptedImporter:
     uvTransform: {x: 411, y: 343}
   - name: Shadow Of Storms_Frame_38
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.65, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1383,7 +1383,7 @@ ScriptedImporter:
     uvTransform: {x: 365, y: 343}
   - name: Shadow Of Storms_Frame_39
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.55, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1403,7 +1403,7 @@ ScriptedImporter:
     uvTransform: {x: 339, y: 343}
   - name: Shadow Of Storms_Frame_40
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.7, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1423,7 +1423,7 @@ ScriptedImporter:
     uvTransform: {x: 209, y: 343}
   - name: Shadow Of Storms_Frame_41
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.7, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1443,7 +1443,7 @@ ScriptedImporter:
     uvTransform: {x: 266, y: 343}
   - name: Shadow Of Storms_Frame_42
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.75, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1503,7 +1503,7 @@ ScriptedImporter:
     uvTransform: {x: 388, y: 288}
   - name: Shadow Of Storms_Frame_45
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.45, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1523,7 +1523,7 @@ ScriptedImporter:
     uvTransform: {x: 177, y: 195}
   - name: Shadow Of Storms_Frame_46
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.38, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1543,7 +1543,7 @@ ScriptedImporter:
     uvTransform: {x: 224, y: 288}
   - name: Shadow Of Storms_Frame_47
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.45, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1583,7 +1583,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 173}
   - name: Shadow Of Storms_Frame_49
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.43, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1603,7 +1603,7 @@ ScriptedImporter:
     uvTransform: {x: 486, y: 124}
   - name: Shadow Of Storms_Frame_50
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.25, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1623,7 +1623,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 305}
   - name: Shadow Of Storms_Frame_51
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.25, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1643,7 +1643,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 350}
   - name: Shadow Of Storms_Frame_52
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.22, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1663,7 +1663,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 263}
   - name: Shadow Of Storms_Frame_53
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.43, y: 0.4}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1683,7 +1683,7 @@ ScriptedImporter:
     uvTransform: {x: 393, y: 86}
   - name: Shadow Of Storms_Frame_54
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1703,7 +1703,7 @@ ScriptedImporter:
     uvTransform: {x: 83, y: 252}
   - name: Shadow Of Storms_Frame_55
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1723,7 +1723,7 @@ ScriptedImporter:
     uvTransform: {x: 347, y: 252}
   - name: Shadow Of Storms_Frame_56
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.43, y: 0.4}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1743,7 +1743,7 @@ ScriptedImporter:
     uvTransform: {x: 83, y: 124}
   - name: Shadow Of Storms_Frame_57
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.43, y: 0.4}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1763,7 +1763,7 @@ ScriptedImporter:
     uvTransform: {x: 83, y: 86}
   - name: Shadow Of Storms_Frame_68
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.13, y: 0.2}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1783,7 +1783,7 @@ ScriptedImporter:
     uvTransform: {x: 83, y: 162}
   - name: Shadow Of Storms_Frame_69
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.12, y: 0.2}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1803,7 +1803,7 @@ ScriptedImporter:
     uvTransform: {x: 308, y: 0}
   - name: Shadow Of Storms_Frame_70
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.2, y: 0.2}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1823,7 +1823,7 @@ ScriptedImporter:
     uvTransform: {x: 405, y: 0}
   - name: Shadow Of Storms_Frame_71
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.12, y: 0.2}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1843,7 +1843,7 @@ ScriptedImporter:
     uvTransform: {x: 207, y: 0}
   - name: Shadow Of Storms_Frame_72
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.12, y: 0.2}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1863,7 +1863,7 @@ ScriptedImporter:
     uvTransform: {x: 104, y: 0}
   - name: Shadow Of Storms_Frame_85
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.43, y: 0.4}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1883,7 +1883,7 @@ ScriptedImporter:
     uvTransform: {x: 385, y: 124}
   - name: Shadow Of Storms_Frame_86
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1903,7 +1903,7 @@ ScriptedImporter:
     uvTransform: {x: 215, y: 252}
   - name: Shadow Of Storms_Frame_87
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.4, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1923,7 +1923,7 @@ ScriptedImporter:
     uvTransform: {x: 83, y: 288}
   - name: Shadow Of Storms_Frame_88
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.43, y: 0.4}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1943,7 +1943,7 @@ ScriptedImporter:
     uvTransform: {x: 234, y: 124}
   - name: Shadow Of Storms_Frame_89
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.43, y: 0.4}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:

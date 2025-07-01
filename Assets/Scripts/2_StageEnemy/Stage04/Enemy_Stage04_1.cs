@@ -11,10 +11,10 @@ public class Enemy_Stage04_1 : EnemyBase // Mage 스크립트
     
     private void Start()
     {
-        maxHp = 100f; // 적 체력 설정
-        currentHp = 50f; // 적 체력 초기화
-        damage = 20f; // 적 공격력 설정 
-        maxGroggyCnt = 3; // 최대 그로기 게이지 3개로 설정
+        maxHp = 70f; // 적 체력 설정
+        currentHp = 35f; // 적 체력 초기화
+        damage = 7f; // 적 공격력 설정 
+        maxGroggyCnt = 2; // 최대 그로기 게이지 3개로 설정
         currentGroggyCnt = 0; // 현재 그로기 개수 초기화
         rigidBody.drag = 5f; // 기본 마찰력 설정
         startPos = transform.position;
@@ -31,13 +31,8 @@ public class Enemy_Stage04_1 : EnemyBase // Mage 스크립트
             }
         }
 
-        attackPatterns = new AttackPattern[] // 공격 패턴 종류 초기화
-        {
-                Attack0,
-                Attack1,
-        };
-
         ChooseNextPatrolPoint(); // 다음 목적지 설정
+        InitializeAttackPatterns(); // 공격 함수 구성 초기화
 
         GameManager.Instance.isReturned = enemyIsReturn; // 적 회귀 상태 설정
         if (GameManager.Instance.isReturned) // 회귀 후, 그로기 슬롯 초기화 
@@ -63,6 +58,9 @@ public class Enemy_Stage04_1 : EnemyBase // Mage 스크립트
         if (isPatrol && isMoving && Vector2.Distance(transform.position, targetPos) < 1f) // 패트롤 모드 중 목적지 도착시 
             isMoving = false; // 경계 상태로 전환
 
+        Vector2 velocity = new Vector2(direction.x * moveSpeed, rigidBody.velocity.y);
+        animator.SetBool("isRun", Mathf.Abs(velocity.x) > 0.1f); // 속도에 따른 애니메이션 제어
+
         if (!isPatrol && isAttackRange || isAttacking) return; // 공격 모드 - 공격 실행 상태 or 이미 공격 실행시 이동 제한
 
         if (!isPatrol && !isAttackRange) // 공격 모드 - 적 추격 상태 구현
@@ -70,8 +68,16 @@ public class Enemy_Stage04_1 : EnemyBase // Mage 스크립트
             LockOnTargetPlayer(); // 목적지를 플레이어 위치로 갱신
         }
         
-        Vector2 velocity = new Vector2(direction.x * moveSpeed, rigidBody.velocity.y);
         rigidBody.velocity = velocity; // 적 이동
+    }
+
+    protected override void InitializeAttackPatterns() // 공격 함수 구성 초기화
+    {
+        attackPatterns = new AttackPattern[] // 공격 패턴 종류 초기화
+        {
+                Attack0,
+                Attack1,
+        };
     }
 
     private void LockOnTargetPlayer() // 플레이어 위치를 목표지점으로 설정
@@ -88,18 +94,19 @@ public class Enemy_Stage04_1 : EnemyBase // Mage 스크립트
     private IEnumerator Attack0()
     {
         isAttacking = true;
-        attackCoroutine = null; // 실행 중이었던 코루틴 정리
-        currentAttack = attackObjects[0];
 
         Debug.Log("적이 [공격 0]을 준비합니다!");
+        attackCoroutine = null; // 실행 중이었던 코루틴 정리
+        currentAttack = attackObjects[0];
+        moveSpeed = 0f;
         LockOnTargetPlayer(); // 플레이어를 바라보게 설정
 
         Vector3 dirAttack = attackObjects[0].transform.localPosition; // 적 공격 범위 준비
-        dirAttack.x = Mathf.Abs(dirAttack.x) * direction.x;
+        dirAttack.x = Mathf.Abs(dirAttack.x) * (direction.x > 0 ? 1 : -1);
         attackObjects[0].transform.localPosition = dirAttack;
 
         Vector3 dirReady = hitEffect.transform.localPosition; // 공격 경고 UI 구현
-        dirReady.x = Mathf.Abs(dirReady.x) * direction.x;
+        dirReady.x = Mathf.Abs(dirReady.x) * (direction.x > 0 ? 1 : -1);
         hitEffect.transform.localPosition = dirReady;
         hitEffect.SetActive(true);
         yield return new WaitForSeconds(0.3f); // 공격 간격 0.3초
@@ -115,25 +122,29 @@ public class Enemy_Stage04_1 : EnemyBase // Mage 스크립트
         attackObjects[0].SetActive(false); // 공격범위 비활성화
         yield return new WaitForSeconds(1f); // 다음 행동을 하는데 간격을 둠
 
+        nextAttackIndex = Random.Range(0, attackPatterns.Length); // 다음 공격 결정
+        moveSpeed = defaultMoveSpeed;
         isAttacking = false;
+
         EvaluateCurrentState(); // 프로퍼티 값 초기화(상태에 맞는 행동 수행)
     }
 
     private IEnumerator Attack1()
     {
+        isAttacking = true;
+        
+        Debug.Log("적이 [공격 1]을 준비합니다!");
         currentAttack = attackObjects[1];
         attackCoroutine = null; // 실행 중이었던 코루틴 정리
-        isAttacking = true;
-
-        Debug.Log("적이 [공격 1]을 준비합니다!");
+        moveSpeed = 0f;
         LockOnTargetPlayer(); // 플레이어를 바라보게 설정
 
         Vector3 dirAttack = attackObjects[1].transform.localPosition; // 적 공격 범위 준비
-        dirAttack.x = Mathf.Abs(dirAttack.x) * -direction.x;
+        dirAttack.x = Mathf.Abs(dirAttack.x) * -(direction.x > 0 ? 1 : -1);
         attackObjects[1].transform.localPosition = dirAttack;
 
         Vector3 dirReady = hitEffect_noGroggy.transform.localPosition; // 공격 경고 UI 구현
-        dirReady.x = Mathf.Abs(dirReady.x) * direction.x;
+        dirReady.x = Mathf.Abs(dirReady.x) * (direction.x > 0 ? 1 : -1);
         hitEffect_noGroggy.transform.localPosition = dirReady;
         hitEffect_noGroggy.SetActive(true);
         yield return new WaitForSeconds(0.3f); // 공격 간격 0.3초
@@ -151,7 +162,10 @@ public class Enemy_Stage04_1 : EnemyBase // Mage 스크립트
         attackCoroutine = null; // 코루틴 정리
         yield return new WaitForSeconds(1f); // 다음 행동을 하는데 간격을 둠
 
+        nextAttackIndex = Random.Range(0, attackPatterns.Length); // 다음 공격 결정
+        moveSpeed = defaultMoveSpeed;
         isAttacking = false;
+
         EvaluateCurrentState(); // 프로퍼티 값 초기화(상태에 맞는 행동 수행)
     }
 
@@ -201,12 +215,6 @@ public class Enemy_Stage04_1 : EnemyBase // Mage 스크립트
         {
 
             isReadyPeaceMelody = true; // 평화의 악장 준비 파동 시작
-        }
-        else if (collision.gameObject.CompareTag("EchoGuard"))
-        {
-            if (isStune) return;
-
-            EchoGuardSuccess_NoGloogy(collision);
         }
         else if (collision.gameObject.CompareTag("EnemyProjectile"))
         {

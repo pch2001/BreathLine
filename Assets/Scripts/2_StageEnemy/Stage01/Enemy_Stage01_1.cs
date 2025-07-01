@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
 {
-    private InputAction playerInteraction; 
+    private InputAction playerInteraction;
     public bool isLooking = false; // 플레이어가 적의 시야에 들어왔는지
     public int angerAttackID = 0; // 분노의 악장 중복 충돌 판정 방지
     public int peaceAttackID = 1; // 평화의 악장 중복 충돌 판정 방지
@@ -16,10 +16,10 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
 
     private void Start()
     {
-        maxHp = 100f; // 적 체력 설정
-        currentHp = 50f; // 적 체력 초기화
-        damage = 20f; // 적 공격력 설정 
-        pollutionDegree = 20f; // 적 처치(피격)시 오르는 오염도 설정
+        maxHp = 60; // 적 체력 설정
+        currentHp = 30f; // 적 체력 초기화
+        damage = 10f; // 적 공격력 설정 
+        pollutionDegree = 5f; // 적 처치(피격)시 오르는 오염도 설정
         maxGroggyCnt = 3; // 최대 그로기 게이지 3개로 설정
         currentGroggyCnt = 0; // 현재 그로기 개수 초기화
         rigidBody.drag = 5f; // 기본 마찰력 설정
@@ -31,6 +31,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         {
             groggyUI.SetupGroggySpriteGauge(maxGroggyCnt);
         }
+        InitializeAttackPatterns();
     }
 
     private void Update()
@@ -55,6 +56,14 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         rigidBody.velocity = velocity; // 적 이동
 
         animator.SetBool("isRun", Mathf.Abs(velocity.x) > 0.1f); // 속도에 따른 애니메이션 제어
+    }
+
+    protected override void InitializeAttackPatterns() // 공격 함수 구성 초기화
+    {
+        attackPatterns = new AttackPattern[] // 공격 패턴 종류 초기화
+        {
+            // 해당 몬스터는 공격 패턴x / 자폭 공격
+        };
     }
 
     protected override void HandlerTriggerEnter(Collider2D collision) // 충돌 처리 담당 
@@ -129,14 +138,14 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
 
             if (!attackMode || isStune) return; // 공격모드가 아닌 상황 or 스턴 상황에서 충돌시 무시
 
+            if (GameManager.Instance.isReturned && player.GetComponent<PlayerSkill_R>().isEchoGuarding) // 플레이어 에코가드시 그로기 증가
+            {
+                Debug.LogWarning("에코 가드 함수 실행하려고 하는디?");
+                StartCoroutine(EchoGuardSuccess(collision));
+                return;
+            }
             Debug.Log("적 플레이어에게 피해를 입힙니다!");
             StartCoroutine(Die());
-        }
-        else if (collision.gameObject.CompareTag("EchoGuard"))
-        {
-            if (isStune) return;
-
-            EchoGuardSuccess_NoGloogy(collision);
         }
         else if (collision.gameObject.CompareTag("EnemyProjectile"))
         {
@@ -213,7 +222,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
             Debug.Log("평화의 악장을 준비를 마칩니다!");
             isReadyPeaceMelody = false; // 평화의 악장 준비 해제
         }
-        else if (collision.gameObject.CompareTag("Player") && isLooking && !attackMode && !isDead)
+        else if (!isBossCreated && collision.gameObject.CompareTag("Player") && isLooking && !attackMode && !isDead)
         {
             isDead = true;
             StartCoroutine(linkedSpitter.Die()); // 연결된 Spitter 제거

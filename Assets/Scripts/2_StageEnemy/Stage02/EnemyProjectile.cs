@@ -32,6 +32,10 @@ public class EnemyProjectile : MonoBehaviour
         {
             Debug.Log("적의 공격을 방어합니다!");
             currentTimer = 0f;
+        }else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("적이 반사된 공격에 피해를 입습니다!");
+            currentTimer = 0f;
         }
     }
 }

@@ -61,12 +61,12 @@ public class ChangeMap : MonoBehaviour
     {
         StartCoroutine(ShakeCamera(1.5f, 1f));
         Debug.Log("°áÇÌ(ºÀÀÎ´çÇÏ´Â ÄÚµå)");
-        playerCtrl.isPase4 = true;
+        //playerCtrl.isPase4 = true;
     }
 
     IEnumerator Pase4()
     {
-        playerCtrl.isPase4 = false;
+        //playerCtrl.isPase4 = false;
 
         yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));
         yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));

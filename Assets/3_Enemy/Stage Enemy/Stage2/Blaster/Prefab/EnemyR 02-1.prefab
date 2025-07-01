@@ -741,7 +741,7 @@ Animator:
   m_GameObject: {fileID: 6388563962266669828}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 8716522204728610077, guid: 72826ef7fde781742b97cf3a7f972b81, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7a4985b3b5820654ba724ff2ac55b501, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0}
   patrolRange: 5
   patrolMinRange: 3
-  _isPatrol: 0
+  _isPatrol: 1
   damage: 0
   maxGroggyCnt: 0
   currentGroggyCnt: 0
@@ -1263,7 +1263,7 @@ Animator:
   m_GameObject: {fileID: 7543111551415946845}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 4652642095226122972, guid: abc19abf9866adc459f364641857ddfa, type: 3}
+  m_Controller: {fileID: 9100000, guid: a82e9c51376936740a6148d8484cbf00, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
