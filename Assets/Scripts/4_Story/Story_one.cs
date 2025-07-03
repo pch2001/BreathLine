@@ -99,20 +99,19 @@ public class Story_one : MonoBehaviour
 
             string speaker = parts[0].Trim();
             string dialogue = parts[1].Trim();
-
+            printText1.text = "";
+            printText2.text = "";
             // 말풍선 분기
             if (speaker == "g")
             {
                 girlImage.SetActive(true);
                 wolfImage.SetActive(false);
                 
-                printText1.text = "";
             }
             else if (speaker == "w")
             {
                 girlImage.SetActive(false);
                 wolfImage.SetActive(true);
-                printText2.text = "";
             }
 
             int length = dialogue.GetTypingLength();

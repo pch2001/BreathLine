@@ -108,6 +108,9 @@ public class Story_four : MonoBehaviour
 
             string speaker = parts[0].Trim();
             string dialogue = parts[1].Trim();
+            printText1.text = "";
+            printText2.text = "";
+            printText3.text = "";
 
             // ¸»Ç³¼± ºÐ±â
             if (speaker == "g")
@@ -115,19 +118,16 @@ public class Story_four : MonoBehaviour
                 girlImage.SetActive(true);
                 wolfImage.SetActive(false);
 
-                printText1.text = "";
             }
             else if (speaker == "w")
             {
                 girlImage.SetActive(false);
                 wolfImage.SetActive(true);
-                printText2.text = "";
             }
             else if (speaker == "n")
             {
                 girlImage.SetActive(false);
                 wolfImage.SetActive(false);
-                printText3.text = "";
             }
 
             int length = dialogue.GetTypingLength();
