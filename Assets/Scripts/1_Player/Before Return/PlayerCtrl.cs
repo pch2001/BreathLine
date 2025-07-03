@@ -216,6 +216,7 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 
     private void OnJump(InputAction.CallbackContext context) // 점프
     {
+        Debug.Log("점픗 ㅣ시랳ㅇ");
         if (isGrounded && !isPressingPiri) // 착지시 + 연주가 아닐때만 점프 가능
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
