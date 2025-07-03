@@ -25,7 +25,9 @@ public class Story_one_R : MonoBehaviour
 
     void Start()
     {
-
+        printText1.text = "";
+        printText2.text = "";
+        printText3.text = "";
         dialoguescript = new List<List<string>>
         {
         new List<string> { "g:무슨 일이 벌어진 걸까?\n내가 무슨 잘못을 한 거지?",

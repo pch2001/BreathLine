@@ -26,7 +26,9 @@ public class Story_four : MonoBehaviour
 
     void Start()
     {
-
+        printText1.text = "";
+        printText2.text = "";
+        printText3.text = "";
         dialoguescript = new List<List<string>>
         {
         new List<string> { "n:오염도가 체력으로 바뀌었다." },

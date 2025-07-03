@@ -26,6 +26,9 @@ public class Story_two : MonoBehaviour
     private bool ising = false;
     void Start()
     {
+        printText1.text = "";
+        printText2.text = "";
+        printText3.text = "";
 
         dialoguescript = new List<List<string>>
         {

@@ -25,7 +25,9 @@ public class Story_three : MonoBehaviour
 
     void Start()
     {
-
+        printText1.text = "";
+        printText2.text = "";
+        printText3.text = "";
         dialoguescript = new List<List<string>>
         {
         new List<string> { "g:하아…아니야 난 괜찮아…그러니까…", "w:...", "g:하하 봤죠? 피리의 힘이 강해졌어요",

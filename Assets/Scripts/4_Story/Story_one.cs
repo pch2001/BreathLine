@@ -23,7 +23,8 @@ public class Story_one : MonoBehaviour
 
     void Start()
     {
-
+        printText1.text = "";
+        printText2.text = "";
         dialoguescript = new List<List<string>>
         {
         new List<string> { "g:.....", "g:머리 아파...", "g:여기가 어디지?", "w:안녕", "g:헉! 넌 모야? 잡아먹지마 난 맛 없단 말이야", "w:널 잡아 먹을 생각은 없어.. \n 길을 잃은거 같은데 내가 도와줄까?\n 날 따라 앞으로가자", "g:일단 앞으로 가자.." },

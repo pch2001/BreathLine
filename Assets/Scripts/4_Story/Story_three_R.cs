@@ -25,7 +25,9 @@ public class Story_three_R : MonoBehaviour
 
     void Start()
     {
-
+        printText1.text = "";
+        printText2.text = "";
+        printText3.text = "";
         dialoguescript = new List<List<string>>
         {
         new List<string> { "w:1", "g:2", "n:3" },
