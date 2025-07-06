@@ -13,7 +13,7 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
     private int specialPhaseCnt = 1;
     private int spawnEnemyCnt = 0; // 소환할 몬스터 수
     private bool isMoveAttackActived = false; // 이동 공격 실행중인지
-
+    
     [SerializeField] private List<GameObject> phase3_Monster; // 특수 패턴시 소환할 2스테이지 적 리스트
     [SerializeField] private List<GameObject> translatePos; // 공격2의 이동할 위치
     [SerializeField] private GameObject AttackSpecialRange; // 특수 패턴시 공격 범위
@@ -43,8 +43,8 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
             }
         }
 
-        foreach (GameObject obj in phase3_Monster)
-        {
+        foreach(GameObject obj in phase3_Monster)
+    {
             EnemyBase enemy = obj.GetComponent<EnemyBase>();
             if (enemy != null)
             {
@@ -231,7 +231,7 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
         yield return new WaitForSeconds(1f);
 
         // 시작 지점 이동 및 이동 공격 시작
-        if (Random.value < 0.5f) // 시작 지점 랜덤 결정
+        if(Random.value < 0.5f) // 시작 지점 랜덤 결정
         {
             startTranslatePos = translatePos[0].transform.position;
             targetTranslatePos = translatePos[1].transform.position;
@@ -256,7 +256,7 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
     private IEnumerator SpecialPhaseRoutine() // 특수 패턴 구현
     {
         Debug.LogWarning("적이 특수 패턴을 시작합니다! + 소리 추가");
-
+        
         moveSpeed = 0f;
         isSpecialPhase = true;
         specialPhaseCnt--;
@@ -265,7 +265,7 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
         yield return new WaitForSeconds(3f);
 
         // 사라지는 연출
-        animator.SetTrigger("Charge");
+        animator.SetTrigger("Charge"); 
         yield return new WaitForSeconds(0.3f);
 
         // 등장 연출
@@ -294,12 +294,12 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
             hitEffect_noGroggy.SetActive(false);
             AttackSpecialRange.SetActive(true);
             yield return new WaitForSeconds(0.2f);
-
+            
             AttackSpecialRange.SetActive(false);
             yield return new WaitForSeconds(1f);
         }
         yield return new WaitForSeconds(1f);
-
+        
         // 보스 재등장 및 몬스터 제거
         animator.SetTrigger("Damaged");
         attackMode = true;
@@ -334,7 +334,7 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
         moveSpeed = defaultMoveSpeed;
         isMoveAttackActived = false;
         isAttacking = false;
-
+        
         EvaluateCurrentState(); // 프로퍼티 값 초기화(상태에 맞는 행동 수행)
     }
 
@@ -342,15 +342,15 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
     {
         spawnEnemyCnt--;
         Debug.LogWarning(spawnEnemyCnt);
-        if (spawnEnemyCnt <= 0)
+        if(spawnEnemyCnt <= 0)
         {
             animator.SetTrigger("Transform");
             attackMode = true;
             isAttackRange = false;
 
-            foreach (var monster in phase3_Monster)
+            foreach(var monster in phase3_Monster)
             {
-                if (monster != null)
+                if(monster != null)
                 {
                     monster.SetActive(false);
                 }
@@ -378,11 +378,14 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
             if (attackArea == null || attackArea.attackGlobalID == peaceAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
             peaceAttackID = attackArea.attackGlobalID;
 
-            currentHp -= 10f;
+            currentHp -= 15f;
             if (currentHp <= 0)
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
             else
+            {
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
+                StartCoroutine(PushAttack(3f)); // 3초후 밀격 공격
+            }
         }
         else if (collision.gameObject.CompareTag("WolfAttack"))
         {

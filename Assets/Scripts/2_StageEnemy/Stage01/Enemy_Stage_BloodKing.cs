@@ -246,13 +246,13 @@ public class Enemy_Stage_BloodKing : BossBase // Mage 스크립트
         yield return new WaitForSeconds(3f);
 
         // 사라지는 연출
-        animator.SetTrigger("Transform");
+        animator.SetTrigger("Transform"); 
         yield return new WaitForSeconds(0.7f);
         spriteRenderer.enabled = false;
         boxCollider.enabled = false;
 
         // 몬스터 활성화
-        foreach (GameObject monster in phase1_Ghouls)
+        foreach(GameObject monster in phase1_Ghouls)
         {
             monster.SetActive(true);
         }
@@ -261,19 +261,19 @@ public class Enemy_Stage_BloodKing : BossBase // Mage 스크립트
             monster.SetActive(true);
         }
         yield return new WaitForSeconds(20f); // 몬스터 20초간 등장
-
+        
         // 보스 재등장 및 자폭 명령
         spriteRenderer.enabled = true;
         boxCollider.enabled = true;
         foreach (GameObject monster in phase1_Ghouls)
         {
-            if (monster.activeSelf) // 해당 적이 켜져있을 경우 공격 모드 실행
+            if(monster.activeSelf) // 해당 적이 켜져있을 경우 공격 모드 실행
                 StartCoroutine(monster.GetComponent<Enemy_Stage01_1>().AttackMode()); // 연결된 구울 AttackMode 실행
         }
         animator.SetTrigger("Appear");
         moveSpeed = defaultMoveSpeed;
         yield return new WaitForSeconds(2f);
-
+        
         isSpecialPhase = false; // 특수 패턴 종료
     }
 
@@ -296,11 +296,14 @@ public class Enemy_Stage_BloodKing : BossBase // Mage 스크립트
             if (attackArea == null || attackArea.attackGlobalID == peaceAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
             peaceAttackID = attackArea.attackGlobalID;
 
-            currentHp -= 10f;
+            currentHp -= 15f;
             if (currentHp <= 0)
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
             else
+            {
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
+                StartCoroutine(PushAttack(3f)); // 3초후 밀격 공격
+            }
         }
         else if (collision.gameObject.CompareTag("WolfAttack"))
         {

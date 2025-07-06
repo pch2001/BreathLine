@@ -44,6 +44,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""edb8c9c8-e9da-4cee-8e6b-2eaa4b246589"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -66,6 +75,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PlayPiri"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b304e444-6e5f-4171-b816-0c74a9761a79"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -118,34 +138,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""MenuUI"",
-            ""id"": ""c1f7b8b0-fd42-437f-9789-0dbbb931f725"",
-            ""actions"": [
-                {
-                    ""name"": ""ESC"",
-                    ""type"": ""Button"",
-                    ""id"": ""1f6f32b0-d01a-418d-b9f5-00db2c003560"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""e2795193-7a44-4c2e-8fd3-c6fb4189f47a"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ESC"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": []
@@ -154,13 +146,11 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_PlayPiri = m_Player.FindAction("PlayPiri", throwIfNotFound: true);
+        m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         // Wolf
         m_Wolf = asset.FindActionMap("Wolf", throwIfNotFound: true);
         m_Wolf_Move = m_Wolf.FindAction("Move", throwIfNotFound: true);
         m_Wolf_Attack = m_Wolf.FindAction("Attack", throwIfNotFound: true);
-        // MenuUI
-        m_MenuUI = asset.FindActionMap("MenuUI", throwIfNotFound: true);
-        m_MenuUI_ESC = m_MenuUI.FindAction("ESC", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -224,12 +214,14 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_PlayPiri;
+    private readonly InputAction m_Player_Interaction;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
         public PlayerActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @PlayPiri => m_Wrapper.m_Player_PlayPiri;
+        public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -245,6 +237,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @PlayPiri.started += instance.OnPlayPiri;
             @PlayPiri.performed += instance.OnPlayPiri;
             @PlayPiri.canceled += instance.OnPlayPiri;
+            @Interaction.started += instance.OnInteraction;
+            @Interaction.performed += instance.OnInteraction;
+            @Interaction.canceled += instance.OnInteraction;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -255,6 +250,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @PlayPiri.started -= instance.OnPlayPiri;
             @PlayPiri.performed -= instance.OnPlayPiri;
             @PlayPiri.canceled -= instance.OnPlayPiri;
+            @Interaction.started -= instance.OnInteraction;
+            @Interaction.performed -= instance.OnInteraction;
+            @Interaction.canceled -= instance.OnInteraction;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -326,64 +324,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         }
     }
     public WolfActions @Wolf => new WolfActions(this);
-
-    // MenuUI
-    private readonly InputActionMap m_MenuUI;
-    private List<IMenuUIActions> m_MenuUIActionsCallbackInterfaces = new List<IMenuUIActions>();
-    private readonly InputAction m_MenuUI_ESC;
-    public struct MenuUIActions
-    {
-        private @PlayerInputAction m_Wrapper;
-        public MenuUIActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @ESC => m_Wrapper.m_MenuUI_ESC;
-        public InputActionMap Get() { return m_Wrapper.m_MenuUI; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MenuUIActions set) { return set.Get(); }
-        public void AddCallbacks(IMenuUIActions instance)
-        {
-            if (instance == null || m_Wrapper.m_MenuUIActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MenuUIActionsCallbackInterfaces.Add(instance);
-            @ESC.started += instance.OnESC;
-            @ESC.performed += instance.OnESC;
-            @ESC.canceled += instance.OnESC;
-        }
-
-        private void UnregisterCallbacks(IMenuUIActions instance)
-        {
-            @ESC.started -= instance.OnESC;
-            @ESC.performed -= instance.OnESC;
-            @ESC.canceled -= instance.OnESC;
-        }
-
-        public void RemoveCallbacks(IMenuUIActions instance)
-        {
-            if (m_Wrapper.m_MenuUIActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IMenuUIActions instance)
-        {
-            foreach (var item in m_Wrapper.m_MenuUIActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_MenuUIActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public MenuUIActions @MenuUI => new MenuUIActions(this);
     public interface IPlayerActions
     {
         void OnJump(InputAction.CallbackContext context);
         void OnPlayPiri(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
     }
     public interface IWolfActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-    }
-    public interface IMenuUIActions
-    {
-        void OnESC(InputAction.CallbackContext context);
     }
 }

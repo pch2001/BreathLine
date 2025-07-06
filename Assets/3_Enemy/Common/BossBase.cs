@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossBase : EnemyBase
 {
+    [SerializeField] protected GameObject pushAttackRange; // 밀격 공격 범위 오브젝트
     public GameObject attackTriggerRange; // 적 현재 공격 시작 범위
     public bool isSpecialPhase = false; // 특수 패턴 발동 여부
 
@@ -18,7 +19,7 @@ public class BossBase : EnemyBase
         get => _isAttackRange;
         set
         {
-            if (!attackMode) return;
+            if (!attackMode || isSpecialPhase) return;
 
             _isAttackRange = value; // 변경된 값 적용
 
@@ -49,6 +50,42 @@ public class BossBase : EnemyBase
     }
 
 
+    protected IEnumerator PushAttack(float delay) // 밀격 함수
+    {
+        yield return new WaitForSeconds(delay); // 스턴 시간 이후
+
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, 3, 1 << LayerMask.NameToLayer("Player")); // 반지름 3, Player 레이어만 충돌하는 범위로 설정
+        if (hit != null)
+        {
+            float dirX = (hit.transform.position.x - transform.position.x) >= 0 ? 1f : -1f;
+            Vector2 dir = new Vector2(dirX, 0f);
+
+            PlayerCtrlBase playerState = hit.GetComponent<PlayerCtrlBase>();
+            playerState.isPushed = true;
+            hit.GetComponent<Rigidbody2D>().AddForce(dir * 15f, ForceMode2D.Impulse);
+
+            moveSpeed = 0;
+            isStune = true;
+            animator.SetTrigger("Push"); // 밀격 모션
+            CancelAttack(); // 공격 중인 경우 취소
+            pushAttackRange.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            pushAttackRange.SetActive(false);
+
+            yield return new WaitForSeconds(1.5f);
+
+            moveSpeed = defaultMoveSpeed; // 이동속도 복구
+            isStune = false;
+            playerState.isPushed = false;
+            EvaluateCurrentState(); // 적 상태 적용 함수
+        }
+    }
+
+    void OnDrawGizmos() // 밀격 범위 표시
+    {
+        Gizmos.color = Color.red; // 색상 지정
+        Gizmos.DrawWireSphere(transform.position, 3); // 원형 범위
+    }
     protected virtual void SetAttackTriggerRange(int index) // 공격 종류에 따른 공격 시작 범위 변경 
     {
 

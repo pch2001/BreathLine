@@ -12,7 +12,7 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
     private int specialPhaseCnt = 1;
     private int spawnEnemyCnt = 0; // 소환할 몬스터 수
     private bool isHealMode = false; // 힐 상태인지 여부
-
+    
     [SerializeField] private List<GameObject> beamAttacks; // 공격2의 빔 오브젝트 리스트
     [SerializeField] private List<GameObject> phase2_Monster; // 특수 패턴시 소환할 2스테이지 적 리스트
 
@@ -39,8 +39,8 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
             }
         }
 
-        foreach (GameObject obj in phase2_Monster)
-        {
+        foreach(GameObject obj in phase2_Monster)
+    {
             EnemyBase enemy = obj.GetComponent<EnemyBase>();
             if (enemy != null)
             {
@@ -64,7 +64,7 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
         // 특수 패턴시 회복 구현
         float hpRatio = currentHp / maxHp;
         if (isHealMode)
-        {
+        {    
             if (hpRatio > 0.5f && hpRatio <= 1f) // 오염도를 낮추는 회복 실행
             {
                 if (hpRatio <= 0.51f)
@@ -194,8 +194,8 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
     private IEnumerator Attack1()
     {
         isAttacking = true;
-
-        Debug.Log("적이 [공격 0]을 준비합니다!");
+        
+        Debug.Log("적이 [공격 0]을 준비합니다!"); 
         attackCoroutine = null; // 실행 중이었던 코루틴 정리
         currentAttack = null;
         moveSpeed = 0f;
@@ -237,11 +237,11 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
         hitEffect_noGroggy.transform.localPosition = dirReady;
         hitEffect_noGroggy.SetActive(true);
 
-        foreach (var beam in beamAttacks)
+        foreach(var beam in beamAttacks)
         {
             Vector3 pos = beam.transform.localPosition;
             pos.x = Mathf.Abs(pos.x) * (direction.x > 0 ? 1 : -1);
-            beam.transform.localPosition = pos;
+            beam.transform.localPosition = pos; 
         }
         yield return new WaitForSeconds(0.8f); // 공격 간격 0.8초
 
@@ -271,7 +271,7 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
     private IEnumerator SpecialPhaseRoutine() // 특수 패턴 구현
     {
         Debug.LogWarning("적이 특수 패턴을 시작합니다! + 소리 추가");
-
+        
         moveSpeed = 0f;
         isSpecialPhase = true;
         specialPhaseCnt--;
@@ -280,7 +280,7 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
         yield return new WaitForSeconds(3f);
 
         // 사라지는 연출
-        animator.SetTrigger("Transform");
+        animator.SetTrigger("Transform"); 
         yield return new WaitForSeconds(0.3f);
 
         // 등장 연출
@@ -303,16 +303,16 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
     {
         spawnEnemyCnt--;
         Debug.LogWarning(spawnEnemyCnt);
-        if (spawnEnemyCnt <= 0)
+        if(spawnEnemyCnt <= 0)
         {
             animator.SetTrigger("Transform");
             isHealMode = false;
             attackMode = true;
             isAttackRange = false;
 
-            foreach (var monster in phase2_Monster)
+            foreach(var monster in phase2_Monster)
             {
-                if (monster != null)
+                if(monster != null)
                 {
                     monster.SetActive(false);
                 }
@@ -340,11 +340,14 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
             if (attackArea == null || attackArea.attackGlobalID == peaceAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
             peaceAttackID = attackArea.attackGlobalID;
 
-            currentHp -= 10f;
+            currentHp -= 15f;
             if (currentHp <= 0)
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
             else
+            {
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
+                StartCoroutine(PushAttack(3f)); // 3초후 밀격 공격
+            }
         }
         else if (collision.gameObject.CompareTag("WolfAttack"))
         {

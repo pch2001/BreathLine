@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
-public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
+public class PlayerCtrl : PlayerCtrlBase
 {
     private Animator animator;
     private Rigidbody2D rb;
@@ -39,7 +39,6 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
     private Color originColor = new Color(1f, 1f, 1f); // 소녀 스프라이트 색상
     private Color damagedColor = new Color(0.5f, 0.5f, 0.5f); // 소녀 피격시 깜빡일 때 색상
     private Coroutine SealAttackRoutine; // 봉인 공격 실행 코루틴
-    private bool isPushed; // 밀격 상황에서 속도 업데이트 제한
     public bool isLocked; // 상호작용시 행동 제한
 
     // 늑대 관련 변수
@@ -54,7 +53,7 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 
     // 피리 연주 여부 프로퍼티
     private bool _isPressingPiri = false;
-    public bool isPressingPiri
+    public override bool isPressingPiri
     {
         get => _isPressingPiri;
         set
@@ -66,9 +65,6 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
             animator.runtimeAnimatorController = value ? playPiriContorller : defaultController;
         }
     }
-
-    public GameObject SaveButton;
-    public GameObject ExitButton;
 
     private void Awake()
     {
@@ -83,8 +79,6 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 
     public void OnEnable()
     {
-        //Debug.Log("OnEnable 호출", this);
-        //Debug.Log(Environment.StackTrace);
         isLocked = false; // 대화시 움직임 제한 
 
         // inputAction 활성화
@@ -107,14 +101,12 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
         playerinputAction.Player.PlayPiri.canceled += OnReleasePiri;
         playerinputAction.Wolf.Move.performed += OnWolfMove;
         playerinputAction.Wolf.Attack.performed += OnWolfAttack;
-        playerinputAction.MenuUI.ESC.performed += ONESC;
     }
 
     public void OnDisable()
     {
-        Debug.LogWarning("조작키 움직임 제한!");
         animator.SetBool("isMove", false); // 대화시 Idle 상태로 전환
-
+        
         isLocked = true;// 대화시 움직임 제한 해제
 
         // inputAction 비활성화
@@ -131,14 +123,6 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
         }
         moveSpeed = speed;
     }
-
-    public void ONESC(InputAction.CallbackContext context)
-    {
-        Debug.Log("ESC눌림");
-        SaveButton.SetActive(!SaveButton.activeSelf); // 세이브 버튼 토글
-        ExitButton.SetActive(!ExitButton.activeSelf); // 종료 버튼 토글
-    }
-
     public void OnSetMoveSpeedAndTime(float speed, float duration) // 이동속도 변경 함수
     {
         if (speedRoutine != null)
@@ -219,7 +203,7 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
             animator.SetBool("isMove", true);
         else
             animator.SetBool("isMove", false);
-
+    
         // 이동 구현
         rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
         // 좌우 반전
@@ -355,7 +339,7 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
         isPushed = true; // 밀격상태 시작
         animator.SetTrigger(PlayerAnimTrigger.Hit);
         rb.AddForce(Vector2.right * ((enemyPosX - transform.position.x > 0) ? -1 : 1) * 30, ForceMode2D.Impulse); // 피격시 반대방향으로 살짝 밀격됨
-
+        
         yield return new WaitForSeconds(0.1f);
         isPushed = false; // 밀격상태 해제
 
@@ -509,14 +493,14 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
                 isPeaceMelody = false;
                 isPressingPiri = false;
                 playerSkill.PlaySoftPiriCanceled();
-            }
+                }
 
-            if (SealAttackRoutine != null)
-            {
-                StopCoroutine(SealAttackRoutine); // 기존 실행중인 봉인 공격 중지
-            }
-            SealAttackRoutine = StartCoroutine(OnEnemySealAttack(collision.transform.position.x)); // 봉인공격 반응 구현
-
+                if (SealAttackRoutine != null)
+                {
+                    StopCoroutine(SealAttackRoutine); // 기존 실행중인 봉인 공격 중지
+                }
+                SealAttackRoutine = StartCoroutine(OnEnemySealAttack(collision.transform.position.x)); // 봉인공격 반응 구현
+            
             moveSpeed = 5f;
         }
         else if (collision.gameObject.CompareTag("EnemyProjectile")) // 에코 가드 성공시 막기만 하는 Attack
@@ -577,6 +561,14 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
         if (collision.gameObject.CompareTag("WolfAppear"))
         {
             isWolfRange = true; // 늑대 범위 안에 있을 경우, 피해x 상태
+        }
+        else if (collision.gameObject.CompareTag("EnemyAttackRange"))
+        {
+            var enemyBase = collision.gameObject.GetComponentInParent<EnemyBase>();
+            if (enemyBase != null)
+            {
+                enemyBase.isAttackRange = true; // 적 공격 실행 함수 수행
+            }
         }
     }
 

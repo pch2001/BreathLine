@@ -1,8 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public interface PlayerCtrlBase
+public class PlayerCtrlBase : MonoBehaviour
 {
-    bool isPressingPiri { get; }
+    public virtual bool isPressingPiri 
+    {
+        get;
+        set;
+    }
 
+    public bool isPushed = false;
 }

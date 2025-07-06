@@ -686,11 +686,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5624541408354297263, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -75
+      value: 18.9
       objectReference: {fileID: 0}
     - target: {fileID: 5624541408354297263, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 5624541408354297263, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22630,10 +22630,10 @@ MonoBehaviour:
   damage: 0
   maxGroggyCnt: 0
   currentGroggyCnt: 0
-  attackMode: 0
+  attackMode: 1
   isStune: 0
   isDead: 0
-  enemyIsReturn: 0
+  enemyIsReturn: 1
   isPurifying: 0
   isReadyPeaceMelody: 0
   nextAttackIndex: 0
@@ -37958,10 +37958,10 @@ MonoBehaviour:
   damage: 0
   maxGroggyCnt: 0
   currentGroggyCnt: 0
-  attackMode: 0
+  attackMode: 1
   isStune: 0
   isDead: 0
-  enemyIsReturn: 0
+  enemyIsReturn: 1
   isPurifying: 0
   isReadyPeaceMelody: 0
   nextAttackIndex: 0
@@ -43722,10 +43722,10 @@ MonoBehaviour:
   damage: 0
   maxGroggyCnt: 0
   currentGroggyCnt: 0
-  attackMode: 0
+  attackMode: 1
   isStune: 0
   isDead: 0
-  enemyIsReturn: 0
+  enemyIsReturn: 1
   isPurifying: 0
   isReadyPeaceMelody: 0
   nextAttackIndex: 0
@@ -73364,10 +73364,10 @@ MonoBehaviour:
   damage: 0
   maxGroggyCnt: 0
   currentGroggyCnt: 0
-  attackMode: 0
+  attackMode: 1
   isStune: 0
   isDead: 0
-  enemyIsReturn: 0
+  enemyIsReturn: 1
   isPurifying: 0
   isReadyPeaceMelody: 0
   nextAttackIndex: 0
@@ -152377,10 +152377,10 @@ MonoBehaviour:
   damage: 0
   maxGroggyCnt: 0
   currentGroggyCnt: 0
-  attackMode: 0
+  attackMode: 1
   isStune: 0
   isDead: 0
-  enemyIsReturn: 0
+  enemyIsReturn: 1
   isPurifying: 0
   isReadyPeaceMelody: 0
   nextAttackIndex: 0

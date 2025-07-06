@@ -42,7 +42,7 @@ public class PlayerSkill_R : MonoBehaviour
     public event Action<bool> RequestisPurifing; // playerCtrl의 isPurify 변수 변경
     public event Action<bool> RequestPressingPiriState; // playerCtrl의 isPressingPiri 변경 이벤트 
     public event Action<bool> RequestPeaceMelodyActived; // playerCtrl의 isPeaceMelody 변경 이벤트 
-
+    
     public event Action<float> RequestEchoGuardStart; // playerCtrl에게 에코가드 실행 알림 이벤트
     public event Action<float> RequestPuriFyStepStart; // playerCtrl에게 정화의 걸음 실행 알림 이벤트
 
@@ -93,7 +93,7 @@ public class PlayerSkill_R : MonoBehaviour
         Vector3 attackPosition = AngerAttackArea.transform.localPosition;
         attackPosition.x = Mathf.Abs(attackPosition.x) * direction;
         AngerAttackArea.transform.localPosition = attackPosition;
-
+        
         AngerAttackEffect.SetActive(true);
         AngerAttackArea.SetActive(true);
         yield return new WaitForSeconds(0.4f);
@@ -194,7 +194,7 @@ public class PlayerSkill_R : MonoBehaviour
         {
             Debug.Log("에코가드 실행!");
             isEchoGuarding = true; // 에코가드 실행중
-
+            
             echoGuardReady = false;
             StartCoroutine(EchoGuardCoolTimer()); // 쿨타임 코루틴 실행
 

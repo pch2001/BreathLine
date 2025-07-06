@@ -29913,13 +29913,13 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -30001,7 +30001,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 99eeda4ad454c3a4f9e1ddda1782505f, type: 2}
+  - {fileID: 2100000, guid: c64109e357847cb43b16368dd1498f7d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -40277,22 +40277,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8d7cfb9041d87478228da77ac45e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPushed: 0
+  rb: {fileID: 0}
   spriteRenderer: {fileID: 0}
   playPiriContorller: {fileID: 22100000, guid: 893d6d5189094b24097c57d007a51167, type: 2}
   groundCheck: {fileID: 7699186576507278571}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1032
+    m_Bits: 4104
   echoGuardCool: {fileID: 0}
   purifyStepCool: {fileID: 0}
   SealUI: {fileID: 7549317369317668183}
   savePoint: {x: -61.5, y: -1.5, z: 0}
   moveSpeed: 5
   isPeaceMelody: 0
-  isPurifying: 0
   damagedTime: 1
   isLocked: 0
   _isPressingPiri: 0
+  _isPurifying: 0
 --- !u!114 &2586223488853116167
 MonoBehaviour:
   m_ObjectHideFlags: 0

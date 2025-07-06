@@ -26,11 +26,11 @@ public class PlayerSkill : MonoBehaviour
     private bool isSoftPiriStart = false; // 평화의 악장 연주가 시작되었는지
     private bool isSoftPiriPlayed = false; // 평화의 악장 연주가 완료되었는지
     public float SoftPiriKeyDownTime; // 평화의 악장 키다운 시간
-
+    
     // 늑대 관련 변수
 
     private SpriteRenderer wolfSpriteRenderer; // 늑대 스프라이트 반전용
-
+    
     [SerializeField] private SpriteRenderer wolfEyes; // 늑대 눈 스프라이트
     public Animator wolfEyesAnim; // 늑대 눈 애니메이터
     public GameObject guardImg; // 늑대 가드 이미지
@@ -49,7 +49,7 @@ public class PlayerSkill : MonoBehaviour
     public event Action<string> RequestAnimTrigger; // playerCtrl의 애니메이션 Trigger 변경 이벤트
     public event Action<bool> RequestPressingPiriState; // playerCtrl의 isPressingPiri 변경이벤트 
     public event Action<bool> RequestPeaceMelodyActived; // playerCtrl의 isPeaceMelody 변경이벤트 
-
+    
     public event Action<string> RequestWolfAnimTrigger; // 늑대의 애니메이션 Trigger 변경 이벤트
     public event Action<WolfState> RequestWolfState; // 늑대 상태 변경 이벤트
     public event Action<float> RequestWolfStartAttack; // 늑대 공격 알림 이벤트

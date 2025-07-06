@@ -22,7 +22,7 @@ public abstract class EnemyBase : MonoBehaviour
     public GameObject dieEffect; // Die 이펙트
     public GameObject groggyUIObject; // 그로기 UI 오브젝트
     public EnemyGroggyUI groggyUI; // 그로기 UI 스크립트
-
+    
     protected delegate IEnumerator AttackPattern(); // 공격 함수 종류 저장
     protected AttackPattern[] attackPatterns; // 저장할 Attack 코루틴 함수 배열
     public List<GameObject> attackObjects = new List<GameObject>(); // 공격패턴 오브젝트 리스트
@@ -87,7 +87,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             _isPatrol = value; // 변경된 값 적용
 
-            if (isDead || isStune) return; // 죽음시 리턴
+            if(isDead || isStune) return; // 죽음시 리턴
 
             if (_isPatrol) // Patrol Mode로 변경할 경우
             {
@@ -107,7 +107,7 @@ public abstract class EnemyBase : MonoBehaviour
         set
         {
             _isMoving = value; // 변경된 값 적용
-
+            
             if (isDead || isStune) return; // 죽음시 리턴
 
             if (isMoving) // 패트롤 모드 - 이동 상태 함수 실행
@@ -333,7 +333,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void DeActivateAttackRange() // 애니메이터상 충돌범위 비활성화 함수 
     {
-        attackObjects[nextAttackIndex].SetActive(false); // 현재 공격 범위 ql활성화
+        attackObjects[nextAttackIndex].SetActive(false); // 현재 공격 범위 비활성화
     }
 
     public void ActivateProjectile(GameObject projectile)
@@ -358,8 +358,8 @@ public abstract class EnemyBase : MonoBehaviour
 
             foreach (var attack in attackObjects) // 공격 범위 모두 비활성화
             {
-                if (attack != null)
-                    attack.SetActive(false);
+                if(attack != null)
+                    attack.SetActive(false); 
             }
 
             hitEffect.SetActive(false);
@@ -386,7 +386,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     public IEnumerator EchoGuardSuccess(Collider2D collision) // EnemyAttack 공격 방어시
     {
-        if (currentAttack != null)
+        if(currentAttack != null)
             currentAttack.SetActive(false); // 최근 적 공격 범위 off (에코가드시 범위 취소)
 
         nextAttackIndex = UnityEngine.Random.Range(0, attackPatterns.Length); // 에코가드 성공시, 현재 공격 초기화
@@ -420,13 +420,12 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    public void EchoGuardSuccess_NoGloogy(Collider2D collision) // EnemyAttack_NoGroggy 공격 방어시
+    public void EchoGuardSuccess_NoGloogy() // EnemyAttack_NoGroggy 공격 방어시
     {
         Debug.LogWarning("해당 공격은 그로기가 올라기지 않습니다!");
 
         nextAttackIndex = UnityEngine.Random.Range(0, attackPatterns.Length); // 다음 공격 결정
-        float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
-        EchoGuardPushBack(pushBackDir);
+        StartCoroutine(Stunned(0.5f)); // 0.5초 기절
     }
 
     protected virtual void InitializeAttackPatterns() //공격 함수 구성 초기화 함수

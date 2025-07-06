@@ -17,8 +17,6 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
     [SerializeField] private List<GameObject> phase4_Monster; // 특수 패턴시 소환할 4스테이지 적 리스트
     List<GameObject> portals = new List<GameObject>(); private float followDuration = 1.5f;
 
-    private float delayBeforeAttack = 1f;
-    private int spawnEnemyCnt = 0; // 소환할 몬스터 수
     private int specialPhaseCnt = 1; // 특수 패턴 남은 횟수 
 
     private void Start()
@@ -182,13 +180,13 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
 
         // 거미 그림자 위치 준비
         Vector3 shadowPos = transform.transform.localPosition;
-        shadowPos.x += 12f * Mathf.Sign(dirAttack.x);
+        shadowPos.x += 12f * (direction.x > 0 ? 1 : -1);
         bossShadow.transform.localPosition = shadowPos;
 
-        // 거미 그림자 공격 범위 위치 설정
-        Vector3 shadowRange = shadowAttackRange.transform.localPosition;
-        shadowRange.x = -Mathf.Abs(shadowRange.x) * Mathf.Sign(dirAttack.x);
-        shadowAttackRange.transform.localPosition = shadowRange;
+        // 거미 그림자 방향 준비
+        Vector3 shadowScale = bossShadow.transform.localScale;
+        shadowScale.x = -Mathf.Abs(shadowScale.x) * (direction.x > 0 ? 1 : -1);
+        bossShadow.transform.localScale = shadowScale;
 
         Debug.Log("적이 소녀를 공격합니다!");
         animator.SetTrigger("Attack"); // Attack 애니메이션 실행 -> 애니메이션에서 자동으로 attackObject 활성화/비활성화
@@ -221,6 +219,8 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
 
         while (elapsedTime < duration)
         {
+            if (targetObject == null) yield break;
+
             elapsedTime += Time.deltaTime;
             float newAlpha = Mathf.Lerp(startAlpha, 0, elapsedTime / duration);
             targetSpriteRenderer.color = new Color(targetSpriteRenderer.color.r, targetSpriteRenderer.color.g, targetSpriteRenderer.color.b, newAlpha);
@@ -314,7 +314,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
             StartCoroutine(ShadowFade(bossLeg, 1f));
         }
         yield return new WaitForSeconds(0.5f);
-        portal.SetActive(false);
+        Destroy(portal);
     }
 
     public override void CancelAttack() // 공격 취소시 내용 오버라이딩
@@ -335,6 +335,8 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
                     Destroy(portal);
             }
 
+            bossShadow.SetActive(false);
+            shadowAttackRange.SetActive(false);
             hitEffect.SetActive(false);
             hitEffect_noGroggy.SetActive(false);
             spriteRenderer.enabled = true;
@@ -421,11 +423,14 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
             if (attackArea == null || attackArea.attackGlobalID == peaceAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
             peaceAttackID = attackArea.attackGlobalID;
 
-            currentHp -= 10f;
+            currentHp -= 15f;
             if (currentHp <= 0)
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
             else
+            {
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
+                StartCoroutine(PushAttack(3f)); // 3초후 밀격 공격
+            }
         }
         else if (collision.gameObject.CompareTag("WolfAttack"))
         {

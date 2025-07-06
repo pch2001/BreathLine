@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ChangeMap : MonoBehaviour
 {
     public GameObject[] pase;
-    private int paseIndex = 0;
+    public int paseIndex = 0;
 
     public Image flashImage;
 
@@ -26,25 +26,23 @@ public class ChangeMap : MonoBehaviour
             originalCamPos = mainCam.transform.localPosition;
         }
     }
-    // Update is called once per frame
-    int number = 0;
 
     public void Pase(int number)
     {
         switch(number)
         {
-            case 1:
+            case 0: // 사막
+                Time.timeScale = 0.8f;
                 StartCoroutine(ShakeCamera(1.5f, 1f));
-                Time.timeScale = 0.7f;
                 break;
-            case 2:
+            case 1: // 기계
                 Time.timeScale = 1.0f;
                 StartCoroutine(ShakeCamera(1.5f, 1f));
                 break;
-            case 3:
-                Pase3();
+            case 2: // end
+                StartCoroutine(ShakeCamera(1.5f, 1f));
                 break;
-            case 4:
+            case 3: // 기존
                 StartCoroutine(Pase4());
                 break;
             default:
@@ -61,14 +59,14 @@ public class ChangeMap : MonoBehaviour
     }
 
     IEnumerator Pase4()
-    {
-        //playerCtrl.isPase4 = false;
-
-        yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));
-        yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));
-        yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));
+    {   
         yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));
 
+        yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));
+        
+        yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));
+        
+        yield return StartCoroutine(ShakeCamera(1.5f, 0.8f));
 
     }
 
@@ -114,7 +112,6 @@ public class ChangeMap : MonoBehaviour
 
         pase[paseIndex].SetActive(false);
         pase[++paseIndex].SetActive(true);
-
 
         // 어두워짐
         timer = 0f;
