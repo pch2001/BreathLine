@@ -28,7 +28,6 @@ public class HPUI_Change : MonoBehaviour
 
     IEnumerator PollutionEffectSequence()
     {
-
         Vector2 startPos = rect.anchoredPosition;
         Vector2 endPos = centerPosition;
         float t = 0;
@@ -42,7 +41,6 @@ public class HPUI_Change : MonoBehaviour
         Camera.main.GetComponent<CameraShake>()?.StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.5f, 1f));
 
         //회전 
-        StartCoroutine(BlinkAlpha());
         Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(null, rect.position);
 
         // 화면 좌표를 월드 좌표로 변환 (z 값 주의)
@@ -50,7 +48,15 @@ public class HPUI_Change : MonoBehaviour
 
         Instantiate(sineEffect, worldPos, Quaternion.identity);
 
-        pollutionImage.color = new Color(1f, 0.3f, 0.3f, 0f);
+        Image[] allImages = pollutionImage.GetComponentsInChildren<Image>();
+        Color[] startColors = new Color[allImages.Length];
+        Color[] endColors = new Color[allImages.Length];
+
+        for (int i = 0; i < allImages.Length; i++)
+        {
+            startColors[i] = allImages[i].color;
+            endColors[i] = new Color(startColors[i].r, startColors[i].g, startColors[i].b, 0f);
+        }
 
         t = 0;
         Quaternion startRot = Quaternion.Euler(0, 0, 0); // 세로 방향
@@ -72,6 +78,12 @@ public class HPUI_Change : MonoBehaviour
         {
             t += Time.deltaTime / floatDuration;
             rect.anchoredPosition = Vector2.Lerp(floatStart, floatEnd, t);
+
+            for (int i = 0; i < allImages.Length; i++)
+            {
+                allImages[i].color = Color.Lerp(startColors[i], endColors[i], t);
+            }
+
             yield return null;
         }
 

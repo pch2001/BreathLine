@@ -162,7 +162,6 @@ public class Story_four : MonoBehaviour
                 yield return null;
             }
         }
-        // Wait 1 second at the end | 마지막에 2초 추가 대기함
         yield return new WaitForSeconds(1f);
 
 

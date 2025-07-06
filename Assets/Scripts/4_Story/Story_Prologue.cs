@@ -86,7 +86,7 @@ public class Story_Prologue : MonoBehaviour
     public IEnumerator TypingText(int index)
     {
         GameObject playerCode = GameObject.FindWithTag("Player");
-       playerCtrl = playerCode.GetComponent<PlayerCtrl>();
+        playerCtrl = playerCode.GetComponent<PlayerCtrl>();
         
 
 

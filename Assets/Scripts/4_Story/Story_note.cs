@@ -56,14 +56,14 @@ public class Story_note : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            videoPlayer.Prepare(); // 비디오 준비 시작
-            videoPlayer.prepareCompleted += OnVideoPrepared;
-            isPlaying = true;
-            Invoke(nameof(SetIsPlayingTrue), 8f);
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    videoPlayer.Prepare(); // 비디오 준비 시작
+        //    videoPlayer.prepareCompleted += OnVideoPrepared;
+        //    isPlaying = true;
+        //    Invoke(nameof(SetIsPlayingTrue), 8f);
 
-        }
+        //}
         if (Input.GetKeyDown(KeyCode.Space) && !isPlaying)
         {
             GameObject playerCode = GameObject.FindWithTag("Player"); // Player 태그 필요!
