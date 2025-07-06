@@ -28,11 +28,7 @@ public class ChangeMap : MonoBehaviour
     }
     // Update is called once per frame
     int number = 0;
-    void Update()
-    {
-  
-    
-    }
+
     public void Pase(int number)
     {
         switch(number)

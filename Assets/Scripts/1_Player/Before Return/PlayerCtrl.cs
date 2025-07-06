@@ -80,6 +80,8 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 
     public void OnEnable()
     {
+        Debug.Log("OnEnable 호출", this);
+        Debug.Log(Environment.StackTrace);
         isLocked = false; // 대화시 움직임 제한 
 
         // inputAction 활성화
@@ -106,6 +108,7 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 
     public void OnDisable()
     {
+        Debug.LogWarning("조작키 움직임 제한!");
         animator.SetBool("isMove", false); // 대화시 Idle 상태로 전환
 
         isLocked = true;// 대화시 움직임 제한 해제
