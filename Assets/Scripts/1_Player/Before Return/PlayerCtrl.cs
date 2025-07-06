@@ -67,6 +67,9 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
         }
     }
 
+    public GameObject SaveButton;
+    public GameObject ExitButton;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -80,8 +83,8 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
 
     public void OnEnable()
     {
-        Debug.Log("OnEnable 호출", this);
-        Debug.Log(Environment.StackTrace);
+        //Debug.Log("OnEnable 호출", this);
+        //Debug.Log(Environment.StackTrace);
         isLocked = false; // 대화시 움직임 제한 
 
         // inputAction 활성화
@@ -104,6 +107,7 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
         playerinputAction.Player.PlayPiri.canceled += OnReleasePiri;
         playerinputAction.Wolf.Move.performed += OnWolfMove;
         playerinputAction.Wolf.Attack.performed += OnWolfAttack;
+        playerinputAction.MenuUI.ESC.performed += ONESC;
     }
 
     public void OnDisable()
@@ -127,6 +131,14 @@ public class PlayerCtrl : MonoBehaviour, PlayerCtrlBase
         }
         moveSpeed = speed;
     }
+
+    public void ONESC(InputAction.CallbackContext context)
+    {
+        Debug.Log("ESC눌림");
+        SaveButton.SetActive(!SaveButton.activeSelf); // 세이브 버튼 토글
+        ExitButton.SetActive(!ExitButton.activeSelf); // 종료 버튼 토글
+    }
+
     public void OnSetMoveSpeedAndTime(float speed, float duration) // 이동속도 변경 함수
     {
         if (speedRoutine != null)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class Story_note : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Story_note : MonoBehaviour
     private PlayerCtrl playerCtrl;
 
     bool isPlaying = false;
+
     void Start()
     {
         skip.text = "";
@@ -50,9 +52,10 @@ public class Story_note : MonoBehaviour
             isPlaying = true;
             Invoke(nameof(SetIsPlayingTrue), 8f);
         }
-
-
-
+    }
+    public void nextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     private void Update()
     {
@@ -64,10 +67,10 @@ public class Story_note : MonoBehaviour
         //    Invoke(nameof(SetIsPlayingTrue), 8f);
 
         //}
-        if (Input.GetKeyDown(KeyCode.Space) && !isPlaying)
+        if (Input.GetKeyDown(KeyCode.Space) && isPlaying)
         {
             // 여기 부분 조건 수정해야 앞의 스크립트랑 충돌이 안남! 부딪히면 true되는 bool값이랑 같이 비교해야할 것 같음
-            GameObject playerCode = GameObject.FindWithTag("Player"); // Player 태그 필요!
+            GameObject playerCode = GameObject.FindWithTag("Player");
             playerCtrl = playerCode.GetComponent<PlayerCtrl>();
             playerCtrl.OnEnable();
             videoPlayer.Stop();
@@ -82,16 +85,17 @@ public class Story_note : MonoBehaviour
             }
         }
     }
+
     void SetIsPlayingTrue()
     {
         isPlaying = false;
         skip.text = "스페이스바를 누르면 영상이 종료됩니다.";
-
     }
     void OnVideoPrepared(VideoPlayer vp)
     {
         rawImage.enabled = true; // 영상 출력
         vp.Play();
-
     }
+
 }
+

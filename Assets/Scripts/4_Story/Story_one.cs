@@ -22,41 +22,44 @@ public class Story_one : MonoBehaviour
     private bool isSkipping = false;
     private bool isTyping = false;
 
+
+    public GameObject telepoint;
+
+    public GameObject player;
+
     void Start()
     {
         dialoguescript = new List<List<string>>
         {
             new List<string> {
-                "g:아, 빛이다… 근데 여긴… 어디지?",
-                "n:눈을 뜨니 알 수 없는 공간이다.\n새하얗게 질린 하늘과, 시야를 방해하는 안개.\n내가 누구인지, 왜 이곳에 있는 지 기억 나지 않는다.",
-                "n:(땅을 짚은 손에 차갑고 묵직한 감촉이 느껴진다.)",
-                "g:이건 뭐지?",
-                "n:(작고 오래된 피리 한 자루. 낯설지 않은 모습이다.)",
-                "g:여기 오기 전부터 가지고 있던 물건 같아.",
-                "n:(파스락-)",
-                "g:늑대…?",
-                "w:일어났구나.",
-                "w:안심해도 좋아. 나는 너를 해치지 않으니까.",
-                "g:…?",
-                "n:말을 하는 늑대는 처음 본다.\n하지만, 그보다도 내게 말을 걸어주는 존재가 있다는 게 더 신기하다.",
-                "w:뭐 그래 내 모습을 보고 놀란 것 같지는 않네.",
-                "w:그 피리…",
-                "w:좋아. 아직 피리가 남아 있다니 다행이야.",
-                "g:…?",
-                "w:그 피리는 너의 마음을 연주할 수 있는 악기거든.",
-                "w:피리의 힘은 네 안의 감정으로부터 비롯돼.",
-                "w:쥐고 있는 피리를 입에 한 번 대보겠니?",
-                "g:아, 네…",
-                "w:그래. 피리를 연주하는 방법은 두 가지가 있어. 한번씩 불어볼까?",
+                //"g:아, 빛이다… 근데 여긴… 어디지?",
+                //"n:눈을 뜨니 알 수 없는 공간이다.\n새하얗게 질린 하늘과, 시야를 방해하는 안개.\n내가 누구인지, 왜 이곳에 있는 지 기억 나지 않는다.",
+                //"n:(땅을 짚은 손에 차갑고 묵직한 감촉이 느껴진다.)",
+                //"g:이건 뭐지?",
+                //"n:(작고 오래된 피리 한 자루. 낯설지 않은 모습이다.)",
+                //"g:여기 오기 전부터 가지고 있던 물건 같아.",
+                //"n:(파스락-)",
+                //"g:늑대…?",
+                //"w:일어났구나.",
+                //"w:안심해도 좋아. 나는 너를 해치지 않으니까.",
+                //"g:…?",
+                //"n:말을 하는 늑대는 처음 본다.\n하지만, 그보다도 내게 말을 걸어주는 존재가 있다는 게 더 신기하다.",
+                //"w:뭐 그래 내 모습을 보고 놀란 것 같지는 않네.",
+                //"w:그 피리…",
+                //"w:좋아. 아직 피리가 남아 있다니 다행이야.",
+                //"g:…?",
+                //"w:그 피리는 너의 마음을 연주할 수 있는 악기거든.",
+                //"w:피리의 힘은 네 안의 감정으로부터 비롯돼.",
+                //"w:쥐고 있는 피리를 입에 한 번 대보겠니?",
+                //"g:아, 네…",
+                //"w:그래. 피리를 연주하는 방법은 두 가지가 있어. 한번씩 불어볼까?",
                 "w:첫번째는 평화의 악장.\n 상대를 수면 상태로 만들어줘.\n(W키를 길게 눌러주세요)",
-                "n:11",
 
                  "n:(희미한 바람 소리가 난다.)",
                 "w:두번째는 분노의 악장.\n 빠른 속도로 상대를 쓰러트릴 수 있지만,\n 너 역시 피해를 입게 돼.\n(W키를 짧게 눌러주세요)",
-                 "n:(힘없는 휘파람 소리가 들린다. 이내 음이 이탈되는 소리가 들린다.)",
+                 "n:(힘없는 휘파람 소리가 들린다.)",
 
-                 "n:22",
-                "w:하하 괜찮아. 너무 오랜만에 연주하는 거라 소리가 잘 나지 않는 게 당연해.",
+                "w:하하 괜찮아. \n너무 오랜만에 연주하는 거라 소리가 잘 나지 않는 게 당연해.",
                 "w:소리가 어떻게 나는 지는 중요하지 않아.",
                 "w:어떤 연주이든, 의도가 담긴다는 사실이 중요하지.",
                 "w:나는 네가 어떤 연주를 하든 곁에 있을 거야.",
@@ -65,33 +68,10 @@ public class Story_one : MonoBehaviour
                 "n:이 피리는 단순한 악기가 아닌 것 같다.\n잠든 기억을 깨울 수 있는 하나뿐인 열쇠가 아닐까?",
                 "g:저는 이제 여기서 어떻게 하면 좋을까요?",
                 "w:글쎄, 너는 이제 어떻게 하고 싶어?",
-                "g:잘 모르겠지만… 원래 있던 곳으로 돌아가야 하지 않을까요…?",
-                "w:원래 있던 곳… 그래 좋아. 나아가는 것도 용기인 법이지.",
+                "g:잘 모르겠지만… \n원래 있던 곳으로 돌아가야 하지 않을까요…?",
+                "w:원래 있던 곳… 그래 좋아. \n나아가는 것도 용기인 법이지.",
                 "w:그럼 우리 같이 모험을 한번 해볼까?",
-                "g:무슨 말씀을 하시는 지 잘 모르겠지만… 우선 앞으로 가면 될까요?",
-                "w:…",
-                "g:그…런거죠?"
-            },
-            new List<string>
-            {
-               
-            },
-            new List<string>
-            {
-                "n:(힘없는 휘파람 소리가 들린다. 이내 음이 이탈되는 소리가 들린다.)",
-                "w:하하 괜찮아. 너무 오랜만에 연주하는 거라 소리가 잘 나지 않는 게 당연해.",
-                "w:소리가 어떻게 나는 지는 중요하지 않아.",
-                "w:어떤 연주이든, 의도가 담긴다는 사실이 중요하지.",
-                "w:나는 네가 어떤 연주를 하든 곁에 있을 거야.",
-                "w:하지만 명심해. 그 연주가 결국,\n 네 자신이 누구인지 보여줄 거라는 걸.",
-                "g:…",
-                "n:이 피리는 단순한 악기가 아닌 것 같다.\n잠든 기억을 깨울 수 있는 하나뿐인 열쇠가 아닐까?",
-                "g:저는 이제 여기서 어떻게 하면 좋을까요?",
-                "w:글쎄, 너는 이제 어떻게 하고 싶어?",
-                "g:잘 모르겠지만… 원래 있던 곳으로 돌아가야 하지 않을까요…?",
-                "w:원래 있던 곳… 그래 좋아. 나아가는 것도 용기인 법이지.",
-                "w:그럼 우리 같이 모험을 한번 해볼까?",
-                "g:무슨 말씀을 하시는 지 잘 모르겠지만… 우선 앞으로 가면 될까요?",
+                "g:무슨 말씀을 하시는 지 잘 모르겠지만… \n우선 앞으로 가면 될까요?",
                 "w:…",
                 "g:그…런거죠?"
             }
@@ -189,15 +169,18 @@ public class Story_one : MonoBehaviour
                 wolfImage.SetActive(false);
             }
 
-            if (line.Contains("n:11") || line.Contains("n:22"))
+            if (line.Contains("n:(희미한 바람 소리가 난다.)") || line.Contains("n:(힘없는 휘파람 소리가 들린다.)"))
             {
                 Debug.Log("테스트시작");
-                //playerCtrl.OnEnable();
+                sideImage.SetActive(false);
+
+                playerCtrl.OnEnable();
 
                 yield return StartCoroutine(WaitForPiriPerformance()); // 피리 연주 끝날 때까지 대기
-                //StartCoroutine(TypingText(index + 1)); // 다음 스크립트로 이어짐
-                t++;
-                yield break;
+                playerCtrl.OnDisable();
+                sideImage.SetActive(true);
+
+
             }
 
 
@@ -225,7 +208,7 @@ public class Story_one : MonoBehaviour
                 else if (speaker == "n")
                     printText3.text = dialogue.Typing(i);
 
-                yield return new WaitForSeconds(0.03f);
+                yield return new WaitForSeconds(0.02f);
             }
             isTyping = false;
             isSkipping = false;
@@ -260,13 +243,12 @@ public class Story_one : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.5f);
-
+        TeleportPlayer();
         Destroy(this.gameObject);
     }
     private IEnumerator WaitForPiriPerformance()
     {
         Debug.Log("피리 연주 시작!");
-        // 예: W키 짧게 또는 길게 입력 감지
         bool played = false;
         float holdTime = 0f;
 
@@ -288,7 +270,13 @@ public class Story_one : MonoBehaviour
 
             yield return null;
         }
+    }
 
-        Debug.Log("피리 연주 완료!");
+    void TeleportPlayer()
+    {
+        if (telepoint != null && player != null)
+        {
+            player.transform.position = telepoint.transform.position;
+        }
     }
 }

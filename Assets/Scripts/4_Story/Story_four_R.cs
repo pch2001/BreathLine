@@ -30,9 +30,11 @@ public class Story_four_R : MonoBehaviour
         printText3.text = "";
         dialoguescript = new List<List<string>>
         {
-        new List<string> { "w:1", "g:2", "n:3" },
-        new List<string> { "w:1", "g:2" },
-        new List<string> { "w:1", "g:2" }
+        new List<string> { "w:1", "g:2", "n:3" },//첫번째 대사
+
+        new List<string> { "w:1", "g:2" },//두번째 대사
+
+        new List<string> { "w:1", "g:2" }//세번째 대사
         };
 
     }
