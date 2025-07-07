@@ -792,7 +792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8706231483985550477}
   - component: {fileID: 1940340338247502780}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 5250241206301834262}
   - component: {fileID: 8429395136876299866}
   - component: {fileID: 8704937645485914153}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: desert ground elements_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1303,7 +1303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1400014896632752873}
   - component: {fileID: 324554127122232384}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1777,7 +1777,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3040979354871126308}
   - component: {fileID: 7363492821982240148}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2400,7 +2400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5012939735047099687}
   - component: {fileID: 3675106968770899101}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground (7)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2982,7 +2982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5269781681235932023}
   - component: {fileID: 163755165538977809}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4207,7 +4207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4744915235706998254}
   - component: {fileID: 7037903320511980005}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4317,7 +4317,7 @@ GameObject:
   - component: {fileID: 5063110378534319043}
   - component: {fileID: 2511770849559639722}
   - component: {fileID: 5041127047050867329}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: desert ground elements_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5535,7 +5535,7 @@ GameObject:
   - component: {fileID: 4726172654142793124}
   - component: {fileID: 6651627629966480310}
   - component: {fileID: 1897840451146451134}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: desert ground elements_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6172,7 +6172,7 @@ GameObject:
   - component: {fileID: 2597908298227011433}
   - component: {fileID: 3491255857488543998}
   - component: {fileID: 4440701718520348021}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Desert Wall C
   m_TagString: Untagged
   m_Icon: {fileID: 0}

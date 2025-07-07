@@ -463,7 +463,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 7
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 85f08f0afa93b00429e8c698c7b609b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -666,6 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02939975a1d0ea04fb67b12f84a2bdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPushed: 0
   spriteRenderer: {fileID: 2242344019371967613}
   playPiriContorller: {fileID: 22100000, guid: 893d6d5189094b24097c57d007a51167, type: 2}
   groundCheck: {fileID: 5808040329812296053}
@@ -679,6 +680,7 @@ MonoBehaviour:
   isPeaceMelody: 0
   damagedTime: 2
   isLocked: 0
+  isCovered: 0
   wolf: {fileID: 0}
   wolfAnimator: {fileID: 0}
   defaultWolfExitTime: 5
