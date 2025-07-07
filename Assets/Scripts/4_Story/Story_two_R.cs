@@ -24,6 +24,7 @@ public class Story_two_R : MonoBehaviour
     private bool isTyping = false;
 
     public GameObject Boss2;
+    public GameObject BossHp;
 
     void Start()
     {
@@ -191,6 +192,8 @@ public class Story_two_R : MonoBehaviour
         girlImage.SetActive(false);
         wolfImage.SetActive(false);
 
+        Boss2.GetComponent<EnemyBase>().attackMode = true;
+        BossHp.SetActive(true);
         playerCtrl.OnEnable();
 
 

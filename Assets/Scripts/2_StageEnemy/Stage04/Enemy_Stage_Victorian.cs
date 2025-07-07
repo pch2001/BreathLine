@@ -31,7 +31,6 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         startPos = transform.position;
         moveSpeed = defaultMoveSpeed;
         isPatrol = false;
-        attackMode = true;
 
         foreach (GameObject attackObj in attackObjects) // 공격 패턴 내부값 초기화
         {

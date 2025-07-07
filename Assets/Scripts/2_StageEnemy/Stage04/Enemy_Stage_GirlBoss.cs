@@ -79,7 +79,6 @@ public class Enemy_Stage_GirlBoss : BossBase // Victorian 스크립트
         startPos = transform.position;
         moveSpeed = defaultMoveSpeed;
         isPatrol = false;
-        attackMode = true;
 
         foreach (GameObject attackObj in attackObjects) // 공격 패턴 내부값 초기화
         {
@@ -108,7 +107,7 @@ public class Enemy_Stage_GirlBoss : BossBase // Victorian 스크립트
 
         // 디버프 확인
         if (isPurifying && currentHp > 5f) // 늑대 등장 or 정화의 걸음시 오염도 감소(최대 5까지 감소)
-            currentHp -= 40f * Time.deltaTime; // 1초에 5 Hp씩 감소
+            currentHp -= 20f * Time.deltaTime; // 1초에 5 Hp씩 감소
 
         if (isReadyPeaceMelody && currentHp > 5f) // 평화의 악장 준비파동 피격시 오염도 감소(최대 5까지)
             currentHp -= 2f * Time.deltaTime; // 1초에 2Hp씩 감소

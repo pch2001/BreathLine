@@ -44,9 +44,7 @@ public class PlayerCtrl_R : PlayerCtrlBase
     private Coroutine speedRoutine; // 이동속도 변경 코루틴
     public bool isLocked; // 상호작용시 행동 제한
     private bool isSealed; // 현재 능력 봉인 상태인지
-
-    public GameObject SaveButton;
-    public GameObject MainButton;
+    public bool isCovered = false; // 엄폐물에 있을 경우
 
     // 피리 연주 여부 프로퍼티
     [SerializeField] private bool _isPressingPiri = false;
@@ -113,7 +111,7 @@ public class PlayerCtrl_R : PlayerCtrlBase
         playerinputAction.Player.EchoGuard.performed += OnEchoGuard;
         playerinputAction.Player.PurifyingStep.started += OnPurifyStepStart;
         playerinputAction.Player.PurifyingStep.canceled += OnPurifyStepStop;
-        playerinputAction.MenuUI.ESC.performed += OnESC;
+
     }
     public void OnDisable()
     {
@@ -236,12 +234,7 @@ public class PlayerCtrl_R : PlayerCtrlBase
         spriteRenderer.color = new Color(brightness, brightness, brightness, spriteRenderer.color.a);
         originColor = spriteRenderer.color; // 현재 색상을 변경
     }
-    private void OnESC(InputAction.CallbackContext context)
-    {
-        //if (isLocked) return; // 대화 중에는 ESC 무시
-        SaveButton.SetActive(!SaveButton.activeSelf); // 세이브 버튼 토글
-        MainButton.SetActive(!MainButton.activeSelf); // 메인 버튼 토글
-    }
+
     private void OnStartPiri(InputAction.CallbackContext context) // 연주버튼을 눌렀을 때 실행
     {
         if (isGrounded && isReadyPiri) // 착지, 피리 준비시에만 가능

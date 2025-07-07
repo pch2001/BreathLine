@@ -131,7 +131,7 @@ public abstract class EnemyBase : MonoBehaviour
 
             if (isDead || isStune) return; // 죽음시 리턴
 
-            if (isAttackRange) // 공격 모드 - 공격 실행 함수
+            if (_isAttackRange) // 공격 모드 - 공격 실행 함수
             {
                 if (!isAttacking) // 공격 중복 실행 방지
                 {
@@ -328,6 +328,8 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void ActivateAttackRange() // 애니메이터상 충돌범위 활성화 함수
     {
+        if (!isAttacking) return; // 공격 중이면만 실행
+
         attackObjects[nextAttackIndex].SetActive(true); // 현재 공격 범위 활성화
     }
 
@@ -354,12 +356,16 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (attackCoroutine != null && currentAttack != null)
         {
+            isAttacking = false;
             StopCoroutine(attackCoroutine);
 
             foreach (var attack in attackObjects) // 공격 범위 모두 비활성화
             {
                 if(attack != null)
+                {
                     attack.SetActive(false); 
+                    Debug.LogWarning("공격 지웠어용");
+                }
             }
 
             hitEffect.SetActive(false);
@@ -367,7 +373,6 @@ public abstract class EnemyBase : MonoBehaviour
             spriteRenderer.enabled = true;
             boxCollider.enabled = true;
             attackCoroutine = null;
-            isAttacking = false;
             Debug.LogWarning("공격 강제 종료!");
         }
     }
@@ -424,7 +429,11 @@ public abstract class EnemyBase : MonoBehaviour
     {
         Debug.LogWarning("해당 공격은 그로기가 올라기지 않습니다!");
 
-        nextAttackIndex = UnityEngine.Random.Range(0, attackPatterns.Length); // 다음 공격 결정
+        if (currentAttack != null)
+            currentAttack.SetActive(false); // 최근 적 공격 범위 off (에코가드시 범위 취소)
+
+        nextAttackIndex = UnityEngine.Random.Range(0, attackPatterns.Length); // 에코가드 성공시, 현재 공격 초기화
+
         StartCoroutine(Stunned(0.5f)); // 0.5초 기절
     }
 

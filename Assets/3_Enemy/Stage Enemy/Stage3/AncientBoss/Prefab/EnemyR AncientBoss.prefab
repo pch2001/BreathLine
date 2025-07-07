@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 7636007067185189643}
   - component: {fileID: 2740028314155475789}
   - component: {fileID: 3329584584280648463}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: EnemyAttackRange
   m_TagString: EnemyAttackRange
   m_Icon: {fileID: 0}
@@ -1642,25 +1642,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySight: {fileID: 8614879210540567064}
+  enemyHpGauge: {fileID: 2371725848035623102}
+  echoGuardEffect: {fileID: 8566432726096857577}
   hitEffect: {fileID: 757516636094791303}
   hitEffect_noGroggy: {fileID: 3592725873802263300}
-  dieEffect: {fileID: 4283803620380458665}
   enemyFadeEffect: {fileID: 4850809196365850283}
-  echoGuardEffect: {fileID: 8566432726096857577}
-  enemyHpGauge: {fileID: 2371725848035623102}
+  dieEffect: {fileID: 4283803620380458665}
+  groggyUIObject: {fileID: 144580844954072881}
   groggyUI: {fileID: 0}
   attackObjects:
   - {fileID: 5329753076036149719}
   - {fileID: 7121724738480950047}
   - {fileID: 3581074264561677600}
   - {fileID: 8951599039718947676}
-  maxHp: 0
-  _currentHp: 0
-  defaultMoveSpeed: 5
-  _moveSpeed: 0
-  _isPatrol: 0
-  _isMoving: 0
-  _isAttackRange: 0
   targetPos: {x: 0, y: 0}
   patrolRange: 5
   patrolMinRange: 3
@@ -1677,6 +1671,14 @@ MonoBehaviour:
   isBoss: 1
   bulletSpeed: 0
   isBossCreated: 0
+  maxHp: 0
+  _currentHp: 0
+  defaultMoveSpeed: 5
+  _moveSpeed: 0
+  _isPatrol: 0
+  _isMoving: 0
+  _isAttackRange: 0
+  pushAttackRange: {fileID: 0}
   attackTriggerRange: {fileID: 6178311985635556303}
   isSpecialPhase: 0
   angerAttackID: 0
@@ -1876,7 +1878,7 @@ GameObject:
   - component: {fileID: 7400178276024851435}
   - component: {fileID: 7374228984571029556}
   - component: {fileID: 2218091684251088851}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: EnemySight
   m_TagString: EnemySight
   m_Icon: {fileID: 0}

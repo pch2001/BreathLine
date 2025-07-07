@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 4721227566865762071}
   - component: {fileID: 5872332683503340218}
   - component: {fileID: 1987311366725225778}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: EnemyAttackRange
   m_TagString: EnemyAttackRange
   m_Icon: {fileID: 0}
@@ -693,7 +693,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.09, y: 0.115, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 361467501066473651}
@@ -794,7 +794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &361467501066473651
 Transform:
   m_ObjectHideFlags: 0
@@ -1128,24 +1128,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySight: {fileID: 7550191270944837027}
+  enemyHpGauge: {fileID: 4131492855612659384}
+  echoGuardEffect: {fileID: 6072862628591283746}
   hitEffect: {fileID: 5157263513337420151}
   hitEffect_noGroggy: {fileID: 3039490189393023502}
-  dieEffect: {fileID: 521597043655412791}
   enemyFadeEffect: {fileID: 4924937326368394906}
-  echoGuardEffect: {fileID: 6072862628591283746}
-  enemyHpGauge: {fileID: 4131492855612659384}
+  dieEffect: {fileID: 521597043655412791}
+  groggyUIObject: {fileID: 2342925747623694240}
   groggyUI: {fileID: 0}
   attackObjects:
   - {fileID: 261520744959555247}
   - {fileID: 6521165481195276197}
   - {fileID: 5385300001505434000}
-  maxHp: 0
-  _currentHp: 0
-  defaultMoveSpeed: 5
-  _moveSpeed: 0
-  _isPatrol: 0
-  _isMoving: 0
-  _isAttackRange: 0
   targetPos: {x: 0, y: 0}
   patrolRange: 5
   patrolMinRange: 3
@@ -1162,6 +1156,14 @@ MonoBehaviour:
   isBoss: 1
   bulletSpeed: 0
   isBossCreated: 0
+  maxHp: 0
+  _currentHp: 0
+  defaultMoveSpeed: 5
+  _moveSpeed: 0
+  _isPatrol: 0
+  _isMoving: 0
+  _isAttackRange: 0
+  pushAttackRange: {fileID: 0}
   attackTriggerRange: {fileID: 345480596572211864}
   isSpecialPhase: 0
   angerAttackID: 0
@@ -2267,7 +2269,7 @@ GameObject:
   - component: {fileID: 7437152632315415226}
   - component: {fileID: 9219026800483483684}
   - component: {fileID: 497992728437633922}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: EnemySight
   m_TagString: EnemySight
   m_Icon: {fileID: 0}

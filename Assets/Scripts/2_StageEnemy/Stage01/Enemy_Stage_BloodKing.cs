@@ -25,7 +25,6 @@ public class Enemy_Stage_BloodKing : BossBase // Mage 스크립트
         startPos = transform.position;
         moveSpeed = defaultMoveSpeed;
         isPatrol = false;
-        attackMode = true;
 
         foreach (GameObject attackObj in attackObjects) // 공격 패턴 내부값 초기화
         {
@@ -136,7 +135,7 @@ public class Enemy_Stage_BloodKing : BossBase // Mage 스크립트
         dirReady.x = Mathf.Abs(dirReady.x) * (direction.x > 0 ? 1 : -1);
         hitEffect.transform.localPosition = dirReady;
         hitEffect.SetActive(true);
-        yield return new WaitForSeconds(0.3f); // 공격 간격 0.3초
+        yield return new WaitForSeconds(0.5f); // 공격 간격 0.5초
 
         Debug.Log("적이 소녀를 공격합니다!");
         animator.SetTrigger("Attack"); // Attack 애니메이션 실행
@@ -168,7 +167,7 @@ public class Enemy_Stage_BloodKing : BossBase // Mage 스크립트
         dirReady.x = Mathf.Abs(dirReady.x) * (direction.x > 0 ? 1 : -1);
         hitEffect_noGroggy.transform.localPosition = dirReady;
         hitEffect_noGroggy.SetActive(true);
-        yield return new WaitForSeconds(0.3f); // 공격 간격 0.3초
+        yield return new WaitForSeconds(0.7f); // 공격 간격 0.7초
 
         Debug.Log("적이 소녀를 공격합니다!");
         animator.SetTrigger("Attack1"); // Attack1 애니메이션 실행
@@ -189,8 +188,9 @@ public class Enemy_Stage_BloodKing : BossBase // Mage 스크립트
     private IEnumerator Attack2()
     {
         isAttacking = true;
-
+        attackMode = false; // 잠시 무적 상태
         Debug.Log("적이 [공격 2]을 준비합니다!");
+
         attackCoroutine = null; // 실행 중이었던 코루틴 정리
         currentAttack = attackObjects[2];
         moveSpeed = 0f;
@@ -208,6 +208,7 @@ public class Enemy_Stage_BloodKing : BossBase // Mage 스크립트
         yield return new WaitForSeconds(1.8f);
 
         // 적 사라짐 구현
+        attackMode = true; // 무적 상태 해제
         hitEffect_noGroggy.SetActive(false);
         groggyUIObject.SetActive(false);
         spriteRenderer.enabled = false;

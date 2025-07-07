@@ -40,6 +40,7 @@ public class PlayerCtrl : PlayerCtrlBase
     private Color damagedColor = new Color(0.5f, 0.5f, 0.5f); // 소녀 피격시 깜빡일 때 색상
     private Coroutine SealAttackRoutine; // 봉인 공격 실행 코루틴
     public bool isLocked; // 상호작용시 행동 제한
+    public bool isCovered = false; // 엄폐물에 있을 경우
 
     // 늑대 관련 변수
 
@@ -53,9 +54,6 @@ public class PlayerCtrl : PlayerCtrlBase
 
     // 피리 연주 여부 프로퍼티
     private bool _isPressingPiri = false;
-
-    public GameObject SaveButton;
-    public GameObject MainButton;
     public override bool isPressingPiri
     {
         get => _isPressingPiri;
@@ -104,7 +102,6 @@ public class PlayerCtrl : PlayerCtrlBase
         playerinputAction.Player.PlayPiri.canceled += OnReleasePiri;
         playerinputAction.Wolf.Move.performed += OnWolfMove;
         playerinputAction.Wolf.Attack.performed += OnWolfAttack;
-        playerinputAction.MenuUI.ESC.performed += OnESC;
     }
 
     public void OnDisable()
@@ -127,8 +124,6 @@ public class PlayerCtrl : PlayerCtrlBase
         }
         moveSpeed = speed;
     }
-    
-
     public void OnSetMoveSpeedAndTime(float speed, float duration) // 이동속도 변경 함수
     {
         if (speedRoutine != null)
@@ -217,13 +212,6 @@ public class PlayerCtrl : PlayerCtrlBase
             spriteRenderer.flipX = false;
         else if (h < 0)
             spriteRenderer.flipX = true;
-    }
-
-    private void OnESC(InputAction.CallbackContext context)
-    {
-        //if (isLocked) return; // 대화 중에는 ESC 무시
-        SaveButton.SetActive(!SaveButton.activeSelf); // 세이브 버튼 토글
-        MainButton.SetActive(!MainButton.activeSelf); // 메인 버튼 토글
     }
 
     private void OnJump(InputAction.CallbackContext context) // 점프
@@ -419,10 +407,14 @@ public class PlayerCtrl : PlayerCtrlBase
         Debug.LogWarning("소녀가 쓰러집니다.. GameOver");
         Debug.LogWarning("GameOver표시 + 게임오버 UI 표시 추가");
 
+        animator.SetTrigger("isDead"); // 사망 애니메이션 실행
         Time.timeScale = 0.5f; // 시간 느려지는 연출
-        yield return new WaitForSeconds(1f);
+        OnDisable(); // 조작 중지
+
+        yield return new WaitForSeconds(4f);
 
         Time.timeScale = 1f;
+        OnEnable(); // 조작 복구
         GameManager.Instance.Pollution = 0f;
         GameManager.Instance.AddPolution(0f); // 오염도 UI 초기화
     }
@@ -497,6 +489,23 @@ public class PlayerCtrl : PlayerCtrlBase
                 GameManager.Instance.StartCoroutine(GameOver()); // 게임 오버 실행
             }
         }
+        else if (collision.gameObject.CompareTag("EnemyPiercingAttack"))
+        {
+            Debug.Log("적의 광역 공격으로 소녀가 쓰러집니다..");
+
+            if (isPeaceMelody) // 평화의 연주중이었을 경우 캔슬
+            {
+                isPeaceMelody = false;
+                isPressingPiri = false;
+                playerSkill.PlaySoftPiriCanceled();
+            }
+
+            if (currentWolfState != WolfState.Damaged) // 늑대 보호 상태 확인
+            {
+                OnWolfGuard(); // 가드 실행
+                GameManager.Instance.StartCoroutine(GameOver()); // 게임 오버 실행
+            }
+        }
         else if (collision.gameObject.CompareTag("EnemySealAttack")) // 플레이어 능력 봉인 Attack
         {
             if (isDamaged || isWolfRange) return; // 소녀 피격 상태, 늑대 영역에 있을 경우 충돌 X
@@ -564,10 +573,17 @@ public class PlayerCtrl : PlayerCtrlBase
         {
             savePoint = collision.transform.position; // 세이브 포인트 저장
         }
-        if (collision.gameObject.CompareTag("WolfAppear"))
+        else if (collision.gameObject.CompareTag("WolfAppear"))
         {
             isWolfRange = true; // 늑대 범위 안에 있을 경우, 피해x 상태
         }
+        else if(collision.gameObject.CompareTag("CoverObject"))
+        {
+            Debug.Log("소녀가 공격을 피해 주변 잔해에 숨습니다");
+            isCovered = true;
+        }
+
+
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -607,9 +623,14 @@ public class PlayerCtrl : PlayerCtrlBase
                 enemyBase.isPatrol = true; // 적 플레이어 추격 중단
             }
         }
-        if (collision.gameObject.CompareTag("WolfAppear"))
+        else if (collision.gameObject.CompareTag("WolfAppear"))
         {
             isWolfRange = false; // 늑대 범위 밖에 있을 경우, 피해 입을 수 있는 상태
+        }
+        else if (collision.gameObject.CompareTag("CoverObject"))
+        {
+            Debug.Log("소녀가 주변 잔해에서 빠져나옵니다.");
+            isCovered = false;
         }
     }
 }

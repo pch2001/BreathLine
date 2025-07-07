@@ -7,8 +7,8 @@ public class HPUI_Change : MonoBehaviour
 {
     public Image pollutionImage;              // 오염도 UI Image
     public GameObject HPImage;                   // HP UI Image
-
     public GameObject sineEffect;
+    public GameObject returnHP; // 변경된 HP 게이지
 
     public Vector2 centerPosition = Vector2.zero; // 화면 중앙 위치
     public float moveDuration = 1f;
@@ -87,7 +87,10 @@ public class HPUI_Change : MonoBehaviour
             yield return null;
         }
 
+        returnHP.SetActive(true);
+        StartCoroutine(ReturnHpAppear(returnHP.GetComponent<CanvasGroup>(), 2f));
     }
+
      IEnumerator BlinkAlpha()
     {
         float t=0;
@@ -99,6 +102,24 @@ public class HPUI_Change : MonoBehaviour
             pollutionImage.color = new Color(c.r, c.g, c.b, alpha);
             yield return null;
         }
-        HPImage.SetActive(true);
+    }
+
+    private IEnumerator ReturnHpAppear(CanvasGroup returnHp, float duration) // 회귀 후 Hp 등장 함수
+    {
+        float time = 0f;
+        returnHp.alpha = 0f;
+        returnHp.interactable = false;
+        returnHp.blocksRaycasts = false;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            returnHp.alpha = Mathf.Lerp(0f, 1f, time / duration);
+            yield return null;
+        }
+
+        returnHp.alpha = 1f;
+        returnHp.interactable = true;
+        returnHp.blocksRaycasts = true;
     }
 }

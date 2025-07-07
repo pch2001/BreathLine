@@ -28,7 +28,8 @@ public class CureBreath : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            //오염도 내리기
+            //오염도 10 내리기
+            GameManager.Instance.AddPolution(-10f);
             Destroy(this.gameObject);
         }
     }
