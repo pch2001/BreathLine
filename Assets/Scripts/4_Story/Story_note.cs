@@ -48,8 +48,8 @@ public class Story_note : MonoBehaviour
             playerCtrl.OnDisable();
 
             videoPlayer.Prepare(); // 비디오 준비 시작
-            videoPlayer.prepareCompleted += OnVideoPrepared;
             isPlaying = true;
+            videoPlayer.prepareCompleted += OnVideoPrepared;
             Invoke(nameof(SetIsPlayingTrue), 8f);
         }
     }
@@ -70,25 +70,28 @@ public class Story_note : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isPlaying)
         {
             // 여기 부분 조건 수정해야 앞의 스크립트랑 충돌이 안남! 부딪히면 true되는 bool값이랑 같이 비교해야할 것 같음
-            GameObject playerCode = GameObject.FindWithTag("Player");
-            playerCtrl = playerCode.GetComponent<PlayerCtrl>();
-            playerCtrl.OnEnable();
+            //GameObject playerCode = GameObject.FindWithTag("Player");
+            //playerCtrl = playerCode.GetComponent<PlayerCtrl>();
+            //playerCtrl.OnEnable();
             videoPlayer.Stop();
             rawImage.enabled = false;
             skip.text = "";
             if (videoPlayer.targetTexture != null)
             {
                 RenderTexture rt = videoPlayer.targetTexture;
+                videoPlayer.targetTexture = null; // 연결 먼저 끊기
                 RenderTexture.active = rt;
                 GL.Clear(true, true, Color.black);
                 RenderTexture.active = null;
+                rt.Release(); // 렌더 텍스처 해제
             }
+            Invoke(nameof(nextScene), 1f);
         }
     }
 
     void SetIsPlayingTrue()
     {
-        isPlaying = false;
+        isPlaying = true;
         skip.text = "스페이스바를 누르면 영상이 종료됩니다.";
     }
     void OnVideoPrepared(VideoPlayer vp)

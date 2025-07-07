@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInputAction",
+    "name": "PlayerInputAction_R",
     "maps": [
         {
             "name": "Player",
@@ -132,6 +132,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "MenuUI",
+            "id": "cf03438b-014e-483f-b50e-9fe067e0f0e8",
+            "actions": [
+                {
+                    "name": "ESC",
+                    "type": "Button",
+                    "id": "16f15ab7-8aef-4fb6-8d00-b45d545bcba4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2b7e37c1-49f8-44f7-9f78-7e35a9ffd418",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ESC",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

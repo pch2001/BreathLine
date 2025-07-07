@@ -53,6 +53,9 @@ public class PlayerCtrl : PlayerCtrlBase
 
     // 피리 연주 여부 프로퍼티
     private bool _isPressingPiri = false;
+
+    public GameObject SaveButton;
+    public GameObject MainButton;
     public override bool isPressingPiri
     {
         get => _isPressingPiri;
@@ -101,6 +104,7 @@ public class PlayerCtrl : PlayerCtrlBase
         playerinputAction.Player.PlayPiri.canceled += OnReleasePiri;
         playerinputAction.Wolf.Move.performed += OnWolfMove;
         playerinputAction.Wolf.Attack.performed += OnWolfAttack;
+        //playerinputAction.MenuUI.ESC.performed += OnESC;
     }
 
     public void OnDisable()
@@ -123,6 +127,8 @@ public class PlayerCtrl : PlayerCtrlBase
         }
         moveSpeed = speed;
     }
+    
+
     public void OnSetMoveSpeedAndTime(float speed, float duration) // 이동속도 변경 함수
     {
         if (speedRoutine != null)
@@ -211,6 +217,13 @@ public class PlayerCtrl : PlayerCtrlBase
             spriteRenderer.flipX = false;
         else if (h < 0)
             spriteRenderer.flipX = true;
+    }
+
+    private void OnESC(InputAction.CallbackContext context)
+    {
+        //if (isLocked) return; // 대화 중에는 ESC 무시
+        SaveButton.SetActive(!SaveButton.activeSelf); // 세이브 버튼 토글
+        MainButton.SetActive(!MainButton.activeSelf); // 메인 버튼 토글
     }
 
     private void OnJump(InputAction.CallbackContext context) // 점프

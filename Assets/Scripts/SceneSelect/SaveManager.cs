@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.IO;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class SaveManager : MonoBehaviour
         File.WriteAllText(Application.persistentDataPath + "/save.json", json);
 
         Debug.Log(Application.persistentDataPath);
+    }
+
+    public void SelectScene()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void ExitGame()
