@@ -173,11 +173,13 @@ public class Story_one : MonoBehaviour
             {
                 Debug.Log("테스트시작");
                 sideImage.SetActive(false);
-
+                textbehind.SetActive(false);
                 playerCtrl.OnEnable();
 
                 yield return StartCoroutine(WaitForPiriPerformance()); // 피리 연주 끝날 때까지 대기
                 playerCtrl.OnDisable();
+                textbehind.SetActive(true);
+
                 sideImage.SetActive(true);
 
 

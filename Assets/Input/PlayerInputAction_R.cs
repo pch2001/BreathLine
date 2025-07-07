@@ -158,6 +158,34 @@ public partial class @PlayerInputAction_R: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MenuUI"",
+            ""id"": ""cf03438b-014e-483f-b50e-9fe067e0f0e8"",
+            ""actions"": [
+                {
+                    ""name"": ""ESC"",
+                    ""type"": ""Button"",
+                    ""id"": ""16f15ab7-8aef-4fb6-8d00-b45d545bcba4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2b7e37c1-49f8-44f7-9f78-7e35a9ffd418"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ESC"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -172,6 +200,9 @@ public partial class @PlayerInputAction_R: IInputActionCollection2, IDisposable
         m_Wolf = asset.FindActionMap("Wolf", throwIfNotFound: true);
         m_Wolf_Move = m_Wolf.FindAction("Move", throwIfNotFound: true);
         m_Wolf_Attack = m_Wolf.FindAction("Attack", throwIfNotFound: true);
+        // MenuUI
+        m_MenuUI = asset.FindActionMap("MenuUI", throwIfNotFound: true);
+        m_MenuUI_ESC = m_MenuUI.FindAction("ESC", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -353,6 +384,52 @@ public partial class @PlayerInputAction_R: IInputActionCollection2, IDisposable
         }
     }
     public WolfActions @Wolf => new WolfActions(this);
+
+    // MenuUI
+    private readonly InputActionMap m_MenuUI;
+    private List<IMenuUIActions> m_MenuUIActionsCallbackInterfaces = new List<IMenuUIActions>();
+    private readonly InputAction m_MenuUI_ESC;
+    public struct MenuUIActions
+    {
+        private @PlayerInputAction_R m_Wrapper;
+        public MenuUIActions(@PlayerInputAction_R wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ESC => m_Wrapper.m_MenuUI_ESC;
+        public InputActionMap Get() { return m_Wrapper.m_MenuUI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuUIActions set) { return set.Get(); }
+        public void AddCallbacks(IMenuUIActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MenuUIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MenuUIActionsCallbackInterfaces.Add(instance);
+            @ESC.started += instance.OnESC;
+            @ESC.performed += instance.OnESC;
+            @ESC.canceled += instance.OnESC;
+        }
+
+        private void UnregisterCallbacks(IMenuUIActions instance)
+        {
+            @ESC.started -= instance.OnESC;
+            @ESC.performed -= instance.OnESC;
+            @ESC.canceled -= instance.OnESC;
+        }
+
+        public void RemoveCallbacks(IMenuUIActions instance)
+        {
+            if (m_Wrapper.m_MenuUIActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMenuUIActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MenuUIActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MenuUIActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MenuUIActions @MenuUI => new MenuUIActions(this);
     public interface IPlayerActions
     {
         void OnJump(InputAction.CallbackContext context);
@@ -364,5 +441,9 @@ public partial class @PlayerInputAction_R: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+    }
+    public interface IMenuUIActions
+    {
+        void OnESC(InputAction.CallbackContext context);
     }
 }

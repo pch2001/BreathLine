@@ -104,7 +104,7 @@ public class PlayerCtrl : PlayerCtrlBase
         playerinputAction.Player.PlayPiri.canceled += OnReleasePiri;
         playerinputAction.Wolf.Move.performed += OnWolfMove;
         playerinputAction.Wolf.Attack.performed += OnWolfAttack;
-        //playerinputAction.MenuUI.ESC.performed += OnESC;
+        playerinputAction.MenuUI.ESC.performed += OnESC;
     }
 
     public void OnDisable()

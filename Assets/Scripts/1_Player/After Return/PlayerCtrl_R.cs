@@ -113,7 +113,7 @@ public class PlayerCtrl_R : PlayerCtrlBase
         playerinputAction.Player.EchoGuard.performed += OnEchoGuard;
         playerinputAction.Player.PurifyingStep.started += OnPurifyStepStart;
         playerinputAction.Player.PurifyingStep.canceled += OnPurifyStepStop;
-        //playerinputAction.MenuUI.ESC.performed += OnESC;
+        playerinputAction.MenuUI.ESC.performed += OnESC;
     }
     public void OnDisable()
     {

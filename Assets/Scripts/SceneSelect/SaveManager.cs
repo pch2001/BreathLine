@@ -8,6 +8,7 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
+        Debug.Log("게임을 저장합니다.");
         SaveData data = new SaveData();
         data.sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         data.playerPosX = player.transform.position.x;
