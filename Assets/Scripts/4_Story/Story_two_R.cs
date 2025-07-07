@@ -23,6 +23,8 @@ public class Story_two_R : MonoBehaviour
     private bool isSkipping = false;
     private bool isTyping = false;
 
+    public GameObject Boss2;
+
     void Start()
     {
         printText1.text = "";
@@ -30,10 +32,14 @@ public class Story_two_R : MonoBehaviour
         printText3.text = "";
         dialoguescript = new List<List<string>>
         {
-        new List<string> { "w:1", "g:2", "n:3" },
+        new List<string> { "n:이번에도 못 보던 것이 앞으로 막고 있다...",
+                            "n:쉽게 보내줄 거 같지 않다."
+        },
         new List<string> { "w:1", "g:2" },
         new List<string> { "w:1", "g:2" }
         };
+
+        
 
     }
     void Update()
@@ -106,6 +112,12 @@ public class Story_two_R : MonoBehaviour
             printText1.text = "";
             printText2.text = "";
             printText3.text = "";
+
+            if (line.Contains("n:쉽게 보내줄 거 같지 않다."))
+            {
+                Boss2.SetActive(true);
+
+            }
 
             // 말풍선 분기
             if (speaker == "g")

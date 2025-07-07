@@ -17,6 +17,7 @@ public class Story_one_R : MonoBehaviour
     public Text printText2;
     public Text printText3;
 
+    public GameObject Boss1;
 
     List<List<string>> dialoguescript;//대사 스크립트 저장소
 
@@ -50,7 +51,9 @@ public class Story_one_R : MonoBehaviour
             "g:늑대의.. 따스했던 그 울음소리를 감히 흉내 낼 수 있을까?",
             "g:해보기 전까진 모르는 일이지. 좋아. 나아가자."
         },
-        new List<string> { "w:1", "g:2" },
+        new List<string> { "n:전에 못 보던 것이 앞으로 막고 있다...",
+                            "n:쉽게 보내줄 거 같지 않다."
+        },
         new List<string> { "w:1", "g:2" }
         };
 
@@ -138,6 +141,12 @@ public class Story_one_R : MonoBehaviour
             {
                 girlImage.SetActive(false);
                 wolfImage.SetActive(false);
+            }
+
+            if (line.Contains("n:쉽게 보내줄 거 같지 않다."))
+            {
+                Boss1.SetActive(true);
+
             }
 
             int length = dialogue.GetTypingLength();
