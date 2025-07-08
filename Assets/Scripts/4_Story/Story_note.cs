@@ -47,6 +47,14 @@ public class Story_note : MonoBehaviour
         }
     }
 
+    public void StartPlayingVideo()
+    {
+        videoPlayer.Prepare(); // 비디오 준비 시작
+        isPlaying = true;
+        videoPlayer.prepareCompleted += OnVideoPrepared;
+        Invoke(nameof(SetIsPlayingTrue), 20f);
+    }
+
     public void PlayVideo() // 영상 실행 함수
     {
         GameObject playerCode = GameObject.FindWithTag("Player"); // Player 태그 필요!

@@ -223,13 +223,19 @@ public class PlayerCtrl_R : PlayerCtrlBase
         saveButton.SetActive(!saveButton.activeSelf); // 세이브 버튼 토글
         MainButton.SetActive(!MainButton.activeSelf); // 메인 버튼 토글
     }
-    private void OnJump(InputAction.CallbackContext context) // 점프
+    private void OnJump(InputAction.CallbackContext context)
     {
-        if (isGrounded && !isPressingPiri) // 착지시 + 연주가 아닐때만 점프 가능
+        if (isGrounded && !isPressingPiri)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             animator.SetTrigger("isJump");
+            StartCoroutine(DelayedJump(0.1f));
         }
+    }
+
+    private IEnumerator DelayedJump(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
     private void OnJumpEnd() // 점프 애니메이션 종료시, 잠시 그 상태로 멈춤

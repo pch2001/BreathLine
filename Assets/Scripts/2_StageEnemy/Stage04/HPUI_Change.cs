@@ -29,7 +29,7 @@ public class HPUI_Change : MonoBehaviour
     IEnumerator PollutionEffectSequence()
     {
         Vector2 startPos = rect.anchoredPosition;
-        Vector2 endPos = centerPosition;
+        Vector2 endPos = startPos + new Vector2(-850f, 0f); // 오른쪽으로 이동
         float t = 0;
         while (t < 1f)
         {
