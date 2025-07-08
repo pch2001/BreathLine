@@ -17,6 +17,7 @@ public class Story_note : MonoBehaviour
 
     bool isPlaying = false;
 
+    public bool isReturn = false;
     void Start()
     {
         skip.text = "";
@@ -43,7 +44,13 @@ public class Story_note : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            PlayVideo();
+            if(isReturn)
+                Invoke(nameof(nextScene), 0.5f);
+            else
+            {
+                PlayVideo();
+
+            }
         }
     }
 
