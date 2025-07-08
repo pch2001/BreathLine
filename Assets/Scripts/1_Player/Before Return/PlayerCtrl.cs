@@ -46,13 +46,14 @@ public class PlayerCtrl : PlayerCtrlBase
     
     public Story_four story4;
     public GameObject uiChange;
+    public GameObject stage4PlayerPos;
     
     // 늑대 관련 변수
 
     public GameObject wolf; // 늑대 게임 오브젝트
     public Animator wolfAnimator; // 늑대 애니메이터
     private float wolfExitTimer = 0f; // 늑대 Hide 타이머 / 일정 시간 이후 Hide실행
-    public float defaultWolfExitTime = 5f; // 늑대 자동 퇴장 시간
+    public float defaultWolfExitTime = 10f; // 늑대 자동 퇴장 시간
     public WolfState currentWolfState = WolfState.Idle; // 현재 늑대 상태 확인 (WolfState 클래스)
     private Coroutine wolfAttackCoolRoutine; // 늑대 공격 쿨타임 코루틴
     private bool isWolfRange; // 늑대의 범위 내에 있는지(WolfAppear 영역 / 피해x)
@@ -323,7 +324,7 @@ public class PlayerCtrl : PlayerCtrlBase
 
         if (wolfExitTimer >= defaultWolfExitTime) // 아무런 동작 없이 defaultWolfExitTime 이상 흐르면 실행
         {
-            StartCoroutine(playerSkill.WolfHide(false)); // 늑대 자동 퇴장
+            playerSkill.hideCoroutine = StartCoroutine(playerSkill.WolfHide(false)); // 늑대 자동 퇴장
         }
         else if (currentWolfState == WolfState.Idle) // 늑대 등장 후, wolfExitTimer 계속 증가
         {
@@ -395,15 +396,20 @@ public class PlayerCtrl : PlayerCtrlBase
         yield return new WaitForSeconds(0.1f);
         isPushed = false; // 밀격상태 해제
 
-        if (!isWolfGuarding && !is4BossStage) // 늑대 보호 없을 경우
-        {
-            GameManager.Instance.StartCoroutine(GameOver()); // 게임 오버 실행
-            yield break;
-        }
-
         if (is4BossStage && GameManager.Instance.Pollution >= 100) // 보스전에서 오염도가 가득 찼을 경우, 스토리 진행
         {
             Time.timeScale = 0.5f;
+            rb.velocity = Vector2.zero;
+            rb.isKinematic = true;
+
+            gameObject.transform.position = stage4PlayerPos.transform.position;
+            StopCoroutine(playerSkill.hideCoroutine);
+            wolf.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f, 0.8f, 0.9f);
+            wolf.transform.position = stage4PlayerPos.transform.position + Vector3.up * 0.6f;
+            
+            animator.SetTrigger("isSad");
+            wolfAnimator.SetTrigger("isDead");
+
             OnDisable();
             OnWolfGuard();
             RequestPlayerPolluted?.Invoke();
@@ -411,6 +417,7 @@ public class PlayerCtrl : PlayerCtrlBase
             yield return new WaitForSeconds(2f);
 
             StartCoroutine(story4.TypingText(1));
+            yield break;
         }
 
         // 피격시 연주 비활성화
@@ -488,7 +495,7 @@ public class PlayerCtrl : PlayerCtrlBase
     {
         if (collision.gameObject.CompareTag("Enemy")) // 적과 충돌시 데미지 or 가드
         {
-            if (isDamaged || isWolfRange) return; // 소녀 피격 상태, 늑대 영역에 있을 경우 충돌 X
+            if (isDamaged) return; // 소녀 피격 상태, 늑대 영역에 있을 경우 충돌 X
 
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy 기본 클래스 가져옴
             if (enemy != null)
@@ -539,23 +546,6 @@ public class PlayerCtrl : PlayerCtrlBase
             else
             {
                 Debug.Log("해당 적은 EnemyBase 클래스를 상속하지 않았습니다! 연결해유");
-            }
-        }
-        else if (collision.gameObject.CompareTag("EnemyPiercingAttack"))
-        {
-            Debug.Log("적의 광역 공격으로 소녀가 쓰러집니다..");
-
-            if (isPeaceMelody) // 평화의 연주중이었을 경우 캔슬
-            {
-                isPeaceMelody = false;
-                isPressingPiri = false;
-                playerSkill.PlaySoftPiriCanceled();
-            }
-
-            if (currentWolfState != WolfState.Damaged) // 늑대 보호 상태 확인
-            {
-                OnWolfGuard(); // 가드 실행
-                GameManager.Instance.StartCoroutine(GameOver()); // 게임 오버 실행
             }
         }
         else if (collision.gameObject.CompareTag("EnemySealAttack")) // 플레이어 능력 봉인 Attack

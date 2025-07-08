@@ -28,8 +28,9 @@ TagManager:
   - EnemyAttack_NoGroggy
   - EnemyAttack
   - EnemySealAttack
-  - EnemyPiercingAttack
   - CoverObject
+  - WolfPush
+  - EnemyWall
   layers:
   - Default
   - TransparentFX

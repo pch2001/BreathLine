@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class Enemy_Stage03_ChasingBoss : MonoBehaviour
 {
     Queue<Vector3> playerPositions = new Queue<Vector3>();
-    [SerializeField] private float updateRate = 0.1f;  // 0.1초마다 위치 저장
+    [SerializeField] private float updateRate = 0.3f;  // 0.3초마다 위치 저장
     [SerializeField] private Color targetColor;  // 목표 색상 설정
     [SerializeField] private GameObject hitEffect; // 경고등 오브젝트
     [SerializeField] private GameObject attackRange; // 공격 범위 오브젝트
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private float attackRadius = 10f;
+    [SerializeField] private float bossYPos = 1f;
 
     private SpriteRenderer spriteRenderer;
     private Camera mainCam;
@@ -48,7 +49,7 @@ public class Enemy_Stage03_ChasingBoss : MonoBehaviour
         if (playerPositions.Count > 0)
         {
             Vector3 targetPos = playerPositions.Peek(); // 입력된 큐의 가장 마지막 부분 목표로(5프레임)
-            transform.position = Vector3.Lerp(transform.position, targetPos, 0.05f);
+            transform.position = Vector3.Lerp(transform.position, targetPos, 0.05f) + Vector3.up * 0.5f * bossYPos;
         }
 
         attackTimer += Time.deltaTime;
@@ -61,7 +62,7 @@ public class Enemy_Stage03_ChasingBoss : MonoBehaviour
         if (attackTimer >= 9f && !hitEffect.activeSelf)
             hitEffect.SetActive(true);
 
-        if (attackTimer >= 10f)
+        if (attackTimer >= 13f)
         {
             attackTimer = 0f;
             spriteRenderer.color = Color.white;

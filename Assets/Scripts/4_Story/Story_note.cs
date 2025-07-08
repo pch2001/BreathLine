@@ -106,6 +106,7 @@ public class Story_note : MonoBehaviour
                 RenderTexture.active = null;
                 rt.Release(); // 렌더 텍스처 해제
             }
+            Time.timeScale = 1f;
             Invoke(nameof(nextScene), 0.5f);
         }
     }

@@ -24,7 +24,6 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         player.GetComponent<PlayerCtrl>().RequestPlayerPolluted += OnRequestPlayerPolluted;
     }
 
-
     private void Start()
     {
         maxHp = 300f; // 적 체력 설정
@@ -393,7 +392,8 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
 
         // 원래 위치로 이동
         transform.position = startPos;
-        moveSpeed = defaultMoveSpeed;
+        spriteRenderer.flipX = true;
+        animator.SetTrigger("attack0");
         attackMode = false; // 피격모드 종료 (스토리 진행)
     }
 
@@ -432,6 +432,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
     private void OnRequestPlayerPolluted() // 공격 모드 비활성화 함수
     {
         transform.position = startPos;
+        CancelAttack();
         attackMode = false; 
     }
 
@@ -467,14 +468,17 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         {
             if (isStune) return;
 
-            Debug.Log("늑대의 공격이 적을 기절시킵니다!");
+            var attackArea = collision.GetComponent<AttackArea>();
+            if (attackArea == null || attackArea.attackGlobalID == angerAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
+            angerAttackID = attackArea.attackGlobalID;
+
+            Debug.LogWarning("늑대의 공격이 적을 기절시킵니다!");
             if (currentHp - 20f >= 5) // 최대 5까지 오염도 감소
                 currentHp -= 20f; // 적 오염도 즉시 20 감소 
             else
                 currentHp = 5f;
 
-            float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
-            PushBack(pushBackDir);
+            StartCoroutine(Stunned(4f));
         }
         else if (collision.gameObject.CompareTag("WolfAppear") || collision.gameObject.CompareTag("PurifyStep"))
         {
@@ -524,11 +528,17 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         else if (collision.gameObject.CompareTag("WolfAttack"))
         {
             if (isStune) return;
+            var attackArea = collision.GetComponent<AttackArea>();
+            if (attackArea == null || attackArea.attackGlobalID == angerAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
+            angerAttackID = attackArea.attackGlobalID;
 
-            Debug.Log("늑대의 공격이 적을 기절시킵니다!");
-            float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
-            PushBack(pushBackDir);
-            StartCoroutine(Stunned(3f));
+            Debug.LogWarning("늑대의 공격이 적을 기절시킵니다!");
+            if (currentHp - 20f >= 5) // 최대 5까지 오염도 감소
+                currentHp -= 20f; // 적 오염도 즉시 20 감소 
+            else
+                currentHp = 5f;
+
+            StartCoroutine(Stunned(4f));
         }
         else if (collision.gameObject.CompareTag("WolfAppear") || collision.gameObject.CompareTag("PurifyStep"))
         {

@@ -116,6 +116,18 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
             float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
             PushBack(pushBackDir);
         }
+        else if (collision.gameObject.CompareTag("WolfPush"))
+        {
+            if (isStune) return;
+
+            var attackArea = collision.GetComponent<AttackArea>();
+            if (attackArea == null || attackArea.attackGlobalID == angerAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
+            angerAttackID = attackArea.attackGlobalID;
+
+            Debug.LogWarning("늑대가 적을 밀쳐냅니다!");
+            float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
+            PushBack(pushBackDir);
+        }
         else if (collision.gameObject.CompareTag("WolfAppear") || collision.gameObject.CompareTag("PurifyStep"))
         {
             if (!attackMode) return;
@@ -214,6 +226,18 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
             float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
             PushBack(pushBackDir);
             StartCoroutine(Stunned(3f));
+        }
+        else if (collision.gameObject.CompareTag("WolfPush"))
+        {
+            if (isStune) return;
+
+            var attackArea = collision.GetComponent<AttackArea>();
+            if (attackArea == null || attackArea.attackGlobalID == angerAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
+            angerAttackID = attackArea.attackGlobalID;
+
+            Debug.LogWarning("늑대가 적을 밀쳐냅니다!");
+            float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
+            PushBack(pushBackDir);
         }
         else if (collision.gameObject.CompareTag("WolfAppear") || collision.gameObject.CompareTag("PurifyStep"))
         {

@@ -457,7 +457,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1}
+  m_Size: {x: 1.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!70 &1859906789175522613
 CapsuleCollider2D:
@@ -534,24 +534,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySight: {fileID: 0}
+  enemyHpGauge: {fileID: 452385452951045828}
+  echoGuardEffect: {fileID: 4944625292821399265}
   hitEffect: {fileID: 8420039739360209137}
   hitEffect_noGroggy: {fileID: 0}
-  dieEffect: {fileID: 8593467334550478808}
   enemyFadeEffect: {fileID: 1522734947312318606}
-  echoGuardEffect: {fileID: 4944625292821399265}
-  enemyHpGauge: {fileID: 452385452951045828}
+  dieEffect: {fileID: 8593467334550478808}
+  groggyUIObject: {fileID: 0}
   groggyUI: {fileID: 0}
   attackObjects: []
-  maxHp: 0
-  _currentHp: 0
-  defaultMoveSpeed: 6
-  _moveSpeed: 0
-  _isMoving: 0
-  _isAttackRange: 0
   targetPos: {x: 0, y: 0}
   patrolRange: 5
   patrolMinRange: 3
-  _isPatrol: 0
   damage: 0
   maxGroggyCnt: 0
   currentGroggyCnt: 0
@@ -561,6 +555,17 @@ MonoBehaviour:
   enemyIsReturn: 1
   isPurifying: 0
   isReadyPeaceMelody: 0
+  nextAttackIndex: 0
+  isBoss: 0
+  bulletSpeed: 0
+  isBossCreated: 0
+  maxHp: 0
+  _currentHp: 0
+  defaultMoveSpeed: 6
+  _moveSpeed: 0
+  _isPatrol: 0
+  _isMoving: 0
+  _isAttackRange: 0
   isLooking: 0
   angerAttackID: 0
   peaceAttackID: 1

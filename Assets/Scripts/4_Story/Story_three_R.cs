@@ -17,6 +17,8 @@ public class Story_three_R : MonoBehaviour
     public Text printText2;
     public Text printText3;
 
+    public GameObject Boss3;
+    public GameObject BossHp;
 
     List<List<string>> dialoguescript;//대사 스크립트 저장소
 
@@ -179,6 +181,11 @@ public class Story_three_R : MonoBehaviour
         girlImage.SetActive(false);
         wolfImage.SetActive(false);
 
+        if (index == 0)
+        {
+            Boss3.GetComponent<EnemyBase>().attackMode = true;
+            BossHp.SetActive(true);
+        }
         playerCtrl.OnEnable();
 
 

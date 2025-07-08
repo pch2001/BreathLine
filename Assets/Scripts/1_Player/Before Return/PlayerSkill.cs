@@ -20,6 +20,7 @@ public class PlayerSkill : MonoBehaviour
     [SerializeField] private GameObject PeaceWaitingEffect; //  소녀 평화의 악장 준비 이펙트
     [SerializeField] private GameObject wolfAppearArea; // 늑대 좌클릭 공격 범위
     [SerializeField] private GameObject wolfAttackArea; // 늑대 우클릭 공격 범위
+    [SerializeField] private GameObject wolfPushArea; // 늑대 밀격 공격 범위
 
     public float playerDamage; // 플레이어의 공격력
     private float piriStartTime; // 피리연주 시작 시간
@@ -34,7 +35,7 @@ public class PlayerSkill : MonoBehaviour
     [SerializeField] private SpriteRenderer wolfEyes; // 늑대 눈 스프라이트
     public Animator wolfEyesAnim; // 늑대 눈 애니메이터
     public GameObject guardImg; // 늑대 가드 이미지
-
+    public Coroutine hideCoroutine; // 늑대 Hide 코루틴
     private bool wolfMoveReady = true; // 늑대 이동 쿨타임
     private float wolfFadeoutTime = 0.3f; // 좌클릭시 늑대가 사라지는 시간
     private float wolfFadeinTime = 1f; // 좌클릭시 늑대가 나타나는 시간
@@ -319,7 +320,7 @@ public class PlayerSkill : MonoBehaviour
         {
             wolfIsDamaged = true; // 늑대부상 변수 (등장중일 경우, 코루틴 탈출)
 
-            StartCoroutine(WolfHide(true));
+            hideCoroutine = StartCoroutine(WolfHide(true));
             StartCoroutine(WolfGuardEffect()); // 가드 이펙트 코루틴 실행 
             StartCoroutine(WolfGuardCool()); // 가드 쿨타임 코루틴 실행
 
@@ -330,8 +331,10 @@ public class PlayerSkill : MonoBehaviour
     {
         guardImg.transform.position = this.transform.position;
         guardImg.SetActive(true);
+        wolfPushArea.SetActive(true);
         yield return new WaitForSeconds(0.4f); // 0.4초 후 사라짐
         guardImg.SetActive(false);
+        wolfPushArea.SetActive(false);
     }
 
     private IEnumerator WolfMoveCool() // 늑대 이동 쿨타임 코루틴

@@ -104,7 +104,7 @@ public class Enemy_Stage02_2 : EnemyBase // Mage 스크립트
         Debug.Log("적이 탄환을 발사합니다!");
         animator.SetTrigger("Attack"); // Attack 애니메이션 실행
         hitEffect.SetActive(false);
-        yield return new WaitForSeconds(1f); // 다음 행동을 하는데 간격을 둠
+        yield return new WaitForSeconds(3f); // 다음 행동을 하는데 간격을 둠
 
         nextAttackIndex = UnityEngine.Random.Range(0, attackPatterns.Length); // 다음 공격 결정
         moveSpeed = defaultMoveSpeed;
@@ -140,12 +140,27 @@ public class Enemy_Stage02_2 : EnemyBase // Mage 스크립트
         {
             if (isStune) return;
 
-            Debug.Log("늑대의 공격이 적을 기절시킵니다!");
+            var attackArea = collision.GetComponent<AttackArea>();
+            if (attackArea == null || attackArea.attackGlobalID == angerAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
+            angerAttackID = attackArea.attackGlobalID;
+
+            Debug.LogWarning("늑대의 공격이 적을 기절시킵니다!");
             if (currentHp - 20f >= 5) // 최대 5까지 오염도 감소
                 currentHp -= 20f; // 적 오염도 즉시 20 감소 
             else
                 currentHp = 5f;
 
+            StartCoroutine(Stunned(4f));
+        }
+        else if (collision.gameObject.CompareTag("WolfPush"))
+        {
+            if (isStune) return;
+
+            var attackArea = collision.GetComponent<AttackArea>();
+            if (attackArea == null || attackArea.attackGlobalID == angerAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
+            angerAttackID = attackArea.attackGlobalID;
+
+            Debug.LogWarning("늑대가 적을 밀쳐냅니다!");
             float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
             PushBack(pushBackDir);
         }
@@ -185,7 +200,6 @@ public class Enemy_Stage02_2 : EnemyBase // Mage 스크립트
             if (attackArea == null || attackArea.attackGlobalID == peaceAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
             peaceAttackID = attackArea.attackGlobalID;
 
-            Debug.LogWarning("여러번 나오면 안되는데");
             currentHp -= 10f;
             if (currentHp <= 0)
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
@@ -195,11 +209,29 @@ public class Enemy_Stage02_2 : EnemyBase // Mage 스크립트
         else if (collision.gameObject.CompareTag("WolfAttack"))
         {
             if (isStune) return;
+            var attackArea = collision.GetComponent<AttackArea>();
+            if (attackArea == null || attackArea.attackGlobalID == angerAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
+            angerAttackID = attackArea.attackGlobalID;
 
-            Debug.Log("늑대의 공격이 적을 기절시킵니다!");
+            Debug.LogWarning("늑대의 공격이 적을 기절시킵니다!");
+            if (currentHp - 20f >= 5) // 최대 5까지 오염도 감소
+                currentHp -= 20f; // 적 오염도 즉시 20 감소 
+            else
+                currentHp = 5f;
+
+            StartCoroutine(Stunned(4f));
+        }
+        else if (collision.gameObject.CompareTag("WolfPush"))
+        {
+            if (isStune) return;
+
+            var attackArea = collision.GetComponent<AttackArea>();
+            if (attackArea == null || attackArea.attackGlobalID == angerAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
+            angerAttackID = attackArea.attackGlobalID;
+
+            Debug.LogWarning("늑대가 적을 밀쳐냅니다!");
             float pushBackDir = transform.position.x - collision.transform.position.x; // 적이 밀격될 방향 계산
             PushBack(pushBackDir);
-            StartCoroutine(Stunned(3f));
         }
         else if (collision.gameObject.CompareTag("WolfAppear") || collision.gameObject.CompareTag("PurifyStep"))
         {
