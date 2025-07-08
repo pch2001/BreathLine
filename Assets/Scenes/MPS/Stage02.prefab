@@ -14467,7 +14467,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 10.24}
+    oldSize: {x: 5, y: 5}
     newSize: {x: 3.82, y: 4.08}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -14492,6 +14492,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 0}
   videoFileName: test.mp4
   skip: {fileID: 0}
+  isReturn: 0
 --- !u!1 &790447568994920075
 GameObject:
   m_ObjectHideFlags: 0
@@ -29718,7 +29719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5052714988969688336
 Transform:
   m_ObjectHideFlags: 0
@@ -30053,7 +30054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &981150214730596142
 Transform:
   m_ObjectHideFlags: 0
@@ -31735,7 +31736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8544737306500609007
 Transform:
   m_ObjectHideFlags: 0
@@ -35750,7 +35751,7 @@ Transform:
   m_GameObject: {fileID: 2215359168233035555}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.051681392, w: 0.99866366}
-  m_LocalPosition: {x: 105.41548, y: 17.373957, z: 2.4662707}
+  m_LocalPosition: {x: 99.1, y: 16.7, z: 2.4662707}
   m_LocalScale: {x: 1.13, y: 1.1299999, z: 1.1299999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44919,7 +44920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9185514918917842541
 Transform:
   m_ObjectHideFlags: 0
@@ -108379,7 +108380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1659218720203323708
 Transform:
   m_ObjectHideFlags: 0
@@ -121624,7 +121625,7 @@ Transform:
   m_GameObject: {fileID: 7721375855203743474}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 76.40523, y: 22.572914, z: -0.45572928}
+  m_LocalPosition: {x: 52.7, y: 22.572914, z: -0.45572928}
   m_LocalScale: {x: 6.105372, y: 2.4335918, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -142718,7 +142719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2098933321356023539
 Transform:
   m_ObjectHideFlags: 0
