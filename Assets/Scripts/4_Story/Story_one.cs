@@ -74,7 +74,19 @@ public class Story_one : MonoBehaviour
                 "g:무슨 말씀을 하시는 지 잘 모르겠지만… \n우선 앞으로 가면 될까요?",
                 "w:…",
                 "g:그…런거죠?"
+            },
+
+            new List<string>
+            {
+                "w:구울들이네.",
+                "g:저것들은 어떻게 해치워야 하는 거죠?",
+                "w:해치울 필요가 있을까?",
+                "g:네?",
+                "w:구울들은 네가 반응해주기 전까지 영역을 벗어나지 못해.",
+                "w:관심을 원하는 가여운 망령에 불과하지.",
+                "g:가여운 망령…"
             }
+
         };
     }
     void FixedUpdate()
@@ -245,7 +257,8 @@ public class Story_one : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.5f);
-        TeleportPlayer();
+        if(index ==0)
+            TeleportPlayer();
         Destroy(this.gameObject);
     }
     private IEnumerator WaitForPiriPerformance()

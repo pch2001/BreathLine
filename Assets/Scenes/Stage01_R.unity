@@ -356,6 +356,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 275539276}
     - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
+      propertyPath: saveButton
+      value: 
+      objectReference: {fileID: 275539276}
+    - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: echoGuardCool
       value: 
       objectReference: {fileID: 1629107823}
@@ -664,7 +668,7 @@ Transform:
   m_GameObject: {fileID: 135324878}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 54.2, y: 1.18, z: 0}
+  m_LocalPosition: {x: 47.1, y: 1.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2067,7 +2071,7 @@ MonoBehaviour:
   printText2: {fileID: 275539268}
   printText3: {fileID: 275539272}
   Boss1: {fileID: 467837518}
-  BossHp: {fileID: 0}
+  BossHp: {fileID: 1602655491}
 --- !u!1 &1887861928
 GameObject:
   m_ObjectHideFlags: 0

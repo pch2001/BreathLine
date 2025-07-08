@@ -205,8 +205,12 @@ public class Story_one_R : MonoBehaviour
         girlImage.SetActive(false);
         wolfImage.SetActive(false);
 
-        Boss1.GetComponent<EnemyBase>().attackMode = true;
-        BossHp.SetActive(true);
+        if(index == 1)
+        {
+            Boss1.GetComponent<EnemyBase>().attackMode = true;
+            BossHp.SetActive(true);
+        }
+
         playerCtrl.OnEnable();
 
         yield return new WaitForSeconds(0.5f);

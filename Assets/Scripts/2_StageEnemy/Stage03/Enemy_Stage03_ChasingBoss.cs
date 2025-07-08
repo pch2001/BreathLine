@@ -43,7 +43,7 @@ public class Enemy_Stage03_ChasingBoss : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (playerPositions.Count > 0)
         {
@@ -54,7 +54,7 @@ public class Enemy_Stage03_ChasingBoss : MonoBehaviour
         attackTimer += Time.deltaTime;
 
         // 색상 점진적 변경
-        float colorRatio = Mathf.Clamp01(attackTimer / 9f); // 9초동안 색상 변경
+        float colorRatio = Mathf.Clamp01(attackTimer / 10f); // 9초동안 색상 변경
         spriteRenderer.color = Color.Lerp(Color.white, targetColor, colorRatio);
 
         // 경고 이펙트 표시
@@ -73,7 +73,7 @@ public class Enemy_Stage03_ChasingBoss : MonoBehaviour
     IEnumerator Attack0()
     {
         Collider2D hit = Physics2D.OverlapCircle(transform.position, attackRadius, playerLayer);
-        StartCoroutine(ShakeCamera(1.5f, 0.5f)); // 카메라 흔드는 효과
+        StartCoroutine(ShakeCamera(1f, 0.5f)); // 카메라 흔드는 효과
 
         if (hit != null)
         {

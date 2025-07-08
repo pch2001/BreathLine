@@ -24,6 +24,11 @@ public class Story_four : MonoBehaviour
     private bool isSkipping = false;
     private bool isTyping = false;
 
+
+    public GameObject telepoint;
+
+    public GameObject player;
+
     void Start()
     {
         printText1.text = "";
@@ -31,15 +36,22 @@ public class Story_four : MonoBehaviour
         printText3.text = "";
         dialoguescript = new List<List<string>>
         {
-        new List<string> { "n:오염도가 체력으로 바뀌었다.",
-        "g:“잠시..만..!!! 안돼!!!!”", "n:늑대가 오염도를 버티며 쓰러진다.",
+        
+
+        new List<string> {"g:으앜.. 여기가 어디지",
+        "w:몬가 불안해 조심하는게 좋겠어",
+        "w:기존과는 차원이 다르게 강력한 오염이 느껴져.",
+        },
+
+       
+
+        new List<string> { "g:“잠시..만..!!! 안돼!!!!”", "n:늑대가 오염도를 버티며 쓰러진다.",
             "w:네가 안고 있는 분노, 슬픔, 두려움. 모두…" ,
             "w:절대로. 네 잘못이 아니야.",
-            "w:부디 너를 용서하길. 너를 구원하길."},
-
-
-
-        new List<string> { "w:1", "g:2" }
+            "w:부디 너를 용서하길. 너를 구원하길."
+        },
+         new List<string> { "n:오염도가 체력으로 바뀌었다.",
+        }
         };
 
     }
@@ -62,6 +74,10 @@ public class Story_four : MonoBehaviour
             string objectName = gameObject.name;
             if (int.TryParse(objectName, out int index))
             {
+                if(index == 1)
+                {
+                    TeleportPlayer();
+                }
                 StartCoroutine(TypingText(index));//이것만 실행하면 텍스트 나옴
             }
         }
@@ -191,5 +207,12 @@ public class Story_four : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         Destroy(this.gameObject);
+    }
+    void TeleportPlayer()
+    {
+        if (telepoint != null && player != null)
+        {
+            player.transform.position = telepoint.transform.position;
+        }
     }
 }

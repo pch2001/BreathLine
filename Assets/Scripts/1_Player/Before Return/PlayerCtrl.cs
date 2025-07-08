@@ -29,7 +29,7 @@ public class PlayerCtrl : PlayerCtrlBase
     float h; // 플레이어 좌우 이동값
     public float moveSpeed = 5f; // 이동속도
     private Coroutine speedRoutine; // 이동속도 변경 코루틴
-    private float jumpForce = 12f; // 점프력
+    private float jumpForce = 20f; // 점프력
     private bool isGrounded = true; // 착지 여부
     private bool isReadyPiri = true; // 피리 연주 가능 여부 
     public bool isPeaceMelody = false; // 평화의 악장 연주 중인지
@@ -54,6 +54,9 @@ public class PlayerCtrl : PlayerCtrlBase
 
     // 피리 연주 여부 프로퍼티
     private bool _isPressingPiri = false;
+
+    public GameObject saveButton;
+    public GameObject MainButton;
     public override bool isPressingPiri
     {
         get => _isPressingPiri;
@@ -102,6 +105,7 @@ public class PlayerCtrl : PlayerCtrlBase
         playerinputAction.Player.PlayPiri.canceled += OnReleasePiri;
         playerinputAction.Wolf.Move.performed += OnWolfMove;
         playerinputAction.Wolf.Attack.performed += OnWolfAttack;
+        playerinputAction.MenuUI.ESC.performed += OnESC;
     }
 
     public void OnDisable()
@@ -214,6 +218,11 @@ public class PlayerCtrl : PlayerCtrlBase
             spriteRenderer.flipX = true;
     }
 
+    private void OnESC(InputAction.CallbackContext context)
+    {
+        saveButton.SetActive(!saveButton.activeSelf); // 세이브 버튼 표시/숨김 토글
+        MainButton.SetActive(!MainButton.activeSelf); // 메인 버튼 표시/숨김 토글
+    }
     private void OnJump(InputAction.CallbackContext context) // 점프
     {
         if (isGrounded && !isPressingPiri) // 착지시 + 연주가 아닐때만 점프 가능

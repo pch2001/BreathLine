@@ -46,6 +46,9 @@ public class PlayerCtrl_R : PlayerCtrlBase
     private bool isSealed; // 현재 능력 봉인 상태인지
     public bool isCovered = false; // 엄폐물에 있을 경우
 
+    public GameObject saveButton;
+    public GameObject MainButton;
+
     // 피리 연주 여부 프로퍼티
     [SerializeField] private bool _isPressingPiri = false;
     public override bool isPressingPiri // 피리 연주 여부
@@ -108,10 +111,10 @@ public class PlayerCtrl_R : PlayerCtrlBase
         playerinputAction.Player.Jump.performed += OnJump;
         playerinputAction.Player.PlayPiri.started += OnStartPiri;
         playerinputAction.Player.PlayPiri.canceled += OnReleasePiri;
-        playerinputAction.Player.EchoGuard.performed += OnEchoGuard;
+        playerinputAction.Player.EchoGuard.performed +=     OnEchoGuard;
         playerinputAction.Player.PurifyingStep.started += OnPurifyStepStart;
         playerinputAction.Player.PurifyingStep.canceled += OnPurifyStepStop;
-
+        playerinputAction.MenuUI.ESC.performed += OnESC;
     }
     public void OnDisable()
     {
@@ -215,6 +218,11 @@ public class PlayerCtrl_R : PlayerCtrlBase
             spriteRenderer.flipX = true;
     }
 
+    private void OnESC(InputAction.CallbackContext context)
+    {
+        saveButton.SetActive(!saveButton.activeSelf); // 세이브 버튼 토글
+        MainButton.SetActive(!MainButton.activeSelf); // 메인 버튼 토글
+    }
     private void OnJump(InputAction.CallbackContext context) // 점프
     {
         if (isGrounded && !isPressingPiri) // 착지시 + 연주가 아닐때만 점프 가능

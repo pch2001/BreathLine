@@ -367,7 +367,7 @@ Transform:
   m_GameObject: {fileID: 170774123}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.8, y: 0.49, z: 0}
+  m_LocalPosition: {x: -133.7, y: -23.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -503,7 +503,9 @@ PrefabInstance:
       value: Stage03 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8819592723372934953, guid: d94905474697d5040b6309574475f571, type: 3}
+    - {fileID: 4162268829337692385, guid: d94905474697d5040b6309574475f571, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d94905474697d5040b6309574475f571, type: 3}
@@ -984,6 +986,10 @@ PrefabInstance:
       objectReference: {fileID: 1839753475}
     - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: SaveButton
+      value: 
+      objectReference: {fileID: 1839753477}
+    - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
+      propertyPath: saveButton
       value: 
       objectReference: {fileID: 1839753477}
     - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
