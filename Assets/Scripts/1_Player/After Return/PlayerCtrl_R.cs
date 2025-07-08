@@ -29,7 +29,7 @@ public class PlayerCtrl_R : PlayerCtrlBase
 
     float h; // 플레이어 좌우 이동값
     public float moveSpeed = 5f; // 이동속도
-    private float jumpForce = 12f; // 점프력
+    private float jumpForce = 14f; // 점프력
     private bool isGrounded = true; // 착지 여부
     private bool isReadyPiri = true; // 피리 연주 가능 여부 
     public bool isPeaceMelody = false; // 평화의 악장 연주 중인지
