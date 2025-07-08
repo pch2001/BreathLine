@@ -314,12 +314,12 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
         isSpecialPhase = false; // 특수 패턴 종료
     }
 
-    protected override IEnumerator MoveToTarget(Vector2 startPos, Vector3 targetPos, float duration)
+    protected override IEnumerator MoveToTarget(Vector2 startPos, Vector2 targetPos, float duration)
     {
         float elapsed = 0f; // 타이머
         while (elapsed < duration)
         {
-            transform.position = Vector3.Lerp(startPos, targetPos, elapsed / duration);
+            transform.position = Vector2.Lerp(startPos, targetPos, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }

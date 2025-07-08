@@ -19,6 +19,12 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
 
     private int specialPhaseCnt = 1; // 특수 패턴 남은 횟수 
 
+    private void OnEnable()
+    {
+        player.GetComponent<PlayerCtrl>().RequestPlayerPolluted += OnRequestPlayerPolluted;
+    }
+
+
     private void Start()
     {
         maxHp = 300f; // 적 체력 설정
@@ -250,7 +256,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
 
         Debug.Log("적이 소녀를 추적하는 다리를 소환합니다!");
         hitEffect_noGroggy.SetActive(false);
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < (isSpecialPhase ? 5 : 3); i++)
         {
             GameObject portal = Instantiate(spiderPortalPrefab, player.transform.position + Vector3.up * 5f, Quaternion.identity);
             portals.Add(portal);
@@ -258,7 +264,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
 
             StartCoroutine(MoveWithPlayer(portal, followDuration));
 
-            yield return new WaitForSeconds(1f); // 포탈 생성 간격
+            yield return new WaitForSeconds((isSpecialPhase ? 0.7f : 1f)); // 포탈 생성 간격
         }
 
         yield return new WaitForSeconds(2f);
@@ -380,7 +386,6 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         {
             // 보스 체력 확인
             float hpRatio = currentHp / maxHp;
-            if (hpRatio <= 0f || hpRatio >= 1f) break; // 오염도가 0 or 100%면 종료
 
             StartCoroutine(Attack2()); // 기존의 원거리 공격 재사용
             yield return new WaitForSeconds(7f); // 다음 공격 대기
@@ -390,17 +395,44 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         transform.position = startPos;
         moveSpeed = defaultMoveSpeed;
         attackMode = false; // 피격모드 종료 (스토리 진행)
+    }
 
+    public override IEnumerator Damaged() // 피격시 반응 오버라이딩
+    {
+        if (GameManager.Instance.isReturned) // 회귀 후 플레이어 데미지 연결
+            currentHp += player.GetComponent<PlayerSkill_R>().playerDamage;
+        else // 회귀 전 플레이어 데미지 연결
+            currentHp += player.GetComponent<PlayerSkill>().playerDamage;
 
-        foreach (var monster in phase4_Monster) // 몬스터 삭제
+        Debug.Log("현재 오염도 : " + currentHp);
+
+        if (currentHp < maxHp) // 피격 반응
         {
-            if (monster != null)
-                monster.SetActive(false);
-        }
-        bossShadow.SetActive(false);
+            Debug.Log("적이 공격으로 인해 피해를 입습니다.");
+            StartCoroutine(Stunned(0.3f)); // 0.3초 경직
+            animator.SetTrigger("Damaged"); // 피격 애니메이션 실행
+            hitEffect.SetActive(true); // 피격 이펙트 활성화
 
-        isSpecialPhase = false; // 특수 패턴 종료
-        Debug.LogWarning("보스 클리어! 스토리 연출 진행");
+            yield return new WaitForSeconds(0.2f);
+
+            hitEffect.SetActive(false); // 피격 이펙트 비활성화
+        }
+        else // 사망 반응 
+        {
+            Debug.LogWarning("적이 포효합니다!");
+            StartCoroutine(PushAttack(0.5f));
+            hitEffect.SetActive(true); // 피격 이펙트 활성화
+
+            yield return new WaitForSeconds(0.2f);
+
+            hitEffect.SetActive(false); // 피격 이펙트 비활성화
+        }
+    }
+
+    private void OnRequestPlayerPolluted() // 공격 모드 비활성화 함수
+    {
+        transform.position = startPos;
+        attackMode = false; 
     }
 
     protected override void HandlerTriggerEnter(Collider2D collision) // 충돌 처리 담당 

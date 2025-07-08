@@ -18,6 +18,9 @@ public class Story_four : MonoBehaviour
     public Text printText2;
     public Text printText3;
 
+    public GameObject Boss4;
+    public GameObject BossHp;
+    public Story_note story4; 
 
     List<List<string>> dialoguescript;//대사 스크립트 저장소
 
@@ -74,7 +77,7 @@ public class Story_four : MonoBehaviour
             string objectName = gameObject.name;
             if (int.TryParse(objectName, out int index))
             {
-                if(index == 1)
+                if(index == 0)
                 {
                     TeleportPlayer();
                 }
@@ -201,6 +204,15 @@ public class Story_four : MonoBehaviour
         girlImage.SetActive(false);
         wolfImage.SetActive(false);
 
+        if (index == 0)
+        {
+            Boss4.GetComponent<EnemyBase>().attackMode = true;
+            BossHp.SetActive(true);
+        }
+        else if(index == 1)
+        {
+            story4.PlayVideo();
+        }
         playerCtrl.OnEnable();
 
 

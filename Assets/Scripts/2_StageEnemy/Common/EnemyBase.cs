@@ -377,16 +377,16 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    protected virtual IEnumerator MoveToTarget(Vector2 startPos, Vector3 targetPos, float duration) // 특정위치로 이동하는 함수
+    protected virtual IEnumerator MoveToTarget(Vector2 startPos, Vector2 targetPos, float duration) // 특정위치로 이동하는 함수
     {
-        float elapsed = 0f; // 타이머
-        while (elapsed < duration)
-        {
-            transform.position = Vector3.Lerp(startPos, targetPos, elapsed / duration);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-        transform.position = targetPos; // 위치 정리
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Vector2 force = targetPos - startPos;
+
+        rb.velocity = Vector2.zero;
+        rb.AddForce(force * 10, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(duration);
+
+        rb.velocity = Vector2.zero; // 대시 종료 후 정지
     }
 
     public IEnumerator EchoGuardSuccess(Collider2D collision) // EnemyAttack 공격 방어시

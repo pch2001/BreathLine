@@ -696,6 +696,7 @@ public class PlayerCtrl_R : PlayerCtrlBase
         else if (collision.gameObject.CompareTag("SavePoint"))
         {
             savePoint = collision.transform.position; // 세이브 포인트 저장
+            Destroy(collision.gameObject);
         }
     }
 

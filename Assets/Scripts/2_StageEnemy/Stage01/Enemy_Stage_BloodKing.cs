@@ -173,7 +173,7 @@ public class Enemy_Stage_BloodKing : BossBase // Mage 스크립트
         animator.SetTrigger("Attack1"); // Attack1 애니메이션 실행
         hitEffect_noGroggy.SetActive(false);
 
-        Vector3 targetPos = transform.position + new Vector3(direction.x * 7f, 0f, 0f); // 공격 목적지 설정
+        Vector2 targetPos = transform.position + new Vector3(direction.x * 7f, 0f); // 공격 목적지 설정
         StartCoroutine(MoveToTarget(transform.position, targetPos, 0.1f)); // 적 0.1초 동안 이동 공격
         attackCoroutine = null; // 코루틴 정리
         yield return new WaitForSeconds(1.5f); // 다음 행동을 하는데 간격을 둠

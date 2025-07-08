@@ -144,6 +144,7 @@ public class Enemy_Stage_GirlBoss : BossBase // Victorian 스크립트
         {
                 Attack0,
                 Attack1,
+                Attack2,
         };
     }
 

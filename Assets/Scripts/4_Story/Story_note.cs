@@ -13,6 +13,7 @@ public class Story_note : MonoBehaviour
     public string videoFileName = "test.mp4";
     public Text skip;
     private PlayerCtrl playerCtrl;
+    private PlayerCtrl_R playerCtrl_R;
 
     bool isPlaying = false;
 
@@ -36,23 +37,31 @@ public class Story_note : MonoBehaviour
             GL.Clear(true, true, Color.black);
             RenderTexture.active = null;
         }
-        // videoPlayer.Prepare();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            GameObject playerCode = GameObject.FindWithTag("Player"); // Player 태그 필요!
-            playerCtrl = playerCode.GetComponent<PlayerCtrl>();
-            playerCtrl.OnDisable();
-
-            videoPlayer.Prepare(); // 비디오 준비 시작
-            isPlaying = true;
-            videoPlayer.prepareCompleted += OnVideoPrepared;
-            Invoke(nameof(SetIsPlayingTrue), 20f);
+            PlayVideo();
         }
     }
+
+    public void PlayVideo() // 영상 실행 함수
+    {
+        GameObject playerCode = GameObject.FindWithTag("Player"); // Player 태그 필요!
+        if(GameManager.Instance.isReturned)
+            playerCtrl_R = playerCode.GetComponent<PlayerCtrl_R>();
+        else
+            playerCtrl = playerCode.GetComponent<PlayerCtrl>();
+        
+        playerCtrl.OnDisable();
+        videoPlayer.Prepare(); // 비디오 준비 시작
+        isPlaying = true;
+        videoPlayer.prepareCompleted += OnVideoPrepared;
+        Invoke(nameof(SetIsPlayingTrue), 20f);
+    }
+
     public void nextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

@@ -6,6 +6,7 @@ using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerCtrl : PlayerCtrlBase
@@ -29,7 +30,7 @@ public class PlayerCtrl : PlayerCtrlBase
     float h; // 플레이어 좌우 이동값
     public float moveSpeed = 5f; // 이동속도
     private Coroutine speedRoutine; // 이동속도 변경 코루틴
-    private float jumpForce = 20f; // 점프력
+    private float jumpForce = 14f; // 점프력
     private bool isGrounded = true; // 착지 여부
     private bool isReadyPiri = true; // 피리 연주 가능 여부 
     public bool isPeaceMelody = false; // 평화의 악장 연주 중인지
@@ -41,7 +42,11 @@ public class PlayerCtrl : PlayerCtrlBase
     private Coroutine SealAttackRoutine; // 봉인 공격 실행 코루틴
     public bool isLocked; // 상호작용시 행동 제한
     public bool isCovered = false; // 엄폐물에 있을 경우
-
+    public bool is4BossStage = false; // 현재 회귀전 4스테이지 보스전인지
+    
+    public Story_four story4;
+    public GameObject uiChange;
+    
     // 늑대 관련 변수
 
     public GameObject wolf; // 늑대 게임 오브젝트
@@ -51,6 +56,9 @@ public class PlayerCtrl : PlayerCtrlBase
     public WolfState currentWolfState = WolfState.Idle; // 현재 늑대 상태 확인 (WolfState 클래스)
     private Coroutine wolfAttackCoolRoutine; // 늑대 공격 쿨타임 코루틴
     private bool isWolfRange; // 늑대의 범위 내에 있는지(WolfAppear 영역 / 피해x)
+
+    // 소녀 오염도 최대치 알림 이벤트
+    public event Action RequestPlayerPolluted; // 소녀 오염도 최대치 알림 이벤트
 
     // 피리 연주 여부 프로퍼티
     private bool _isPressingPiri = false;
@@ -368,15 +376,36 @@ public class PlayerCtrl : PlayerCtrlBase
         }
     }
 
-    private IEnumerator OnDamagedStart(float enemyPosX) // 소녀 피격 시작 함수
+    private IEnumerator OnDamagedStart(float enemyDamage, float enemyPosX, bool isWolfGuarding) // 소녀 피격 시작 함수
     {
+        Debug.Log("소녀 피격! 소녀의 오염도가 증가합니다!");
+  
         isDamaged = true; // 피격상태 시작
         isPushed = true; // 밀격상태 시작
         animator.SetTrigger(PlayerAnimTrigger.Hit);
         rb.AddForce(Vector2.right * ((enemyPosX - transform.position.x > 0) ? -1 : 1) * 13, ForceMode2D.Impulse); // 피격시 반대방향으로 살짝 밀격됨
-
+        
+        GameManager.Instance.AddPolution(enemyDamage * (isWolfGuarding ? 0.5f : 1)); // 적 공격력만큼 오염도 증가
         yield return new WaitForSeconds(0.1f);
         isPushed = false; // 밀격상태 해제
+
+        if (!isWolfGuarding && !is4BossStage) // 늑대 보호 없을 경우
+        {
+            GameManager.Instance.StartCoroutine(GameOver()); // 게임 오버 실행
+            yield break;
+        }
+
+        if (is4BossStage && GameManager.Instance.Pollution >= 100) // 보스전에서 오염도가 가득 찼을 경우, 스토리 진행
+        {
+            Time.timeScale = 0.5f;
+            OnDisable();
+            OnWolfGuard();
+            RequestPlayerPolluted?.Invoke();
+            uiChange.SetActive(true); // UI 변경 표시
+            yield return new WaitForSeconds(2f);
+
+            StartCoroutine(story4.TypingText(1));
+        }
 
         // 피격시 연주 비활성화
         playerinputAction.Player.PlayPiri.Disable();
@@ -462,12 +491,12 @@ public class PlayerCtrl : PlayerCtrlBase
 
                 if (currentWolfState != WolfState.Damaged) // 늑대 보호 가능
                 {
-                    StartCoroutine(OnDamagedStart(collision.transform.position.x)); // 소녀 피격 상태 구현
                     OnWolfGuard(); // 가드 실행
+                    StartCoroutine(OnDamagedStart(enemy.damage, collision.transform.position.x, true)); // 소녀 피격 상태 구현 (늑대 o)
                 }
-                else
+                else // 늑대 보호 불가능
                 {
-                    GameManager.Instance.StartCoroutine(GameOver()); // 게임 오버 실행
+                    StartCoroutine(OnDamagedStart(enemy.damage, collision.transform.position.x, false)); // 소녀 피격 상태 구현 (늑대 x)
                 }
             }
             else
@@ -488,14 +517,22 @@ public class PlayerCtrl : PlayerCtrlBase
                 playerSkill.PlaySoftPiriCanceled();
             }
 
-            if (currentWolfState != WolfState.Damaged) // 늑대 보호 가능
+            var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
+            if (enemyAttack != null)
             {
-                StartCoroutine(OnDamagedStart(collision.transform.position.x)); // 소녀 피격 상태 구현
-                OnWolfGuard(); // 가드 실행
+                if (currentWolfState != WolfState.Damaged) // 늑대 보호 가능
+                {
+                    StartCoroutine(OnDamagedStart(enemyAttack.attackDamage, collision.transform.position.x, true)); // 소녀 피격 상태 구현 (늑대 o)
+                    OnWolfGuard(); // 가드 실행
+                }
+                else // 늑대 보호 불가능
+                {
+                    StartCoroutine(OnDamagedStart(enemyAttack.attackDamage, collision.transform.position.x, false)); // 소녀 피격 상태 구현 (늑대 x)
+                }
             }
             else
             {
-                GameManager.Instance.StartCoroutine(GameOver()); // 게임 오버 실행
+                Debug.Log("해당 적은 EnemyBase 클래스를 상속하지 않았습니다! 연결해유");
             }
         }
         else if (collision.gameObject.CompareTag("EnemyPiercingAttack"))
@@ -549,14 +586,15 @@ public class PlayerCtrl : PlayerCtrlBase
                 playerSkill.PlaySoftPiriCanceled();
             }
 
+            var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
             if (currentWolfState != WolfState.Damaged) // 늑대 보호 가능
             {
-                StartCoroutine(OnDamagedStart(collision.transform.position.x)); // 소녀 피격 상태 구현
+                StartCoroutine(OnDamagedStart(enemyAttack.attackDamage, collision.transform.position.x, true)); // 소녀 피격 상태 구현
                 OnWolfGuard(); // 가드 실행
             }
             else
             {
-                GameManager.Instance.StartCoroutine(GameOver()); // 게임 오버 실행
+                StartCoroutine(OnDamagedStart(enemyAttack.attackDamage, collision.transform.position.x, false)); // 소녀 피격 상태 구현
             }
         }
         else if (collision.gameObject.CompareTag("EnemySight"))
@@ -581,6 +619,7 @@ public class PlayerCtrl : PlayerCtrlBase
         else if (collision.gameObject.CompareTag("SavePoint"))
         {
             savePoint = collision.transform.position; // 세이브 포인트 저장
+            Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("WolfAppear"))
         {
