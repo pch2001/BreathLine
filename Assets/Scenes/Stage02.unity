@@ -547,6 +547,10 @@ PrefabInstance:
       propertyPath: videoPlayer
       value: 
       objectReference: {fileID: 2102535538}
+    - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
+      propertyPath: videoFileName
+      value: Scene2.mp4
+      objectReference: {fileID: 0}
     - target: {fileID: 1403114819658765342, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: m_SurfaceArc
       value: 165

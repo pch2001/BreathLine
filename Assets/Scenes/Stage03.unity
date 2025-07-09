@@ -212,6 +212,10 @@ PrefabInstance:
       propertyPath: videoPlayer
       value: 
       objectReference: {fileID: 1538096445}
+    - target: {fileID: 1319843415827404771, guid: 821646ef4c3f6e546a5156b169de4f73, type: 3}
+      propertyPath: videoFileName
+      value: Scene03.mp4
+      objectReference: {fileID: 0}
     - target: {fileID: 3614340061123514473, guid: 821646ef4c3f6e546a5156b169de4f73, type: 3}
       propertyPath: m_LocalPosition.x
       value: 43.59
