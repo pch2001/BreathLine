@@ -14,7 +14,8 @@ public class Story_note : MonoBehaviour
     public Text skip;
     private PlayerCtrl playerCtrl;
     private PlayerCtrl_R playerCtrl_R;
-
+    public AudioSource videoAudioSource;
+    private int playcount = 0; // 영상 재생 횟수 카운트용
     bool isPlaying = false;
 
     public bool isReturn = false;
@@ -22,6 +23,7 @@ public class Story_note : MonoBehaviour
 
     void Start()
     {
+        playcount = 0;
         skip.text = "";
         isPlaying = false;
         string videoPath = System.IO.Path.Combine(Application.streamingAssetsPath, videoFileName);
@@ -51,32 +53,37 @@ public class Story_note : MonoBehaviour
             else
             {
                 PlayVideo();
-
             }
         }
     }
 
-    public void StartPlayingVideo()
-    {
-        videoPlayer.Prepare(); // 비디오 준비 시작
-        isPlaying = true;
-        videoPlayer.prepareCompleted += OnVideoPrepared;
-        Invoke(nameof(SetIsPlayingTrue), 20f);
-    }
+    //public void StartPlayingVideo()
+    //{
+    //    videoPlayer.Prepare(); // 비디오 준비 시작
+    //    videoPlayer.prepareCompleted += OnVideoPrepared;
+    //    Invoke(nameof(SetIsPlayingTrue), 5f);
+    //}
 
     public void PlayVideo() // 영상 실행 함수
     {
-        GameObject playerCode = GameObject.FindWithTag("Player"); // Player 태그 필요!
-        if(GameManager.Instance.isReturned)
-            playerCtrl_R = playerCode.GetComponent<PlayerCtrl_R>();
-        else
-            playerCtrl = playerCode.GetComponent<PlayerCtrl>();
-        
-        playerCtrl.OnDisable();
+        //GameObject playerCode = GameObject.FindWithTag("Player"); // Player 태그 필요!
+        //if (GameManager.Instance.isReturned)
+        //{
+        //    playerCtrl_R = playerCode.GetComponent<PlayerCtrl_R>();
+        //    playerCtrl_R.OnDisable();
+        //}
+        //else
+        //{
+        //    playerCtrl = playerCode.GetComponent<PlayerCtrl>();
+        //    playerCtrl.OnDisable();
+
+        //}
+        if (playcount >= 1)
+            return;
+        playcount++; // 영상 재생 횟수 증가
         videoPlayer.Prepare(); // 비디오 준비 시작
-        isPlaying = true;
         videoPlayer.prepareCompleted += OnVideoPrepared;
-        Invoke(nameof(SetIsPlayingTrue), 20f);
+        Invoke(nameof(SetIsPlayingTrue), 5f);
     }
 
     public void nextScene()
@@ -85,23 +92,26 @@ public class Story_note : MonoBehaviour
     }
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.P))
-        //{
-        //    videoPlayer.Prepare(); // 비디오 준비 시작
-        //    videoPlayer.prepareCompleted += OnVideoPrepared;
-        //    isPlaying = true;
-        //    Invoke(nameof(SetIsPlayingTrue), 8f);
 
-        //}
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            //GameManager.Pollution = 100f;
+            GameManager.Instance.Pollution = 110f; // 오염도 100으로 설정
+            Debug.Log("오염도 100으로 설정됨");
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && isPlaying)
         {
             videoPlayer.Stop();
+            videoAudioSource.Stop(); // 영상 오디오 정지
             rawImage.enabled = false;
             skip.text = "";
             if (videoPlayer.targetTexture != null)
             {
                 RenderTexture rt = videoPlayer.targetTexture;
                 videoPlayer.targetTexture = null; // 연결 먼저 끊기
+                videoPlayer.audioOutputMode = VideoAudioOutputMode.None;
+
                 RenderTexture.active = rt;
                 GL.Clear(true, true, Color.black);
                 RenderTexture.active = null;
@@ -112,6 +122,7 @@ public class Story_note : MonoBehaviour
                     GameObject playerCode = GameObject.FindWithTag("Player"); // Player 태그 필요!
                     playerCtrl = playerCode.GetComponent<PlayerCtrl>();
                     StartCoroutine(playerCtrl.PlayWolfDie()); // 연출 및 스크립트 시작
+                    Debug.Log("보스 4 스테이지 연출 시작");
                 }
                 else
                 {

@@ -400,13 +400,13 @@ public class PlayerCtrl : PlayerCtrlBase
         if (is4BossStage && GameManager.Instance.Pollution >= 100) // 보스전에서 오염도가 가득 찼을 경우, 스토리 진행
         {
             Time.timeScale = 0.5f;
-            OnDisable(); 
+            //OnDisable(); 
             rb.velocity = Vector2.zero;
             rb.isKinematic = true;
             RequestPlayerPolluted?.Invoke();
             yield return new WaitForSeconds(1f);
 
-            storyVideo.StartPlayingVideo();
+            storyVideo.PlayVideo();
             Time.timeScale = 1f;
             yield break;
         }
@@ -446,7 +446,7 @@ public class PlayerCtrl : PlayerCtrlBase
         uiChange.SetActive(true); // UI 변경 표시
         yield return new WaitForSeconds(2f);
 
-        //StartCoroutine(story4.TypingText(1));
+        StartCoroutine(story4.TypingText(1));
         Time.timeScale = 1f;
 
         yield break;
