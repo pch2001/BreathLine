@@ -23,6 +23,10 @@ public class Story_four_R : MonoBehaviour
     private bool isSkipping = false;
     private bool isTyping = false;
 
+    public GameObject telepoint;
+
+    public GameObject player;
+
     void Start()
     {
         printText1.text = "";
@@ -74,7 +78,7 @@ public class Story_four_R : MonoBehaviour
                 "n:(당신의 마음이 악보가 되어 새겨집니다.)",
                 "n:(당신은 지금 어떤 “나”를 마주하고 있나요?)"
 
-            }//세번째 대사
+            }
         };
 
     }
@@ -97,6 +101,10 @@ public class Story_four_R : MonoBehaviour
             string objectName = gameObject.name;
             if (int.TryParse(objectName, out int index))
             {
+                if(index == 1)
+                {
+                    TeleportPlayer();
+                }
                 StartCoroutine(TypingText(index));
             }
         }
@@ -145,25 +153,23 @@ public class Story_four_R : MonoBehaviour
             string speaker = parts[0].Trim();
             string dialogue = parts[1].Trim();
 
-            // 말풍선 분기
+            printText1.text = "";
+            printText2.text = "";
+            printText3.text = "";
             if (speaker == "g")
             {
                 girlImage.SetActive(true);
                 wolfImage.SetActive(false);
-
-                printText1.text = "";
             }
             else if (speaker == "w")
             {
                 girlImage.SetActive(false);
                 wolfImage.SetActive(true);
-                printText2.text = "";
             }
             else if (speaker == "n")
             {
                 girlImage.SetActive(false);
                 wolfImage.SetActive(false);
-                printText3.text = "";
             }
 
             int length = dialogue.GetTypingLength();
@@ -227,5 +233,12 @@ public class Story_four_R : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         Destroy(this.gameObject);
+    }
+    void TeleportPlayer()
+    {
+        if (telepoint != null && player != null)
+        {
+            player.transform.position = telepoint.transform.position;
+        }
     }
 }

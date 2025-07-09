@@ -10754,7 +10754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3180418602808942417, guid: b53159cb2bcf1a34dbab8fcbdbae607f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.16
+      value: 27.6
       objectReference: {fileID: 0}
     - target: {fileID: 3180418602808942417, guid: b53159cb2bcf1a34dbab8fcbdbae607f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10794,7 +10794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7662862709634233241, guid: b53159cb2bcf1a34dbab8fcbdbae607f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16491,6 +16491,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5535341966040113791, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
+    - {fileID: 788903363511045869, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7359465909559661118, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       insertIndex: -1
@@ -42121,6 +42122,10 @@ PrefabInstance:
     - target: {fileID: 1529542842906632349, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501005168918304615, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 7847214603698467380, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
       propertyPath: m_RaycastTarget
