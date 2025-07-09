@@ -10483,7 +10483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8595045247355220034, guid: 4b5acae19290ab44abf8d870b38df926, type: 3}
       propertyPath: m_Offset.y
-      value: 0.5
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 8673931691756884661, guid: 4b5acae19290ab44abf8d870b38df926, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15604,6 +15604,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Before(final)
       objectReference: {fileID: 0}
+    - target: {fileID: 2242344019371967613, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2310235803593455335, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -104
@@ -15668,6 +15672,10 @@ PrefabInstance:
       propertyPath: saveButton
       value: 
       objectReference: {fileID: 1529315884}
+    - target: {fileID: 8326427741551617631, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
+      propertyPath: storyVideo
+      value: 
+      objectReference: {fileID: 1029043827}
     - target: {fileID: 8326427741551617631, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: Story4Object
       value: 
@@ -26090,7 +26098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2074968976299974193, guid: 4a492ab8bd969b344ad398c28e1546e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.1
+      value: 19.690002
       objectReference: {fileID: 0}
     - target: {fileID: 2107735659388346151, guid: 4a492ab8bd969b344ad398c28e1546e5, type: 3}
       propertyPath: enemyIsReturn
@@ -26118,7 +26126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5784390306242929231, guid: 4a492ab8bd969b344ad398c28e1546e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.03
+      value: 19.62
       objectReference: {fileID: 0}
     - target: {fileID: 5896570445641907209, guid: 4a492ab8bd969b344ad398c28e1546e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26170,7 +26178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8121164174163972303, guid: 4a492ab8bd969b344ad398c28e1546e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.91
+      value: 20.5
       objectReference: {fileID: 0}
     - target: {fileID: 8631180783563117556, guid: 4a492ab8bd969b344ad398c28e1546e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26377,13 +26385,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 5897942697522212134, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
+    - {fileID: 1638371016521945015, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3321608300878718733, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
       insertIndex: -1
       addedObject: {fileID: 990225885}
+    - targetCorrespondingSourceObject: {fileID: 3321608300878718733, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 990225891}
   m_SourcePrefab: {fileID: 100100000, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
 --- !u!1 &990225881 stripped
 GameObject:
@@ -26418,6 +26429,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackGlobalID: 2
+--- !u!58 &990225891
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990225883}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1009555879
 GameObject:
   m_ObjectHideFlags: 0
@@ -26538,7 +26584,7 @@ GameObject:
   - component: {fileID: 1029043826}
   - component: {fileID: 1029043827}
   m_Layer: 0
-  m_Name: Story
+  m_Name: StoryVideo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26576,6 +26622,7 @@ MonoBehaviour:
   videoFileName: Scene1.mp4
   skip: {fileID: 741527471}
   isReturn: 0
+  boss4Stage: 1
 --- !u!1 &1043166032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1130401231097112824, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
@@ -48604,14 +48651,14 @@ SceneRoots:
   - {fileID: 4477301624753229978}
   - {fileID: 952001594}
   - {fileID: 521213234}
-  - {fileID: 334299444}
-  - {fileID: 235171673}
-  - {fileID: 1009555883}
   - {fileID: 1529315882}
   - {fileID: 891833745}
   - {fileID: 1594867479}
   - {fileID: 3282036905111065395}
   - {fileID: 1205106588}
   - {fileID: 1480713644}
-  - {fileID: 1029043826}
   - {fileID: 1743827814}
+  - {fileID: 334299444}
+  - {fileID: 1029043826}
+  - {fileID: 235171673}
+  - {fileID: 1009555883}

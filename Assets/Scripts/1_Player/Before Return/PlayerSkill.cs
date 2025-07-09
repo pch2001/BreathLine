@@ -332,7 +332,7 @@ public class PlayerSkill : MonoBehaviour
         guardImg.transform.position = this.transform.position;
         guardImg.SetActive(true);
         wolfPushArea.SetActive(true);
-        yield return new WaitForSeconds(0.4f); // 0.4초 후 사라짐
+        yield return new WaitForSeconds(0.2f); // 0.2초 후 사라짐
         guardImg.SetActive(false);
         wolfPushArea.SetActive(false);
     }

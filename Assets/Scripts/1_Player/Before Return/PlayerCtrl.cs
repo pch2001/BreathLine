@@ -45,6 +45,7 @@ public class PlayerCtrl : PlayerCtrlBase
     public bool is4BossStage = false; // 현재 회귀전 4스테이지 보스전인지
     
     public Story_four story4;
+    public Story_note storyVideo;
     public GameObject uiChange;
     public GameObject stage4PlayerPos;
     
@@ -399,24 +400,14 @@ public class PlayerCtrl : PlayerCtrlBase
         if (is4BossStage && GameManager.Instance.Pollution >= 100) // 보스전에서 오염도가 가득 찼을 경우, 스토리 진행
         {
             Time.timeScale = 0.5f;
+            OnDisable(); 
             rb.velocity = Vector2.zero;
             rb.isKinematic = true;
-
-            gameObject.transform.position = stage4PlayerPos.transform.position;
-            StopCoroutine(playerSkill.hideCoroutine);
-            wolf.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f, 0.8f, 0.9f);
-            wolf.transform.position = stage4PlayerPos.transform.position + Vector3.up * 0.6f;
-            
-            animator.SetTrigger("isSad");
-            wolfAnimator.SetTrigger("isDead");
-
-            OnDisable();
-            OnWolfGuard();
             RequestPlayerPolluted?.Invoke();
-            uiChange.SetActive(true); // UI 변경 표시
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
 
-            StartCoroutine(story4.TypingText(1));
+            storyVideo.StartPlayingVideo();
+            Time.timeScale = 1f;
             yield break;
         }
 
@@ -438,6 +429,27 @@ public class PlayerCtrl : PlayerCtrlBase
         }
 
         OnDamagedEnd();
+    }
+
+    public IEnumerator PlayWolfDie() // 늑대 희생 장면 실행 함수
+    {
+        Time.timeScale = 0.5f;
+        gameObject.transform.position = stage4PlayerPos.transform.position;
+        OnWolfGuard();
+        StopCoroutine(playerSkill.hideCoroutine);
+        wolf.transform.position = stage4PlayerPos.transform.position + Vector3.up * 0.6f;
+        wolf.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f, 0.8f, 0.9f);
+
+        animator.SetTrigger("isSad");
+        wolfAnimator.SetTrigger("isDead");
+
+        uiChange.SetActive(true); // UI 변경 표시
+        yield return new WaitForSeconds(2f);
+
+        //StartCoroutine(story4.TypingText(1));
+        Time.timeScale = 1f;
+
+        yield break;
     }
 
     public void OnDamagedEnd() // 소녀 피격 종료 함수
