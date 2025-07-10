@@ -687,11 +687,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2310235803593455335, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -49.91
+      value: -46.7
       objectReference: {fileID: 0}
     - target: {fileID: 2310235803593455335, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 5.3
       objectReference: {fileID: 0}
     - target: {fileID: 2310235803593455335, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -931,7 +931,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5271949773640549186, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
   m_PrefabInstance: {fileID: 730802349}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 785468826}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -1307,6 +1307,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SelectScene
       objectReference: {fileID: 0}
+    - target: {fileID: 6462995828735151811, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6640280566188046923, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
@@ -1341,6 +1345,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6594108744360635861, guid: 85139de52aa591a43aba37a7a20fb3e3, type: 3}
   m_PrefabInstance: {fileID: 2036756281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &785468826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4080975244687198285, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+  m_PrefabInstance: {fileID: 730802349}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &806490906
 PrefabInstance:
@@ -2227,6 +2236,11 @@ Transform:
 --- !u!1 &1215870471 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1069231180782018304, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
+  m_PrefabInstance: {fileID: 314916225}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1215870474 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3330035596401081299, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
   m_PrefabInstance: {fileID: 314916225}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1228329223
@@ -3354,6 +3368,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8952815247315658562, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
   m_PrefabInstance: {fileID: 2052240633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2090451670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 73103957443587871, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+  m_PrefabInstance: {fileID: 730802349}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2127808996 stripped
 GameObject:
@@ -128928,7 +128947,9 @@ MonoBehaviour:
   videoPlayer: {fileID: 1783008039}
   videoFileName: Scene1.mp4
   skip: {fileID: 1092516287}
-  videoAudioSource: {fileID: 0}
+  videoAudioSource: {fileID: 1215870474}
+  HPUI: {fileID: 2090451670}
+  SkillUI: {fileID: 785468826}
   isReturn: 0
   boss4Stage: 0
 --- !u!212 &9008895397111269591

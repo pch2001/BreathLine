@@ -552,9 +552,17 @@ PrefabInstance:
       value: 165
       objectReference: {fileID: 0}
     - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
+      propertyPath: HPUI
+      value: 
+      objectReference: {fileID: 1577242647}
+    - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: skip
       value: 
       objectReference: {fileID: 463811511}
+    - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
+      propertyPath: SkillUI
+      value: 
+      objectReference: {fileID: 1577242646}
     - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: rawImage
       value: 
@@ -567,6 +575,10 @@ PrefabInstance:
       propertyPath: videoFileName
       value: Scene2.mp4
       objectReference: {fileID: 0}
+    - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
+      propertyPath: videoAudioSource
+      value: 
+      objectReference: {fileID: 1146173727}
     - target: {fileID: 1403114819658765342, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: m_SurfaceArc
       value: 165
@@ -864,11 +876,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2310235803593455335, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -73.15
+      value: 58.4
       objectReference: {fileID: 0}
     - target: {fileID: 2310235803593455335, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.15
+      value: 33.1
       objectReference: {fileID: 0}
     - target: {fileID: 2310235803593455335, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1210,6 +1222,11 @@ Transform:
 --- !u!1 &1146173726 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1069231180782018304, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
+  m_PrefabInstance: {fileID: 905317660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1146173727 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3330035596401081299, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
   m_PrefabInstance: {fileID: 905317660}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1156706043
@@ -1678,12 +1695,22 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5271949773640549186, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
   m_PrefabInstance: {fileID: 1577242643}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1577242646}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1577242646 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4080975244687198285, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+  m_PrefabInstance: {fileID: 1577242643}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1577242647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 73103957443587871, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+  m_PrefabInstance: {fileID: 1577242643}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1644894226 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7251679516984808276, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}

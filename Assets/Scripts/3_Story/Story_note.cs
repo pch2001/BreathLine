@@ -18,6 +18,8 @@ public class Story_note : MonoBehaviour
     private int playcount = 0; // 영상 재생 횟수 카운트용
     bool isPlaying = false;
 
+    public GameObject HPUI;
+    public GameObject SkillUI;
     public bool isReturn = false;
     public bool boss4Stage = false; // 회귀 전 보스 때는 영상 재생 후 스크립트 연계됨(true)
 
@@ -81,7 +83,8 @@ public class Story_note : MonoBehaviour
             playerCtrl.OnDisable();
 
         }
-
+        HPUI.SetActive(false); // HP UI 비활성화
+        SkillUI.SetActive(false); // 스킬 UI 비활성화
         // 오디오 자동 재생을 방지
         videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
         videoPlayer.SetTargetAudioSource(0, videoAudioSource);
@@ -115,6 +118,18 @@ public class Story_note : MonoBehaviour
 
             rawImage.enabled = false;
             skip.text = "";
+            GameObject playerCode = GameObject.FindWithTag("Player"); // Player 태그 필요!
+            if (GameManager.Instance.isReturned)
+            {
+                playerCtrl_R = playerCode.GetComponent<PlayerCtrl_R>();
+                playerCtrl_R.OnEnable();
+            }
+            else
+            {
+                playerCtrl = playerCode.GetComponent<PlayerCtrl>();
+                playerCtrl.OnEnable();
+
+            }
             if (videoPlayer.targetTexture != null)
             {
                 RenderTexture rt = videoPlayer.targetTexture;
@@ -128,7 +143,6 @@ public class Story_note : MonoBehaviour
 
                 if (boss4Stage) // 회귀 전 4스테이지 보스 장면의 경우, 스토리 이후 스크립트 전개 시작
                 {
-                    GameObject playerCode = GameObject.FindWithTag("Player"); // Player 태그 필요!
                     playerCtrl = playerCode.GetComponent<PlayerCtrl>();
                     StartCoroutine(playerCtrl.PlayWolfDie()); // 연출 및 스크립트 시작
                     Debug.Log("보스 4 스테이지 연출 시작");
@@ -139,7 +153,8 @@ public class Story_note : MonoBehaviour
                 }
             }
             Time.timeScale = 1f;
-            
+            HPUI.SetActive(true); // HP UI 비활성화
+            SkillUI.SetActive(true); // 스킬 UI 비활성화
         }
     }
 

@@ -5103,7 +5103,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5271949773640549186, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
   m_PrefabInstance: {fileID: 1529315882}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1633776806}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -15768,11 +15768,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2310235803593455335, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -366.25
+      value: -113.8
       objectReference: {fileID: 0}
     - target: {fileID: 2310235803593455335, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 94
+      value: 69.7
       objectReference: {fileID: 0}
     - target: {fileID: 2310235803593455335, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26746,7 +26746,7 @@ Transform:
   m_GameObject: {fileID: 1009555879}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.71, y: -1.23, z: 0}
+  m_LocalPosition: {x: -3.5, y: 27.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26846,6 +26846,8 @@ MonoBehaviour:
   videoFileName: Scene4.mp4
   skip: {fileID: 741527471}
   videoAudioSource: {fileID: 498377435}
+  HPUI: {fileID: 1633776807}
+  SkillUI: {fileID: 1633776806}
   isReturn: 0
   boss4Stage: 1
 --- !u!1 &1043166032 stripped
@@ -37118,11 +37120,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7007009245840480475, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 875
+      value: 852
       objectReference: {fileID: 0}
     - target: {fileID: 7007009245840480475, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 7266513424257318644, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -42281,6 +42283,16 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2036341240498836404, guid: 74bf2ba28514a4d49a3a95ec28140af9, type: 3}
   m_PrefabInstance: {fileID: 1618211826}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1633776806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4080975244687198285, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+  m_PrefabInstance: {fileID: 1529315882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1633776807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 73103957443587871, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+  m_PrefabInstance: {fileID: 1529315882}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1679984917 stripped
 Transform:
