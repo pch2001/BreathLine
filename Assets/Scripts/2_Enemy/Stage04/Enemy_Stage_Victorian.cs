@@ -17,7 +17,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
     [SerializeField] private List<GameObject> phase4_Monster; // 특수 패턴시 소환할 4스테이지 적 리스트
     List<GameObject> portals = new List<GameObject>(); private float followDuration = 1.5f;
 
-    private int specialPhaseCnt = 1; // 특수 패턴 남은 횟수 
+    public int specialPhaseCnt = 10; // 특수 패턴 남은 횟수 
 
     private void OnEnable()
     {
@@ -64,7 +64,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
 
         // 특수 패턴 시작 확인
         float hpRatio = currentHp / maxHp;
-        if (specialPhaseCnt >= 1 && !isSpecialPhase && (hpRatio <= 0.25f || hpRatio >= 0.75f))
+        if (!isSpecialPhase && specialPhaseCnt <= 0)
         {
             StartCoroutine(SpecialPhaseRoutine()); return;
         }
@@ -135,6 +135,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
 
         Debug.Log("적이 [공격 0]을 준비합니다!");
         currentAttack = attackObjects[0];
+        specialPhaseCnt--;
         moveSpeed = 0f;
         LockOnTargetPlayer(); // 플레이어를 바라보게 설정
 
@@ -167,6 +168,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         isAttacking = true;
 
         Debug.Log("적이 [공격 1]을 준비합니다!");
+        specialPhaseCnt--;
         currentAttack = attackObjects[1];
         moveSpeed = 0f;
         LockOnTargetPlayer(); // 플레이어를 바라보게 설정
@@ -362,6 +364,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
     {
         Debug.LogWarning("보스가 특수 패턴을 시작합니다!");
         isSpecialPhase = true;
+        specialPhaseCnt = 10;
         moveSpeed = 0f;
         specialPhaseCnt--;
         animator.SetTrigger("Damaged");
@@ -376,6 +379,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         int randIndex = Random.Range(0, translatePos.Count);
         transform.position = translatePos[randIndex].transform.position;
         yield return new WaitForSeconds(0.5f);
+        StartCoroutine(SpecialPatternCool()); // 특수 패턴 유지 쿨타임 시작
 
         // 몬스터 활성화
         foreach (GameObject monster in phase4_Monster)
@@ -393,7 +397,8 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
             yield return new WaitForSeconds(10f); // 다음 공격 대기
         }
 
-        yield return new WaitForSeconds(0.5f); // 잠시 대기
+        animator.SetTrigger("Attack2"); // 올라가는 애니메이션 
+        yield return new WaitForSeconds(0.3f); // 잠시 대기
         // 일반몬스터 삭제 및 원래 위치로 이동
 
         foreach (GameObject monster in phase4_Monster)
@@ -404,10 +409,16 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         {
             StopCoroutine(attackCoroutine);
         }
+        animator.SetTrigger("Attack2End"); // 내려가는 애니메이션
         transform.position = startPos;
-        spriteRenderer.flipX = true;
-        attackMode = false;
     }
+
+    private IEnumerator SpecialPatternCool() // 특수 패턴 쿨타임 확인 함수
+    {
+        yield return new WaitForSeconds(20f);
+        isSpecialPhase = false;
+    }
+
 
     public override IEnumerator Damaged() // 피격시 반응 오버라이딩
     {

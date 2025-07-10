@@ -24,8 +24,9 @@ public class Story_four_R : MonoBehaviour
     private bool isTyping = false;
 
     public GameObject telepoint;
-
     public GameObject player;
+    public GameObject Boss4;
+    public GameObject BossHp;
 
     void Start()
     {
@@ -36,11 +37,24 @@ public class Story_four_R : MonoBehaviour
         {
             new List<string>
             {
+                "g:여기까지... 또 돌아오게 될 줄은 몰랐어.",
+                "g:(…무서워. 그런데, 왠지 모르게 낯설지 않아.)",
+                "g:너는… 대체 뭐야?",
+                "g:(분명 누군가를 떠올릴 듯한데, 기억이… 흐릿해.)",
+                "g:왜 너를 보면 가슴이 아플까?",
+                "g:늑대가… 왜 나를 이곳으로 이끌었는지, \n이제야 조금은 알 것 같아.",
+                "g:하지만, 난 아직 준비되지 않았어.",
+                "g:그래도… 피하지 않을 거야.",
+                "n:(소녀는 주먹을 꼭 쥐고 한 걸음 앞으로 나아간다.)",
+                "n:(고요한 동굴 속, 그녀의 숨소리만이 또렷하게 들린다.)"
+            },
+            new List<string>
+            {
                 "g:어...?",
                 "w:따뜻한 손길 하나 제대로 받아본 적 없는 주제에",
                 "w:고작 환상 같은 빛 한줄기 봤다고 너무 들뜬 거 아니야?",
                 "w:나아가기 위해 너는 어떻게 행동했지?",
-                "w:나는 너야. 누구보다 널 가장 잘 알지. 분노도, 슬픔도, 증오도…",
+                "w:나는 너야. 누구보다 널 가장 잘 알지. \n분노도, 슬픔도, 증오도…",
                 "w:너는 너를 무너트리면서까지 공격을 멈추지 않았잖아?",
                 "w:그런 얄팍한 위선으로 벗어날 수 있으리라 생각하다니..",
                 "w:멍청하지…",
@@ -101,7 +115,7 @@ public class Story_four_R : MonoBehaviour
             string objectName = gameObject.name;
             if (int.TryParse(objectName, out int index))
             {
-                if(index == 1)
+                if(index == 0)
                 {
                     TeleportPlayer();
                 }
@@ -227,6 +241,11 @@ public class Story_four_R : MonoBehaviour
         girlImage.SetActive(false);
         wolfImage.SetActive(false);
 
+        if (index == 0)
+        {
+            Boss4.GetComponent<EnemyBase>().attackMode = true;
+            BossHp.SetActive(true);
+        }
         playerCtrl.OnEnable();
 
 

@@ -144,12 +144,6 @@ public class Story_one_R : MonoBehaviour
                 wolfImage.SetActive(false);
             }
 
-            if (line.Contains("n:쉽게 보내줄 거 같지 않다."))
-            {
-                Boss1.SetActive(true);
-
-            }
-
             int length = dialogue.GetTypingLength();
             isTyping = true;
             isSkipping = false;

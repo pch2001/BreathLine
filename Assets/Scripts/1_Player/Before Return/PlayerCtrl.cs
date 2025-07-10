@@ -399,12 +399,23 @@ public class PlayerCtrl : PlayerCtrlBase
 
         if (is4BossStage && GameManager.Instance.Pollution >= 100) // 보스전에서 오염도가 가득 찼을 경우, 스토리 진행
         {
-            Time.timeScale = 0.5f;
-            //OnDisable(); 
+            OnDisable();
+            Time.timeScale = 0.4f;
             rb.velocity = Vector2.zero;
             rb.isKinematic = true;
+
+            gameObject.transform.position = stage4PlayerPos.transform.position;
+            animator.SetTrigger("isSad");
             RequestPlayerPolluted?.Invoke();
-            yield return new WaitForSeconds(1f);
+            
+            OnWolfGuard();
+            StopCoroutine(playerSkill.hideCoroutine);
+            wolf.transform.position = stage4PlayerPos.transform.position + Vector3.up * 0.6f;
+            wolf.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f, 0.8f, 0.9f);
+            wolf.GetComponent<SpriteRenderer>().sortingOrder = 7; // 잠시 소녀보다 앞에 나오게 설정
+            wolfAnimator.SetTrigger("isDead");
+
+            yield return new WaitForSeconds(1.5f);
 
             storyVideo.PlayVideo();
             Time.timeScale = 1f;
@@ -433,15 +444,6 @@ public class PlayerCtrl : PlayerCtrlBase
 
     public IEnumerator PlayWolfDie() // 늑대 희생 장면 실행 함수
     {
-        Time.timeScale = 0.5f;
-        gameObject.transform.position = stage4PlayerPos.transform.position;
-        OnWolfGuard();
-        StopCoroutine(playerSkill.hideCoroutine);
-        wolf.transform.position = stage4PlayerPos.transform.position + Vector3.up * 0.6f;
-        wolf.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f, 0.8f, 0.9f);
-
-        animator.SetTrigger("isSad");
-        wolfAnimator.SetTrigger("isDead");
 
         uiChange.SetActive(true); // UI 변경 표시
         yield return new WaitForSeconds(2f);
