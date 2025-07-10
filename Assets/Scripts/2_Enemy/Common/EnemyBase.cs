@@ -29,7 +29,8 @@ public abstract class EnemyBase : MonoBehaviour
     protected GameObject currentAttack;
     private Color originalColor; // 현재 SpriteRender 색상 저장
     private Color currentColor;
-    protected Coroutine attackCoroutine; // 스턴, 사망시 코루틴 중간 탈출
+    protected Coroutine attackCoroutine; // 상시 공격 탈출 코루틴
+    protected Coroutine rangeAttackCoroutine; // 범위 공격 탈출 코루틴
 
     protected float pollutionDegree; // 처치시 오염도 오르는 정도
     protected float pollutionResist = 1; // 오염도 감소 비율
@@ -136,7 +137,17 @@ public abstract class EnemyBase : MonoBehaviour
                 if (!isAttacking) // 공격 중복 실행 방지
                 {
                     targetPos = transform.position; // 공격시 목적지를 자신으로 설정(이동x)
-                    attackCoroutine = StartCoroutine(attackPatterns[nextAttackIndex]()); // 공격 패턴 중 랜덤으로 실행
+
+                    if (nextAttackIndex == 0)
+                    {
+                        attackCoroutine = StartCoroutine(attackPatterns[nextAttackIndex]()); // 0번째 공격(파란색)은 공격 취소 가능하도록 설정
+                    }
+                    else if (nextAttackIndex == 2)
+                    {
+                        rangeAttackCoroutine = StartCoroutine(attackPatterns[nextAttackIndex]()); // 2번째 공격(범위 공격)은 스크립트시 취소 가능하도록 설정(attackMode 변경 방지)
+                    }
+                    else
+                        StartCoroutine(attackPatterns[nextAttackIndex]()); // 다른 공격(빨간색)은 공격 취소되지 않음
                 }
                 else
                 {
@@ -146,6 +157,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
         // 공격 모드 - 적 추격 상태는 Update 함수에서 구현
     }
+
 
     protected void MoveToTarget() // 패트롤 모드 - 이동 상태 함수
     {
@@ -373,6 +385,7 @@ public abstract class EnemyBase : MonoBehaviour
             spriteRenderer.enabled = true;
             boxCollider.enabled = true;
             attackCoroutine = null;
+            nextAttackIndex = UnityEngine.Random.Range(0, attackPatterns.Length);
             Debug.LogWarning("공격 강제 종료!");
         }
     }

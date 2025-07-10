@@ -109,7 +109,7 @@ public class Enemy_Stage04_1 : EnemyBase // Mage 스크립트
         dirReady.x = Mathf.Abs(dirReady.x) * (direction.x > 0 ? 1 : -1);
         hitEffect.transform.localPosition = dirReady;
         hitEffect.SetActive(true);
-        yield return new WaitForSeconds(0.3f); // 공격 간격 0.3초
+        yield return new WaitForSeconds(1f); // 공격 경고 1초
         
         Debug.Log("적이 소녀를 공격합니다!");
         animator.SetTrigger("Attack"); // Attack 애니메이션 실행
@@ -147,7 +147,7 @@ public class Enemy_Stage04_1 : EnemyBase // Mage 스크립트
         dirReady.x = Mathf.Abs(dirReady.x) * (direction.x > 0 ? 1 : -1);
         hitEffect_noGroggy.transform.localPosition = dirReady;
         hitEffect_noGroggy.SetActive(true);
-        yield return new WaitForSeconds(0.3f); // 공격 간격 0.3초
+        yield return new WaitForSeconds(1f); // 공격 경고 1초
 
         Debug.Log("적이 소녀를 공격합니다!");
         animator.SetTrigger("Attack1"); // Attack1 애니메이션 실행

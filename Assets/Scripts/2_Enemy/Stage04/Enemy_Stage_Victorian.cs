@@ -458,6 +458,11 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         {
             StopCoroutine(attackCoroutine);
         }
+        if (rangeAttackCoroutine != null)
+        {
+            StopCoroutine(rangeAttackCoroutine);
+            attackMode = false;
+        }
         isSpecialPhase = false;
         attackMode = false;
         transform.position = startPos;
