@@ -776,24 +776,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySight: {fileID: 0}
+  enemyHpGauge: {fileID: 4657088403556273548}
+  echoGuardEffect: {fileID: 0}
   hitEffect: {fileID: 3125782874343003848}
   hitEffect_noGroggy: {fileID: 0}
-  dieEffect: {fileID: 7637998894619707180}
   enemyFadeEffect: {fileID: 1951150817491804713}
-  echoGuardEffect: {fileID: 0}
-  enemyHpGauge: {fileID: 4657088403556273548}
+  dieEffect: {fileID: 7637998894619707180}
+  groggyUIObject: {fileID: 0}
   groggyUI: {fileID: 0}
   attackObjects: []
-  maxHp: 0
-  _currentHp: 0
-  defaultMoveSpeed: 3
-  _moveSpeed: 0
-  _isMoving: 0
-  _isAttackRange: 0
   targetPos: {x: 0, y: 0}
   patrolRange: 3
   patrolMinRange: 5
-  _isPatrol: 0
   damage: 0
   maxGroggyCnt: 0
   currentGroggyCnt: 0
@@ -803,6 +797,17 @@ MonoBehaviour:
   enemyIsReturn: 1
   isPurifying: 0
   isReadyPeaceMelody: 0
+  nextAttackIndex: 0
+  isBoss: 0
+  bulletSpeed: 0
+  isBossCreated: 0
+  maxHp: 0
+  _currentHp: 0
+  defaultMoveSpeed: 3
+  _moveSpeed: 0
+  _isPatrol: 0
+  _isMoving: 0
+  _isAttackRange: 0
   isLooking: 0
   angerAttackID: 0
   peaceAttackID: 1
@@ -1084,7 +1089,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 3c2e87bdbc5c90241837bd4cdbb7b61e, type: 3}
-  m_Color: {r: 1, g: 0.14117648, b: 0.23137255, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
