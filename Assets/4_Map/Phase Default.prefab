@@ -5205,7 +5205,6 @@ GameObject:
   - component: {fileID: 6314044809992634545}
   - component: {fileID: 2055862509932647036}
   - component: {fileID: 2682930194394446470}
-  - component: {fileID: 6296746195309668731}
   m_Layer: 10
   m_Name: Crystal platform_0 (28)
   m_TagString: Ground
@@ -5344,51 +5343,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &6296746195309668731
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285559786388727054}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &310204761205053310
 GameObject:
   m_ObjectHideFlags: 0
@@ -6093,7 +6047,6 @@ GameObject:
   - component: {fileID: 5263585993557508961}
   - component: {fileID: 9013995802368451304}
   - component: {fileID: 6366815613113502372}
-  - component: {fileID: 8678351635437948806}
   m_Layer: 10
   m_Name: Crystal platform_0 (26)
   m_TagString: Ground
@@ -6232,51 +6185,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &8678351635437948806
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468797500699471219}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &543584869564102570
 GameObject:
   m_ObjectHideFlags: 0
@@ -6537,7 +6445,6 @@ GameObject:
   - component: {fileID: 8186046748505027186}
   - component: {fileID: 1189359622888306636}
   - component: {fileID: 5968961071566193830}
-  - component: {fileID: 6450470952954754008}
   m_Layer: 10
   m_Name: Crystal platform_0 (10)
   m_TagString: Ground
@@ -6676,51 +6583,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &6450470952954754008
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 565272828079572116}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &632195022378853676
 GameObject:
   m_ObjectHideFlags: 0
@@ -7639,7 +7501,6 @@ GameObject:
   - component: {fileID: 7594834258266424204}
   - component: {fileID: 490193962463524022}
   - component: {fileID: 7986724075613378138}
-  - component: {fileID: 2419997397002623323}
   m_Layer: 10
   m_Name: Crystal platform_0 (24)
   m_TagString: Ground
@@ -7778,51 +7639,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &2419997397002623323
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1199789825072383823}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &1291061246612172651
 GameObject:
   m_ObjectHideFlags: 0
@@ -9225,7 +9041,6 @@ GameObject:
   - component: {fileID: 2344216806828685355}
   - component: {fileID: 3128206448059564379}
   - component: {fileID: 6056061495648555334}
-  - component: {fileID: 1373692657512658373}
   m_Layer: 10
   m_Name: Crystal platform_0 (17)
   m_TagString: Ground
@@ -9364,51 +9179,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &1373692657512658373
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2556379933337209284}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &2580763278865656823
 GameObject:
   m_ObjectHideFlags: 0
@@ -10545,7 +10315,6 @@ GameObject:
   - component: {fileID: 1761755285250512172}
   - component: {fileID: 1138004000194894541}
   - component: {fileID: 2780664992544877003}
-  - component: {fileID: 3022539399475547716}
   m_Layer: 10
   m_Name: Crystal platform_0 (19)
   m_TagString: Ground
@@ -10684,51 +10453,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &3022539399475547716
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3672675393280026177}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &3691204225733447187
 GameObject:
   m_ObjectHideFlags: 0
@@ -11220,7 +10944,6 @@ GameObject:
   - component: {fileID: 5567080825298183610}
   - component: {fileID: 4683536996414717228}
   - component: {fileID: 5850786034744409755}
-  - component: {fileID: 2147881962897855775}
   m_Layer: 10
   m_Name: Crystal platform_0 (15)
   m_TagString: Ground
@@ -11359,51 +11082,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &2147881962897855775
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4011167827929339842}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &4098831632049582265
 GameObject:
   m_ObjectHideFlags: 0
@@ -11416,7 +11094,6 @@ GameObject:
   - component: {fileID: 9103839574759148292}
   - component: {fileID: 7710104367305355838}
   - component: {fileID: 4628363672620682688}
-  - component: {fileID: 2285970627562231091}
   m_Layer: 3
   m_Name: Crystal platform_0 (13)
   m_TagString: Ground
@@ -11555,51 +11232,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &2285970627562231091
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4098831632049582265}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &4184260988942118651
 GameObject:
   m_ObjectHideFlags: 0
@@ -17005,7 +16637,6 @@ GameObject:
   - component: {fileID: 8186978863630643421}
   - component: {fileID: 6857220441032908827}
   - component: {fileID: 1645653223719276200}
-  - component: {fileID: 2594063544627876996}
   m_Layer: 10
   m_Name: Crystal platform_0 (16)
   m_TagString: Ground
@@ -17144,51 +16775,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &2594063544627876996
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4606152705552325824}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &4761838278180298959
 GameObject:
   m_ObjectHideFlags: 0
@@ -17704,7 +17290,6 @@ GameObject:
   - component: {fileID: 8205523074070918515}
   - component: {fileID: 3675646583652684397}
   - component: {fileID: 1962347016636118619}
-  - component: {fileID: 3261722120277895703}
   m_Layer: 10
   m_Name: Crystal platform_0 (22)
   m_TagString: Ground
@@ -17843,51 +17428,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &3261722120277895703
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5023436485694411866}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &5048402256742542057
 GameObject:
   m_ObjectHideFlags: 0
@@ -18286,7 +17826,6 @@ GameObject:
   - component: {fileID: 7681856805109807871}
   - component: {fileID: 5977272352273521891}
   - component: {fileID: 6649138764535091483}
-  - component: {fileID: 8863065404221950506}
   m_Layer: 10
   m_Name: Crystal platform_0 (20)
   m_TagString: Ground
@@ -18425,51 +17964,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &8863065404221950506
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5408862045397184913}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &5662707156899382259
 GameObject:
   m_ObjectHideFlags: 0
@@ -23798,7 +23292,6 @@ GameObject:
   - component: {fileID: 7978256777831262114}
   - component: {fileID: 1227870309085088684}
   - component: {fileID: 3497347266173713695}
-  - component: {fileID: 3312614780378639803}
   m_Layer: 10
   m_Name: Crystal platform_0 (25)
   m_TagString: Ground
@@ -23937,51 +23430,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &3312614780378639803
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5958326801521211138}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &5971320458820704648
 GameObject:
   m_ObjectHideFlags: 0
@@ -29702,7 +29150,6 @@ GameObject:
   - component: {fileID: 6225364201059632282}
   - component: {fileID: 5675265057316842200}
   - component: {fileID: 4327704801520674765}
-  - component: {fileID: 6893542833752092348}
   m_Layer: 10
   m_Name: Crystal platform_0 (14)
   m_TagString: Ground
@@ -29841,51 +29288,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &6893542833752092348
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6297312088808770942}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &6319491394908838644
 GameObject:
   m_ObjectHideFlags: 0
@@ -30709,7 +30111,6 @@ GameObject:
   - component: {fileID: 4423700915325289298}
   - component: {fileID: 5333426569017173595}
   - component: {fileID: 2369245917620163971}
-  - component: {fileID: 1115871221998253412}
   m_Layer: 10
   m_Name: Crystal platform_0 (8)
   m_TagString: Ground
@@ -30848,51 +30249,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &1115871221998253412
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6808764718268875698}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &6814936264061610613
 GameObject:
   m_ObjectHideFlags: 0
@@ -31404,7 +30760,6 @@ GameObject:
   - component: {fileID: 2654689573680791079}
   - component: {fileID: 7807685650662533872}
   - component: {fileID: 2149450458493253378}
-  - component: {fileID: 108113989740727463}
   m_Layer: 10
   m_Name: Crystal platform_0 (29)
   m_TagString: Ground
@@ -31543,51 +30898,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &108113989740727463
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6992705373877600953}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &7032441473634421167
 GameObject:
   m_ObjectHideFlags: 0
@@ -31684,7 +30994,6 @@ GameObject:
   - component: {fileID: 7829127980507579508}
   - component: {fileID: 4980341812540861193}
   - component: {fileID: 8296715853438350396}
-  - component: {fileID: 614647735545367093}
   m_Layer: 10
   m_Name: Crystal platform_0 (21)
   m_TagString: Ground
@@ -31823,51 +31132,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &614647735545367093
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7060743331472517105}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &7138427582938186455
 GameObject:
   m_ObjectHideFlags: 0
@@ -31880,7 +31144,6 @@ GameObject:
   - component: {fileID: 3358135684884949494}
   - component: {fileID: 4570488656488326760}
   - component: {fileID: 3461518847727548279}
-  - component: {fileID: 8814278402731065041}
   m_Layer: 10
   m_Name: Crystal platform_0 (18)
   m_TagString: Ground
@@ -32019,51 +31282,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &8814278402731065041
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7138427582938186455}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &7191092691294403642
 GameObject:
   m_ObjectHideFlags: 0
@@ -32076,7 +31294,6 @@ GameObject:
   - component: {fileID: 8678587167085839872}
   - component: {fileID: 6678805937236254482}
   - component: {fileID: 3932207047777178809}
-  - component: {fileID: 3997280529146885072}
   m_Layer: 10
   m_Name: Crystal platform_0 (27)
   m_TagString: Ground
@@ -32215,51 +31432,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &3997280529146885072
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7191092691294403642}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &7205418096310544462
 GameObject:
   m_ObjectHideFlags: 0
@@ -43005,7 +42177,6 @@ GameObject:
   - component: {fileID: 184539455318593113}
   - component: {fileID: 4220304257645449202}
   - component: {fileID: 4174958621057310027}
-  - component: {fileID: 3502868556648222670}
   m_Layer: 10
   m_Name: Crystal platform_0 (23)
   m_TagString: Ground
@@ -43144,51 +42315,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!61 &3502868556648222670
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8596163896764942428}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 2.2, y: 0, z: 1.37, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 0.82}
-    newSize: {x: 7.317609, y: 0.7941099}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.06, y: 0.82}
-  m_EdgeRadius: 0
 --- !u!1 &8702128203522946854
 GameObject:
   m_ObjectHideFlags: 0
