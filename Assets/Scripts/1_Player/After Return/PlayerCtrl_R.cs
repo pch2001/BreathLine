@@ -534,7 +534,8 @@ public class PlayerCtrl_R : PlayerCtrlBase
         }
         else if (collision.gameObject.CompareTag("Fall")) // 추락 판정시
         {
-            Debug.Log("최근 세이브 포인트로 이동");
+            Debug.Log("최근 세이브 포인트로 이동, 오염도 증가");
+            GameManager.Instance.AddPolution(10f);
             transform.position = savePoint;
         }
     }

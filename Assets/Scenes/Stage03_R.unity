@@ -417,7 +417,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170774123}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -472,7 +472,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -156.1, y: -33, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -764,6 +764,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1183441746}
     m_Modifications:
+    - target: {fileID: 1537633555233122730, guid: cd13714c8c60da8449ebe7a03c4290cd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4305767192701808533, guid: cd13714c8c60da8449ebe7a03c4290cd, type: 3}
       propertyPath: m_Name
       value: EnemyWall (1)
@@ -1316,6 +1320,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1183441746}
     m_Modifications:
+    - target: {fileID: 1537633555233122730, guid: cd13714c8c60da8449ebe7a03c4290cd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4305767192701808533, guid: cd13714c8c60da8449ebe7a03c4290cd, type: 3}
       propertyPath: m_Name
       value: EnemyWall
@@ -1378,6 +1386,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1183441746}
     m_Modifications:
+    - target: {fileID: 1537633555233122730, guid: cd13714c8c60da8449ebe7a03c4290cd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4305767192701808533, guid: cd13714c8c60da8449ebe7a03c4290cd, type: 3}
       propertyPath: m_Name
       value: EnemyWall
@@ -1773,6 +1785,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1183441746}
     m_Modifications:
+    - target: {fileID: 1537633555233122730, guid: cd13714c8c60da8449ebe7a03c4290cd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4305767192701808533, guid: cd13714c8c60da8449ebe7a03c4290cd, type: 3}
       propertyPath: m_Name
       value: EnemyWall (1)
