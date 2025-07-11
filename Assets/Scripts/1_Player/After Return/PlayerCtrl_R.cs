@@ -264,7 +264,7 @@ public class PlayerCtrl_R : PlayerCtrlBase
     {
         isReadyPiri = false;
 
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(1f);
         isReadyPiri = true;
     }
 

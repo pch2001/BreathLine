@@ -9,11 +9,11 @@ public class PlayerSkill : MonoBehaviour
 {
     private PlayerCtrl playerCtrl;
     [SerializeField] private AudioSource audioSource;
-    private Dictionary<string, AudioClip> piriClips; // 음원 저장 Dictionary
 
-    [SerializeField] private AudioClip angerMelody; // 분노의 악장 음원
-    [SerializeField] private AudioClip peaceMelody; // 평화의 악장 음원
+    [SerializeField] private AudioClip[] angerMelodies; // 분노의 악장 음원들
+    [SerializeField] private AudioClip[] peaceMelodies; // 평화의 악장 음원들
     [SerializeField] private AudioClip peaceCancelMelody; // 평화의 악장 실패 음원
+
     [SerializeField] private GameObject AngerAttackArea; // 소녀 분노의 악장 공격 범위
     [SerializeField] private GameObject AngerAttackEffect; // 소녀 분노의 악장 공격 이펙트
     [SerializeField] private GameObject PeaceAttackArea; //  소녀 평화의 악장 공격 범위
@@ -24,6 +24,7 @@ public class PlayerSkill : MonoBehaviour
 
     public float playerDamage; // 플레이어의 공격력
     private float piriStartTime; // 피리연주 시작 시간
+    private bool sharpPiriStart = false; // 분노의 악장 연주가 시작되었는지
     private bool isSoftPiriStart = false; // 평화의 악장 연주가 시작되었는지
     private bool isSoftPiriPlayed = false; // 평화의 악장 연주가 완료되었는지
     public float SoftPiriKeyDownTime; // 평화의 악장 키다운 시간
@@ -98,6 +99,7 @@ public class PlayerSkill : MonoBehaviour
     {
         Debug.Log("피리로 [분노의 악장]을 연주합니다!");
         PlayPiriSound("Anger");
+        sharpPiriStart = true;
 
         // 플레이어가 바라보는 방향으로 공격
         float direction = playerCtrl.spriteRenderer.flipX ? -1f : 1f;
@@ -107,8 +109,9 @@ public class PlayerSkill : MonoBehaviour
 
         AngerAttackEffect.SetActive(true);
         AngerAttackArea.SetActive(true);
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(1f);
 
+        sharpPiriStart = false;
         AngerAttackEffect.SetActive(false);
         AngerAttackArea.SetActive(false);
         RequestPressingPiriState(false); // 피리연주 종료
@@ -129,16 +132,21 @@ public class PlayerSkill : MonoBehaviour
         if (!isSoftPiriPlayed) // 피리 연주시 && 평화의 악장 연주 완료 여부
         {
             float duration = Time.time - piriStartTime;
-            if (duration > 0.8f && !isSoftPiriStart)
+            if (duration > 0.8f && !isSoftPiriStart && !sharpPiriStart)
             {
                 Debug.Log("[평화의 악장] 연주 시작");
                 RequestPeaceMelodyActived?.Invoke(true); // 평화의 악장 준비 시작 상태 알림
                 PeaceWaitingEffect.SetActive(true); // 평화의 악장 준비 이펙트 활성화
-
-                audioSource.clip = piriClips["Peace"];
-                audioSource.time = 0f;
+                
+                if (peaceMelodies != null && peaceMelodies.Length > 0) // 음원 재생
+                {
+                    int randomIndex = UnityEngine.Random.Range(0, peaceMelodies.Length);
+                    audioSource.clip = peaceMelodies[randomIndex];
+                    audioSource.time = 0f;
+                    audioSource.Play();
+                }
+                
                 RequestSetMoveSpeed?.Invoke(2.5f); // 이동속도 1.5f로 변경
-                audioSource.Play(); // 평화의 악장 연주 시작
                 isSoftPiriStart = true;
             }
             if (duration > SoftPiriKeyDownTime)
@@ -155,7 +163,6 @@ public class PlayerSkill : MonoBehaviour
         RequestPeaceMelodyActived?.Invoke(false);
         PeaceWaitingEffect.SetActive(false); // 평화의 악장 준비 이펙트 종료
 
-        audioSource.time = 9f; // 평화의 악장 끝부분(8.5초)으로 이동 (잔음도 표현)
         RequestAnimTrigger?.Invoke(PlayerAnimTrigger.Happy);
         RequestSetMoveSpeedAndTime?.Invoke(4f, 0.5f); // 이동속도 2.5로 0.5초 동안 변경
         isSoftPiriPlayed = true;
@@ -169,18 +176,11 @@ public class PlayerSkill : MonoBehaviour
 
     public void OnUpdateStageData()  // 오염도 변경에 따른 데이터 업데이트 (ex. 연결된 음원들 딕셔너리에 초기화)
     {
-        angerMelody = GameManager.Instance.currentStageData.anger_audioClip; // 오염도 스테이지에 따른 음원으로 교체
-        peaceMelody = GameManager.Instance.currentStageData.peace_audioClip;
         wolfPolution = GameManager.Instance.currentStageData.pollution_Coefficient;
 
         AngerAttackArea.transform.localScale = Vector3.one * GameManager.Instance.currentStageData.anger_range;
         PeaceAttackArea.transform.localScale = Vector3.one * GameManager.Instance.currentStageData.peace_range;
         playerDamage = GameManager.Instance.currentStageData.anger_damage;
-
-        piriClips = new Dictionary<string, AudioClip>();
-        piriClips.Add("Anger", angerMelody);
-        piriClips.Add("Peace", peaceMelody);
-        piriClips.Add("PeaceFail", peaceCancelMelody);
 
         float brightness = (255f - wolfPolution * 30f) / 255f;
         brightness = Mathf.Clamp01(brightness); // 0~1 사이로 보정
@@ -190,9 +190,21 @@ public class PlayerSkill : MonoBehaviour
 
     private void PlayPiriSound(string type)
     {
-        if (piriClips.ContainsKey(type))
+        if (type == "Anger" && angerMelodies != null && angerMelodies.Length > 0)
         {
-            audioSource.clip = piriClips[type];
+            int randomIndex = UnityEngine.Random.Range(0, angerMelodies.Length);
+            audioSource.clip = angerMelodies[randomIndex];
+            audioSource.Play();
+        }
+        else if (type == "Peace" && peaceMelodies != null && peaceMelodies.Length > 0)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, peaceMelodies.Length);
+            audioSource.clip = peaceMelodies[randomIndex];
+            audioSource.Play();
+        }
+        else if (type == "PeaceFail" && peaceCancelMelody != null)
+        {
+            audioSource.clip = peaceCancelMelody;
             audioSource.Play();
         }
     }

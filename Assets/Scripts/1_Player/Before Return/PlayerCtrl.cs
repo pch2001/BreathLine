@@ -258,7 +258,7 @@ public class PlayerCtrl : PlayerCtrlBase
         if (isGrounded && isReadyPiri) // 착지, 피리 준비시에만 가능
         {
             animator.runtimeAnimatorController = playPiriContorller; // 피리부는 애니메이터로 변경
-            StartCoroutine(StartPiriCool()); // 피리 연주 쿨타임 시작(0.2f);
+            StartCoroutine(StartPiriCool()); // 피리 연주 쿨타임 시작(1f);
             playerSkill.StartPiri();
             isPressingPiri = true; // 피리 연주 시작
         }
@@ -268,7 +268,7 @@ public class PlayerCtrl : PlayerCtrlBase
     {
         isReadyPiri = false;
 
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(1f);
         isReadyPiri = true;
     }
 
@@ -444,7 +444,6 @@ public class PlayerCtrl : PlayerCtrlBase
 
     public IEnumerator PlayWolfDie() // 늑대 희생 장면 실행 함수
     {
-
         uiChange.SetActive(true); // UI 변경 표시
         yield return new WaitForSeconds(2f);
 

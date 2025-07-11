@@ -110,6 +110,7 @@ public class Story_note : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isPlaying)
         {
+            isPlaying = false;   
             videoPlayer.Stop(); 
             videoPlayer.prepareCompleted -= OnVideoPrepared; // 이벤트 제거해야 다시 수행 방지 가능
             
@@ -119,17 +120,7 @@ public class Story_note : MonoBehaviour
             rawImage.enabled = false;
             skip.text = "";
             GameObject playerCode = GameObject.FindWithTag("Player"); // Player 태그 필요!
-            if (GameManager.Instance.isReturned)
-            {
-                playerCtrl_R = playerCode.GetComponent<PlayerCtrl_R>();
-                playerCtrl_R.OnEnable();
-            }
-            else
-            {
-                playerCtrl = playerCode.GetComponent<PlayerCtrl>();
-                playerCtrl.OnEnable();
-
-            }
+            
             if (videoPlayer.targetTexture != null)
             {
                 RenderTexture rt = videoPlayer.targetTexture;
