@@ -14493,6 +14493,8 @@ MonoBehaviour:
   videoFileName: test.mp4
   skip: {fileID: 0}
   videoAudioSource: {fileID: 0}
+  HPUI: {fileID: 0}
+  SkillUI: {fileID: 0}
   isReturn: 0
   boss4Stage: 0
 --- !u!1 &790447568994920075
@@ -100780,7 +100782,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300112, guid: e9c292678afd44a4bb07529518554dd0, type: 3}
   m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_FlipX: 0
@@ -101139,7 +101141,6 @@ GameObject:
   - component: {fileID: 8643616550197734747}
   - component: {fileID: 6079444781512102359}
   - component: {fileID: 6691157710200662345}
-  - component: {fileID: 6082112406237093233}
   m_Layer: 3
   m_Name: Old ground_1 (4)
   m_TagString: Ground
@@ -101259,25 +101260,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.8, y: 1}
   m_EdgeRadius: 0
---- !u!251 &6082112406237093233
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6123811134783860658}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 165
-  m_UseSideFriction: 0
-  m_UseSideBounce: 1
-  m_SideArc: 1
 --- !u!1 &6125068388708408474
 GameObject:
   m_ObjectHideFlags: 0
