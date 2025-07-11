@@ -32,7 +32,7 @@ public class ChangeMap : MonoBehaviour
         switch(number)
         {
             case 0: // 사막
-                Time.timeScale = 0.8f;
+                Time.timeScale = 1f;
                 StartCoroutine(ShakeCamera(1.5f, 1f));
                 break;
             case 1: // 기계

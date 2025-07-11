@@ -507,6 +507,8 @@ public class PlayerCtrl : PlayerCtrlBase
 
     private void OnTriggerEnter2D(Collider2D collision) // 주된 충돌은 Trigger에서 계산
     {
+        if (isLocked) return; // 스크립트 중일때는 충돌 리턴
+
         if (collision.gameObject.CompareTag("Enemy")) // 적과 충돌시 데미지 or 가드
         {
             if (isDamaged) return; // 소녀 피격 상태, 늑대 영역에 있을 경우 충돌 X
@@ -645,6 +647,8 @@ public class PlayerCtrl : PlayerCtrlBase
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (isLocked) return; // 스크립트 중일때는 충돌 리턴
+
         if (collision.gameObject.CompareTag("WolfAppear"))
         {
             isWolfRange = true; // 늑대 범위 안에 있을 경우, 피해x 상태
@@ -661,6 +665,8 @@ public class PlayerCtrl : PlayerCtrlBase
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (isLocked) return; // 스크립트 중일때는 충돌 리턴
+
         if (collision.gameObject.CompareTag("EnemyAttackRange"))
         {
             Debug.Log("소녀가 적의 공격 범위 밖으로 벗어납니다!");

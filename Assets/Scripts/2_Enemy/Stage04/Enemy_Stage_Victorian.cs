@@ -15,14 +15,12 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
     [SerializeField] private GameObject spiderPortalPrefab; // 거미 다리 생성 포탈 프리팹
     [SerializeField] private List<GameObject> translatePos; // 특수 패턴시 보스가 이동할 위치 리스트
     [SerializeField] private List<GameObject> phase4_Monster; // 특수 패턴시 소환할 4스테이지 적 리스트
+    [SerializeField] private GameObject storyR4; // 거미 사망시 진행할 대화 스크립트
     List<GameObject> portals = new List<GameObject>(); private float followDuration = 1.5f;
-
     public int specialPhaseCnt = 10; // 특수 패턴 남은 횟수 
 
-    private void OnEnable()
-    {
-        player.GetComponent<PlayerCtrl>().RequestPlayerPolluted += OnRequestPlayerPolluted;
-    }
+    public GameObject boss4R; // 소녀 보스 오브젝트
+    public GameObject playerPos; // 플레이어 이동 시킬 위치
 
     private void Start()
     {
@@ -55,6 +53,11 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         {
             groggyUI.SetupGroggySpriteGauge(maxGroggyCnt);
         }
+
+        if (!GameManager.Instance.isReturned)
+        {
+            player.GetComponent<PlayerCtrl>().RequestPlayerPolluted += OnRequestPlayerPolluted;
+        }
     }
 
     private void Update()
@@ -71,7 +74,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
 
         // 디버프 확인
         if (isPurifying && currentHp > 5f) // 늑대 등장 or 정화의 걸음시 오염도 감소(최대 5까지 감소)
-            currentHp -= 5f * Time.deltaTime; // 1초에 5 Hp씩 감소
+            currentHp -= 40f * Time.deltaTime; // 1초에 5 Hp씩 감소
 
         if (isReadyPeaceMelody && currentHp > 5f) // 평화의 악장 준비파동 피격시 오염도 감소(최대 5까지)
             currentHp -= 2f * Time.deltaTime; // 1초에 2Hp씩 감소
@@ -98,7 +101,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         {
                 Attack0,
                 Attack1,
-                Attack2,
+          //      Attack2,
         };
     }
 
@@ -470,6 +473,60 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         animator.SetTrigger("Attack1");
     }
 
+
+    private IEnumerator StartTextStage4R() // 거미 소멸시 재생할 스크립트
+    {
+        if (attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine);
+        }
+        if (rangeAttackCoroutine != null)
+        {
+            StopCoroutine(rangeAttackCoroutine);
+            attackMode = false;
+        }
+
+        player.GetComponent<PlayerCtrl_R>().OnDisable(); // 플레이어 조작 비활성화
+        Time.timeScale = 0.5f;
+        attackMode = false;
+
+        gameObject.transform.position = startPos;
+        player.transform.position = playerPos.transform.position;
+        StartCoroutine(EnemyFade(1.5f));
+        yield return new WaitForSeconds(1.5f);
+
+        boss4R.SetActive(true); // 소녀 보스 활성화
+        yield return new WaitForSeconds(0.2f);
+        
+        Time.timeScale = 1f;
+        player.GetComponent<SpriteRenderer>().flipX = false;
+        yield return new WaitForSeconds(0.2f);
+
+        boss4R.GetComponent<SpriteRenderer>().flipX = true;
+        StartCoroutine(storyR4.GetComponent<Story_four_R>().TypingText(1));
+    }
+
+    public override IEnumerator EnemyFade(float duration) // 평화의 악장으로 적 사라짐 함수
+    {
+        float startAlpha = spriteRenderer.color.a;
+        float elapsedTime = 0f;
+
+        isDead = true; // 죽음 상태로 변경
+        enemyFadeEffect.SetActive(true);
+        defaultMoveSpeed = 0f; // 이동 불가능
+        animator.SetBool("isRun", false);
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float newAlpha = Mathf.Lerp(startAlpha, 0, elapsedTime / duration);
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, newAlpha);
+            yield return null;
+        }
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0);
+    }
+
+
     protected override void HandlerTriggerEnter(Collider2D collision) // 충돌 처리 담당 
     {
         if (!attackMode) return;
@@ -485,13 +542,17 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         }
         else if (collision.gameObject.CompareTag("PeaceMelody"))
         {
+            Debug.Log("평화의 악장이 적을 진정시킵니다");
             var attackArea = collision.GetComponent<AttackArea>();
             if (attackArea == null || attackArea.attackGlobalID == peaceAttackID) return; // 적이 보고있지 않을 때 피격 + 이미 범위 충돌 완료시 리턴
             peaceAttackID = attackArea.attackGlobalID;
 
             currentHp -= 15f;
             if (currentHp <= 0)
-                StartCoroutine(EnemyFade(3f)); // 적 사라짐
+            {
+                StartCoroutine(StartTextStage4R()); // 스크립트 재생
+                Debug.LogWarning("스크립트를 진행합니다");
+            }
             else
             {
                 StartCoroutine(Stunned(3f)); // 적 3초 기절

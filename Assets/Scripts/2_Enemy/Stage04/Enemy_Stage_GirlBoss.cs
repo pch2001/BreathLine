@@ -34,7 +34,8 @@ public class Enemy_Stage_GirlBoss : BossBase // Victorian 스크립트
     [SerializeField] private List<Transform> playerPhasePos; // 플레이어가 이동할 오염도 단계 위치 
     private bool isChangingPos = false; // 오염도 단계 변경 중복 실행 방지
     
-    public GameObject storyObj1; // 정신착란 전 스토리 오브젝트
+    public Story_four_R story2; // 정신착란 전 스토리 오브젝트
+    public GameObject storyEnd; // 엔딩 스토리 동영상 오브젝트
 
     private ChangeMap changMap;
     public float hpRatio; // 현재 오염도 값
@@ -577,7 +578,7 @@ public class Enemy_Stage_GirlBoss : BossBase // Victorian 스크립트
                 attackMode = false; // 스크립트 진행
                 animator.SetBool("isRun", false); // Idle 상태로 변경
                 player.GetComponent<PlayerCtrl_R>().ActivatedSealMode(false); // 능력 봉인 해제
-                storyObj1.SetActive(true); // 스토리 오브젝트 활성화
+                StartCoroutine(story2.TypingText(2)); // 스토리2(정신착란 스토리 시작)
                 break;
         }
     }
@@ -706,6 +707,29 @@ public class Enemy_Stage_GirlBoss : BossBase // Victorian 스크립트
         }
     }
 
+    public override IEnumerator EnemyFade(float duration) // 평화의 악장으로 적 사라짐 + 엔딩 진행
+    {
+        float startAlpha = spriteRenderer.color.a;
+        float elapsedTime = 0f;
+
+        isDead = true; // 죽음 상태로 변경
+        enemyFadeEffect.SetActive(true);
+        defaultMoveSpeed = 0f; // 이동 불가능
+        animator.SetBool("isRun", false);
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float newAlpha = Mathf.Lerp(startAlpha, 0, elapsedTime / duration);
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, newAlpha);
+            yield return null;
+        }
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0);
+        storyEnd.SetActive(true);
+
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false); // 적 비활성화
+    }
 
     protected override void HandlerTriggerEnter(Collider2D collision) // 충돌 처리 담당 
     {

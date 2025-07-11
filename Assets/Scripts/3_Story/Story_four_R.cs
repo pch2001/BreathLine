@@ -26,7 +26,11 @@ public class Story_four_R : MonoBehaviour
     public GameObject telepoint;
     public GameObject player;
     public GameObject Boss4;
+    public GameObject Boss4R;
     public GameObject BossHp;
+    public GameObject BossRHp;
+    public ChangeMap changeMap;
+
 
     void Start()
     {
@@ -246,6 +250,22 @@ public class Story_four_R : MonoBehaviour
             Boss4.GetComponent<EnemyBase>().attackMode = true;
             BossHp.SetActive(true);
         }
+        else if(index == 1)
+        {
+            Boss4R.GetComponent<EnemyBase>().attackMode = true;
+            BossRHp.SetActive(true);
+
+            Boss4.SetActive(false);
+        }
+        else if (index == 2)
+        {
+            changeMap.Pase(3); // 정신착란효과 시작
+            TeleportPlayer();
+
+            yield return new WaitForSeconds(8f);
+            Boss4R.GetComponent<EnemyBase>().attackMode = true;
+        }
+
         playerCtrl.OnEnable();
 
 

@@ -118,9 +118,9 @@ public class PlayerCtrl_R : PlayerCtrlBase
     }
     public void OnDisable()
     {
-        animator.SetBool("isMove", false); // 대화시 Idle 상태로 전환
-
         isLocked = true;// 대화시 움직임 제한 해제
+
+        animator.SetBool("isMove", false); // 대화시 Idle 상태로 전환
 
         // inputAction 비활성화
         playerinputAction.Disable();
@@ -550,6 +550,9 @@ public class PlayerCtrl_R : PlayerCtrlBase
 
     private void OnTriggerEnter2D(Collider2D collision) // 주된 충돌은 Trigger에서 계산
     {
+        if (isLocked) return; // 스크립트 중일때는 충돌 리턴
+
+
         if (collision.gameObject.CompareTag("Enemy")) // 적과 충돌시 데미지 or 가드
         {
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy 기본 클래스 가져옴
@@ -709,6 +712,8 @@ public class PlayerCtrl_R : PlayerCtrlBase
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (isLocked) return; // 스크립트 중일때는 충돌 리턴
+
         if (collision.gameObject.CompareTag("EnemyAttackRange"))
         {
             var enemyBase = collision.gameObject.GetComponentInParent<EnemyBase>();
@@ -721,6 +726,8 @@ public class PlayerCtrl_R : PlayerCtrlBase
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (isLocked) return; // 스크립트 중일때는 충돌 리턴
+
         if (collision.gameObject.CompareTag("EnemyAttackRange"))
         {
             Debug.Log("소녀가 적의 공격 범위 밖으로 벗어납니다!");
