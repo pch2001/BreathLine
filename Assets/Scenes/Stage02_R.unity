@@ -21423,6 +21423,8 @@ MonoBehaviour:
   printText3: {fileID: 1601675763}
   Boss2: {fileID: 1896254347}
   BossHp: {fileID: 1456626183}
+  UI1: {fileID: 1668535300}
+  UI2: {fileID: 1668535299}
 --- !u!61 &1255905179
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31922,6 +31924,16 @@ Transform:
 --- !u!1 &1657883254 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5623033440556110654, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
+  m_PrefabInstance: {fileID: 1839753471}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1668535299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6297778532370974901, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
+  m_PrefabInstance: {fileID: 1839753471}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1668535300 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8951747819065354006, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
   m_PrefabInstance: {fileID: 1839753471}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1685275207

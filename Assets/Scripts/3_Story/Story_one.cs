@@ -24,8 +24,12 @@ public class Story_one : MonoBehaviour
 
 
     public GameObject telepoint;
-
     public GameObject player;
+
+    public GameObject UI1;
+    public GameObject UI2;
+
+
 
     void Start()
     {
@@ -104,7 +108,8 @@ public class Story_one : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))  // 특정 태그로 확인
         {
             sideImage.SetActive(true);
-
+            UI1.SetActive(false);
+            UI2.SetActive(false);
             BoxCollider2D box = GetComponent<BoxCollider2D>();
             if (box != null)
             {
@@ -252,12 +257,15 @@ public class Story_one : MonoBehaviour
         sideImage.SetActive(false);
         girlImage.SetActive(false);
         wolfImage.SetActive(false);
+        UI1.SetActive(true);
+        UI2.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         
         playerCtrl.OnEnable();
 
         yield return new WaitForSeconds(0.5f);
-        if(index ==0)
+        
+        if (index ==0)
             TeleportPlayer();
         Destroy(this.gameObject);
     }

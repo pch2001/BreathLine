@@ -4607,6 +4607,8 @@ MonoBehaviour:
   printText2: {fileID: 214998220}
   printText3: {fileID: 2077475103}
   Boss3: {fileID: 627569979}
+  UI1: {fileID: 1577242647}
+  UI2: {fileID: 1577242646}
 --- !u!61 &2053245820
 BoxCollider2D:
   m_ObjectHideFlags: 0

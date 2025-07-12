@@ -365,6 +365,8 @@ MonoBehaviour:
   printText3: {fileID: 1483250276}
   Boss3: {fileID: 1698671165}
   BossHp: {fileID: 831996685}
+  UI1: {fileID: 546882413}
+  UI2: {fileID: 546882412}
 --- !u!61 &170774125
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -804,6 +806,16 @@ Transform:
   - {fileID: 236694430}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &546882412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6297778532370974901, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
+  m_PrefabInstance: {fileID: 1839753471}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &546882413 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8951747819065354006, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
+  m_PrefabInstance: {fileID: 1839753471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &568324981 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9132925736381194494, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
@@ -1135,6 +1147,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 556551709299266811, guid: 676408e8a31d0a04d9d21ff27a9b46cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409234167742833874, guid: 676408e8a31d0a04d9d21ff27a9b46cc, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7789158636689823543, guid: 676408e8a31d0a04d9d21ff27a9b46cc, type: 3}

@@ -25,6 +25,8 @@ public class Story_one_R : MonoBehaviour
     private bool isSkipping = false;
     private bool isTyping = false;
 
+    public GameObject UI1;
+    public GameObject UI2;
     void Start()
     {
         printText1.text = "";
@@ -74,7 +76,8 @@ public class Story_one_R : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))  // 특정 태그로 확인
         {
             sideImage.SetActive(true);
-
+            UI1.SetActive(false);
+            UI2.SetActive(false);
             string objectName = gameObject.name;
             if (int.TryParse(objectName, out int index))
             {
@@ -198,8 +201,9 @@ public class Story_one_R : MonoBehaviour
         sideImage.SetActive(false);
         girlImage.SetActive(false);
         wolfImage.SetActive(false);
-
-        if(index == 1)
+        UI1.SetActive(true);
+        UI2.SetActive(true);
+        if (index == 1)
         {
             Boss1.GetComponent<EnemyBase>().attackMode = true;
             BossHp.SetActive(true);

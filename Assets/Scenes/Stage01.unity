@@ -1324,6 +1324,8 @@ MonoBehaviour:
   printText3: {fileID: 2134162364}
   telepoint: {fileID: 622022829}
   player: {fileID: 1215870471}
+  UI1: {fileID: 2090451670}
+  UI2: {fileID: 785468826}
 --- !u!4 &700472406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8905320412065884031, guid: ddadef2d211581b45ab61211d40071a9, type: 3}
@@ -1880,6 +1882,8 @@ MonoBehaviour:
   printText3: {fileID: 2134162364}
   telepoint: {fileID: 622022829}
   player: {fileID: 1215870471}
+  UI1: {fileID: 2090451670}
+  UI2: {fileID: 785468826}
 --- !u!61 &1147489287
 BoxCollider2D:
   m_ObjectHideFlags: 0

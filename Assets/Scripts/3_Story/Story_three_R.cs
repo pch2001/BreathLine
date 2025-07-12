@@ -20,6 +20,9 @@ public class Story_three_R : MonoBehaviour
     public GameObject Boss3;
     public GameObject BossHp;
 
+    public GameObject UI1;
+    public GameObject UI2;
+
     List<List<string>> dialoguescript;//대사 스크립트 저장소
 
     private bool isSkipping = false;
@@ -32,7 +35,7 @@ public class Story_three_R : MonoBehaviour
         printText3.text = "";
         dialoguescript = new List<List<string>>
         {
-        new List<string> { "w:1", "g:2", "n:3" },
+        new List<string> { "g:아까 뒤에서 날 방해하던 녀석이자나", "g:저 녀석을 내가 정화 할 수 있을까.." },
         new List<string> { "w:1", "g:2" },
         new List<string> { "w:1", "g:2" }
         };
@@ -53,7 +56,8 @@ public class Story_three_R : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))  // 특정 태그로 확인
         {
             sideImage.SetActive(true);
-
+            UI1.SetActive(false);
+            UI2.SetActive(false);
             string objectName = gameObject.name;
             if (int.TryParse(objectName, out int index))
             {
@@ -180,6 +184,8 @@ public class Story_three_R : MonoBehaviour
         sideImage.SetActive(false);
         girlImage.SetActive(false);
         wolfImage.SetActive(false);
+        UI1.SetActive(true);
+        UI2.SetActive(true);
 
         if (index == 0)
         {

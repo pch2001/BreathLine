@@ -24,6 +24,8 @@ public class Story_three : MonoBehaviour
     private bool isSkipping = false;
     private bool isTyping = false;
 
+    public GameObject UI1;
+    public GameObject UI2;
     void Start()
     {
         printText1.text = "";
@@ -101,6 +103,8 @@ public class Story_three : MonoBehaviour
         cam.orthographicSize = targetZoom;
         cam.transform.position = camTargetPos;
         textbehind.SetActive(true);
+        UI1.SetActive(false);
+        UI2.SetActive(false);
         //텍스트 출력
         // 대사 출력
         for (int t = 0; t < dialoguescript[index].Count; t++)
@@ -186,7 +190,8 @@ public class Story_three : MonoBehaviour
         sideImage.SetActive(false);
         girlImage.SetActive(false);
         wolfImage.SetActive(false);
-        
+        UI1.SetActive(true);
+        UI2.SetActive(true);
         if (index == 0)
         {
             Boss3.SetActive(true);

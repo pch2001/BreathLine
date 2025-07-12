@@ -2174,7 +2174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4130178204907547589, guid: 048d78f2990030047a8f9525d1951464, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -52.6
+      value: -47.53
       objectReference: {fileID: 0}
     - target: {fileID: 4130178204907547589, guid: 048d78f2990030047a8f9525d1951464, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2408,6 +2408,8 @@ MonoBehaviour:
   printText1: {fileID: 1644894226}
   printText2: {fileID: 734927467}
   printText3: {fileID: 227538220}
+  UI1: {fileID: 1577242647}
+  UI2: {fileID: 1577242646}
 --- !u!61 &2104649104
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -24,6 +24,9 @@ public class Story_two : MonoBehaviour
     private bool isSkipping = false;
     private bool isTyping = false;
     private bool ising = false;
+
+    public GameObject UI1;
+    public GameObject UI2;
     void Start()
     {
         printText1.text = "";
@@ -63,7 +66,8 @@ public class Story_two : MonoBehaviour
 
             ising = true;
             sideImage.SetActive(true);
-
+            UI1.SetActive(false);
+            UI2.SetActive(false);
             string objectName = gameObject.name;
             if (int.TryParse(objectName, out int index))
             {
@@ -188,6 +192,8 @@ public class Story_two : MonoBehaviour
         sideImage.SetActive(false);
         girlImage.SetActive(false);
         wolfImage.SetActive(false);
+        UI1.SetActive(true);
+        UI2.SetActive(true);
         yield return new WaitForSeconds(0.1f);
 
         playerCtrl.OnEnable();
