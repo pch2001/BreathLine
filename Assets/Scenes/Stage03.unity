@@ -215,7 +215,7 @@ PrefabInstance:
     - target: {fileID: 1319843415827404771, guid: 821646ef4c3f6e546a5156b169de4f73, type: 3}
       propertyPath: skip
       value: 
-      objectReference: {fileID: 721609585}
+      objectReference: {fileID: 0}
     - target: {fileID: 1319843415827404771, guid: 821646ef4c3f6e546a5156b169de4f73, type: 3}
       propertyPath: SkillUI
       value: 
@@ -1362,17 +1362,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4607839433493248948, guid: cd13714c8c60da8449ebe7a03c4290cd, type: 3}
   m_PrefabInstance: {fileID: 707618593}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &721609585 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4758731262725792394, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
-  m_PrefabInstance: {fileID: 1577242643}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &753231024
 PrefabInstance:
   m_ObjectHideFlags: 0

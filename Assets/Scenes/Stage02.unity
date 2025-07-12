@@ -275,17 +275,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3725525861595287728, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
   m_PrefabInstance: {fileID: 1577242643}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &463811511 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4758731262725792394, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
-  m_PrefabInstance: {fileID: 1577242643}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &593779904 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6640280566188046923, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
@@ -558,11 +547,15 @@ PrefabInstance:
     - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: skip
       value: 
-      objectReference: {fileID: 463811511}
+      objectReference: {fileID: 1883470682}
     - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: SkillUI
       value: 
       objectReference: {fileID: 1577242646}
+    - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
+      propertyPath: SkillUI2
+      value: 
+      objectReference: {fileID: 1883470682}
     - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: rawImage
       value: 
@@ -2501,6 +2494,11 @@ Transform:
 --- !u!1 &1874334495 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1009696284943644441, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+  m_PrefabInstance: {fileID: 1577242643}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1883470682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7012577132566510969, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
   m_PrefabInstance: {fileID: 1577242643}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1933220573 stripped

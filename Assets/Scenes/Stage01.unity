@@ -1852,17 +1852,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85139de52aa591a43aba37a7a20fb3e3, type: 3}
---- !u!114 &1092516287 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4758731262725792394, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
-  m_PrefabInstance: {fileID: 730802349}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1092941729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2385,6 +2374,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8364386059243451831, guid: 85139de52aa591a43aba37a7a20fb3e3, type: 3}
   m_PrefabInstance: {fileID: 2036756281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1634270810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7012577132566510969, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+  m_PrefabInstance: {fileID: 730802349}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1674916973 stripped
 Transform:
@@ -3737,7 +3731,7 @@ MonoBehaviour:
   rawImage: {fileID: 171631458}
   videoPlayer: {fileID: 1783008039}
   videoFileName: Scene1.mp4
-  skip: {fileID: 1092516287}
+  skip: {fileID: 1634270810}
   videoAudioSource: {fileID: 1215870474}
   HPUI: {fileID: 2090451670}
   SkillUI: {fileID: 785468826}

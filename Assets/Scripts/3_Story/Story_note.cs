@@ -11,7 +11,7 @@ public class Story_note : MonoBehaviour
     public RawImage rawImage; // UI RawImage
     public VideoPlayer videoPlayer;
     public string videoFileName = "test.mp4";
-    public Text skip;
+    public GameObject skip;
     private PlayerCtrl playerCtrl;
     private PlayerCtrl_R playerCtrl_R;
     public AudioSource videoAudioSource;
@@ -28,7 +28,7 @@ public class Story_note : MonoBehaviour
     void Start()
     {
         playcount = 0;
-        skip.text = "";
+        skip.SetActive(false);
         isPlaying = false;
         string videoPath = System.IO.Path.Combine(Application.streamingAssetsPath, videoFileName);
 
@@ -125,7 +125,6 @@ public class Story_note : MonoBehaviour
             videoPlayer.audioOutputMode = VideoAudioOutputMode.None; // 오디오 차단
 
             rawImage.enabled = false;
-            skip.text = "";
             GameObject playerCode = GameObject.FindWithTag("Player"); // Player 태그 필요!
             
             if (videoPlayer.targetTexture != null)
@@ -155,6 +154,7 @@ public class Story_note : MonoBehaviour
                 }
             }
             Time.timeScale = 1f;
+            skip.SetActive(false);
             HPUI.SetActive(true); // HP UI 활성화
             SkillUI.SetActive(true); // 스킬 UI 활성화
         }
@@ -163,7 +163,7 @@ public class Story_note : MonoBehaviour
     void SetIsPlayingTrue()
     {
         isPlaying = true;
-        skip.text = "스페이스바를 누르면 영상이 종료됩니다.";
+        skip.SetActive(true);
     }
     void OnVideoPrepared(VideoPlayer vp)
     {
