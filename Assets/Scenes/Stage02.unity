@@ -689,12 +689,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 593779904}
     - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
+      propertyPath: floatSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: videoPlayer
       value: 
       objectReference: {fileID: 2102535538}
     - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: videoFileName
       value: Scene2.mp4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
+      propertyPath: floatAmplitude
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1383868000636590776, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: videoAudioSource
@@ -928,6 +936,18 @@ PrefabInstance:
       propertyPath: m_SurfaceArc
       value: 165
       objectReference: {fileID: 0}
+    - target: {fileID: 8293971695875980152, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293971695875980152, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293971695875980152, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8302719978205880882, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -943,6 +963,10 @@ PrefabInstance:
     - target: {fileID: 8564760421756266208, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909412680256510059, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 9211566316920739731, guid: 726e848e20eb3cb4ba94ff47cdaf7b44, type: 3}
       propertyPath: m_IsActive

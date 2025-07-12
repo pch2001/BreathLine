@@ -9878,7 +9878,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -20
   m_Sprite: {fileID: 5069505182297188683, guid: 16d734055b0287d4496f87bf0b222324, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9923,7 +9923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cef7ea5dd8434e48b12979496a75087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followDelay: 0.5
   updateRate: 0.1
   targetColor: {r: 1, g: 0.4, b: 0.4, a: 1}
   hitEffect: {fileID: 6981125972097565164}
@@ -9931,10 +9930,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
-  coverLayer:
-    serializedVersion: 2
-    m_Bits: 0
   attackRadius: 10
+  bossYPos: 1
 --- !u!1 &3645060642565473447
 GameObject:
   m_ObjectHideFlags: 0

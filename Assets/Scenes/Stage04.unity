@@ -16234,7 +16234,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300050, guid: cfb9174567f60444c8404c69328d62f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -27160,6 +27160,8 @@ MonoBehaviour:
   isReturn: 0
   boss4Stage: 1
   bossLastStage: 0
+  floatAmplitude: 0.5
+  floatSpeed: 2
 --- !u!1 &1043166032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1130401231097112824, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
@@ -37351,7 +37353,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300050, guid: cfb9174567f60444c8404c69328d62f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -42964,7 +42966,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300050, guid: cfb9174567f60444c8404c69328d62f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

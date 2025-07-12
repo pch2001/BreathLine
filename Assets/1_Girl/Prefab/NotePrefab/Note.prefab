@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2358fdefdda57ef4cba17595e0248b98, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -147,3 +147,12 @@ MonoBehaviour:
   videoPlayer: {fileID: 0}
   videoFileName: test.mp4
   skip: {fileID: 0}
+  videoAudioSource: {fileID: 0}
+  HPUI: {fileID: 0}
+  SkillUI: {fileID: 0}
+  SkillUI2: {fileID: 0}
+  isReturn: 0
+  boss4Stage: 0
+  bossLastStage: 0
+  floatAmplitude: 0.5
+  floatSpeed: 2

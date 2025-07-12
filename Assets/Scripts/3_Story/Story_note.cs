@@ -25,8 +25,13 @@ public class Story_note : MonoBehaviour
     public bool boss4Stage = false; // 회귀 전 보스 때는 영상 재생 후 스크립트 연계됨(true)
     public bool bossLastStage = false; // 회귀 후 마지막 보스 때는 영상 재생 후 시작 화면으로 돌아감.
 
+    public float floatAmplitude = 0.5f; // 위아래로 움직이는 폭 (얼마나 높이 움직이는지)
+    public float floatSpeed = 2f;       // 움직이는 속도
+    private Vector3 startPos;           // 오브젝트의 초기 위치
+
     void Start()
     {
+        startPos = transform.position; // 시작 시 오브젝트의 현재 위치를 저장
         playcount = 0;
         skip.SetActive(false);
         isPlaying = false;
@@ -116,6 +121,10 @@ public class Story_note : MonoBehaviour
     }
     private void Update()
     {
+        float newY = Mathf.Sin(Time.time * floatSpeed) * floatAmplitude;
+
+        // 초기 Y 위치에 계산된 newY 값을 더하여 왕복 운동을 만듭니다.
+        transform.position = new Vector3(startPos.x, startPos.y + newY, startPos.z);
         if (Input.GetKeyDown(KeyCode.K))
         {
             GameManager.Instance.Pollution = 90f; // 오염도 90으로 설정
