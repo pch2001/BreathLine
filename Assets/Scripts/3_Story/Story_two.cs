@@ -188,7 +188,7 @@ public class Story_two : MonoBehaviour
         sideImage.SetActive(false);
         girlImage.SetActive(false);
         wolfImage.SetActive(false);
-
+        yield return new WaitForSeconds(0.1f);
 
         playerCtrl.OnEnable();
 

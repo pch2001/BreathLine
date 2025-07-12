@@ -20,8 +20,10 @@ public class Story_note : MonoBehaviour
 
     public GameObject HPUI;
     public GameObject SkillUI;
+    public GameObject SkillUI2;
     public bool isReturn = false;
     public bool boss4Stage = false; // 회귀 전 보스 때는 영상 재생 후 스크립트 연계됨(true)
+    public bool bossLastStage = false; // 회귀 후 마지막 보스 때는 영상 재생 후 시작 화면으로 돌아감.
 
     void Start()
     {
@@ -81,10 +83,16 @@ public class Story_note : MonoBehaviour
         {
             playerCtrl = playerCode.GetComponent<PlayerCtrl>();
             playerCtrl.OnDisable();
-
         }
+
         HPUI.SetActive(false); // HP UI 비활성화
         SkillUI.SetActive(false); // 스킬 UI 비활성화
+
+        if (SceneManager.GetActiveScene().buildIndex == 8)
+        {
+            SkillUI2.SetActive(false); // 정화의 걸음 UI까지 비활성화
+        }
+
         // 오디오 자동 재생을 방지
         videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
         videoPlayer.SetTargetAudioSource(0, videoAudioSource);
@@ -101,11 +109,10 @@ public class Story_note : MonoBehaviour
     }
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.K))
         {
             GameManager.Instance.Pollution = 90f; // 오염도 90으로 설정
-            Debug.Log("오염도 100으로 설정됨");
+            Debug.Log("오염도 90으로 설정됨");
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isPlaying)
@@ -138,14 +145,18 @@ public class Story_note : MonoBehaviour
                     StartCoroutine(playerCtrl.PlayWolfDie()); // 연출 및 스크립트 시작
                     Debug.Log("보스 4 스테이지 연출 시작");
                 }
+                else if (SceneManager.GetActiveScene().buildIndex == 8)
+                {
+                    SceneManager.LoadScene(0);
+                }
                 else
                 {
                     Invoke(nameof(nextScene), 0.5f);
                 }
             }
             Time.timeScale = 1f;
-            HPUI.SetActive(true); // HP UI 비활성화
-            SkillUI.SetActive(true); // 스킬 UI 비활성화
+            HPUI.SetActive(true); // HP UI 활성화
+            SkillUI.SetActive(true); // 스킬 UI 활성화
         }
     }
 

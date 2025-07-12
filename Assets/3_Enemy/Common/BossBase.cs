@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossBase : EnemyBase
 {
     [SerializeField] protected GameObject pushAttackRange; // 밀격 공격 범위 오브젝트
-    [SerializeField] private GameObject storyObject; // 재생할 스토리 오브젝트
+    [SerializeField] protected GameObject storyObject; // 재생할 스토리 오브젝트
     public GameObject attackTriggerRange; // 적 현재 공격 시작 범위
     public bool isSpecialPhase = false; // 특수 패턴 발동 여부
 

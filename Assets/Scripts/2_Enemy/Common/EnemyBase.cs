@@ -290,7 +290,7 @@ public abstract class EnemyBase : MonoBehaviour
             moveSpeed = 0f;
             animator.SetTrigger("Die");
             dieEffect.SetActive(true);
-            GameManager.Instance.AddPolution(pollutionDegree);
+            GameManager.Instance.AddPolution(pollutionDegree); // 각 적의 pollutionDegree만큼 플레이어 오염도 증가
             yield return new WaitForSeconds(1.5f);
 
             dieEffect.SetActive(false);

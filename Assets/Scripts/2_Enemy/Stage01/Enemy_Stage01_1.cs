@@ -13,7 +13,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
     public int peaceAttackID = 1; // 평화의 악장 중복 충돌 판정 방지
 
     [SerializeField] private Enemy_Stage01_2 linkedSpitter; // 스피터 연결
-
+    
     private void Start()
     {
         maxHp = 60; // 적 체력 설정
@@ -285,6 +285,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         Debug.Log("적이 울부짖습니다!");
         animator.SetTrigger("Attack");
         linkedSpitter.moveSpeed = 0f;
+        enemySight.SetActive(false);
         isLooking = true;
         attackMode = true;
         moveSpeed = 0f;

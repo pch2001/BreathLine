@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,11 +43,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     private void Start()
     {
         Pollution = 0; // 오염도값 초기화
         currentStageIndex = -1;
         AddPolution(0); // 오염도 UI 초기화
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) // 씬 변경시 사용할 UI 연결 함수
+    {
+        pollutionGauge = GameObject.Find("Polluted").GetComponent<RectTransform>();
     }
 
     private void UpdateStageData(float pollution) // 오염도 단계 업데이트

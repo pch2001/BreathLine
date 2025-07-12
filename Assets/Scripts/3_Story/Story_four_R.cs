@@ -29,7 +29,8 @@ public class Story_four_R : MonoBehaviour
     public GameObject Boss4R;
     public GameObject BossHp;
     public GameObject BossRHp;
-    public ChangeMap changeMap;
+
+    public Story_note storyVideo; // 재생할 Ending 스토리 동영상
 
 
     void Start()
@@ -95,13 +96,18 @@ public class Story_four_R : MonoBehaviour
                 "n:(부드러운 피리 소리가 허공을 채웁니다.)",
                 "n:(당신의 마음이 악보가 되어 새겨집니다.)",
                 "n:(당신은 지금 어떤 “나”를 마주하고 있나요?)"
-
             }
         };
 
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            GameManager.Instance.Pollution = 10f; // 오염도 10으로 설정
+            Debug.Log("오염도 10으로 설정됨");
+        }
+
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             if (isTyping)
@@ -259,19 +265,16 @@ public class Story_four_R : MonoBehaviour
         }
         else if (index == 2)
         {
-            changeMap.Pase(3); // 정신착란효과 시작
-            TeleportPlayer();
-
-            yield return new WaitForSeconds(8f);
             Boss4R.GetComponent<EnemyBase>().attackMode = true;
         }
-
+        else if (index == 3)
+        {
+            storyVideo.PlayVideo();
+            yield break;
+        }
+        yield return new WaitForSeconds(0.1f);
+        
         playerCtrl.OnEnable();
-
-
-        yield return new WaitForSeconds(0.5f);
-
-        Destroy(this.gameObject);
     }
     void TeleportPlayer()
     {

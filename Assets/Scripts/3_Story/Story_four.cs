@@ -214,9 +214,9 @@ public class Story_four : MonoBehaviour
         {
             story4.nextScene(); // 늑대 희생 스크립트 재생 후, 다음 Scene으로 이동
         }
+        yield return new WaitForSeconds(0.1f);
+
         playerCtrl.OnEnable();
-
-
         yield return new WaitForSeconds(0.5f);
 
         Destroy(this.gameObject);

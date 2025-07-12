@@ -46,7 +46,8 @@ public class PlayerSkill_R : MonoBehaviour
     
     public event Action<float> RequestEchoGuardStart; // playerCtrl에게 에코가드 실행 알림 이벤트
     public event Action<float> RequestPuriFyStepStart; // playerCtrl에게 정화의 걸음 실행 알림 이벤트
-
+    public event Action<bool> RequestEchoGuardingState; // playerCtrl에게 에코가드 상태 알림 이벤트
+    
     private void Awake()
     {
         playerCtrl = GetComponent<PlayerCtrl_R>();
@@ -206,16 +207,18 @@ public class PlayerSkill_R : MonoBehaviour
         {
             Debug.Log("에코가드 실행!");
             isEchoGuarding = true; // 에코가드 실행중
-            
+            RequestEchoGuardingState(true);
+
             echoGuardReady = false;
             StartCoroutine(EchoGuardCoolTimer()); // 쿨타임 코루틴 실행
 
-            RequestAnimTrigger?.Invoke("isEchoGuard");
-            RequestSetMoveSpeed?.Invoke(0f); // 이동속도 0으로 변경
+            RequestSetMoveSpeed?.Invoke(2f); // 이동속도 0으로 변경
+            
             EchoGuardAttackArea.SetActive(true);
-            yield return new WaitForSeconds(0.3f); // 일정시간 에코가드 활성화 유지
+            yield return new WaitForSeconds(0.5f); // 일정시간 에코가드 활성화 유지
 
-            RequestSetMoveSpeed?.Invoke(5f); // 이동속도 0으로 변경
+            RequestEchoGuardingState(false);
+            RequestSetMoveSpeed?.Invoke(5f); // 이동속도 5로 변경
             EchoGuardAttackArea.SetActive(false);
             isEchoGuarding = false; // 에코가드 실행 종료
         }

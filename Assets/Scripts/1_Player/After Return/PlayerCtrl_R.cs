@@ -64,6 +64,21 @@ public class PlayerCtrl_R : PlayerCtrlBase
         }
     }
 
+    // 에코 가드 여부 프로퍼티
+    [SerializeField] private bool _isEchoGuarding = false;
+    public bool IsEchoGiarding // 에코 가드 여부
+    {
+        get => _isEchoGuarding;
+        set
+        {
+            if (_isEchoGuarding == value) return;
+            _isEchoGuarding = value;
+
+            // 피리 애니메이션 전환
+            animator.runtimeAnimatorController = value ? playPiriContorller : defaultController;
+        }
+    }
+
     // 정화의 걸음 여부 프로퍼티
     [SerializeField] private bool _isPurifying = false;
     public bool isPurifying // 정화의 걸음 여부
@@ -101,6 +116,7 @@ public class PlayerCtrl_R : PlayerCtrlBase
         playerSkill.RequestSetMoveSpeed += OnSetMoveSpeed;
         playerSkill.RequestAnimTrigger += OnSetAnimTrigger;
         playerSkill.RequestEchoGuardStart += SetEchoGuardCoolTime;
+        playerSkill.RequestEchoGuardingState += OnSetEchoGuarding;
         playerSkill.RequestPuriFyStepStart += SetPurifyStepCoolTime;
         playerSkill.RequestisPurifing += SetisPurifing;
         playerSkill.RequestSetSpriteColor += OnSetSpriteColor;
@@ -161,6 +177,11 @@ public class PlayerCtrl_R : PlayerCtrlBase
     private void OnSetPressingPiri(bool state)
     {
         isPressingPiri = state;
+    }
+
+    private void OnSetEchoGuarding(bool state)
+    {
+        IsEchoGiarding = state;
     }
 
     private void OnPeaceMelodyActived(bool state)

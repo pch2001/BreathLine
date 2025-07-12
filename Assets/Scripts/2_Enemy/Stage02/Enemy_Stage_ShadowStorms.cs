@@ -320,6 +320,31 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
         }
     }
 
+    public override IEnumerator EnemyFade(float duration) // 평화의 악장으로 적 사라짐 함수
+    {
+        float startAlpha = spriteRenderer.color.a;
+        float elapsedTime = 0f;
+
+        isDead = true; // 죽음 상태로 변경
+        enemyFadeEffect.SetActive(true);
+        defaultMoveSpeed = 0f; // 이동 불가능
+        animator.SetBool("isRun", false);
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float newAlpha = Mathf.Lerp(startAlpha, 0, elapsedTime / duration);
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, newAlpha);
+            yield return null;
+        }
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0);
+        
+        storyObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+
+        gameObject.SetActive(false); // 적 비활성화
+    }
+
     protected override void HandlerTriggerEnter(Collider2D collision) // 충돌 처리 담당 
     {
         if (!attackMode) return;

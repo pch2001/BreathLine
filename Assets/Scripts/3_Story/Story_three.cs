@@ -191,9 +191,9 @@ public class Story_three : MonoBehaviour
         {
             Boss3.SetActive(true);
         }
+        yield return new WaitForSeconds(0.1f);
+
         playerCtrl.OnEnable();
-
-
         yield return new WaitForSeconds(0.5f);
 
         Destroy(this.gameObject);

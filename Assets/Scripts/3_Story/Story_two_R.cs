@@ -194,9 +194,9 @@ public class Story_two_R : MonoBehaviour
 
         Boss2.GetComponent<EnemyBase>().attackMode = true;
         BossHp.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+
         playerCtrl.OnEnable();
-
-
         yield return new WaitForSeconds(0.5f);
 
         Destroy(this.gameObject);

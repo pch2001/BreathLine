@@ -101,7 +101,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
         {
                 Attack0,
                 Attack1,
-          //      Attack2,
+                Attack2,
         };
     }
 

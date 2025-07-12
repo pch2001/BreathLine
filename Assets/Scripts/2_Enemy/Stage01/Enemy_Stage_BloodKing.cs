@@ -60,7 +60,7 @@ public class Enemy_Stage_BloodKing : BossBase // Mage 스크립트
 
         // 디버프 확인
         if (isPurifying && currentHp > 5f) // 늑대 등장 or 정화의 걸음시 오염도 감소(최대 5까지 감소)
-            currentHp -= 5f * Time.deltaTime; // 1초에 5 Hp씩 감소
+            currentHp -= 40f * Time.deltaTime; // 1초에 5 Hp씩 감소
 
         if (isReadyPeaceMelody && currentHp > 5f) // 평화의 악장 준비파동 피격시 오염도 감소(최대 5까지)
             currentHp -= 2f * Time.deltaTime; // 1초에 2Hp씩 감소
@@ -276,6 +276,30 @@ public class Enemy_Stage_BloodKing : BossBase // Mage 스크립트
         yield return new WaitForSeconds(2f);
         
         isSpecialPhase = false; // 특수 패턴 종료
+    }
+    public override IEnumerator EnemyFade(float duration) // 평화의 악장으로 적 사라짐 함수
+    {
+        float startAlpha = spriteRenderer.color.a;
+        float elapsedTime = 0f;
+
+        isDead = true; // 죽음 상태로 변경
+        enemyFadeEffect.SetActive(true);
+        defaultMoveSpeed = 0f; // 이동 불가능
+        animator.SetBool("isRun", false);
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float newAlpha = Mathf.Lerp(startAlpha, 0, elapsedTime / duration);
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, newAlpha);
+            yield return null;
+        }
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0);
+
+        storyObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+
+        gameObject.SetActive(false); // 적 비활성화
     }
 
     protected override void HandlerTriggerEnter(Collider2D collision) // 충돌 처리 담당 
