@@ -116,6 +116,10 @@ public class Story_one : MonoBehaviour
                 box.enabled = false;
             }
 
+            GameObject playerCode = GameObject.FindWithTag("Player");
+            playerCtrl = playerCode.GetComponent<PlayerCtrl>();
+            playerCtrl.OnDisable();
+
             string objectName = gameObject.name;
             if (int.TryParse(objectName, out int index))
             {
@@ -127,11 +131,9 @@ public class Story_one : MonoBehaviour
 
     public IEnumerator TypingText(int index)
     {
-        GameObject playerCode = GameObject.FindWithTag("Player");
-        playerCtrl = playerCode.GetComponent<PlayerCtrl>();
-        playerCtrl.OnDisable();
+        
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.8f);
 
         Camera cam = Camera.main;
         float startZoom = cam.orthographicSize;

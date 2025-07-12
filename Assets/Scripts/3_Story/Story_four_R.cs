@@ -141,7 +141,7 @@ public class Story_four_R : MonoBehaviour
         playerCtrl = playerCode.GetComponent<PlayerCtrl_R>();
         playerCtrl.OnDisable();
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
 
         Camera cam = Camera.main;
         float startZoom = cam.orthographicSize;

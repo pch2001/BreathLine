@@ -3735,7 +3735,7 @@ MonoBehaviour:
   videoAudioSource: {fileID: 1215870474}
   HPUI: {fileID: 2090451670}
   SkillUI: {fileID: 785468826}
-  SkillUI2: {fileID: 0}
+  SkillUI2: {fileID: 785468826}
   isReturn: 0
   boss4Stage: 0
   bossLastStage: 0

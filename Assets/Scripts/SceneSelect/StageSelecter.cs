@@ -7,14 +7,14 @@ public class StageSelecter : MonoBehaviour
 {
     [SerializeField] private GameObject MainSelect;
     [SerializeField] private GameObject StageSelect;
-
+    [SerializeField] private GameObject ExitSelect;
 
     public void StartNew()
     {
         //SceneManager.LoadScene("Stage01");
-        LoadingScene.LoadScene("Stage01");
+        LoadingScene.LoadScene(1);
     }
-    public void ChangeScene(string SceneName)
+    public void ChangeScene(int SceneName)
     {
         //SceneManager.LoadScene(SceneName);
         LoadingScene.LoadScene(SceneName);
@@ -28,10 +28,21 @@ public class StageSelecter : MonoBehaviour
     {
         MainSelect.SetActive(false);
         StageSelect.SetActive(true);
+        ExitSelect.SetActive(false);
     }
     public void SetMain()
     {
         MainSelect.SetActive(true);
         StageSelect.SetActive(false);
+        ExitSelect.SetActive(true);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }

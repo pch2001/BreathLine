@@ -79,7 +79,7 @@ public class Story_three : MonoBehaviour
         playerCtrl = playerCode.GetComponent<PlayerCtrl>();
         playerCtrl.OnDisable();
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
 
         Camera cam = Camera.main;
         float startZoom = cam.orthographicSize;

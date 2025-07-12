@@ -6,15 +6,19 @@ using UnityEngine.SceneManagement;
 public class LoadingScene : MonoBehaviour
 {
     static string nextScene;
-
+    static int nextIndex;
     [SerializeField]
     Image progressBar;
-    public static void LoadScene(string sceneName)
+    //public static void LoadScene(string sceneName)
+    //{
+    //    nextScene = sceneName;
+    //    SceneManager.LoadScene("LoadingScene");
+    //}
+    public static void LoadScene(int sceneName)
     {
-        nextScene = sceneName;
+        nextIndex = sceneName;
         SceneManager.LoadScene("LoadingScene");
     }
-
     void Start()
     {
         StartCoroutine(LoadSceneProcess());
@@ -22,7 +26,7 @@ public class LoadingScene : MonoBehaviour
 
     IEnumerator LoadSceneProcess()
     {
-        AsyncOperation op = SceneManager.LoadSceneAsync(nextScene);
+        AsyncOperation op = SceneManager.LoadSceneAsync(nextIndex);
         op.allowSceneActivation = false;
 
         float timer = 0f;
@@ -44,7 +48,5 @@ public class LoadingScene : MonoBehaviour
                 }
             }
         }
-
-
     }
 }

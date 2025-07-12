@@ -1335,12 +1335,12 @@ GameObject:
   - component: {fileID: 6152236360005894463}
   - component: {fileID: 3712738578726443958}
   m_Layer: 5
-  m_Name: Image
+  m_Name: skipImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4112591238844206211
 RectTransform:
   m_ObjectHideFlags: 0

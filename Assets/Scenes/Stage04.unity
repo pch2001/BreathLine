@@ -5142,8 +5142,8 @@ MonoBehaviour:
   story4: {fileID: 0}
   telepoint: {fileID: 1594867478}
   player: {fileID: 498377432}
-  UI1: {fileID: 0}
-  UI2: {fileID: 0}
+  UI1: {fileID: 1633776807}
+  UI2: {fileID: 1633776806}
 --- !u!61 &235171671
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21234,17 +21234,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &741527471 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4758731262725792394, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
-  m_PrefabInstance: {fileID: 1529315882}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!328 &741527472 stripped
 VideoPlayer:
   m_CorrespondingSourceObject: {fileID: 6064996353142477280, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
@@ -26210,6 +26199,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd13714c8c60da8449ebe7a03c4290cd, type: 3}
+--- !u!1 &890780807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7012577132566510969, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+  m_PrefabInstance: {fileID: 1529315882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &891833745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26869,8 +26863,8 @@ MonoBehaviour:
   story4: {fileID: 1029043827}
   telepoint: {fileID: 1594867478}
   player: {fileID: 498377432}
-  UI1: {fileID: 0}
-  UI2: {fileID: 0}
+  UI1: {fileID: 1633776807}
+  UI2: {fileID: 1633776806}
 --- !u!212 &1009555882
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27030,11 +27024,11 @@ MonoBehaviour:
   rawImage: {fileID: 741527473}
   videoPlayer: {fileID: 741527472}
   videoFileName: Scene4.mp4
-  skip: {fileID: 741527471}
+  skip: {fileID: 890780807}
   videoAudioSource: {fileID: 498377435}
   HPUI: {fileID: 1633776807}
   SkillUI: {fileID: 1633776806}
-  SkillUI2: {fileID: 0}
+  SkillUI2: {fileID: 1633776806}
   isReturn: 0
   boss4Stage: 1
   bossLastStage: 0

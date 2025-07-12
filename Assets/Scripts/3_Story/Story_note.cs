@@ -50,12 +50,16 @@ public class Story_note : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("영상재생");
+
         if (collision.CompareTag("Player"))
         {
             if(isReturn)
                 Invoke(nameof(nextScene), 0.5f);
             else
             {
+                Debug.Log("영상재생");
+
                 PlayVideo();
             }
         }
@@ -70,6 +74,7 @@ public class Story_note : MonoBehaviour
 
     public void PlayVideo() // 영상 실행 함수
     {
+        Debug.Log("영상재생");
         if (playcount >= 1)
             return;
 
@@ -105,7 +110,9 @@ public class Story_note : MonoBehaviour
 
     public void nextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene();
+        
+        LoadingScene.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     private void Update()
     {
