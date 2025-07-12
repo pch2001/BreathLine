@@ -11,12 +11,13 @@ public class StageSelecter : MonoBehaviour
 
     public void StartNew()
     {
-        SceneManager.LoadScene("Stage01");
-
+        //SceneManager.LoadScene("Stage01");
+        LoadingScene.LoadScene("Stage01");
     }
     public void ChangeScene(string SceneName)
     {
-        SceneManager.LoadScene(SceneName);
+        //SceneManager.LoadScene(SceneName);
+        LoadingScene.LoadScene(SceneName);
     }
 
     public void LoadScene()
