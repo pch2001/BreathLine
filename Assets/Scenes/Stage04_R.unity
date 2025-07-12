@@ -34890,6 +34890,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2586223488853116167, guid: f587ba3f454e9084295d4e1950068906, type: 3}
+      propertyPath: echoGuardMelody
+      value: 
+      objectReference: {fileID: 8300000, guid: ec19d500c7674c9499165b4ad7083d43, type: 3}
+    - target: {fileID: 2586223488853116167, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: peaceCancelMelody
       value: 
       objectReference: {fileID: 8300000, guid: 7c140d16c27999145b0b86ce26f4a73f, type: 3}
@@ -34945,6 +34949,22 @@ PrefabInstance:
       propertyPath: peaceMelodies.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 96e9f0c8afd7c7546b726a7f00c17160, type: 3}
+    - target: {fileID: 2586223488853116167, guid: f587ba3f454e9084295d4e1950068906, type: 3}
+      propertyPath: purifyingMelodies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586223488853116167, guid: f587ba3f454e9084295d4e1950068906, type: 3}
+      propertyPath: purifyingMelodies.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 640a147863d8d3648bf9ac11005eadc0, type: 3}
+    - target: {fileID: 2586223488853116167, guid: f587ba3f454e9084295d4e1950068906, type: 3}
+      propertyPath: purifyingMelodies.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 067004d26e6ea7147b8ea57c417180d1, type: 3}
+    - target: {fileID: 2586223488853116167, guid: f587ba3f454e9084295d4e1950068906, type: 3}
+      propertyPath: purifyingMelodies.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: dc788c8496faedc4abf2d39b3fa703e5, type: 3}
     - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: MainButton
       value: 

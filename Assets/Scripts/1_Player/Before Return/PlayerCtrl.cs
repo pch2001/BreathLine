@@ -589,8 +589,6 @@ public class PlayerCtrl : PlayerCtrlBase
 
             Debug.Log("소녀가 적의 공격에 피해를 입습니다!");
 
-            Destroy(collision.gameObject); // 투사체 삭제
-
             if (isPeaceMelody) // 평화의 연주중이었을 경우 캔슬
             {
                 isPeaceMelody = false;

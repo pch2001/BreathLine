@@ -702,8 +702,6 @@ public class PlayerCtrl_R : PlayerCtrlBase
                 playerSkill.PlaySoftPiriCanceled();
             }
             StartCoroutine(OnDamagedStart(enemyAttack.attackDamage * (isPurifying ? 0.2f : 1), collision.transform.position.x)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
-
-            Destroy(collision.gameObject); // 투사체 삭제
         }
         else if (collision.gameObject.CompareTag("EnemySight"))
         {

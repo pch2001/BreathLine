@@ -8,11 +8,13 @@ using UnityEngine.UIElements;
 public class PlayerSkill : MonoBehaviour
 {
     private PlayerCtrl playerCtrl;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource; // 소녀 소리재생
+    [SerializeField] private AudioSource audioSource2; // 늑대 소리 재생
 
     [SerializeField] private AudioClip[] angerMelodies; // 분노의 악장 음원들
     [SerializeField] private AudioClip[] peaceMelodies; // 평화의 악장 음원들
     [SerializeField] private AudioClip peaceCancelMelody; // 평화의 악장 실패 음원
+    [SerializeField] private AudioClip wolfAttackAudio; // 늑대 공격 음원
 
     [SerializeField] private GameObject AngerAttackArea; // 소녀 분노의 악장 공격 범위
     [SerializeField] private GameObject AngerAttackEffect; // 소녀 분노의 악장 공격 이펙트
@@ -290,6 +292,12 @@ public class PlayerSkill : MonoBehaviour
             wolfAttackReady = false;
             StartCoroutine(WolfAttackCool()); // 쿨타임 코루틴 실행
 
+            if(wolfAttackAudio != null)
+            {
+                audioSource2.clip = wolfAttackAudio;
+                audioSource2.Play();
+            }
+
             RequestWolfAnimTrigger?.Invoke("Attack");
             yield return new WaitForSeconds(0.4f);
 
@@ -331,6 +339,11 @@ public class PlayerSkill : MonoBehaviour
         if (!wolfIsDamaged)
         {
             wolfIsDamaged = true; // 늑대부상 변수 (등장중일 경우, 코루틴 탈출)
+
+            if (wolfAttackAudio != null)
+            {
+                audioSource2.Stop();
+            }
 
             hideCoroutine = StartCoroutine(WolfHide(true));
             StartCoroutine(WolfGuardEffect()); // 가드 이펙트 코루틴 실행 

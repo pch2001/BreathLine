@@ -13,7 +13,9 @@ public class PlayerSkill_R : MonoBehaviour
 
     [SerializeField] private AudioClip[] angerMelodies; // 분노의 악장 음원들
     [SerializeField] private AudioClip[] peaceMelodies; // 평화의 악장 음원들
+    [SerializeField] private AudioClip[] purifyingMelodies; // 정화의 걸음 음원들
     [SerializeField] private AudioClip peaceCancelMelody; // 평화의 악장 실패 음원
+    [SerializeField] private AudioClip echoGuardMelody; // 에코 가드 음원
 
     [SerializeField] private GameObject AngerAttackArea; // 소녀 분노의 악장 공격 범위
     [SerializeField] private GameObject AngerAttackEffect; // 소녀 분노의 악장 공격 이펙트
@@ -206,9 +208,12 @@ public class PlayerSkill_R : MonoBehaviour
         if (echoGuardReady)
         {
             Debug.Log("에코가드 실행!");
-            isEchoGuarding = true; // 에코가드 실행중
-            RequestEchoGuardingState(true);
 
+            audioSource.clip = echoGuardMelody;
+            audioSource.Play();
+
+            RequestEchoGuardingState(true);
+            isEchoGuarding = true; // 에코가드 실행중
             echoGuardReady = false;
             StartCoroutine(EchoGuardCoolTimer()); // 쿨타임 코루틴 실행
 
@@ -236,6 +241,16 @@ public class PlayerSkill_R : MonoBehaviour
         if (purifyStepReady)
         {
             Debug.Log("소녀가 정화의 걸음을 시작합니다."); // 애니메이션 추가해야 해! -> 애니메이션 bool값 만들어서 실행, 해당동작 loop로 만들어서 사용
+
+
+            if (purifyingMelodies != null && purifyingMelodies.Length > 0) // 음원 재생
+            {
+                int randomIndex = UnityEngine.Random.Range(0, purifyingMelodies.Length);
+                audioSource.clip = purifyingMelodies[randomIndex];
+                audioSource.time = 0f;
+                audioSource.Play();
+            }
+
             purifyStepReady = false;
             RequestisPurifing?.Invoke(true); // 정화의 걸음 시작
             RequestSetMoveSpeed?.Invoke(2.5f); // 정화의 걸음 속도로 변경
@@ -248,6 +263,8 @@ public class PlayerSkill_R : MonoBehaviour
     public void PurifyStepStop() // 정화의 걸음 종료 함수
     {
         Debug.Log("소녀가 정화의 걸음을 멈춥니다."); // 애니메이션 bool값 false로 변경 -> 꼭 isPurifying 순서 잘 확인해!
+        audioSource.Stop(); // 음원 중지
+
         RequestSetMoveSpeed?.Invoke(5f); // 이동속도 기존 속도로 변경
         purifyRange.SetActive(false); // 정화 범위 비활성화
         RequestisPurifing?.Invoke(false); // 정화의 걸음 종료
