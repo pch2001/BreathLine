@@ -62,7 +62,27 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) // 씬 변경시 사용할 UI 연결 함수
     {
-        pollutionGauge = GameObject.Find("Polluted").GetComponent<RectTransform>();
+        StartCoroutine(AssignPollutedUI()); // 변경된 씬의 오염도 UI 연결
+    }
+
+    private IEnumerator AssignPollutedUI() // 오염도 UI를 찾고나서 연결
+    {
+        float timer = 0f;
+        GameObject gaugeObj = null;
+
+        while ((gaugeObj = GameObject.Find("Polluted")) == null)
+        {
+            yield return null; 
+            timer += Time.unscaledDeltaTime;
+            if (timer > 2f) // 2초 이상 기다려도 못 찾으면 중단(무한 루프 방지)
+            {
+                Debug.LogWarning("Polluted UI를 찾지 못했습니다. (2초 초과)");
+                yield break;
+            }
+        }
+
+        pollutionGauge = gaugeObj.GetComponent<RectTransform>();
+        AddPolution(0);
     }
 
     private void UpdateStageData(float pollution) // 오염도 단계 업데이트
