@@ -33,7 +33,7 @@ public class LoadingScene : MonoBehaviour
         while (!op.isDone)
         {
             yield return null;
-            if (op.progress < 0.9f)
+            if (op.progress < 0.8f)
             {
                 progressBar.fillAmount = op.progress;
             }
