@@ -99,7 +99,12 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
 
             currentHp -= 10f;
             if (currentHp <= 0)
+            {
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
+
+                audioSource.clip = enemySounds[1]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+            }
             else
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
         }
@@ -144,6 +149,10 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
             if (linkedGhowl != null)
             {
                 Debug.Log("스피터가 소리를 질러 구울을 자극합니다!");
+
+                audioSource.clip = enemySounds[0]; // 음원[알림]
+                audioSource.Play(); // 음원 실행
+
                 StartCoroutine(linkedGhowl.AttackMode()); // 구울 공격모드 전환
             }
             isReadyPeaceMelody = true; // 평화의 악장 준비 파동 시작
@@ -217,7 +226,12 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
 
             currentHp -= 10f;
             if (currentHp <= 0)
+            {
+                audioSource.clip = enemySounds[1]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
+            }
             else
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
         }

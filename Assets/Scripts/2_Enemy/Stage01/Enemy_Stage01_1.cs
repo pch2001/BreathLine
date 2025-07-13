@@ -40,7 +40,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
             currentHp -= 5f * Time.deltaTime; // 1초에 5 Hp씩 감소
 
         if (isReadyPeaceMelody && currentHp > 5f) // 평화의 악장 준비파동 피격시 오염도 감소(최대 5까지)
-            currentHp -= 2f * Time.deltaTime; // 1초에 2Hp씩 감소
+            currentHp -= 3f * Time.deltaTime; // 1초에 3Hp씩 감소
 
         if (!isLooking || player == null || isStune || isDead) return;
         // 적이 플레이어를 바라보고 있을 경우
@@ -93,9 +93,15 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
             Debug.Log("평화의 악장이 적을 안심시킵니다.");
 
             currentHp -= 20f;
-            if (currentHp <= 0) 
+            if (currentHp <= 0)
             {
-                StartCoroutine(linkedSpitter.EnemyFade(3f)); // 연결된 Spitter 제거
+                audioSource.clip = enemySounds[3]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+
+                if (linkedSpitter != null)
+                {
+                    StartCoroutine(linkedSpitter.EnemyFade(3f)); // 연결된 Spitter 제거
+                }
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
             }
             else
@@ -146,8 +152,12 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         {
             if (!isLooking)
             {
-                isLooking = true; // 플레이어가 적의 시야에 들어왔을때 반응
                 Debug.Log("적이 플레이어를 바라봅니다.");
+
+                isLooking = true; // 플레이어가 적의 시야에 들어왔을때 반응
+
+                audioSource.clip = enemySounds[0]; // 울음소리[3]
+                audioSource.Play(); // 음원 실행
             }
 
             if (!attackMode || isStune) return; // 공격모드가 아닌 상황 or 스턴 상황에서 충돌시 무시
@@ -198,7 +208,13 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
             currentHp -= 20f;
             if (currentHp <= 0)
             {
-                StartCoroutine(linkedSpitter.EnemyFade(3f)); // 연결된 Spitter 제거
+                audioSource.clip = enemySounds[3]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+
+                if (linkedSpitter != null)
+                {
+                    StartCoroutine(linkedSpitter.EnemyFade(3f)); // 연결된 Spitter 제거
+                }
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
             }
             else
@@ -257,13 +273,21 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         else if (!isBossCreated && collision.gameObject.CompareTag("Player") && isLooking && !attackMode && !isDead)
         {
             isDead = true;
-            StartCoroutine(linkedSpitter.Die()); // 연결된 Spitter 제거
+
+            if (linkedSpitter != null)
+            {
+                StartCoroutine(linkedSpitter.Die()); // 연결된 Spitter 제거
+            }
             StartCoroutine(DieAfterDelay(2f)); // 2초 지연후 Die 함수 실행
         }
         else if (!isBossCreated && collision.gameObject.CompareTag("EnemyWall") && isLooking && !attackMode && !isDead)
         {
             isDead = true;
-            StartCoroutine(linkedSpitter.Die()); // 연결된 Spitter 제거
+
+            if (linkedSpitter != null)
+            {
+                StartCoroutine(linkedSpitter.Die()); // 연결된 Spitter 제거
+            }
             StartCoroutine(DieAfterDelay(2f)); // 2초 지연후 Die 함수 실행
         }
     }
@@ -271,10 +295,14 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
     private IEnumerator Die() // 1스테이지 일반 몬스터의 특성(자폭)에 필요
     {
         Debug.Log("적이 고통스럽게 소멸합니다...");
+
+        audioSource.clip = enemySounds[2]; // 터지는 소리[2]
+        audioSource.Play(); // 음원 실행
+
         moveSpeed = 0f;
         animator.SetTrigger("Die");
         dieEffect.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
 
         dieEffect.SetActive(false);
         gameObject.SetActive(false); // 적 비활성화
@@ -283,8 +311,17 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
     public IEnumerator AttackMode() // 공격 모드 활성화
     {
         Debug.Log("적이 울부짖습니다!");
+
+        audioSource.clip = enemySounds[1]; // 음원[포효]
+        audioSource.Play(); // 음원 실행
+
         animator.SetTrigger("Attack");
-        linkedSpitter.moveSpeed = 0f;
+
+        if (linkedSpitter != null)
+        {
+            linkedSpitter.moveSpeed = 0f;
+        }
+
         enemySight.SetActive(false);
         isLooking = true;
         attackMode = true;
@@ -295,7 +332,10 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         gameObject.SetActive(false);
         gameObject.SetActive(true); // 오브젝트를 껐다 켜 충돌 판정 초기화
 
-        StartCoroutine(linkedSpitter.Die()); // 연결된 Spitter 제거
+        if(linkedSpitter != null)
+        {
+            StartCoroutine(linkedSpitter.Die()); // 연결된 Spitter 제거
+        }
         boxCollider.size = new Vector2(0.03f, 0.23f); // 피격 범위 크기 변경 (플레이어 인식 범위 -> 적 충돌 범위)
         boxCollider.offset = new Vector2(0f, 0f); // 피격 범위 위치 변경
         moveSpeed = defaultMoveSpeed;
@@ -316,6 +356,9 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
 
     private IEnumerator DieAfterDelay(float delay) // 지연 사망시
     {
+        audioSource.clip = enemySounds[0];
+        audioSource.Play(); // 음원 실행
+
         yield return new WaitForSeconds(delay);
         yield return StartCoroutine(Die());
     }

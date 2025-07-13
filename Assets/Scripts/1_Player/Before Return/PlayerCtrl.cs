@@ -549,14 +549,18 @@ public class PlayerCtrl : PlayerCtrlBase
             var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
             if (enemyAttack != null)
             {
-                if (currentWolfState != WolfState.Damaged) // 늑대 보호 가능
+                float damage = enemyAttack.attackDamage;
+                float position = collision.transform.position.x;
+                bool isGuarding = currentWolfState != WolfState.Damaged;
+
+                if (isGuarding) // 늑대 보호 가능
                 {
-                    StartCoroutine(OnDamagedStart(enemyAttack.attackDamage, collision.transform.position.x, true)); // 소녀 피격 상태 구현 (늑대 o)
                     OnWolfGuard(); // 가드 실행
+                    StartCoroutine(OnDamagedStart(damage, position, true)); // 소녀 피격 상태 구현
                 }
-                else // 늑대 보호 불가능
+                else
                 {
-                    StartCoroutine(OnDamagedStart(enemyAttack.attackDamage, collision.transform.position.x, false)); // 소녀 피격 상태 구현 (늑대 x)
+                    StartCoroutine(OnDamagedStart(damage, position, false)); // 소녀 피격 상태 구현
                 }
             }
             else
@@ -597,14 +601,21 @@ public class PlayerCtrl : PlayerCtrlBase
             }
 
             var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
-            if (currentWolfState != WolfState.Damaged) // 늑대 보호 가능
+            if (enemyAttack != null)
             {
-                StartCoroutine(OnDamagedStart(enemyAttack.attackDamage, collision.transform.position.x, true)); // 소녀 피격 상태 구현
-                OnWolfGuard(); // 가드 실행
-            }
-            else
-            {
-                StartCoroutine(OnDamagedStart(enemyAttack.attackDamage, collision.transform.position.x, false)); // 소녀 피격 상태 구현
+                float damage = enemyAttack.attackDamage;
+                float position = collision.transform.position.x;
+                bool isGuarding = currentWolfState != WolfState.Damaged;
+
+                if (isGuarding) // 늑대 보호 가능
+                {
+                    OnWolfGuard(); // 가드 실행
+                    StartCoroutine(OnDamagedStart(damage, position, true)); // 소녀 피격 상태 구현
+                }
+                else
+                {
+                    StartCoroutine(OnDamagedStart(damage, position, false)); // 소녀 피격 상태 구현
+                }
             }
         }
         else if (collision.gameObject.CompareTag("EnemySight"))

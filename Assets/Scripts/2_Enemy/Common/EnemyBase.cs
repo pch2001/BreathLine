@@ -41,6 +41,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     [SerializeField] private float patrolRange = 5f; // 패트롤 최대 반경
     [SerializeField] private float patrolMinRange = 3f; // 패트롤 최소 반경
+    [SerializeField] protected AudioClip[] enemySounds; // 적 실행 음원 배열
 
     public float damage; // 적 공격력
     public int maxGroggyCnt; // 최대 그로기 게이지 개수
@@ -343,6 +344,9 @@ public abstract class EnemyBase : MonoBehaviour
         if (!isAttacking) return; // 공격 중이면만 실행
 
         attackObjects[nextAttackIndex].SetActive(true); // 현재 공격 범위 활성화
+
+        audioSource.clip = enemySounds[nextAttackIndex + 1]; 
+        audioSource.Play(); // 현재 실행중인 공격 음원 실행
     }
 
     public void DeActivateAttackRange() // 애니메이터상 충돌범위 비활성화 함수 

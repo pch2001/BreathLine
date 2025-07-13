@@ -581,11 +581,15 @@ public class PlayerCtrl_R : PlayerCtrlBase
             {
                 if (!enemy.attackMode || enemy.isStune || enemy.isDead || isDamaged) return; // 적의 공격 모드가 false or 스턴, 사망 상태일 경우 or 소녀 피격 상태시 충돌 X
 
+
                 if (isPeaceMelody)
                 {
                     playerSkill.PlaySoftPiriCanceled(); // 평화의 연주중이었을 경우 캔슬
                 }
-                StartCoroutine(OnDamagedStart(enemy.damage * (isPurifying ? 0.2f : 1), collision.transform.position.x)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
+                float damage = enemy.damage;
+                float position = collision.transform.position.x;
+
+                StartCoroutine(OnDamagedStart(damage * (isPurifying ? 0.2f : 1), position)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
             }
             else
             {
@@ -597,15 +601,18 @@ public class PlayerCtrl_R : PlayerCtrlBase
             if (isDamaged) return; // 소녀 피격 상태시 충돌 X
 
             var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
-
             if (enemyAttack != null)
             {
+                float damage = enemyAttack.attackDamage;
+                float position = collision.transform.position.x;
+                GameObject origin = enemyAttack.enemyOrigin;
+                Collider2D attack = collision;
 
                 if (playerSkill.isEchoGuarding) // 에코가드 상태시 적 그로그 게이지 증가
                 {
                     Debug.Log("[EnemyAttack] 공격을 방어해 적의 그로기 게이지를 높입니다!");
-                    StartCoroutine(enemyAttack.enemyOrigin.GetComponent<EnemyBase>().EchoGuardSuccess(collision));
-                    enemyAttack.enemyOrigin.GetComponent<EnemyBase>().CancelAttack();
+                    StartCoroutine(origin.GetComponent<EnemyBase>().EchoGuardSuccess(attack));
+                    origin.GetComponent<EnemyBase>().CancelAttack();
                     return;
                 }
 
@@ -615,7 +622,7 @@ public class PlayerCtrl_R : PlayerCtrlBase
                     isPressingPiri = false;
                     playerSkill.PlaySoftPiriCanceled();
                 }
-                StartCoroutine(OnDamagedStart(enemyAttack.attackDamage * (isPurifying ? 0.2f : 1), collision.transform.position.x)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
+                StartCoroutine(OnDamagedStart(damage * (isPurifying ? 0.2f : 1), position)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
             }
             else
             {
@@ -625,18 +632,23 @@ public class PlayerCtrl_R : PlayerCtrlBase
 
         else if (collision.gameObject.CompareTag("EnemyAttack_NoGroggy")) // 에코가드 성공시에도 그로기 게이지를 높일 수 없는 Attack
         {
+            if (isDamaged) return; // 소녀 피격 상태시 충돌 X
+
             var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
             if (enemyAttack != null)
             {
-                if (isDamaged) return; // 소녀 피격 상태시 충돌 X
+                float damage = enemyAttack.attackDamage;
+                float position = collision.transform.position.x;
+                GameObject origin = enemyAttack.enemyOrigin;
+                Collider2D attack = collision;
 
                 if (playerSkill.isEchoGuarding) // 에코가드 상태시 적 그로그 게이지 증가
                 {
                     Debug.Log("[EnemyAttack_NoGroggy] 공격을 방어해 적이 잠시 기절합니다!");
-                    if(enemyAttack.enemyOrigin != null)
+                    if (origin != null)
                     {
-                        enemyAttack.enemyOrigin.GetComponent<EnemyBase>().EchoGuardSuccess_NoGloogy();
-                        enemyAttack.enemyOrigin.GetComponent<EnemyBase>().CancelAttack();   
+                        origin.GetComponent<EnemyBase>().EchoGuardSuccess_NoGloogy();
+                        origin.GetComponent<EnemyBase>().CancelAttack();
                     }
                     return;
                 }
@@ -648,14 +660,13 @@ public class PlayerCtrl_R : PlayerCtrlBase
                     playerSkill.PlaySoftPiriCanceled();
                 }
                 Debug.LogWarning("Enemy 노 그로기와 충돌했슈");
-                StartCoroutine(OnDamagedStart(enemyAttack.attackDamage * (isPurifying ? 0.2f : 1), collision.transform.position.x)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
+                StartCoroutine(OnDamagedStart(damage * (isPurifying ? 0.2f : 1), position)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
             }
             else
             {
                 Debug.Log("해당 적은 EnemyBase 클래스를 상속하지 않았습니다! 연결해유");
             }
         }
-
         else if (collision.gameObject.CompareTag("EnemySealAttack")) // 플레이어 능력 봉인 Attack
         {
             var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
@@ -664,11 +675,16 @@ public class PlayerCtrl_R : PlayerCtrlBase
             {
                 if (isDamaged) return; // 소녀 피격 상태시 충돌 X
 
+                float damage = enemyAttack.attackDamage;
+                float position = collision.transform.position.x;
+                GameObject origin = enemyAttack.enemyOrigin;
+                Collider2D attack = collision;
+
                 if (playerSkill.isEchoGuarding) // 에코가드 상태시 적 그로그 게이지 증가
                 {
                     Debug.Log("[EnemyAttack] 공격을 방어해 적의 그로기 게이지를 높입니다!");
-                    StartCoroutine(enemyAttack.enemyOrigin.GetComponent<EnemyBase>().EchoGuardSuccess(collision));
-                    enemyAttack.enemyOrigin.GetComponent<EnemyBase>().CancelAttack();
+                    StartCoroutine(origin.GetComponent<EnemyBase>().EchoGuardSuccess(attack));
+                    origin.GetComponent<EnemyBase>().CancelAttack();
                     moveSpeed = 5f;
                     return;
                 }
@@ -679,11 +695,11 @@ public class PlayerCtrl_R : PlayerCtrlBase
                     isPressingPiri = false;
                     playerSkill.PlaySoftPiriCanceled();
                 }
-                if(SealAttackRoutine != null)
+                if (SealAttackRoutine != null)
                 {
                     StopCoroutine(SealAttackRoutine); // 기존 실행중인 봉인 공격 중지
                 }
-                SealAttackRoutine = StartCoroutine(OnEnemySealAttack(enemyAttack.attackDamage * (isPurifying ? 0.2f : 1), enemyAttack.enemyOrigin.transform.position.x)); // 봉인공격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
+                SealAttackRoutine = StartCoroutine(OnEnemySealAttack(damage * (isPurifying ? 0.2f : 1), origin.transform.position.x)); // 봉인공격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
             }
             else
             {
@@ -693,7 +709,6 @@ public class PlayerCtrl_R : PlayerCtrlBase
         else if (collision.gameObject.CompareTag("EnemyProjectile")) // 에코 가드 성공시 막기만 하는 Attack
         {
             Debug.Log("소녀가 적의 투사체에 데미지를 입습니다.");
-            var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
 
             if (isPeaceMelody) // 평화의 연주중이었을 경우 캔슬
             {
@@ -701,7 +716,14 @@ public class PlayerCtrl_R : PlayerCtrlBase
                 isPressingPiri = false;
                 playerSkill.PlaySoftPiriCanceled();
             }
-            StartCoroutine(OnDamagedStart(enemyAttack.attackDamage * (isPurifying ? 0.2f : 1), collision.transform.position.x)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
+            var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
+            if (enemyAttack != null)
+            {
+                float damage = enemyAttack.attackDamage;
+                float position = collision.transform.position.x;
+
+                StartCoroutine(OnDamagedStart(damage * (isPurifying ? 0.2f : 1), position)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
+            }
         }
         else if (collision.gameObject.CompareTag("EnemySight"))
         {
