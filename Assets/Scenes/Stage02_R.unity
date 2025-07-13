@@ -10817,7 +10817,7 @@ PrefabInstance:
       objectReference: {fileID: 1083111988}
     - target: {fileID: 3180418602808942417, guid: b53159cb2bcf1a34dbab8fcbdbae607f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 65.43
+      value: 63.81
       objectReference: {fileID: 0}
     - target: {fileID: 3180418602808942417, guid: b53159cb2bcf1a34dbab8fcbdbae607f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21557,6 +21557,7 @@ MonoBehaviour:
   BossHp: {fileID: 1456626183}
   UI1: {fileID: 1668535300}
   UI2: {fileID: 1668535299}
+  note: {fileID: 939343784}
 --- !u!61 &1255905179
 BoxCollider2D:
   m_ObjectHideFlags: 0

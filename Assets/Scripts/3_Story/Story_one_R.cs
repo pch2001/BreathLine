@@ -27,6 +27,8 @@ public class Story_one_R : MonoBehaviour
 
     public GameObject UI1;
     public GameObject UI2;
+
+    public GameObject note;
     void Start()
     {
         printText1.text = "";
@@ -203,6 +205,7 @@ public class Story_one_R : MonoBehaviour
         wolfImage.SetActive(false);
         UI1.SetActive(true);
         UI2.SetActive(true);
+        note.SetActive(false);
         if (index == 1)
         {
             Boss1.GetComponent<EnemyBase>().attackMode = true;

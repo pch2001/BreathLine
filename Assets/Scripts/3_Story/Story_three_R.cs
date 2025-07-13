@@ -1,6 +1,7 @@
 using KoreanTyper;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -28,6 +29,7 @@ public class Story_three_R : MonoBehaviour
     private bool isSkipping = false;
     private bool isTyping = false;
 
+    public GameObject note;
     void Start()
     {
         printText1.text = "";
@@ -191,6 +193,7 @@ public class Story_three_R : MonoBehaviour
         {
             Boss3.GetComponent<EnemyBase>().attackMode = true;
             BossHp.SetActive(true);
+            note.SetActive(false);
         }
         yield return new WaitForSeconds(0.1f);
 

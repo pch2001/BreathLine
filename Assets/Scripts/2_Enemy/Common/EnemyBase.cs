@@ -343,10 +343,19 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (!isAttacking) return; // 공격 중이면만 실행
 
+
         attackObjects[nextAttackIndex].SetActive(true); // 현재 공격 범위 활성화
 
-        audioSource.clip = enemySounds[nextAttackIndex + 1]; 
-        audioSource.Play(); // 현재 실행중인 공격 음원 실행
+        if (nextAttackIndex + 1 < enemySounds.Length)
+        {
+            audioSource.clip = enemySounds[nextAttackIndex + 1];
+            audioSource.Play(); // 현재 실행중인 공격 음원 실행
+        }
+        else
+        {
+            //만약 루프면 다시 0으로 만들기
+        }
+
     }
 
     public void DeActivateAttackRange() // 애니메이터상 충돌범위 비활성화 함수 

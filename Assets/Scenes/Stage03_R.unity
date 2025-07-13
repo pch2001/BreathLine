@@ -367,6 +367,7 @@ MonoBehaviour:
   BossHp: {fileID: 831996685}
   UI1: {fileID: 546882413}
   UI2: {fileID: 546882412}
+  note: {fileID: 2053879899}
 --- !u!61 &170774125
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2431,6 +2432,7 @@ MonoBehaviour:
   BossHp: {fileID: 831996685}
   UI1: {fileID: 546882413}
   UI2: {fileID: 546882412}
+  note: {fileID: 2053879899}
 --- !u!61 &2012965868
 BoxCollider2D:
   m_ObjectHideFlags: 0

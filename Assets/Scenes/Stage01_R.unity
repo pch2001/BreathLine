@@ -878,6 +878,7 @@ MonoBehaviour:
   BossHp: {fileID: 1602655491}
   UI1: {fileID: 1086339010}
   UI2: {fileID: 1273734128}
+  note: {fileID: 145094213}
 --- !u!61 &135324880
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1028,11 +1029,11 @@ PrefabInstance:
       objectReference: {fileID: 24257529}
     - target: {fileID: 3180418602808942417, guid: b53159cb2bcf1a34dbab8fcbdbae607f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 72.99
+      value: 72.33
       objectReference: {fileID: 0}
     - target: {fileID: 3180418602808942417, guid: b53159cb2bcf1a34dbab8fcbdbae607f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.2
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 3180418602808942417, guid: b53159cb2bcf1a34dbab8fcbdbae607f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4086,6 +4087,7 @@ MonoBehaviour:
   BossHp: {fileID: 1602655491}
   UI1: {fileID: 1086339010}
   UI2: {fileID: 1273734128}
+  note: {fileID: 145094213}
 --- !u!4 &1753368502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5299204958472397165, guid: cde0eeffaca59664094e163492856eca, type: 3}

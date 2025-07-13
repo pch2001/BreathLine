@@ -29,6 +29,7 @@ public class Story_two_R : MonoBehaviour
     public GameObject UI1;
     public GameObject UI2;
 
+    public GameObject note;
     void Start()
     {
         printText1.text = "";
@@ -198,7 +199,7 @@ public class Story_two_R : MonoBehaviour
         wolfImage.SetActive(false);
         UI1.SetActive(true);
         UI2.SetActive(true);
-
+        note.SetActive(false);
         Boss2.GetComponent<EnemyBase>().attackMode = true;
         BossHp.SetActive(true);
         yield return new WaitForSeconds(0.1f);
