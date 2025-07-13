@@ -4558,6 +4558,7 @@ MonoBehaviour:
   isReturn: 0
   boss4Stage: 0
   bossLastStage: 0
+  bgmObj: {fileID: 309871638}
   floatAmplitude: 0.5
   floatSpeed: 2
 --- !u!1660057539 &9223372036854775807
@@ -4578,8 +4579,8 @@ SceneRoots:
   - {fileID: 1293880057}
   - {fileID: 383525255}
   - {fileID: 622022830}
-  - {fileID: 105364941735169190}
   - {fileID: 2406539342903910617}
   - {fileID: 1771110071}
+  - {fileID: 105364941735169190}
   - {fileID: 309871639}
   - {fileID: 49997299}

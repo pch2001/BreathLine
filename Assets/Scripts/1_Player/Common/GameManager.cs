@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
 
         while ((gaugeObj = GameObject.Find("Polluted")) == null)
         {
-            yield return null; 
+            yield return null;
             timer += Time.unscaledDeltaTime;
             if (timer > 2f) // 2초 이상 기다려도 못 찾으면 중단(무한 루프 방지)
             {
@@ -104,3 +105,5 @@ public class GameManager : MonoBehaviour
         Debug.Log(currentStageIndex);
     }
 }
+
+

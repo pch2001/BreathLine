@@ -514,6 +514,7 @@ public class PlayerCtrl : PlayerCtrlBase
             if (isDamaged) return; // 소녀 피격 상태, 늑대 영역에 있을 경우 충돌 X
 
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy 기본 클래스 가져옴
+            
             if (enemy != null)
             {
                 if (!enemy.attackMode || enemy.isStune || enemy.isDead) return; // 적의 공격 모드가 false or 스턴, 사망 상태일 경우 충돌 X
@@ -552,7 +553,7 @@ public class PlayerCtrl : PlayerCtrlBase
                 float damage = enemyAttack.attackDamage;
                 float position = collision.transform.position.x;
                 bool isGuarding = currentWolfState != WolfState.Damaged;
-
+                
                 if (isGuarding) // 늑대 보호 가능
                 {
                     OnWolfGuard(); // 가드 실행
@@ -606,7 +607,7 @@ public class PlayerCtrl : PlayerCtrlBase
                 float damage = enemyAttack.attackDamage;
                 float position = collision.transform.position.x;
                 bool isGuarding = currentWolfState != WolfState.Damaged;
-
+                
                 if (isGuarding) // 늑대 보호 가능
                 {
                     OnWolfGuard(); // 가드 실행

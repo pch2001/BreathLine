@@ -30,11 +30,11 @@ public class PlayerSkill : MonoBehaviour
     private bool isSoftPiriStart = false; // 평화의 악장 연주가 시작되었는지
     private bool isSoftPiriPlayed = false; // 평화의 악장 연주가 완료되었는지
     public float SoftPiriKeyDownTime; // 평화의 악장 키다운 시간
-    
+
     // 늑대 관련 변수
 
     private SpriteRenderer wolfSpriteRenderer; // 늑대 스프라이트 반전용
-    
+
     [SerializeField] private SpriteRenderer wolfEyes; // 늑대 눈 스프라이트
     public Animator wolfEyesAnim; // 늑대 눈 애니메이터
     public GameObject guardImg; // 늑대 가드 이미지
@@ -53,7 +53,7 @@ public class PlayerSkill : MonoBehaviour
     public event Action<string> RequestAnimTrigger; // playerCtrl의 애니메이션 Trigger 변경 이벤트
     public event Action<bool> RequestPressingPiriState; // playerCtrl의 isPressingPiri 변경이벤트 
     public event Action<bool> RequestPeaceMelodyActived; // playerCtrl의 isPeaceMelody 변경이벤트 
-    
+
     public event Action<string> RequestWolfAnimTrigger; // 늑대의 애니메이션 Trigger 변경 이벤트
     public event Action<WolfState> RequestWolfState; // 늑대 상태 변경 이벤트
     public event Action<float> RequestWolfStartAttack; // 늑대 공격 알림 이벤트
@@ -69,6 +69,12 @@ public class PlayerSkill : MonoBehaviour
     {
         if (GameManager.Instance != null)
             GameManager.Instance.RequestCurrentStage += OnUpdateStageData;
+    }
+
+    private void OnDisable()      // 또는 OnDestroy
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.RequestCurrentStage -= OnUpdateStageData;
     }
 
     // 소녀 기능 구현 
@@ -139,7 +145,7 @@ public class PlayerSkill : MonoBehaviour
                 Debug.Log("[평화의 악장] 연주 시작");
                 RequestPeaceMelodyActived?.Invoke(true); // 평화의 악장 준비 시작 상태 알림
                 PeaceWaitingEffect.SetActive(true); // 평화의 악장 준비 이펙트 활성화
-                
+
                 if (peaceMelodies != null && peaceMelodies.Length > 0) // 음원 재생
                 {
                     int randomIndex = UnityEngine.Random.Range(0, peaceMelodies.Length);
@@ -147,7 +153,7 @@ public class PlayerSkill : MonoBehaviour
                     audioSource.time = 0f;
                     audioSource.Play();
                 }
-                
+
                 RequestSetMoveSpeed?.Invoke(2.5f); // 이동속도 1.5f로 변경
                 isSoftPiriStart = true;
             }
@@ -292,7 +298,7 @@ public class PlayerSkill : MonoBehaviour
             wolfAttackReady = false;
             StartCoroutine(WolfAttackCool()); // 쿨타임 코루틴 실행
 
-            if(wolfAttackAudio != null)
+            if (wolfAttackAudio != null)
             {
                 audioSource2.clip = wolfAttackAudio;
                 audioSource2.Play();
