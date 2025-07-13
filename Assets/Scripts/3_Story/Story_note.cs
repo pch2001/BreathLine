@@ -25,6 +25,7 @@ public class Story_note : MonoBehaviour
     public bool boss4Stage = false; // 회귀 전 보스 때는 영상 재생 후 스크립트 연계됨(true)
     public bool bossLastStage = false; // 회귀 후 마지막 보스 때는 영상 재생 후 시작 화면으로 돌아감.
 
+    public AudioSource bgmObj; // 배경음악 오브젝트
     public float floatAmplitude = 0.5f; // 위아래로 움직이는 폭 (얼마나 높이 움직이는지)
     public float floatSpeed = 2f;       // 움직이는 속도
     private Vector3 startPos;           // 오브젝트의 초기 위치
@@ -80,6 +81,8 @@ public class Story_note : MonoBehaviour
     public void PlayVideo() // 영상 실행 함수
     {
         Debug.Log("영상재생");
+        bgmObj.Stop(); // 배경음악 중지
+
         if (playcount >= 1)
             return;
 

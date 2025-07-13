@@ -61,6 +61,12 @@ public class PlayerSkill_R : MonoBehaviour
             GameManager.Instance.RequestCurrentStage += OnUpdateStageData;
     }
 
+    private void OnDisable()      // 또는 OnDestroy
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.RequestCurrentStage -= OnUpdateStageData;
+    }
+
     // 소녀 기본 기능 구현
 
     public void StartPiri() // 연주버튼 입력시 모션 실행 및 변수값 저장
