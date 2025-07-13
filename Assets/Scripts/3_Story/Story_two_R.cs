@@ -37,7 +37,8 @@ public class Story_two_R : MonoBehaviour
         dialoguescript = new List<List<string>>
         {
         new List<string> { "n:이번에도 못 보던 것이 앞으로 막고 있다...",
-                            "n:쉽게 보내줄 거 같지 않다."
+                            "n:쉽게 보내줄 거 같지 않다.",
+                            "g:또 다시 달라진 나의 힘을 보여주마!"
         },
         new List<string> { "w:1", "g:2" },
         new List<string> { "w:1", "g:2" }

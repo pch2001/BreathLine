@@ -36,7 +36,7 @@ public class Story_three_R : MonoBehaviour
         dialoguescript = new List<List<string>>
         {
         new List<string> { "g:아까 뒤에서 날 방해하던 녀석이자나", "g:저 녀석을 내가 정화 할 수 있을까.." },
-        new List<string> { "w:1", "g:2" },
+        new List<string> { "g:겨우 정화했다..", "g:힘들지만 앞으로 나아가자" },
         new List<string> { "w:1", "g:2" }
         };
 
