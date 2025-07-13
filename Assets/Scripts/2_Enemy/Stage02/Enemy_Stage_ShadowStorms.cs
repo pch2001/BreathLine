@@ -161,6 +161,9 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
     {
         isAttacking = true;
 
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
+
         Debug.Log("적이 [공격 0]을 준비합니다!");
         attackCoroutine = null; // 실행 중이었던 코루틴 정리
         currentAttack = attackObjects[0];
@@ -175,7 +178,7 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
         dirReady.x = Mathf.Abs(dirReady.x) * (direction.x > 0 ? 1 : -1);
         hitEffect.transform.localPosition = dirReady;
         hitEffect.SetActive(true);
-        yield return new WaitForSeconds(0.3f); // 공격 간격 0.3초
+        yield return new WaitForSeconds(0.8f); // 공격 간격 0.8초
 
         Debug.Log("적이 소녀를 공격합니다!");
         animator.SetTrigger("Attack"); // Attack 애니메이션 실행 -> 애니메이션에서 자동으로 attackObject 활성화/비활성화
@@ -193,7 +196,10 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
     private IEnumerator Attack1()
     {
         isAttacking = true;
-        
+
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행   
+
         Debug.Log("적이 [공격 0]을 준비합니다!"); 
         attackCoroutine = null; // 실행 중이었던 코루틴 정리
         currentAttack = null;
@@ -205,12 +211,15 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
         dirReady.x = Mathf.Abs(dirReady.x) * (direction.x > 0 ? 1 : -1);
         hitEffect_noGroggy.transform.localPosition = dirReady;
         hitEffect_noGroggy.SetActive(true);
-        yield return new WaitForSeconds(0.8f); // 공격 간격 0.8초
+        yield return new WaitForSeconds(1f); // 공격 간격 1초
+
+        audioSource.clip = enemySounds[2]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
 
         Debug.Log("적이 탄환을 발사합니다!");
         animator.SetTrigger("Attack1"); // Attack 애니메이션 실행 -> 애니메이션에서 자동으로 attackObject 활성화/비활성화
         hitEffect_noGroggy.SetActive(false);
-        yield return new WaitForSeconds(1.5f); // 다음 행동을 하는데 간격을 둠
+        yield return new WaitForSeconds(2f); // 다음 행동을 하는데 간격을 둠
 
         nextAttackIndex = Random.Range(0, attackPatterns.Length); // 다음 공격 결정
         SetAttackTriggerRange(nextAttackIndex); // 다음 공격 인식 범위 설정
@@ -223,6 +232,9 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
     private IEnumerator Attack2()
     {
         isAttacking = true;
+
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
 
         Debug.Log("적이 [공격 2]을 준비합니다!");
         attackCoroutine = null; // 실행 중이었던 코루틴 정리
@@ -242,12 +254,16 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
             pos.x = Mathf.Abs(pos.x) * (direction.x > 0 ? 1 : -1);
             beam.transform.localPosition = pos; 
         }
-        yield return new WaitForSeconds(0.8f); // 공격 간격 0.8초
+        yield return new WaitForSeconds(1.2f); // 공격 간격 1.2초
 
         Debug.Log("적이 공격을 시작합니다!");
+
+        audioSource.clip = enemySounds[3]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
+
         animator.SetTrigger("Attack2"); // Attack 애니메이션 실행 -> 애니메이션에서 자동으로 attackObject 활성화/비활성화
         hitEffect_noGroggy.SetActive(false);
-        yield return new WaitForSeconds(1.5f); // 다음 행동을 하는데 간격을 둠
+        yield return new WaitForSeconds(2f); // 다음 행동을 하는데 간격을 둠
 
         nextAttackIndex = Random.Range(0, attackPatterns.Length); // 다음 공격 결정
         SetAttackTriggerRange(nextAttackIndex); // 다음 공격 인식 범위 설정
@@ -283,6 +299,10 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
         yield return new WaitForSeconds(0.3f);
 
         // 등장 연출
+
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
+
         transform.position = startPos;
         animator.SetTrigger("Transform");
         yield return new WaitForSeconds(0.5f);
@@ -366,7 +386,12 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
 
             currentHp -= 15f;
             if (currentHp <= 0)
+            {
+                audioSource.clip = enemySounds[4]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
+            }
             else
             {
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
@@ -427,7 +452,12 @@ public class Enemy_Stage_ShadowStorms : BossBase // Mage 스크립트
 
             currentHp -= 10f;
             if (currentHp <= 0)
+            {
+                audioSource.clip = enemySounds[4]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
+            }
             else
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
         }

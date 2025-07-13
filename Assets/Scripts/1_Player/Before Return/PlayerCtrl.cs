@@ -43,12 +43,12 @@ public class PlayerCtrl : PlayerCtrlBase
     public bool isLocked; // 상호작용시 행동 제한
     public bool isCovered = false; // 엄폐물에 있을 경우
     public bool is4BossStage = false; // 현재 회귀전 4스테이지 보스전인지
-    
+
     public Story_four story4;
     public Story_note storyVideo;
     public GameObject uiChange;
     public GameObject stage4PlayerPos;
-    
+
     // 늑대 관련 변수
 
     public GameObject wolf; // 늑대 게임 오브젝트
@@ -57,7 +57,7 @@ public class PlayerCtrl : PlayerCtrlBase
     public float defaultWolfExitTime = 10f; // 늑대 자동 퇴장 시간
     public WolfState currentWolfState = WolfState.Idle; // 현재 늑대 상태 확인 (WolfState 클래스)
     private Coroutine wolfAttackCoolRoutine; // 늑대 공격 쿨타임 코루틴
-    private bool isWolfRange; // 늑대의 범위 내에 있는지(WolfAppear 영역 / 피해x)
+    public bool isWolfRange; // 늑대의 범위 내에 있는지(WolfAppear 영역 / 피해x)
 
     // 소녀 오염도 최대치 알림 이벤트
     public event Action RequestPlayerPolluted; // 소녀 오염도 최대치 알림 이벤트
@@ -121,7 +121,7 @@ public class PlayerCtrl : PlayerCtrlBase
     public void OnDisable()
     {
         animator.SetBool("isMove", false); // 대화시 Idle 상태로 전환
-        
+
         isLocked = true;// 대화시 움직임 제한 해제
 
         // inputAction 비활성화
@@ -218,7 +218,7 @@ public class PlayerCtrl : PlayerCtrlBase
             animator.SetBool("isMove", true);
         else
             animator.SetBool("isMove", false);
-    
+
         // 이동 구현
         rb.velocity = new Vector2(h * moveSpeed, rb.velocity.y);
         // 좌우 반전
@@ -365,7 +365,7 @@ public class PlayerCtrl : PlayerCtrlBase
         isPushed = true; // 밀격상태 시작
         animator.SetTrigger(PlayerAnimTrigger.Hit);
         rb.AddForce(Vector2.right * ((enemyPosX - transform.position.x > 0) ? -1 : 1) * 30, ForceMode2D.Impulse); // 피격시 반대방향으로 살짝 밀격됨
-        
+
         yield return new WaitForSeconds(0.1f);
         isPushed = false; // 밀격상태 해제
 
@@ -387,12 +387,12 @@ public class PlayerCtrl : PlayerCtrlBase
     private IEnumerator OnDamagedStart(float enemyDamage, float enemyPosX, bool isWolfGuarding) // 소녀 피격 시작 함수
     {
         Debug.Log("소녀 피격! 소녀의 오염도가 증가합니다!");
-  
+
         isDamaged = true; // 피격상태 시작
         isPushed = true; // 밀격상태 시작
         animator.SetTrigger(PlayerAnimTrigger.Hit);
         rb.AddForce(Vector2.right * ((enemyPosX - transform.position.x > 0) ? -1 : 1) * 13, ForceMode2D.Impulse); // 피격시 반대방향으로 살짝 밀격됨
-        
+
         GameManager.Instance.AddPolution(enemyDamage * (isWolfGuarding ? 0.5f : 1)); // 적 공격력만큼 오염도 증가
         yield return new WaitForSeconds(0.1f);
         isPushed = false; // 밀격상태 해제
@@ -407,7 +407,7 @@ public class PlayerCtrl : PlayerCtrlBase
             gameObject.transform.position = stage4PlayerPos.transform.position;
             animator.SetTrigger("isSad");
             RequestPlayerPolluted?.Invoke();
-            
+
             OnWolfGuard();
             StopCoroutine(playerSkill.hideCoroutine);
             wolf.transform.position = stage4PlayerPos.transform.position + Vector3.up * 0.6f;
@@ -447,7 +447,7 @@ public class PlayerCtrl : PlayerCtrlBase
         uiChange.SetActive(true); // UI 변경 표시
         yield return new WaitForSeconds(2f);
 
-        StartCoroutine(story4.TypingText(1));
+        StartCoroutine(story4.TypingText(3));
         Time.timeScale = 1f;
 
         yield break;
@@ -514,7 +514,7 @@ public class PlayerCtrl : PlayerCtrlBase
             if (isDamaged) return; // 소녀 피격 상태, 늑대 영역에 있을 경우 충돌 X
 
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy 기본 클래스 가져옴
-            
+
             if (enemy != null)
             {
                 if (!enemy.attackMode || enemy.isStune || enemy.isDead) return; // 적의 공격 모드가 false or 스턴, 사망 상태일 경우 충돌 X
@@ -553,7 +553,42 @@ public class PlayerCtrl : PlayerCtrlBase
                 float damage = enemyAttack.attackDamage;
                 float position = collision.transform.position.x;
                 bool isGuarding = currentWolfState != WolfState.Damaged;
-                
+
+                if (isGuarding) // 늑대 보호 가능
+                {
+                    OnWolfGuard(); // 가드 실행
+                    StartCoroutine(OnDamagedStart(damage, position, true)); // 소녀 피격 상태 구현
+                }
+                else
+                {
+                    StartCoroutine(OnDamagedStart(damage, position, false)); // 소녀 피격 상태 구현
+                }
+            }
+            else
+            {
+                Debug.Log("해당 적은 EnemyBase 클래스를 상속하지 않았습니다! 연결해유");
+            }
+        }
+        else if (collision.gameObject.CompareTag("EnemyPiercingAttack"))
+        {
+            if (isDamaged || isWolfRange || isCovered) return; // 소녀 피격 상태, 늑대 영역에 있을 경우 충돌 X
+
+            Debug.Log("소녀가 적의 공격에 피해를 입습니다!");
+
+            if (isPeaceMelody) // 평화의 연주중이었을 경우 캔슬
+            {
+                isPeaceMelody = false;
+                isPressingPiri = false;
+                playerSkill.PlaySoftPiriCanceled();
+            }
+
+            var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
+            if (enemyAttack != null)
+            {
+                float damage = enemyAttack.attackDamage;
+                float position = collision.transform.position.x;
+                bool isGuarding = currentWolfState != WolfState.Damaged;
+
                 if (isGuarding) // 늑대 보호 가능
                 {
                     OnWolfGuard(); // 가드 실행
@@ -578,14 +613,14 @@ public class PlayerCtrl : PlayerCtrlBase
                 isPeaceMelody = false;
                 isPressingPiri = false;
                 playerSkill.PlaySoftPiriCanceled();
-                }
+            }
 
-                if (SealAttackRoutine != null)
-                {
-                    StopCoroutine(SealAttackRoutine); // 기존 실행중인 봉인 공격 중지
-                }
-                SealAttackRoutine = StartCoroutine(OnEnemySealAttack(collision.transform.position.x)); // 봉인공격 반응 구현
-            
+            if (SealAttackRoutine != null)
+            {
+                StopCoroutine(SealAttackRoutine); // 기존 실행중인 봉인 공격 중지
+            }
+            SealAttackRoutine = StartCoroutine(OnEnemySealAttack(collision.transform.position.x)); // 봉인공격 반응 구현
+
             moveSpeed = 5f;
         }
         else if (collision.gameObject.CompareTag("EnemyProjectile")) // 에코 가드 성공시 막기만 하는 Attack
@@ -607,7 +642,7 @@ public class PlayerCtrl : PlayerCtrlBase
                 float damage = enemyAttack.attackDamage;
                 float position = collision.transform.position.x;
                 bool isGuarding = currentWolfState != WolfState.Damaged;
-                
+
                 if (isGuarding) // 늑대 보호 가능
                 {
                     OnWolfGuard(); // 가드 실행
@@ -647,7 +682,7 @@ public class PlayerCtrl : PlayerCtrlBase
         {
             isWolfRange = true; // 늑대 범위 안에 있을 경우, 피해x 상태
         }
-        else if(collision.gameObject.CompareTag("CoverObject"))
+        else if (collision.gameObject.CompareTag("CoverObject"))
         {
             Debug.Log("소녀가 공격을 피해 주변 잔해에 숨습니다");
             isCovered = true;
@@ -669,6 +704,41 @@ public class PlayerCtrl : PlayerCtrlBase
             if (enemyBase != null)
             {
                 enemyBase.isAttackRange = true; // 적 공격 실행 함수 수행
+            }
+        }
+        else if (collision.gameObject.CompareTag("EnemyPiercingAttack"))
+        {
+            if (isDamaged || isWolfRange || isCovered) return; // 소녀 피격 상태, 늑대 영역에 있을 경우 충돌 X
+
+            Debug.Log("소녀가 적의 공격에 피해를 입습니다!");
+
+            if (isPeaceMelody) // 평화의 연주중이었을 경우 캔슬
+            {
+                isPeaceMelody = false;
+                isPressingPiri = false;
+                playerSkill.PlaySoftPiriCanceled();
+            }
+
+            var enemyAttack = collision.gameObject.GetComponent<EnemyAttackBase>();
+            if (enemyAttack != null)
+            {
+                float damage = enemyAttack.attackDamage;
+                float position = collision.transform.position.x;
+                bool isGuarding = currentWolfState != WolfState.Damaged;
+
+                if (isGuarding) // 늑대 보호 가능
+                {
+                    OnWolfGuard(); // 가드 실행
+                    StartCoroutine(OnDamagedStart(damage, position, true)); // 소녀 피격 상태 구현
+                }
+                else
+                {
+                    StartCoroutine(OnDamagedStart(damage, position, false)); // 소녀 피격 상태 구현
+                }
+            }
+            else
+            {
+                Debug.Log("해당 적은 EnemyBase 클래스를 상속하지 않았습니다! 연결해유");
             }
         }
     }

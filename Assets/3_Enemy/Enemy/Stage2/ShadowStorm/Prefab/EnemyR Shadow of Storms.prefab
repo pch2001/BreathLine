@@ -1143,6 +1143,12 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0}
   patrolRange: 5
   patrolMinRange: 3
+  enemySounds:
+  - {fileID: 8300000, guid: 5fc8ba8788cefe14a9970faeb78e2f6b, type: 3}
+  - {fileID: 8300000, guid: e9df6e9c57cab1c4db403c0f456ff1ef, type: 3}
+  - {fileID: 8300000, guid: bc6cdb7624b32d848b485853b9be22c8, type: 3}
+  - {fileID: 8300000, guid: 534350ee37d8aff47b3b250292f3eec1, type: 3}
+  - {fileID: 8300000, guid: d9c0c9fad395119428e2d9b8509cb954, type: 3}
   damage: 0
   maxGroggyCnt: 0
   currentGroggyCnt: 0
@@ -1164,6 +1170,7 @@ MonoBehaviour:
   _isMoving: 0
   _isAttackRange: 0
   pushAttackRange: {fileID: 0}
+  storyObject: {fileID: 0}
   attackTriggerRange: {fileID: 345480596572211864}
   isSpecialPhase: 0
   angerAttackID: 0

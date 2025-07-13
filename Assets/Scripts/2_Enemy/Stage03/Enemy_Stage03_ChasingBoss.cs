@@ -15,7 +15,7 @@ public class Enemy_Stage03_ChasingBoss : MonoBehaviour
     [SerializeField] private float bossYPos = 1f;
 
     private SpriteRenderer spriteRenderer;
-    private Camera mainCam;
+    public Camera mainCam;
     private Vector3 originalCamPos;
     private float attackTimer; // 공격 시간 계산 타이머
     private GameObject player; // 플레이어 오브젝트
@@ -32,6 +32,8 @@ public class Enemy_Stage03_ChasingBoss : MonoBehaviour
         }
 
         StartCoroutine(TrackPlayerPosition());
+
+        StartCoroutine(ShakeCamera(1f, 0.5f)); // 카메라 흔드는 효과
     }
 
     IEnumerator TrackPlayerPosition() // 플레이어 지연 위치 추적
@@ -78,7 +80,7 @@ public class Enemy_Stage03_ChasingBoss : MonoBehaviour
 
         if (hit != null)
         {
-            if (!hit.GetComponent<PlayerCtrl>().isCovered) // 엄폐중이 아닐 경우
+            if (!hit.GetComponent<PlayerCtrl>().isCovered || !hit.GetComponent<PlayerCtrl>().isWolfRange) // 엄폐중이 아닐 경우 or 늑대 영역에 있을 경우
             {
                 attackRange.SetActive(true);
                 yield return new WaitForSeconds(0.3f);
@@ -88,7 +90,7 @@ public class Enemy_Stage03_ChasingBoss : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator ShakeCamera(float duration, float magnitude)
+    public IEnumerator ShakeCamera(float duration, float magnitude)
     {
         float elapsed = 0f;
 

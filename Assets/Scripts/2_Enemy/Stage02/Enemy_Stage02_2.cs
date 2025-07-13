@@ -89,19 +89,26 @@ public class Enemy_Stage02_2 : EnemyBase // Mage 스크립트
     {
         isAttacking = true;
 
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
+
         Debug.Log("적이 공격을 준비합니다!");
         attackCoroutine = null; // 실행 중이었던 코루틴 정리
         currentAttack = attackObjects[0];
         moveSpeed = 0f;
         LockOnTargetPlayer(); // 플레이어를 바라보게 설정
 
-        yield return new WaitForSeconds(1f); // 공격 간격 1초
         Vector3 dirReady = hitEffect.transform.localPosition; // 공격 경고 UI 구현
         dirReady.x = Mathf.Abs(dirReady.x) * (direction.x > 0 ? 1 : -1);
         hitEffect.transform.localPosition = dirReady;
         hitEffect.SetActive(true);
+        yield return new WaitForSeconds(1f); // 공격 간격 1초
 
         Debug.Log("적이 탄환을 발사합니다!");
+
+        audioSource.clip = enemySounds[1]; // 음원[탄환]
+        audioSource.Play(); // 음원 실행
+
         animator.SetTrigger("Attack"); // Attack 애니메이션 실행
         hitEffect.SetActive(false);
         yield return new WaitForSeconds(3f); // 다음 행동을 하는데 간격을 둠
@@ -132,7 +139,12 @@ public class Enemy_Stage02_2 : EnemyBase // Mage 스크립트
 
             currentHp -= 10f;
             if (currentHp <= 0)
+            {
+                audioSource.clip = enemySounds[2]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
+            }
             else
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
         }

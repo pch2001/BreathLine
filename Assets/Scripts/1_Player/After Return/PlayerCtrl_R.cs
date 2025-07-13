@@ -75,7 +75,10 @@ public class PlayerCtrl_R : PlayerCtrlBase
             _isEchoGuarding = value;
 
             // 피리 애니메이션 전환
-            animator.runtimeAnimatorController = value ? playPiriContorller : defaultController;
+            if (!isPressingPiri)
+            {
+                animator.runtimeAnimatorController = value ? playPiriContorller : defaultController;
+            }
         }
     }
 
@@ -307,10 +310,7 @@ public class PlayerCtrl_R : PlayerCtrlBase
 
     private void OnEchoGuard(InputAction.CallbackContext context) // 마우스 우클릭시 에코가드 실행
     {
-        if (!isPressingPiri) // 피리 연주시가 아닐 경우
-        {
-            StartCoroutine(playerSkill.EchoGuard());
-        }
+        StartCoroutine(playerSkill.EchoGuard());
     }
 
     private void SetEchoGuardCoolTime(float duration)

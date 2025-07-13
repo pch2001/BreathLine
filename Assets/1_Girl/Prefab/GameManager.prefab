@@ -46,62 +46,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pollution: 0
   pollutionStages:
-  - anger_damage: 4
-    anger_range: 1
-    anger_audioClip: {fileID: 8300000, guid: 4b9ef640eb4c33945945212d48cbff84, type: 3}
-    anger_effect: {fileID: 8683398460527915777, guid: 95cc264db592a094cbab2b242b76dc65, type: 3}
-    peace_cooldown: 0
-    peace_range: 20
-    peace_audioClip: {fileID: 8300000, guid: c7b25e5f927d73842ae8eb07a751dfbb, type: 3}
-    peace_effect: {fileID: 8813474515406883133, guid: 5d11ad73514707842b609b5a6ae2cef0, type: 3}
-    pollution_Coefficient: 0
   - anger_damage: 5
+    anger_range: 1
+    peace_cooldown: 3
+    peace_range: 20
+    pollution_Coefficient: 0
+    wolfAppearTime: 10
+    wolfAttackCoolTime: 4
+  - anger_damage: 10
     anger_range: 1.1
-    anger_audioClip: {fileID: 8300000, guid: 19bca2e4b0fc36a4aaf1cdaf6051314d, type: 3}
-    anger_effect: {fileID: 8683398460527915777, guid: 95cc264db592a094cbab2b242b76dc65, type: 3}
-    peace_cooldown: 0
-    peace_range: 18
-    peace_audioClip: {fileID: 8300000, guid: 62d5a4ac09f50fa46aa98ebaa879f01d, type: 3}
-    peace_effect: {fileID: 8813474515406883133, guid: 5d11ad73514707842b609b5a6ae2cef0, type: 3}
-    pollution_Coefficient: 0
-  - anger_damage: 6
+    peace_cooldown: 3.2
+    peace_range: 18.5
+    pollution_Coefficient: 1
+    wolfAppearTime: 9.5
+    wolfAttackCoolTime: 4.3
+  - anger_damage: 12
     anger_range: 1.2
-    anger_audioClip: {fileID: 8300000, guid: 4c299c93052bc594683e6eae09a53783, type: 3}
-    anger_effect: {fileID: 8683398460527915777, guid: 95cc264db592a094cbab2b242b76dc65, type: 3}
-    peace_cooldown: 0
+    peace_cooldown: 3.4
     peace_range: 16
-    peace_audioClip: {fileID: 8300000, guid: 25d096e24c7651f44ba2932aeeac163f, type: 3}
-    peace_effect: {fileID: 8813474515406883133, guid: 5d11ad73514707842b609b5a6ae2cef0, type: 3}
-    pollution_Coefficient: 0
-  - anger_damage: 7
+    pollution_Coefficient: 2
+    wolfAppearTime: 9
+    wolfAttackCoolTime: 4.6
+  - anger_damage: 14
     anger_range: 1.3
-    anger_audioClip: {fileID: 8300000, guid: 6e63b32b45aaa354c9ec204e9649c474, type: 3}
-    anger_effect: {fileID: 8683398460527915777, guid: 95cc264db592a094cbab2b242b76dc65, type: 3}
-    peace_cooldown: 0
-    peace_range: 14
-    peace_audioClip: {fileID: 8300000, guid: e427bf406ae0f0d4b9a0f0ac6b84719c, type: 3}
-    peace_effect: {fileID: 8813474515406883133, guid: 5d11ad73514707842b609b5a6ae2cef0, type: 3}
-    pollution_Coefficient: 0
-  - anger_damage: 8
+    peace_cooldown: 3.6
+    peace_range: 14.5
+    pollution_Coefficient: 3
+    wolfAppearTime: 8.5
+    wolfAttackCoolTime: 4.9
+  - anger_damage: 16
     anger_range: 1.4
-    anger_audioClip: {fileID: 8300000, guid: 45be2ff86ca51f145a795b7e987ce447, type: 3}
-    anger_effect: {fileID: 8683398460527915777, guid: 95cc264db592a094cbab2b242b76dc65, type: 3}
-    peace_cooldown: 0
-    peace_range: 12
-    peace_audioClip: {fileID: 8300000, guid: feed1558ff3c4ac418eceaa46153da82, type: 3}
-    peace_effect: {fileID: 8813474515406883133, guid: 5d11ad73514707842b609b5a6ae2cef0, type: 3}
-    pollution_Coefficient: 0
+    peace_cooldown: 3.8
+    peace_range: 13
+    pollution_Coefficient: 4
+    wolfAppearTime: 8
+    wolfAttackCoolTime: 5.2
   currentStageData:
     anger_damage: 0
     anger_range: 0
-    anger_audioClip: {fileID: 0}
-    anger_effect: {fileID: 0}
     peace_cooldown: 0
     peace_range: 0
-    peace_audioClip: {fileID: 0}
-    peace_effect: {fileID: 0}
     pollution_Coefficient: 0
+    wolfAppearTime: 0
+    wolfAttackCoolTime: 0
   currentStageIndex: 0
   pollutionGauge: {fileID: 0}
-  isReturned: 1
+  isReturned: 0
   savePoint: {x: 0, y: 0, z: 0}

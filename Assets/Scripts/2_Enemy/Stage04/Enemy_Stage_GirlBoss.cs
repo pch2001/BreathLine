@@ -167,6 +167,9 @@ public class Enemy_Stage_GirlBoss : BossBase // Victorian 스크립트
     {
         isAttacking = true;
 
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
+
         Debug.Log("적이 [공격 0]을 준비합니다!");
         attackCoroutine = null; // 실행 중이었던 코루틴 정리
         currentAttack = attackObjects[0];
@@ -205,6 +208,8 @@ public class Enemy_Stage_GirlBoss : BossBase // Victorian 스크립트
 
     private IEnumerator Attack1() // 다른 타이밍 공격 + 그림자 공격
     {
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
         isAttacking = true;
 
         Debug.Log("적이 [공격 1]을 준비합니다!");
@@ -260,6 +265,9 @@ public class Enemy_Stage_GirlBoss : BossBase // Victorian 스크립트
 
     private IEnumerator Attack2()
     {
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
+
         isAttacking = true;
         attackCoroutine = null;
         currentAttack = attackObjects[2];
@@ -330,6 +338,10 @@ public class Enemy_Stage_GirlBoss : BossBase // Victorian 스크립트
 
         // 등장 연출
         animator.SetTrigger("Appear");
+
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
+
         transform.position = pollutionPhasePos[currnetPhase].position; // 지정한 위치로 이동
         yield return new WaitForSeconds(0.5f);
 
@@ -755,7 +767,12 @@ public class Enemy_Stage_GirlBoss : BossBase // Victorian 스크립트
 
             currentHp -= 15f;
             if (currentHp <= 0)
+            {
+                audioSource.clip = enemySounds[2]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+             
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
+            }
             else
             {
                 StartCoroutine(Stunned(3f)); // 적 3초 기절

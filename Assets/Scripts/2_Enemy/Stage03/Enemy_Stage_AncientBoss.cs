@@ -138,6 +138,9 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
     {
         isAttacking = true;
 
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
+
         Debug.Log("적이 [공격 0]을 준비합니다!");
         attackCoroutine = null; // 실행 중이었던 코루틴 정리
         currentAttack = attackObjects[0];
@@ -170,6 +173,9 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
     private IEnumerator Attack1()
     {
         isAttacking = true;
+
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
 
         Debug.Log("적이 [공격 1]을 준비합니다!");
         attackCoroutine = null; // 실행 중이었던 코루틴 정리
@@ -204,6 +210,9 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
     {
         isAttacking = true;
         isMoveAttackActived = true;
+
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
 
         Debug.Log("적이 [공격 2]을 준비합니다!");
         attackCoroutine = null; // 실행 중이었던 코루틴 정리
@@ -268,6 +277,10 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
         yield return new WaitForSeconds(0.3f);
 
         // 등장 연출
+
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
+
         transform.position = startPos;
         animator.SetTrigger("Damaged");
         yield return new WaitForSeconds(0.5f);
@@ -287,6 +300,10 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
 
             // 광역 피해 범위 활성화
             animator.SetTrigger("AttackSpecial");
+
+            audioSource.clip = enemySounds[1];
+            audioSource.Play(); // 음원 실행
+
             hitEffect_noGroggy.SetActive(true);
             yield return new WaitForSeconds(0.8f);
 
@@ -404,7 +421,12 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
 
             currentHp -= 15f;
             if (currentHp <= 0)
+            {
+                audioSource.clip = enemySounds[4]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
+            }
             else
             {
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
@@ -465,7 +487,12 @@ public class Enemy_Stage_AncientBoss : BossBase // Mage 스크립트
 
             currentHp -= 10f;
             if (currentHp <= 0)
+            {
+                audioSource.clip = enemySounds[4]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
+            }
             else
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
         }

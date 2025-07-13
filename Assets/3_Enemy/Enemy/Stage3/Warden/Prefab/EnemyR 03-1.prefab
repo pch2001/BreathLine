@@ -1140,6 +1140,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0}
   patrolRange: 5
   patrolMinRange: 3
+  enemySounds:
+  - {fileID: 8300000, guid: 2181e19f1ee215e4991722d3a32e162f, type: 3}
+  - {fileID: 8300000, guid: 23cafea15665c154e911e9c6884a24b6, type: 3}
+  - {fileID: 8300000, guid: d9c0c9fad395119428e2d9b8509cb954, type: 3}
   damage: 0
   maxGroggyCnt: 0
   currentGroggyCnt: 0

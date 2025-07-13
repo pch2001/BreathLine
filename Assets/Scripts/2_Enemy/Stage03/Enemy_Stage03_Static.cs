@@ -11,8 +11,8 @@ public class Enemy_Stage03_Static : EnemyBase // Mage 스크립트
 
     private void Start()
     {
-        maxHp = 60f; // 적 체력 설정
-        currentHp = 30f; // 적 체력 초기화
+        maxHp = 45f; // 적 체력 설정
+        currentHp = 15f; // 적 체력 초기화
         damage = 5f; // 적 공격력 설정 
         maxGroggyCnt = 3; // 최대 그로기 게이지 3개로 설정
         currentGroggyCnt = 0; // 현재 그로기 개수 초기화
@@ -92,6 +92,9 @@ public class Enemy_Stage03_Static : EnemyBase // Mage 스크립트
     {
         isAttacking = true;
 
+        audioSource.clip = enemySounds[0]; // 음원[경고]
+        audioSource.Play(); // 음원 실행
+
         Debug.Log("적이 소녀의 능력을 봉인합니다!");
         attackCoroutine = null; // 실행 중이었던 코루틴 정리
         currentAttack = attackObjects[0];
@@ -107,9 +110,13 @@ public class Enemy_Stage03_Static : EnemyBase // Mage 스크립트
         hitEffect.transform.localPosition = dirReady;
         hitEffect.SetActive(true);
         animator.SetTrigger("Attack"); // Attack 애니메이션 실행
-        yield return new WaitForSeconds(0.5f); // 공격 간격 0.5초
+        yield return new WaitForSeconds(1f); // 공격 간격 1초
 
         Debug.Log("적이 소녀의 능력을 봉인합니다!");
+
+        audioSource.clip = enemySounds[1]; // 음원[Attack0]
+        audioSource.Play(); // 음원 실행
+
         hitEffect.SetActive(false);
         attackObjects[0].SetActive(true); // 공격범위 활성화
         yield return new WaitForSeconds(0.1f);
@@ -143,7 +150,12 @@ public class Enemy_Stage03_Static : EnemyBase // Mage 스크립트
 
             currentHp -= 10f;
             if (currentHp <= 0)
+            {
+                audioSource.clip = enemySounds[2]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
+            }
             else
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
         }
@@ -199,7 +211,12 @@ public class Enemy_Stage03_Static : EnemyBase // Mage 스크립트
 
             currentHp -= 10f;
             if (currentHp <= 0)
+            {
+                audioSource.clip = enemySounds[2]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+
                 StartCoroutine(EnemyFade(3f)); // 적 사라짐
+            }
             else
                 StartCoroutine(Stunned(3f)); // 적 3초 기절
         }

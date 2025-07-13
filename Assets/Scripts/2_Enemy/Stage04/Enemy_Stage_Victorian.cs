@@ -21,6 +21,7 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
 
     public GameObject boss4R; // 소녀 보스 오브젝트
     public GameObject playerPos; // 플레이어 이동 시킬 위치
+    public GameObject spawnThunder; // 번개 생성 오브젝트
 
     private void Start()
     {
@@ -548,8 +549,11 @@ public class Enemy_Stage_Victorian : BossBase // Victorian 스크립트
             peaceAttackID = attackArea.attackGlobalID;
 
             currentHp -= 15f;
-            if (currentHp <= 0)
+            if (currentHp <= 0 && enemyIsReturn)
             {
+                audioSource.clip = enemySounds[4]; // 음원[사라짐]
+                audioSource.Play(); // 음원 실행
+
                 StartCoroutine(StartTextStage4R()); // 스크립트 재생
                 Debug.LogWarning("스크립트를 진행합니다");
             }

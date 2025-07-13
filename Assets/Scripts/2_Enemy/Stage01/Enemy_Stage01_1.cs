@@ -40,7 +40,7 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
             currentHp -= 5f * Time.deltaTime; // 1초에 5 Hp씩 감소
 
         if (isReadyPeaceMelody && currentHp > 5f) // 평화의 악장 준비파동 피격시 오염도 감소(최대 5까지)
-            currentHp -= 3f * Time.deltaTime; // 1초에 3Hp씩 감소
+            currentHp -= 5f * Time.deltaTime; // 1초에 3Hp씩 감소
 
         if (!isLooking || player == null || isStune || isDead) return;
         // 적이 플레이어를 바라보고 있을 경우

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -42,9 +43,10 @@ public class PlayerSkill : MonoBehaviour
     private bool wolfMoveReady = true; // 늑대 이동 쿨타임
     private float wolfFadeoutTime = 0.3f; // 좌클릭시 늑대가 사라지는 시간
     private float wolfFadeinTime = 1f; // 좌클릭시 늑대가 나타나는 시간
-    private bool wolfAttackReady = true; // 늑대 공격 쿨타임    
+    private bool wolfAttackReady = true; // 늑대 공격 준비 여부  
     private bool wolfIsDamaged = false; // 늑대 부상 상태 확인
     private float wolfPolution = 1f; // 늑대 오염도 계수
+    private float wolfAttackCoolTime = 5f; // 늑대 공격 쿨타임
 
     // 이벤트 함수
 
@@ -182,18 +184,27 @@ public class PlayerSkill : MonoBehaviour
         RequestPressingPiriState?.Invoke(false); // 피리 연주 종료
     }
 
-    public void OnUpdateStageData()  // 오염도 변경에 따른 데이터 업데이트 (ex. 연결된 음원들 딕셔너리에 초기화)
+    public void OnUpdateStageData()
     {
-        wolfPolution = GameManager.Instance.currentStageData.pollution_Coefficient;
+        PollutionStage stageData = GameManager.Instance.currentStageData;
 
-        AngerAttackArea.transform.localScale = Vector3.one * GameManager.Instance.currentStageData.anger_range;
-        PeaceAttackArea.transform.localScale = Vector3.one * GameManager.Instance.currentStageData.peace_range;
-        playerDamage = GameManager.Instance.currentStageData.anger_damage;
+        // 기존 설정
+        wolfPolution = stageData.pollution_Coefficient;
+        AngerAttackArea.transform.localScale = Vector3.one * stageData.anger_range;
+        PeaceAttackArea.transform.localScale = Vector3.one * stageData.peace_range;
+        playerDamage = stageData.anger_damage;
 
+        // 밝기 조정
         float brightness = (255f - wolfPolution * 30f) / 255f;
-        brightness = Mathf.Clamp01(brightness); // 0~1 사이로 보정
-
+        brightness = Mathf.Clamp01(brightness);
         wolfSpriteRenderer.color = new Color(brightness, brightness, brightness, wolfSpriteRenderer.color.a);
+
+        // 늑대 관련 설정
+        playerCtrl.defaultWolfExitTime = stageData.wolfAppearTime;
+        wolfAttackCoolTime = stageData.wolfAttackCoolTime;
+
+        // 평화의 악장 키다운 시간 = 쿨타임 설정
+        SoftPiriKeyDownTime = stageData.peace_cooldown;
     }
 
     private void PlayPiriSound(string type)
@@ -377,7 +388,7 @@ public class PlayerSkill : MonoBehaviour
     private IEnumerator WolfAttackCool() // 늑대 공격 쿨타임 코루틴
     {
         RequestWolfStartAttack(2.5f); // PlayerCtrl에게 늑대 공격했음을 알림 (UI 동기화)
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(wolfAttackCoolTime);
         wolfAttackReady = true;
     }
     private IEnumerator WolfGuardCool() // 늑대 가드 쿨타임 코루틴, 성공 후 쿨타임동안 늑대 제어 불가

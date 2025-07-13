@@ -10,6 +10,7 @@ public class PlayerSkill_R : MonoBehaviour
 {
     private PlayerCtrl_R playerCtrl;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSourceEcho; // 에코가드 전용 오디오
 
     [SerializeField] private AudioClip[] angerMelodies; // 분노의 악장 음원들
     [SerializeField] private AudioClip[] peaceMelodies; // 평화의 악장 음원들
@@ -144,7 +145,7 @@ public class PlayerSkill_R : MonoBehaviour
                     audioSource.Play();
                 }
 
-                RequestSetMoveSpeed?.Invoke(2.5f); // 이동속도 1.5f로 변경
+                RequestSetMoveSpeed?.Invoke(2.5f); // 이동속도 2.5f로 변경
                 isSoftPiriStart = true;
             }
             if (duration > SoftPiriKeyDownTime)
@@ -215,8 +216,8 @@ public class PlayerSkill_R : MonoBehaviour
         {
             Debug.Log("에코가드 실행!");
 
-            audioSource.clip = echoGuardMelody;
-            audioSource.Play();
+            audioSourceEcho.clip = echoGuardMelody;
+            audioSourceEcho.Play();
 
             RequestEchoGuardingState(true);
             isEchoGuarding = true; // 에코가드 실행중
@@ -229,7 +230,11 @@ public class PlayerSkill_R : MonoBehaviour
             yield return new WaitForSeconds(0.5f); // 일정시간 에코가드 활성화 유지
 
             RequestEchoGuardingState(false);
-            RequestSetMoveSpeed?.Invoke(5f); // 이동속도 5로 변경
+            
+            if (!isSoftPiriStart)
+            {
+                RequestSetMoveSpeed?.Invoke(5f); // 이동속도 5로 변경
+            }
             EchoGuardAttackArea.SetActive(false);
             isEchoGuarding = false; // 에코가드 실행 종료
         }
@@ -237,8 +242,8 @@ public class PlayerSkill_R : MonoBehaviour
 
     private IEnumerator EchoGuardCoolTimer() // 에코가드 쿨타임 코루틴
     {
-        RequestEchoGuardStart(1f); // PlayerCtrl_R에게 에코가드 실행을 알림 (UI 동기화)
-        yield return new WaitForSeconds(1f);
+        RequestEchoGuardStart(2f); // PlayerCtrl_R에게 에코가드 실행을 알림 (UI 동기화)
+        yield return new WaitForSeconds(2f);
         echoGuardReady = true;
     }
 

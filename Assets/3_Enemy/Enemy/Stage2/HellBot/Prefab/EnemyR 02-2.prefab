@@ -133,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 1540428408283710264}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0.025000004, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0.085, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -901,6 +901,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0}
   patrolRange: 5
   patrolMinRange: 3
+  enemySounds:
+  - {fileID: 8300000, guid: 715c02970a96b05488566eda316a68a5, type: 3}
+  - {fileID: 8300000, guid: 186676ac9a51cea439f533cbe55ce33c, type: 3}
+  - {fileID: 8300000, guid: d9c0c9fad395119428e2d9b8509cb954, type: 3}
   damage: 0
   maxGroggyCnt: 3
   currentGroggyCnt: 0
