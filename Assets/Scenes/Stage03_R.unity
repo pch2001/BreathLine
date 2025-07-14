@@ -569,9 +569,17 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 429807111312686460, guid: d94905474697d5040b6309574475f571, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3226078225181656306, guid: d94905474697d5040b6309574475f571, type: 3}
       propertyPath: m_SurfaceArc
       value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226078225181656306, guid: d94905474697d5040b6309574475f571, type: 3}
+      propertyPath: m_UseColliderMask
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3226078225181656306, guid: d94905474697d5040b6309574475f571, type: 3}
       propertyPath: m_RotationalOffset
@@ -630,6 +638,10 @@ PrefabInstance:
       value: 165
       objectReference: {fileID: 0}
     - target: {fileID: 5481613062617225215, guid: d94905474697d5040b6309574475f571, type: 3}
+      propertyPath: m_UseColliderMask
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481613062617225215, guid: d94905474697d5040b6309574475f571, type: 3}
       propertyPath: m_RotationalOffset
       value: -90
       objectReference: {fileID: 0}
@@ -646,12 +658,20 @@ PrefabInstance:
       value: 165
       objectReference: {fileID: 0}
     - target: {fileID: 8073689725782934660, guid: d94905474697d5040b6309574475f571, type: 3}
+      propertyPath: m_UseColliderMask
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073689725782934660, guid: d94905474697d5040b6309574475f571, type: 3}
       propertyPath: m_RotationalOffset
       value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 8275834933395624228, guid: d94905474697d5040b6309574475f571, type: 3}
       propertyPath: m_SurfaceArc
       value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275834933395624228, guid: d94905474697d5040b6309574475f571, type: 3}
+      propertyPath: m_UseColliderMask
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8275834933395624228, guid: d94905474697d5040b6309574475f571, type: 3}
       propertyPath: m_RotationalOffset
@@ -2092,7 +2112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5624541408354297263, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -312.62
+      value: -145.5
       objectReference: {fileID: 0}
     - target: {fileID: 5624541408354297263, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: m_LocalPosition.y

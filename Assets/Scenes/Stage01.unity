@@ -3975,17 +3975,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5273073504772950240, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6074420913145442112, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
       propertyPath: m_Name
       value: wolf
       objectReference: {fileID: 0}
     - target: {fileID: 8995993663460684667, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50
+      value: -43.48
       objectReference: {fileID: 0}
     - target: {fileID: 8995993663460684667, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.01
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 8995993663460684667, guid: f9a64416b0604c642bd80de14e9b5721, type: 3}
       propertyPath: m_LocalPosition.z
