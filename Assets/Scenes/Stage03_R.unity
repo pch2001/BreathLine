@@ -571,7 +571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429807111312686460, guid: d94905474697d5040b6309574475f571, type: 3}
       propertyPath: m_UsedByEffector
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3226078225181656306, guid: d94905474697d5040b6309574475f571, type: 3}
       propertyPath: m_SurfaceArc
