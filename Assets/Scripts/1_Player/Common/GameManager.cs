@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     public List<PollutionStage> pollutionStages; // 오염도 단계별 데이터 저장 리스트
     public PollutionStage currentStageData; // 현재 오염도 단계 데이터
     public int currentStageIndex; // 현재 오염도 단계
-    [SerializeField] RectTransform pollutionGauge; // 오염도 UI 
+    [SerializeField] Image pollutionGauge; // 오염도 UI 
 
     public bool isReturned = false; // 회귀 상태 여부
 
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        pollutionGauge = gaugeObj.GetComponent<RectTransform>();
+        pollutionGauge = gaugeObj.GetComponent<Image>();
         AddPolution(0);
     }
 
@@ -100,8 +101,10 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("오염도가 증가합니다!");
         Pollution += data;
+        /*
         pollutionGauge.sizeDelta
-            = new Vector2(pollutionGauge.sizeDelta.x, Mathf.Clamp01(pollution / 100f) * (isReturned ? 1000f : 700f));
+            = new Vector2(pollutionGauge.sizeDelta.x, Mathf.Clamp01(pollution / 100f) * (isReturned ? 1000f : 700f));*/
+        pollutionGauge.fillAmount = Mathf.Clamp01(pollution / 100f);
         Debug.Log(currentStageIndex);
     }
 }
