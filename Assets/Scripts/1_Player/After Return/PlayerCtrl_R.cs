@@ -22,8 +22,12 @@ public class PlayerCtrl_R : PlayerCtrlBase
     private RuntimeAnimatorController defaultController; // 기본 애니메이터
     [SerializeField] private Transform groundCheck; // 캐릭터 발바닥 위치
     [SerializeField] private LayerMask groundLayer; // 바닥으로 간주할 Layer
-    public Image echoGuardCool; // 에코가드 쿨타임 UI 
-    public Image purifyStepCool; // 정화의 걸음 쿨타임 UI 
+    public Image echoGuardCoolBG; // 에코가드 쿨타임 UI 
+    public Image echoGuard;
+    public Image echoGuardCool;
+    public Image purifyStepCoolBG; // 정화의 걸음 쿨타임 UI 
+    public Image purifyStep;
+    public Image purifyStepCool;
     public GameObject SealUI; // 소녀 스킬 봉인 표시 UI
     public Vector3 savePoint; // 현재 스테이지에서 사용할 임시 세이브 포인트
 
@@ -325,15 +329,18 @@ public class PlayerCtrl_R : PlayerCtrlBase
     private IEnumerator EchoGuardCooldownRoutine(float duration) // duration은 에코가드 쿨타임
     {
         float elapsed = 0f;
-
+        echoGuard.gameObject.SetActive(false);
+        echoGuardCool.gameObject.SetActive(true);
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             float fill = Mathf.Clamp01(elapsed / duration);
-            echoGuardCool.fillAmount = fill;
+            echoGuardCoolBG.fillAmount = fill;
             yield return null;
         }
-        echoGuardCool.fillAmount = 1f;
+        echoGuardCoolBG.fillAmount = 1f;
+        echoGuard.gameObject.SetActive(true);
+        echoGuardCool.gameObject.SetActive(false);
     }
 
     private void SetisPurifing(bool state) // 정화의 걸음 실행 여부 설정
@@ -384,15 +391,18 @@ public class PlayerCtrl_R : PlayerCtrlBase
     private IEnumerator PurifyStepCooldownRoutine(float duration) // duration은 정화의 걸음 쿨타임
     {
         float elapsed = 0f;
-
+        purifyStepCool.gameObject.SetActive(true);
+        purifyStep.gameObject.SetActive(false);
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             float fill = Mathf.Clamp01(elapsed / duration);
-            purifyStepCool.fillAmount = fill;
+            purifyStepCoolBG.fillAmount = fill;
             yield return null;
         }
-        purifyStepCool.fillAmount = 1f;
+        purifyStepCoolBG.fillAmount = 1f;
+        purifyStepCool.gameObject.SetActive(false);
+        purifyStep.gameObject.SetActive(true);
     }
 
 

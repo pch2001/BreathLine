@@ -1256,11 +1256,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1577242644}
     - target: {fileID: 8326427741551617631, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
+      propertyPath: wolfAttack
+      value: 
+      objectReference: {fileID: 1550017826}
+    - target: {fileID: 8326427741551617631, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: wolfAnimator
       value: 
       objectReference: {fileID: 919733143}
     - target: {fileID: 8326427741551617631, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: wolfAttackCool
+      value: 
+      objectReference: {fileID: 1577242648}
+    - target: {fileID: 8326427741551617631, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
+      propertyPath: wolfAttackCoolBG
       value: 
       objectReference: {fileID: 1577242645}
     - target: {fileID: 8326427741551617631, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
@@ -2401,6 +2409,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1550017826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7159416803121221073, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+  m_PrefabInstance: {fileID: 1577242643}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1577242643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2542,6 +2561,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 73103957443587871, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
   m_PrefabInstance: {fileID: 1577242643}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1577242648 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4864431841007715853, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}
+  m_PrefabInstance: {fileID: 1577242643}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1644894226 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7251679516984808276, guid: de04a12cf296db5498f029b1e1df7f07, type: 3}

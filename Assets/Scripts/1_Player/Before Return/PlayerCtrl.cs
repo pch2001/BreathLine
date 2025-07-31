@@ -22,7 +22,9 @@ public class PlayerCtrl : PlayerCtrlBase
     [SerializeField] private Transform groundCheck; // 캐릭터 발바닥 위치
     [SerializeField] private LayerMask groundLayer; // 바닥으로 간주할 Layer
     public GameObject SealUI; // 소녀 스킬 봉인 표시 UI
-    public Image wolfAttackCool; // 늑대 공격 쿨타임 UI 
+    public Image wolfAttackCoolBG; // 늑대 공격 쿨타임 UI(배경)
+    public Image wolfAttack; // 늑대 공격 UI
+    public Image wolfAttackCool; // 늑대 공격 쿨타임 UI(아이콘)
     public Vector3 savePoint; // 현재 스테이지에서 사용할 임시 세이브 포인트
 
     // 소녀 관련 변수
@@ -345,15 +347,18 @@ public class PlayerCtrl : PlayerCtrlBase
     private IEnumerator WolfAttackCooldownRoutine(float duration) // duration은 늑대 공격 쿨타임
     {
         float elapsed = 0f;
-
+        wolfAttackCool.gameObject.SetActive(true);
+        wolfAttack.gameObject.SetActive(false);
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             float fill = Mathf.Clamp01(elapsed / duration);
-            wolfAttackCool.fillAmount = fill;
+            wolfAttackCoolBG.fillAmount = fill;
             yield return null;
         }
-        wolfAttackCool.fillAmount = 1f;
+        wolfAttackCoolBG.fillAmount = 1f;
+        wolfAttackCool.gameObject.SetActive(false);
+        wolfAttack.gameObject.SetActive(true);
     }
 
     // 충돌 관련 기능 구현
