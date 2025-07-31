@@ -334,7 +334,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
         else
         {
-            enemyHpGauge.localScale = new Vector2(hpRatio, enemyHpGauge.localScale.y);
+            enemyHpGauge.localScale = new Vector2(enemyHpGauge.localScale.x, hpRatio);
         }
 
     }

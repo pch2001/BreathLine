@@ -12,12 +12,14 @@ public class StageSelecter : MonoBehaviour
     public void StartNew()
     {
         //SceneManager.LoadScene("Stage01");
-        LoadingScene.LoadScene(1);
+        StartCoroutine(PlayClickThenLoad(1));
+        //LoadingScene.LoadScene(1);
     }
     public void ChangeScene(int SceneName)
     {
         //SceneManager.LoadScene(SceneName);
-        LoadingScene.LoadScene(SceneName);
+        StartCoroutine(PlayClickThenLoad(SceneName));
+        //LoadingScene.LoadScene(SceneName);
     }
 
     public void LoadScene()
@@ -36,7 +38,12 @@ public class StageSelecter : MonoBehaviour
         StageSelect.SetActive(false);
         ExitSelect.SetActive(true);
     }
-
+    private IEnumerator PlayClickThenLoad(int sceneIndex)
+    {
+        UISoundManager.Instance.PlayClickSound();
+        yield return new WaitForSeconds(UISoundManager.Instance.clickClip.length);
+        LoadingScene.LoadScene(sceneIndex);
+    }
     public void ExitGame()
     {
         Application.Quit();
