@@ -302,9 +302,10 @@ public class Enemy_Stage01_1 : EnemyBase // Ghowl 스크립트
         moveSpeed = 0f;
         animator.SetTrigger("Die");
         dieEffect.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
-
+        yield return new WaitForSeconds(0.5f);
         dieEffect.SetActive(false);
+
+        yield return new WaitForSeconds(1f);
         gameObject.SetActive(false); // 적 비활성화
     }
 

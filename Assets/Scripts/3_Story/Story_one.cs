@@ -23,8 +23,10 @@ public class Story_one : MonoBehaviour
     private bool isTyping = false;
 
 
-    public GameObject telepoint;
     public GameObject player;
+    public GameObject telepoint;
+    public Image movePosImage;
+    public float fadeDuration;
 
     public GameObject UI1;
     public GameObject UI2;
@@ -251,7 +253,6 @@ public class Story_one : MonoBehaviour
 
                 sideImage.SetActive(true);
 
-
             }
 
 
@@ -313,13 +314,14 @@ public class Story_one : MonoBehaviour
         UI2.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         
-        playerCtrl.OnEnable();
-
-        yield return new WaitForSeconds(0.5f);
-        
-        if (index ==0)
-            TeleportPlayer();
-        Destroy(this.gameObject);
+        if (index == 0)
+        {
+            StartCoroutine(PlayerMoveEffect()); // 자연스러운 위치 전환
+        }
+        else
+        {
+            playerCtrl.OnEnable();
+        }
     }
     private IEnumerator WaitForPiriPerformance()
     {
@@ -347,11 +349,37 @@ public class Story_one : MonoBehaviour
         }
     }
 
-    void TeleportPlayer()
+    private IEnumerator PlayerMoveEffect() // 플레이어 장면 전환 효과
     {
+        // 페이드 인 효과
+        yield return StartCoroutine(Fade(0f, 1f));
+
+        // 플레이어 이동
         if (telepoint != null && player != null)
-        {
             player.transform.position = telepoint.transform.position;
+        
+        // 페이드 아웃 효과
+        yield return StartCoroutine(Fade(1f, 0f));
+        
+        playerCtrl.OnEnable();
+        yield return new WaitForSeconds(0.5f);
+
+        Destroy(this.gameObject);
+    }
+
+    private IEnumerator Fade(float startAlpha, float targetAlpha) // 장면 전환 효과 코루틴
+    {
+        float elapsed = 0f;
+        Color color = movePosImage.color;
+
+        while(elapsed < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsed / fadeDuration);
+            movePosImage.color = new Color(color.r, color.g, color.b, alpha);
+            elapsed += Time.deltaTime;
+            yield return null;
         }
+
+        movePosImage.color = new Color(color.r, color.g, color.b, targetAlpha);
     }
 }

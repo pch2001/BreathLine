@@ -95,7 +95,8 @@ public class PlayerCtrl : PlayerCtrlBase
 
     public void OnEnable()
     {
-        isLocked = false; // 대화시 움직임 제한 
+        isLocked = false; // 대화시 움직임 제한 해제
+        playerSkill.SetWolfEyesVisible(true); // 늑대 눈 UI 활성화
 
         // inputAction 활성화
         playerinputAction.Enable();
@@ -122,9 +123,10 @@ public class PlayerCtrl : PlayerCtrlBase
 
     public void OnDisable()
     {
-        animator.SetBool("isMove", false); // 대화시 Idle 상태로 전환
+        isLocked = true;// 대화시 움직임 제한
+        playerSkill.SetWolfEyesVisible(false); // 늑대 눈 UI 비활성화
 
-        isLocked = true;// 대화시 움직임 제한 해제
+        animator.SetBool("isMove", false); // 대화시 Idle 상태로 전환
 
         // inputAction 비활성화
         playerinputAction.Disable();

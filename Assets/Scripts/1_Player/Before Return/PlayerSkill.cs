@@ -419,4 +419,12 @@ public class PlayerSkill : MonoBehaviour
 
         wolfSpriteRenderer.color = new Color(wolfSpriteRenderer.color.r, wolfSpriteRenderer.color.g, wolfSpriteRenderer.color.b, targetAlpha);
     }
+
+    public void SetWolfEyesVisible(bool visible) // 늑대 눈 UI 표시 변경 함수
+    {
+        if(wolfEyes != null)
+        {
+            wolfEyes.enabled = visible;
+        }
+    }
 }

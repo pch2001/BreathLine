@@ -1468,8 +1468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dfb5f327f80c54ebf2229122692ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverClip: {fileID: 0}
-  clickClip: {fileID: 0}
+  hoverClip: {fileID: 8300000, guid: 416166b09bd5c4a438ad9c7c80c9e904, type: 3}
+  clickClip: {fileID: 8300000, guid: 098052075edaa2143893e0debe527b03, type: 3}
 --- !u!4 &1132612107
 Transform:
   m_ObjectHideFlags: 0
