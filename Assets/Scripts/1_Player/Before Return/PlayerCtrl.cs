@@ -26,6 +26,7 @@ public class PlayerCtrl : PlayerCtrlBase
     public Image wolfAttack; // 늑대 공격 UI
     public Image wolfAttackCool; // 늑대 공격 쿨타임 UI(아이콘)
     public Vector3 savePoint; // 현재 스테이지에서 사용할 임시 세이브 포인트
+    public GameObject AttackEffect; // 공격 받은 이펙트 오브젝트
 
     // 소녀 관련 변수
 
@@ -390,10 +391,32 @@ public class PlayerCtrl : PlayerCtrlBase
             SealUI.SetActive(false); // 스킬 봉인 UI 제거
         }
     }
+    public IEnumerator Shake(float duration, float magnitude)
+    {
+        Vector3 originalPos = transform.localPosition;
 
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float x = UnityEngine.Random.Range(-1f, 1f) * magnitude;
+            float y = UnityEngine.Random.Range(-1f, 1f) * magnitude;
+
+            transform.localPosition = originalPos + new Vector3(x, y, 0);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localPosition = originalPos;
+    }
     private IEnumerator OnDamagedStart(float enemyDamage, float enemyPosX, bool isWolfGuarding) // 소녀 피격 시작 함수
     {
         Debug.Log("소녀 피격! 소녀의 오염도가 증가합니다!");
+        
+        Debug.Log("화면 지진========================");
+        StartCoroutine(Shake(0.2f, 0.1f)); 
+        Instantiate(AttackEffect, transform.position, Quaternion.identity); // 피격 이펙트 생성
 
         isDamaged = true; // 피격상태 시작
         isPushed = true; // 밀격상태 시작
