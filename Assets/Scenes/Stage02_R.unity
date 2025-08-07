@@ -16158,6 +16158,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: dc788c8496faedc4abf2d39b3fa703e5, type: 3}
     - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
+      propertyPath: echoGuard
+      value: 
+      objectReference: {fileID: 1839753481}
+    - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: MainButton
       value: 
       objectReference: {fileID: 1578785806}
@@ -16166,15 +16170,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 246315908}
     - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
+      propertyPath: purifyStep
+      value: 
+      objectReference: {fileID: 1839753479}
+    - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: saveButton
       value: 
       objectReference: {fileID: 246315908}
     - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: echoGuardCool
       value: 
-      objectReference: {fileID: 1839753473}
+      objectReference: {fileID: 1839753480}
     - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
       propertyPath: purifyStepCool
+      value: 
+      objectReference: {fileID: 1839753476}
+    - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
+      propertyPath: echoGuardCoolBG
+      value: 
+      objectReference: {fileID: 1839753473}
+    - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
+      propertyPath: purifyStepCoolBG
       value: 
       objectReference: {fileID: 1839753472}
     - target: {fileID: 2931223670280638562, guid: f587ba3f454e9084295d4e1950068906, type: 3}
@@ -42276,6 +42292,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4725565822088071269, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
   m_PrefabInstance: {fileID: 1839753471}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1839753476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1894627579538812097, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
+  m_PrefabInstance: {fileID: 1839753471}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!328 &1839753477 stripped
 VideoPlayer:
   m_CorrespondingSourceObject: {fileID: 7271864147325606303, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
@@ -42290,6 +42317,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1839753479 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3726432531263511722, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
+  m_PrefabInstance: {fileID: 1839753471}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1839753480 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3334817081949499977, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
+  m_PrefabInstance: {fileID: 1839753471}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1839753481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2314476346301152521, guid: 2295abacdf4eecf4cb2f12d9574febab, type: 3}
+  m_PrefabInstance: {fileID: 1839753471}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1847980980
