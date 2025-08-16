@@ -28,6 +28,13 @@ public class PlayerCtrl_R : PlayerCtrlBase
     public Image purifyStepCoolBG; // 정화의 걸음 쿨타임 UI 
     public Image purifyStep;
     public Image purifyStepCool;
+    public Image gameoverFade;
+    public Image gameoverBase;
+    public Text gameoverText;
+    public Text retryText;
+    public Text homeText;
+    public Text encourageText;
+
     public GameObject SealUI; // 소녀 스킬 봉인 표시 UI
     public Vector3 savePoint; // 현재 스테이지에서 사용할 임시 세이브 포인트
 
@@ -525,6 +532,11 @@ public class PlayerCtrl_R : PlayerCtrlBase
     {
         Debug.LogWarning("소녀가 쓰러집니다.. GameOver");
         Debug.LogWarning("GameOver표시 + 게임오버 UI 표시 추가");
+        gameoverFade.gameObject.SetActive(true);
+
+        StartCoroutine(FadeImage(gameoverFade, 0.8f, 1f, true));
+        
+
 
         Time.timeScale = 0.5f; // 시간 느려지는 연출
         yield return new WaitForSeconds(1f);
@@ -799,5 +811,89 @@ public class PlayerCtrl_R : PlayerCtrlBase
                 enemyBase.isPatrol = true; // 적 플레이어 추격 중단
             }
         }
+    }
+
+    public IEnumerator FadeImage(Image image, float targetAlpha, float duration, bool isStart = false)
+    {
+        if (image == null) yield break;
+
+        Color color = image.color;
+        float startAlpha = color.a;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = Mathf.Clamp01(time / duration);
+            color.a = Mathf.Lerp(startAlpha, targetAlpha, t);
+            image.color = color;
+            yield return null;
+        }
+        if(isStart == true )
+        {
+            StartCoroutine(FadeImage(gameoverBase, 1f, 2f));
+            StartCoroutine(FadeText(gameoverText, 1f, 3f, true));
+            StartCoroutine(FadeText(retryText, 1f, 3f));
+            StartCoroutine(FadeText(homeText, 1f, 3f));
+            StartCoroutine(FadeText(encourageText, 1f, 3f));
+        }
+        // 보정: 정확히 목표값으로 맞추기
+        color.a = targetAlpha;
+        image.color = color;
+    }
+
+    public IEnumerator FadeText(Text text, float targetAlpha, float duration, bool isStart = false)
+    {
+        if (text == null) yield break;
+
+        Color color = text.color;
+        float startAlpha = color.a;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = Mathf.Clamp01(time / duration);
+            color.a = Mathf.Lerp(startAlpha, targetAlpha, t);
+            text.color = color;
+            yield return null;
+        }
+
+        if (isStart == true)
+        {
+            StartCoroutine(FadeText(retryText, 1f, 3f));
+            StartCoroutine(FadeText(homeText, 1f, 3f));
+            StartCoroutine(FadeText(encourageText, 1f, 3f));
+        }
+
+        // 보정
+        color.a = targetAlpha;
+        text.color = color;
+    }
+
+    public void homeButton()
+    {
+        //StartCoroutine(PlayClickThenLoad(0));
+        LoadingScene.LoadScene(0);
+    }
+
+    public void retryButton()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        //StartCoroutine(PlayClickThenLoad(currentScene));
+        SceneManager.LoadScene(currentScene);
+    }
+    private IEnumerator PlayClickThenLoad(int sceneIndex)
+    {
+        UISoundManager.Instance.PlayClickSound();
+        yield return new WaitForSeconds(UISoundManager.Instance.clickClip.length);
+        LoadingScene.LoadScene(sceneIndex);
+    }
+
+    private IEnumerator PlayClickThenLoad(string sceneIndex)
+    {
+        UISoundManager.Instance.PlayClickSound();
+        yield return new WaitForSeconds(UISoundManager.Instance.clickClip.length);
+        SceneManager.LoadScene(sceneIndex);
     }
 }
