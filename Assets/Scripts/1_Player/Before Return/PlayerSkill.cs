@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,12 +10,14 @@ using UnityEngine.UIElements;
 public class PlayerSkill : MonoBehaviour
 {
     private PlayerCtrl playerCtrl;
-    [SerializeField] private AudioSource audioSource; // 소녀 소리재생
-    [SerializeField] private AudioSource audioSource2; // 늑대 소리 재생
+    [SerializeField] private AudioSource girlAudioSource; // 소녀 소리재생
+    [SerializeField] private AudioSource wolfAudioSource; // 늑대 소리 재생
 
-    [SerializeField] private AudioClip[] angerMelodies; // 분노의 악장 음원들
-    [SerializeField] private AudioClip[] peaceMelodies; // 평화의 악장 음원들
-    [SerializeField] private AudioClip peaceCancelMelody; // 평화의 악장 실패 음원
+    [SerializeField] private AudioClip[] angerNotes; // 분노의 음표 음원
+    [SerializeField] private AudioClip[] peaceNotes; // 평화의 음표 음원
+    [SerializeField] private AudioClip[] angerMelody; // 분노의 악장 음원
+    [SerializeField] private AudioClip[] peaceMelody; // 평화의 악장 음원
+    [SerializeField] private AudioClip cancelMelody; // 연주 실패 음원
     [SerializeField] private AudioClip wolfAttackAudio; // 늑대 공격 음원
 
     [SerializeField] private GameObject AngerAttackArea; // 소녀 분노의 악장 공격 범위
@@ -25,37 +28,62 @@ public class PlayerSkill : MonoBehaviour
     [SerializeField] private GameObject wolfAttackArea; // 늑대 우클릭 공격 범위
     [SerializeField] private GameObject wolfPushArea; // 늑대 밀격 공격 범위
 
+    // * 소녀 관련 변수
+
+    [SerializeField] private Transform beatBox; // 콤보 표시 박스
+    [SerializeField] private GameObject angerNote; // 분노의 악장 음표 프리팹
+    [SerializeField] private GameObject peaceNote; // 평화의 악장 음표 프리팹
+    [SerializeField] private List<MelodyScore> ownedScores; // 현재 보유한 악보 리스트
+    private List<GameObject> spawnedNotes = new List<GameObject>(); // 생성된 음표 저장 리스트
+
+    // 플레이어 능력치 변수
     public float playerDamage; // 플레이어의 공격력
+    private float defaultSpeed = 5f; // 소녀 기본 이동 속도
+    private float playingSpeed = 2.5f; // 소녀 연주시 이동 속도
+
+    // 피리 시스템 변수
     private float piriStartTime; // 피리연주 시작 시간
-    private bool sharpPiriStart = false; // 분노의 악장 연주가 시작되었는지
-    private bool isSoftPiriStart = false; // 평화의 악장 연주가 시작되었는지
-    private bool isSoftPiriPlayed = false; // 평화의 악장 연주가 완료되었는지
-    public float SoftPiriKeyDownTime; // 평화의 악장 키다운 시간
+    private bool isPlaying = false; // 연주 시작했는지 여부
+    private bool isAngerMelody; // 현재 분노의 악장 연주중인지(false는 평화의 악장)
+    private bool hasPlayedThisBeat = false; // 현재 박자에 연주가 완료되었는지 여부
+    private bool isFinalMelody = false; // 마무리 연주 중인지 여부
 
-    // 늑대 관련 변수
+    private int totalBeats = 5; // 전체 박자 개수
+    public int currentBeat = 0; // 현재 박자 상태
+    private float beatInterval; // 현재 박자 사이 간격
+    private float angerBeatInterval = 0.3f; // 분노의 악장 박자 사이 간격
+    private float peaceBeatInterval = 0.7f; // 평화의 악장 박자 사이 간격
+    private float halfRange = 3f; // 콤보 박스 이동 거리(-3 ~ 3)
+    private int playCnt = 3; // 한 사이클당 연주가능 횟수
 
-    private SpriteRenderer wolfSpriteRenderer; // 늑대 스프라이트 반전용
+    public bool[] inputNotes; // 입력된 연주 상태 여부 배열
+
+    // * 늑대 관련 변수
 
     [SerializeField] private SpriteRenderer wolfEyes; // 늑대 눈 스프라이트
+    private SpriteRenderer wolfSpriteRenderer; // 늑대 스프라이트 반전용
     public Animator wolfEyesAnim; // 늑대 눈 애니메이터
     public GameObject guardImg; // 늑대 가드 이미지
     public Coroutine hideCoroutine; // 늑대 Hide 코루틴
-    private bool wolfMoveReady = true; // 늑대 이동 쿨타임
-    private float wolfFadeoutTime = 0.3f; // 좌클릭시 늑대가 사라지는 시간
-    private float wolfFadeinTime = 1f; // 좌클릭시 늑대가 나타나는 시간
+
+    private bool wolfMoveReady = true; // 늑대 이동 가능 여부
     private bool wolfAttackReady = true; // 늑대 공격 준비 여부  
     private bool wolfIsDamaged = false; // 늑대 부상 상태 확인
+
+    private float wolfFadeinTime = 1f; // 좌클릭시 늑대가 나타나는 시간
+    private float wolfFadeoutTime = 0.3f; // 좌클릭시 늑대가 사라지는 시간
     private float wolfPolution = 1f; // 늑대 오염도 계수
     private float wolfAttackCoolTime = 5f; // 늑대 공격 쿨타임
 
-    // 이벤트 함수
+    // * 이벤트 함수
 
-    public event Action<float, float> RequestSetMoveSpeedAndTime; // playerCtrl의 일정 시간동안 moveSpeed 변수 변경 이벤트
+    // 소녀 관련 이벤트
     public event Action<float> RequestSetMoveSpeed; // playerCtrl의 moveSpeed 변수 변경 이벤트
-    public event Action<string> RequestAnimTrigger; // playerCtrl의 애니메이션 Trigger 변경 이벤트
     public event Action<bool> RequestPressingPiriState; // playerCtrl의 isPressingPiri 변경이벤트 
     public event Action<bool> RequestPeaceMelodyActived; // playerCtrl의 isPeaceMelody 변경이벤트 
+    public event Action<bool> RequestReadyPiri; // playerCtrl의 isReadyPiri 변경이벤트 
 
+    // 늑대 관련 이벤트
     public event Action<string> RequestWolfAnimTrigger; // 늑대의 애니메이션 Trigger 변경 이벤트
     public event Action<WolfState> RequestWolfState; // 늑대 상태 변경 이벤트
     public event Action<float> RequestWolfStartAttack; // 늑대 공격 알림 이벤트
@@ -65,6 +93,8 @@ public class PlayerSkill : MonoBehaviour
         playerCtrl = GetComponent<PlayerCtrl>();
         wolfSpriteRenderer = playerCtrl.wolf.GetComponent<SpriteRenderer>();
         wolfEyesAnim = wolfEyes.GetComponent<Animator>();
+
+        inputNotes = new bool[totalBeats];
     }
 
     private void Start()
@@ -79,120 +109,405 @@ public class PlayerSkill : MonoBehaviour
             GameManager.Instance.RequestCurrentStage -= OnUpdateStageData;
     }
 
-    // 소녀 기능 구현 
+    // * 소녀 기능 구현 
 
-    public void StartPiri() // 연주버튼 입력시 모션 실행 및 변수값 저장
+    public void StartPiri() // 피리 시작 함수 (W / On)
     {
         piriStartTime = Time.time;
-        isSoftPiriStart = false;
-        isSoftPiriPlayed = false;
-        RequestSetMoveSpeed?.Invoke(2.5f); // 이동 중지
+        RequestSetMoveSpeed(playingSpeed);
     }
 
-    public void ReleasePiri() // 연주버튼 입력 시간에 따른 연주 분기 조건 (분노의 악장 + 평화의 악장 실패시)
+    public void ReleasePiri() // 피리 종료 함수 (W / Off)
     {
+        if (hasPlayedThisBeat || playCnt <= 0) return;
+
         float duration = Time.time - piriStartTime; // 연주버튼 누른 시간
 
-        if (duration <= 0.3f)
+        // 분노의 악장 연주 (0.25초 미만)
+        if (duration < 0.3f)
         {
-            StartCoroutine(PlayShortPiri());
-        }
-        else if (duration > 0.4f && duration < SoftPiriKeyDownTime)
-        {
-            PlaySoftPiriCanceled();
-        }
+            if (!isPlaying)
+            {
+                isAngerMelody = true;
+                beatInterval = angerBeatInterval; // 분노의 악장 박자 간격으로 변경
+                StartComboAt(Time.time); // 연주 시작시 콤보 효과 시작
+            }
+            if (!isAngerMelody)
+            {
+                StartCoroutine(TempFailMelody(2f)); // 다른 연주시 피리 봉인(2초)
+                return;
+            }
 
-        RequestSetMoveSpeedAndTime?.Invoke(4f, 0.5f); // 2.5f로 0.5초동안 속도 감소
+            hasPlayedThisBeat = true;
+            inputNotes[currentBeat] = true;
+            StartCoroutine(PlayAngerNote());
+        }
+        // 평화의 악장 연주 (0.3 ~ 0.6초 사이)
+        else if (duration >= 0.3f && duration <= 0.6f)
+        {
+            if (!isPlaying)
+            {
+                isAngerMelody = false;
+                beatInterval = peaceBeatInterval; // 평화의 악장 박자 간격으로 변경
+                StartComboAt(Time.time); // 연주 시작시 콤보 효과 시작
+            }
+            if (isAngerMelody)
+            {
+                StartCoroutine(TempFailMelody(2f)); // 다른 연주시 피리 봉인(2초)
+                return;
+            }
+
+            hasPlayedThisBeat = true;
+            inputNotes[currentBeat] = true;
+            StartCoroutine(PlayPeaceNote());
+        }
+        // 연주 실패
+        else
+        {
+            Debug.LogWarning($"입력시간: {duration}");
+            StartCoroutine(TempFailMelody(2f)); // 2초간 피리 사용 봉인
+        }
     }
 
-    private IEnumerator PlayShortPiri() // 분노의 악장 구현
+    private void StartComboAt(float startTime) // 콤보 시작 함수
     {
-        Debug.Log("피리로 [분노의 악장]을 연주합니다!");
-        PlayPiriSound("Anger");
-        sharpPiriStart = true;
+        currentBeat = 0;
+        isPlaying = true;
+        hasPlayedThisBeat = false;
 
-        // 플레이어가 바라보는 방향으로 공격
-        float direction = playerCtrl.spriteRenderer.flipX ? -1f : 1f;
-        Vector3 attackPosition = AngerAttackArea.transform.localPosition;
-        attackPosition.x = Mathf.Abs(attackPosition.x) * direction;
-        AngerAttackArea.transform.localPosition = attackPosition;
-
-        AngerAttackEffect.SetActive(true);
-        AngerAttackArea.SetActive(true);
-        yield return new WaitForSeconds(1f);
-
-        sharpPiriStart = false;
-        AngerAttackEffect.SetActive(false);
-        AngerAttackArea.SetActive(false);
-        RequestPressingPiriState(false); // 피리연주 종료
+        StartCoroutine(BeatRoutine(startTime));
+        StartCoroutine(BeatBoxRoutine(startTime));
     }
 
-    public void PlaySoftPiriCanceled() // 평화의 악장 취소 시
+    private IEnumerator BeatRoutine(float startTime) // 공격시 박자 계산 코루틴
+    {
+        // 다음 박자 예정 시각
+        hasPlayedThisBeat = false;
+        float nextBeatAt = startTime + beatInterval;
+
+        while (isPlaying)
+        {
+            // 다음 박자까지 대기(프레임마다 검사)
+            while (Time.time < nextBeatAt)
+                yield return null;
+
+            currentBeat++;
+
+            if (currentBeat >= totalBeats) // 0~5 완료
+            {
+                StopBeatRoutine();
+                yield break;
+            }
+
+            // 다음 박자 시간 갱신
+            hasPlayedThisBeat = false;
+            nextBeatAt += beatInterval;
+        }
+    }
+
+    private IEnumerator BeatBoxRoutine(float startTime) // 콤보박스 표시 코루틴
+    {
+        // 콤보 박스 등장
+        beatBox.GetComponent<SpriteRenderer>().DOFade(1f, 0.3f);
+
+        // 시작 위치 보정
+        float duration = beatInterval * totalBeats;  // 총 5박 → 분노(0.3초 간격): 1.5초 / 평화(0.7초 간격): 3.5초
+        float endAt = startTime + duration;
+        beatBox.localPosition = new Vector3(-halfRange, 2.5f, 0f);
+
+        // 콤보 박스 이동
+        while (Time.time < endAt)
+        {
+            float t = Mathf.InverseLerp(startTime, endAt, Time.time);
+            float x = Mathf.Lerp(-halfRange, halfRange, t);
+            beatBox.localPosition = new Vector3(x, 2.5f, 0f);
+            yield return null;
+        }
+
+        // 마지막 위치 보정
+        beatBox.localPosition = new Vector3(halfRange, 2.5f, 0f);
+    }
+
+    private void StopBeatRoutine() // 공격 콤보 종료 함수
+    {
+        if (!isPlaying) return; // 콤보 진행중일 때만 확인
+
+        Debug.LogWarning("콤보 종료!");
+
+        currentBeat = 0;
+        playCnt = 3;
+        isPlaying = false;
+        hasPlayedThisBeat = false;
+
+        StopBeatBoxRoutine(); // 콤보 박스 종료
+        ResetInputNote(); // 입력값 초기화
+
+        if (!isFinalMelody) // 마무리 연주중이 아닐 경우, 피리연주 종료
+        {
+            RequestPressingPiriState(false);
+            RequestSetMoveSpeed(defaultSpeed);
+        }
+    }
+
+    private void StopBeatBoxRoutine() // 콤보 박스 정리 함수
+    {
+        // 콤보 상자 비활성화
+        if (beatBox != null)
+        {
+            StartCoroutine(beatBox.GetComponent<SpriteRenderer>().FadeTo(0f, 0.5f));
+        }
+
+        // 생성된 음표 일괄 삭제 및 리스트 정리
+        foreach (var note in spawnedNotes)
+        {
+            if (note != null)
+            {
+                NoteCtrl noteCtrl = note.GetComponent<NoteCtrl>();
+                if (noteCtrl != null)
+                {
+                    StartCoroutine(FadeAndDestroy(noteCtrl));
+                }
+                else
+                {
+                    Destroy(note);
+                }
+            }
+        }
+        spawnedNotes.Clear();
+    }
+
+    private IEnumerator FadeAndDestroy(NoteCtrl noteCtrl) // Fade out 효과 후, Destroy 실행 코루틴
+    {
+        yield return StartCoroutine(noteCtrl.FadeCoroutine(0f, 0.2f));
+        Destroy(noteCtrl.gameObject);
+    }
+
+    private void ResetInputNote() // 입력 노트 정리 함수
+    {
+        System.Array.Clear(inputNotes, 0, inputNotes.Length); // 전부 false로 초기화
+    }
+
+    private IEnumerator PlayAngerNote() // 분노의 음표 연주 함수
+    {
+        Debug.Log("[분노의 음표 연주]");
+
+        // 분노의 음표 소리 및 이펙트 표시
+        PlayPiriSound("Anger");
+        AngerAttackEffect.transform.localScale = Vector3.one * 1 / playCnt * 15f;
+        AngerAttackEffect.SetActive(true);
+        playCnt--;
+
+        // 분노의 음표 입력 표시
+        GameObject note = Instantiate(angerNote, beatBox.position, Quaternion.identity);
+        note.transform.SetParent(transform, true);
+        spawnedNotes.Add(note);
+
+        // 마지막 콤보시 입력과 악보 비교
+        if (playCnt <= 0)
+        {
+            CheckMelodyScore();
+            StopBeatBoxRoutine();
+        }
+        yield return new WaitForSeconds(0.2f);
+
+        AngerAttackEffect.SetActive(false); // 이펙트 Off
+    }
+
+    private IEnumerator PlayPeaceNote() // 평화의 음표 연주 함수
+    {
+        Debug.Log("평화의 음표를 연주 중입니다.");
+
+        // 평화의 음표 소리 및 이펙트 표시
+        PlayPiriSound("Peace");
+        PeaceAttackArea.transform.localScale = Vector3.one * 1 / playCnt * 15f;
+        PeaceAttackArea.SetActive(true);
+        playCnt--;
+
+        // 평화의 음표 입력 표시
+        GameObject note = Instantiate(peaceNote, beatBox.position, Quaternion.identity);
+        note.transform.SetParent(transform, true);
+        spawnedNotes.Add(note);
+
+        // 마지막 콤보시 입력과 악보 비교
+        if (playCnt <= 0)
+        {
+            CheckMelodyScore();
+            StopBeatBoxRoutine();
+        }
+        yield return new WaitForSeconds(0.2f);
+
+        PeaceAttackArea.SetActive(false); // 이펙트 Off
+    }
+
+    private IEnumerator TempFailMelody(float delay) // 피리 사용 봉인 코루틴 (연주 실패 / 적 봉인 공격)
+    {
+        Debug.Log("[연주 실패] : 피리사용 봉인");
+
+        // 피리 사용 봉인 및 소리 재생
+        RequestReadyPiri?.Invoke(false);
+        PlayPiriSound("PeaceFail");
+        yield return new WaitForSeconds(0.5f);
+
+        // 콤보 종료 및 피리 상태 해제(대기)
+        StopBeatRoutine();
+        RequestPressingPiriState(false); // 피리연주 종료
+        RequestSetMoveSpeed(defaultSpeed);
+        yield return new WaitForSeconds(delay);
+
+        // 피리 봉인 해제
+        Debug.Log("피리 봉인 해제");
+        RequestReadyPiri?.Invoke(true);
+    }
+
+    private void CheckMelodyScore() // 입력과 악보 비교 함수
+    {
+        // 보유한 악보와 입력 상태 비교
+        foreach (var score in ownedScores)
+        {
+            if (score == null) continue;
+            if (score.isAnger != isAngerMelody) continue;
+            if (score.contents == null || score.contents.Length != totalBeats) continue;
+
+            // 입력 상태 = 보유한 악보시, 마무리 연주 실행
+            if (ScoreContentsEquals(inputNotes, score.contents))
+            {
+                Debug.LogWarning($"연주 실행: {score.name}");
+
+                isFinalMelody = true; // 마무리 연주 On
+                RequestReadyPiri?.Invoke(false);
+
+                switch (score.scoreNum)
+                {
+                    case 0:
+                        StartCoroutine(PlayAngerMelody0()); break;
+                    case 1:
+                        StartCoroutine(PlayAngerMelody1()); break;
+                    case 2:
+                        StartCoroutine(PlayAngerMelody2()); break;
+                    case 3:
+                        StartCoroutine(PlayPeaceMelody0()); break;
+                    case 4:
+                        StartCoroutine(PlayPeaceMelody1()); break;
+                    case 5:
+                        StartCoroutine(PlayPeaceMelody2()); break;
+                }
+            }
+        }
+    }
+
+    private bool ScoreContentsEquals(bool[] a, bool[] b) // 동일 여부 확인 후 bool값 리턴
+    {
+        for (int i = 0; i < totalBeats; i++)
+            if (b[i] != a[i]) return false;
+
+        return true;
+    }
+
+
+    private IEnumerator PlayAngerMelody0() // 분노의 악장 0 연주 함수
+    {
+        // 마지막 음표 입력과 간격을 둠
+        yield return new WaitForSeconds(0.3f);
+
+        // 공격 활성화 및 소리 재생
+        AngerAttackArea.SetActive(true);
+        girlAudioSource.clip = angerMelody[0];
+        girlAudioSource.Play();
+        yield return new WaitForSeconds(0.8f);
+
+        // 연주 종료 및 피리 상태 해제 
+        AngerAttackArea.SetActive(false);
+        RequestSetMoveSpeed(defaultSpeed);
+        isFinalMelody = false; // 마무리 연주 off
+        RequestReadyPiri?.Invoke(true);
+        RequestPressingPiriState(false);
+    }
+
+    private IEnumerator PlayAngerMelody1() // 분노의 악장 1 연주 함수
+    {
+        // 마지막 음표 입력과 간격을 둠
+        yield return new WaitForSeconds(0.3f);
+
+        // 공격 활성화 및 소리 재생
+        AngerAttackArea.SetActive(true);
+        girlAudioSource.clip = angerMelody[1];
+        girlAudioSource.Play();
+        yield return new WaitForSeconds(0.8f);
+
+        // 연주 종료 및 피리 상태 해제 
+        AngerAttackArea.SetActive(false);
+        RequestSetMoveSpeed(defaultSpeed);
+        isFinalMelody = false; // 마무리 연주 off
+        RequestReadyPiri?.Invoke(true);
+        RequestPressingPiriState(false);
+    }
+
+    private IEnumerator PlayAngerMelody2() // 분노의 악장 2 연주 함수
+    {
+        // 마지막 음표 입력과 간격을 둠
+        yield return new WaitForSeconds(0.3f);
+
+        // 공격 활성화 및 소리 재생
+        AngerAttackArea.SetActive(true);
+        girlAudioSource.clip = angerMelody[2];
+        girlAudioSource.Play();
+        yield return new WaitForSeconds(0.8f);
+
+        // 연주 종료 및 피리 상태 해제 
+        AngerAttackArea.SetActive(false);
+        RequestSetMoveSpeed(defaultSpeed);
+        isFinalMelody = false; // 마무리 연주 off
+        RequestReadyPiri?.Invoke(true);
+        RequestPressingPiriState(false);
+    }
+
+    private IEnumerator PlayPeaceMelody0() // 평화의 악장 0 연주 함수
+    {
+        yield return null;
+
+        isFinalMelody = false; // 마무리 연주 off
+        RequestSetMoveSpeed(defaultSpeed);
+        RequestReadyPiri?.Invoke(true);
+        RequestPressingPiriState(false);
+    }
+    private IEnumerator PlayPeaceMelody1() // 평화의 악장 1 연주 함수
+    {
+        yield return null;
+
+        isFinalMelody = false; // 마무리 연주 off
+        RequestSetMoveSpeed(defaultSpeed);
+        RequestReadyPiri?.Invoke(true);
+        RequestPressingPiriState(false);
+    }
+    private IEnumerator PlayPeaceMelody2() // 평화의 악장 2 연주 함수
+    {
+        yield return null;
+
+        isFinalMelody = false; // 마무리 연주 off
+        RequestSetMoveSpeed(defaultSpeed);
+        RequestReadyPiri?.Invoke(true);
+        RequestPressingPiriState(false);
+    }
+
+    public void PlaySoftPiriCanceled() // 평화의 악장 취소 함수
     {
         Debug.Log("[평화의 악장] 연주 실패...");
         PeaceWaitingEffect.SetActive(false); // 평화의 악장 준비 이펙트 종료
-        audioSource.Stop();
+        girlAudioSource.Stop();
         PlayPiriSound("PeaceFail");
         RequestPeaceMelodyActived?.Invoke(false);
         RequestPressingPiriState(false); // 피리연주 종료
     }
 
-    public void CheckSoftPiri() // 평화의 악장 차징시간 도달 확인 
-    {
-        if (!isSoftPiriPlayed) // 피리 연주시 && 평화의 악장 연주 완료 여부
-        {
-            float duration = Time.time - piriStartTime;
-            if (duration > 0.8f && !isSoftPiriStart && !sharpPiriStart)
-            {
-                Debug.Log("[평화의 악장] 연주 시작");
-                RequestPeaceMelodyActived?.Invoke(true); // 평화의 악장 준비 시작 상태 알림
-                PeaceWaitingEffect.SetActive(true); // 평화의 악장 준비 이펙트 활성화
-
-                if (peaceMelodies != null && peaceMelodies.Length > 0) // 음원 재생
-                {
-                    int randomIndex = UnityEngine.Random.Range(0, peaceMelodies.Length);
-                    audioSource.clip = peaceMelodies[randomIndex];
-                    audioSource.time = 0f;
-                    audioSource.Play();
-                }
-
-                RequestSetMoveSpeed?.Invoke(2.5f); // 이동속도 1.5f로 변경
-                isSoftPiriStart = true;
-            }
-            if (duration > SoftPiriKeyDownTime)
-            {
-                StartCoroutine(PlaySoftPiri()); // 평화의 악장 연주 성공
-            }
-        }
-    }
-
-    private IEnumerator PlaySoftPiri()
-    {
-        Debug.Log("피리로 [평화의 악장]을 연주해냅니다.");
-
-        RequestPeaceMelodyActived?.Invoke(false);
-        PeaceWaitingEffect.SetActive(false); // 평화의 악장 준비 이펙트 종료
-
-        RequestAnimTrigger?.Invoke(PlayerAnimTrigger.Happy);
-        RequestSetMoveSpeedAndTime?.Invoke(4f, 0.5f); // 이동속도 2.5로 0.5초 동안 변경
-        isSoftPiriPlayed = true;
-        PeaceAttackArea.SetActive(true);
-
-        yield return new WaitForSeconds(0.4f);
-
-        PeaceAttackArea.SetActive(false);
-        RequestPressingPiriState?.Invoke(false); // 피리 연주 종료
-    }
-
-    public void OnUpdateStageData()
+    public void OnUpdateStageData() // 오염도에 따른 값 변경 함수
     {
         PollutionStage stageData = GameManager.Instance.currentStageData;
 
         // 기존 설정
         wolfPolution = stageData.pollution_Coefficient;
-        AngerAttackArea.transform.localScale = Vector3.one * stageData.anger_range;
-        PeaceAttackArea.transform.localScale = Vector3.one * stageData.peace_range;
-        playerDamage = stageData.anger_damage;
+        //AngerAttackArea.transform.localScale = Vector3.one * stageData.anger_range;
+        //PeaceAttackArea.transform.localScale = Vector3.one * stageData.peace_range;
+        //playerDamage = stageData.anger_damage;
 
         // 밝기 조정
         float brightness = (255f - wolfPolution * 30f) / 255f;
@@ -202,29 +517,24 @@ public class PlayerSkill : MonoBehaviour
         // 늑대 관련 설정
         playerCtrl.defaultWolfExitTime = stageData.wolfAppearTime;
         wolfAttackCoolTime = stageData.wolfAttackCoolTime;
-
-        // 평화의 악장 키다운 시간 = 쿨타임 설정
-        SoftPiriKeyDownTime = stageData.peace_cooldown;
     }
 
-    private void PlayPiriSound(string type)
+    private void PlayPiriSound(string type) // 사운드 변경 및 재생 함수
     {
-        if (type == "Anger" && angerMelodies != null && angerMelodies.Length > 0)
+        if (type == "Anger" && angerNotes != null && angerNotes.Length > 0)
         {
-            int randomIndex = UnityEngine.Random.Range(0, angerMelodies.Length);
-            audioSource.clip = angerMelodies[randomIndex];
-            audioSource.Play();
+            girlAudioSource.clip = angerNotes[currentBeat];
+            girlAudioSource.Play();
         }
-        else if (type == "Peace" && peaceMelodies != null && peaceMelodies.Length > 0)
+        else if (type == "Peace" && peaceNotes != null && peaceNotes.Length > 0)
         {
-            int randomIndex = UnityEngine.Random.Range(0, peaceMelodies.Length);
-            audioSource.clip = peaceMelodies[randomIndex];
-            audioSource.Play();
+            girlAudioSource.clip = peaceNotes[currentBeat];
+            girlAudioSource.Play();
         }
-        else if (type == "PeaceFail" && peaceCancelMelody != null)
+        else if (type == "PeaceFail" && cancelMelody != null)
         {
-            audioSource.clip = peaceCancelMelody;
-            audioSource.Play();
+            girlAudioSource.clip = cancelMelody;
+            girlAudioSource.Play();
         }
     }
 
@@ -311,8 +621,8 @@ public class PlayerSkill : MonoBehaviour
 
             if (wolfAttackAudio != null)
             {
-                audioSource2.clip = wolfAttackAudio;
-                audioSource2.Play();
+                wolfAudioSource.clip = wolfAttackAudio;
+                wolfAudioSource.Play();
             }
 
             RequestWolfAnimTrigger?.Invoke("Attack");
@@ -359,7 +669,7 @@ public class PlayerSkill : MonoBehaviour
 
             if (wolfAttackAudio != null)
             {
-                audioSource2.Stop();
+                wolfAudioSource.Stop();
             }
 
             hideCoroutine = StartCoroutine(WolfHide(true));
@@ -422,7 +732,7 @@ public class PlayerSkill : MonoBehaviour
 
     public void SetWolfEyesVisible(bool visible) // 늑대 눈 UI 표시 변경 함수
     {
-        if(wolfEyes != null)
+        if (wolfEyes != null)
         {
             wolfEyes.enabled = visible;
         }

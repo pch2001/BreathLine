@@ -240,19 +240,32 @@ public class Story_one : MonoBehaviour
                 wolfImage.SetActive(false);
             }
 
-            if (line.Contains("n:(희미한 바람 소리가 난다.)") || line.Contains("n:(힘없는 휘파람 소리가 들린다.)"))
+            if (line.Contains("n:(희미한 바람 소리가 난다.)"))
             {
                 Debug.Log("테스트시작");
                 sideImage.SetActive(false);
                 textbehind.SetActive(false);
                 playerCtrl.OnEnable();
 
-                yield return StartCoroutine(WaitForPiriPerformance()); // 피리 연주 끝날 때까지 대기
+                yield return StartCoroutine(WaitForPiriPerformance("PeaceMelody")); // 평화의 악장 연주 확인
                 playerCtrl.OnDisable();
                 textbehind.SetActive(true);
 
                 sideImage.SetActive(true);
 
+            }
+            else if(line.Contains("n:(힘없는 휘파람 소리가 들린다.)"))
+            {
+                Debug.Log("테스트시작");
+                sideImage.SetActive(false);
+                textbehind.SetActive(false);
+                playerCtrl.OnEnable();
+
+                yield return StartCoroutine(WaitForPiriPerformance("AngerMelody")); // 분노의 악장 연주 확인
+                playerCtrl.OnDisable();
+                textbehind.SetActive(true);
+
+                sideImage.SetActive(true);
             }
 
 
@@ -323,7 +336,7 @@ public class Story_one : MonoBehaviour
             playerCtrl.OnEnable();
         }
     }
-    private IEnumerator WaitForPiriPerformance()
+    private IEnumerator WaitForPiriPerformance(string melodyTag)
     {
         Debug.Log("피리 연주 시작!");
         bool played = false;
@@ -337,16 +350,65 @@ public class Story_one : MonoBehaviour
             }
             else if (Keyboard.current.wKey.wasReleasedThisFrame)
             {
-                if (holdTime > 1f)
-                    Debug.Log("평화의 악장");
-                else
-                    Debug.Log("분노의 악장");
+                yield return new WaitForSeconds(0.05f);
 
                 played = true;
+                GameObject melodyObj = GameObject.FindWithTag(melodyTag);
+                Debug.LogWarning(melodyObj);
+
+                if (melodyObj != null && melodyObj.activeInHierarchy)
+                {
+                    Debug.Log($"정확한 연주 성공: {melodyTag}");
+                    yield break; // 연주 성공 → 다음 대사로 진행
+                }
+                else
+                {
+                    Debug.Log("연주 실패 → 다시 시도");
+                    yield return StartCoroutine(ShowTryAgainDialogue()); // 실패 대사 출력
+                    holdTime = 0f;
+                    played = false; // 다시 입력 기다림
+                }
             }
 
             yield return null;
         }
+    }
+
+    private IEnumerator ShowTryAgainDialogue()
+    {
+        playerCtrl.OnDisable();
+
+        textbehind.SetActive(true);
+        sideImage.SetActive(true);
+
+        printText1.text = "";
+        printText2.text = "";
+        printText3.text = "";
+
+        girlImage.SetActive(false);
+        wolfImage.SetActive(true);
+
+        string tryAgainText = "w:흠, 뭔가 엇나간 것 같아. 다시 한번 불러볼까?";
+        string[] parts = tryAgainText.Split(':');
+        string speaker = parts[0];
+        string dialogue = parts[1];
+
+        int length = dialogue.GetTypingLength();
+        for (int i = 0; i <= length; i++)
+        {
+            printText2.text = dialogue.Typing(i);
+            yield return new WaitForSeconds(0.02f);
+        }
+
+        // 스페이스 키 대기
+        while (!Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            yield return null;
+        }
+
+        textbehind.SetActive(false);
+        sideImage.SetActive(false);
+        playerCtrl.OnEnable();
     }
 
     private IEnumerator PlayerMoveEffect() // 플레이어 장면 전환 효과

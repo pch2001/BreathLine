@@ -17,18 +17,19 @@ public class PlayerCtrl : PlayerCtrlBase
     public PlayerInputAction playerinputAction; // 강화된 Input 방식 사용
     private PlayerSkill playerSkill;
 
-    [SerializeField] private AnimatorOverrideController playPiriContorller; // 변경할 애니메이터(피리 모션)
-    private RuntimeAnimatorController defaultController; // 기본 애니메이터
     [SerializeField] private Transform groundCheck; // 캐릭터 발바닥 위치
     [SerializeField] private LayerMask groundLayer; // 바닥으로 간주할 Layer
+    [SerializeField] private AnimatorOverrideController playPiriContorller; // 변경할 애니메이터(피리 모션)
+    private RuntimeAnimatorController defaultController; // 기본 애니메이터
+    public Vector3 savePoint; // 현재 스테이지에서 사용할 임시 세이브 포인트
     public GameObject SealUI; // 소녀 스킬 봉인 표시 UI
+
     public Image wolfAttackCoolBG; // 늑대 공격 쿨타임 UI(배경)
     public Image wolfAttack; // 늑대 공격 UI
     public Image wolfAttackCool; // 늑대 공격 쿨타임 UI(아이콘)
-    public Vector3 savePoint; // 현재 스테이지에서 사용할 임시 세이브 포인트
     public GameObject AttackEffect; // 공격 받은 이펙트 오브젝트
 
-    // 소녀 관련 변수
+    // * 소녀 관련 변수
 
     float h; // 플레이어 좌우 이동값
     public float moveSpeed = 5f; // 이동속도
@@ -52,7 +53,7 @@ public class PlayerCtrl : PlayerCtrlBase
     public GameObject uiChange;
     public GameObject stage4PlayerPos;
 
-    // 늑대 관련 변수
+    // * 늑대 관련 변수
 
     public GameObject wolf; // 늑대 게임 오브젝트
     public Animator wolfAnimator; // 늑대 애니메이터
@@ -62,14 +63,15 @@ public class PlayerCtrl : PlayerCtrlBase
     private Coroutine wolfAttackCoolRoutine; // 늑대 공격 쿨타임 코루틴
     public bool isWolfRange; // 늑대의 범위 내에 있는지(WolfAppear 영역 / 피해x)
 
-    // 소녀 오염도 최대치 알림 이벤트
+    // * 이벤트 함수
     public event Action RequestPlayerPolluted; // 소녀 오염도 최대치 알림 이벤트
 
-    // 피리 연주 여부 프로퍼티
-    private bool _isPressingPiri = false;
-
+    // * UI 관련 변수
     public GameObject saveButton;
     public GameObject MainButton;
+
+    // * 피리 연주 여부 프로퍼티
+    private bool _isPressingPiri = false;
     public override bool isPressingPiri
     {
         get => _isPressingPiri;
@@ -103,12 +105,11 @@ public class PlayerCtrl : PlayerCtrlBase
         playerinputAction.Enable();
 
         // PlayerCtrl 변수 변경 이벤트
-        playerSkill.RequestSetMoveSpeedAndTime += OnSetMoveSpeedAndTime;
         playerSkill.RequestSetMoveSpeed += OnSetMoveSpeed;
-        playerSkill.RequestAnimTrigger += OnSetAnimTrigger;
         playerSkill.RequestWolfAnimTrigger += OnSetWolfAnimTrigger;
         playerSkill.RequestPressingPiriState += OnSetPressingPiri;
         playerSkill.RequestPeaceMelodyActived += OnPeaceMelodyActived;
+        playerSkill.RequestReadyPiri += OnSetReadyPiri;
 
         playerSkill.RequestWolfState += OnSetWolfState;
         playerSkill.RequestWolfStartAttack += SetWolfAttackCoolTime;
@@ -173,6 +174,10 @@ public class PlayerCtrl : PlayerCtrlBase
     {
         isPeaceMelody = state;
     }
+    private void OnSetReadyPiri(bool state)
+    {
+        isReadyPiri = state;
+    }
 
     // 늑대 연결 이벤트
     private void OnSetWolfAnimTrigger(string triggerName)
@@ -199,7 +204,7 @@ public class PlayerCtrl : PlayerCtrlBase
 
         if (isLocked || isPushed) return; // 행동 제한 변수 활성화시 제한
 
-        OnPlaySoftPiri(); // 평화의 악장 연주 차징 확인
+        //OnPlaySoftPiri(); // 평화의 악장 연주 차징 확인
         OnPlayerMove(); // 이동 구현
         OnWolfHide(); // 늑대 숨김 구현
     }
@@ -263,33 +268,16 @@ public class PlayerCtrl : PlayerCtrlBase
         if (isGrounded && isReadyPiri) // 착지, 피리 준비시에만 가능
         {
             animator.runtimeAnimatorController = playPiriContorller; // 피리부는 애니메이터로 변경
-            StartCoroutine(StartPiriCool()); // 피리 연주 쿨타임 시작(1f);
             playerSkill.StartPiri();
             isPressingPiri = true; // 피리 연주 시작
         }
     }
 
-    private IEnumerator StartPiriCool()
-    {
-        isReadyPiri = false;
-
-        yield return new WaitForSeconds(1f);
-        isReadyPiri = true;
-    }
-
     private void OnReleasePiri(InputAction.CallbackContext context) // 연주버튼을 떼었을 때 실행
     {
-        if (isGrounded && isPressingPiri) // 착지 + 연주시에만 가능
+        if (isGrounded && isPressingPiri && isReadyPiri) // 착지 + 연주시에만 가능
         {
             playerSkill.ReleasePiri();
-        }
-    }
-
-    private void OnPlaySoftPiri() // 평화의 악장 연주 차징 확인
-    {
-        if (isPressingPiri) // 피리 연주시에 확인
-        {
-            playerSkill.CheckSoftPiri();
         }
     }
 
