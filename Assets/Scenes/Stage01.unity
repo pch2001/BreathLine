@@ -1062,6 +1062,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5750200383615554305, guid: 278a61ce8fcf47c4ebe0ea6160eb837c, type: 3}
     - target: {fileID: 8990416797061719769, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
+      propertyPath: maxPlayCnt
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8990416797061719769, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: audioSource2
       value: 
       objectReference: {fileID: 2052240639}
@@ -1119,7 +1123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8990416797061719769, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: peaceMelody.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8990416797061719769, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: angerMelodies.Array.size
@@ -1213,6 +1217,18 @@ PrefabInstance:
       propertyPath: ownedScores.Array.data[5]
       value: 
       objectReference: {fileID: 11400000, guid: e48d138ba1adce642b8aeac5a7caa0a0, type: 2}
+    - target: {fileID: 8990416797061719769, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
+      propertyPath: peaceMelody.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 19454cbdd23036e4fbcc901e77a33d6a, type: 3}
+    - target: {fileID: 8990416797061719769, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
+      propertyPath: peaceMelody.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6580702086fb9a541828afeb2b16c99c, type: 3}
+    - target: {fileID: 8990416797061719769, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
+      propertyPath: peaceMelody.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5cbc2addcd1a3a043af99b7ce793d7a1, type: 3}
     - target: {fileID: 8990416797061719769, guid: eea177424aaf5734799baa01bf724ec0, type: 3}
       propertyPath: angerMelodies.Array.data[0]
       value: 

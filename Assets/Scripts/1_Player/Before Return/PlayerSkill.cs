@@ -52,9 +52,10 @@ public class PlayerSkill : MonoBehaviour
     public int currentBeat = 0; // 현재 박자 상태
     private float beatInterval; // 현재 박자 사이 간격
     private float angerBeatInterval = 0.3f; // 분노의 악장 박자 사이 간격
-    private float peaceBeatInterval = 0.7f; // 평화의 악장 박자 사이 간격
+    private float peaceBeatInterval = 0.45f; // 평화의 악장 박자 사이 간격
     private float halfRange = 3f; // 콤보 박스 이동 거리(-3 ~ 3)
-    private int playCnt = 3; // 한 사이클당 연주가능 횟수
+    public int maxPlayCnt = 4; // 한 사이클당 연주가능 횟수
+    private int playCnt = 4;
 
     public bool[] inputNotes; // 입력된 연주 상태 여부 배열
 
@@ -123,50 +124,33 @@ public class PlayerSkill : MonoBehaviour
 
         float duration = Time.time - piriStartTime; // 연주버튼 누른 시간
 
-        // 분노의 악장 연주 (0.25초 미만)
-        if (duration < 0.3f)
+
+        // 연주 시작시, 악장 모드 구분
+        if (!isPlaying)
         {
-            if (!isPlaying)
+            if (duration < 0.3f) // 분노의 악장 모드
             {
                 isAngerMelody = true;
-                beatInterval = angerBeatInterval; // 분노의 악장 박자 간격으로 변경
-                StartComboAt(Time.time); // 연주 시작시 콤보 효과 시작
             }
-            if (!isAngerMelody)
-            {
-                StartCoroutine(TempFailMelody(2f)); // 다른 연주시 피리 봉인(2초)
-                return;
-            }
-
-            hasPlayedThisBeat = true;
-            inputNotes[currentBeat] = true;
-            StartCoroutine(PlayAngerNote());
-        }
-        // 평화의 악장 연주 (0.3 ~ 0.6초 사이)
-        else if (duration >= 0.3f && duration <= 0.6f)
-        {
-            if (!isPlaying)
+            else // 평화의 악장 모드
             {
                 isAngerMelody = false;
-                beatInterval = peaceBeatInterval; // 평화의 악장 박자 간격으로 변경
-                StartComboAt(Time.time); // 연주 시작시 콤보 효과 시작
-            }
-            if (isAngerMelody)
-            {
-                StartCoroutine(TempFailMelody(2f)); // 다른 연주시 피리 봉인(2초)
-                return;
             }
 
-            hasPlayedThisBeat = true;
-            inputNotes[currentBeat] = true;
-            StartCoroutine(PlayPeaceNote());
+            beatInterval = isAngerMelody ? angerBeatInterval : peaceBeatInterval; // 해당 모드 박자 간격으로 변경
+            StartComboAt(Time.time); // 콤보 효과 시작
         }
-        // 연주 실패
+
+        // 입력 내용 적용
+        hasPlayedThisBeat = true;
+        inputNotes[currentBeat] = true;
+
+        // 모드에 따른 연주 실행
+        if (isAngerMelody)
+            StartCoroutine(PlayAngerNote());
         else
-        {
-            Debug.LogWarning($"입력시간: {duration}");
-            StartCoroutine(TempFailMelody(2f)); // 2초간 피리 사용 봉인
-        }
+            StartCoroutine(PlayPeaceNote());
+
     }
 
     private void StartComboAt(float startTime) // 콤보 시작 함수
@@ -235,7 +219,7 @@ public class PlayerSkill : MonoBehaviour
         Debug.LogWarning("콤보 종료!");
 
         currentBeat = 0;
-        playCnt = 3;
+        playCnt = maxPlayCnt;
         isPlaying = false;
         hasPlayedThisBeat = false;
 
@@ -303,9 +287,9 @@ public class PlayerSkill : MonoBehaviour
         spawnedNotes.Add(note);
 
         // 마지막 콤보시 입력과 악보 비교
+        CheckMelodyScore();
         if (playCnt <= 0)
         {
-            CheckMelodyScore();
             StopBeatBoxRoutine();
         }
         yield return new WaitForSeconds(0.2f);
@@ -329,9 +313,9 @@ public class PlayerSkill : MonoBehaviour
         spawnedNotes.Add(note);
 
         // 마지막 콤보시 입력과 악보 비교
+        CheckMelodyScore();
         if (playCnt <= 0)
         {
-            CheckMelodyScore();
             StopBeatBoxRoutine();
         }
         yield return new WaitForSeconds(0.2f);
@@ -375,6 +359,7 @@ public class PlayerSkill : MonoBehaviour
 
                 isFinalMelody = true; // 마무리 연주 On
                 RequestReadyPiri?.Invoke(false);
+                StopBeatBoxRoutine();
 
                 switch (score.scoreNum)
                 {
@@ -463,28 +448,55 @@ public class PlayerSkill : MonoBehaviour
 
     private IEnumerator PlayPeaceMelody0() // 평화의 악장 0 연주 함수
     {
-        yield return null;
+        // 마지막 음표 입력과 간격을 둠
+        yield return new WaitForSeconds(0.3f);
 
-        isFinalMelody = false; // 마무리 연주 off
+        // 공격 활성화 및 소리 재생
+        PeaceAttackArea.SetActive(true);
+        girlAudioSource.clip = peaceMelody[0];
+        girlAudioSource.Play();
+        yield return new WaitForSeconds(2f);
+
+        // 연주 종료 및 피리 상태 해제 
+        PeaceAttackArea.SetActive(false);
         RequestSetMoveSpeed(defaultSpeed);
+        isFinalMelody = false; // 마무리 연주 off
         RequestReadyPiri?.Invoke(true);
         RequestPressingPiriState(false);
     }
     private IEnumerator PlayPeaceMelody1() // 평화의 악장 1 연주 함수
     {
-        yield return null;
+        // 마지막 음표 입력과 간격을 둠
+        yield return new WaitForSeconds(0.3f);
 
-        isFinalMelody = false; // 마무리 연주 off
+        // 공격 활성화 및 소리 재생
+        PeaceAttackArea.SetActive(true);
+        girlAudioSource.clip = peaceMelody[1];
+        girlAudioSource.Play();
+        yield return new WaitForSeconds(2f);
+
+        // 연주 종료 및 피리 상태 해제 
+        PeaceAttackArea.SetActive(false);
         RequestSetMoveSpeed(defaultSpeed);
+        isFinalMelody = false; // 마무리 연주 off
         RequestReadyPiri?.Invoke(true);
         RequestPressingPiriState(false);
     }
     private IEnumerator PlayPeaceMelody2() // 평화의 악장 2 연주 함수
     {
-        yield return null;
+        // 마지막 음표 입력과 간격을 둠
+        yield return new WaitForSeconds(0.3f);
 
-        isFinalMelody = false; // 마무리 연주 off
+        // 공격 활성화 및 소리 재생
+        PeaceAttackArea.SetActive(true);
+        girlAudioSource.clip = peaceMelody[2];
+        girlAudioSource.Play();
+        yield return new WaitForSeconds(2f);
+
+        // 연주 종료 및 피리 상태 해제 
+        PeaceAttackArea.SetActive(false);
         RequestSetMoveSpeed(defaultSpeed);
+        isFinalMelody = false; // 마무리 연주 off
         RequestReadyPiri?.Invoke(true);
         RequestPressingPiriState(false);
     }
