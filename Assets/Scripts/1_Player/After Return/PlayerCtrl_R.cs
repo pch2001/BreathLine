@@ -59,6 +59,7 @@ public class PlayerCtrl_R : PlayerCtrlBase
 
     public GameObject saveButton;
     public GameObject MainButton;
+    public GameObject AttackEffect; // 공격 받은 이펙트 오브젝트
 
     // 피리 연주 여부 프로퍼티
     [SerializeField] private bool _isPressingPiri = false;
@@ -451,10 +452,30 @@ public class PlayerCtrl_R : PlayerCtrlBase
         }
     }
 
+    public IEnumerator Shake(float duration, float magnitude)
+    {
+        Vector3 originalPos = transform.localPosition;
 
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float x = UnityEngine.Random.Range(-1f, 1f) * magnitude;
+            float y = UnityEngine.Random.Range(-1f, 1f) * magnitude;
+
+            transform.localPosition = originalPos + new Vector3(x, y, 0);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localPosition = originalPos;
+    }
     private IEnumerator OnDamagedStart(float enemyDamage, float enemyPosX) // 소녀 피격 시작 함수
     {
         Debug.Log("소녀 피격! 소녀의 오염도가 증가합니다!");
+        StartCoroutine(Shake(0.2f, 0.1f));
+        Instantiate(AttackEffect, transform.position, Quaternion.identity); // 피격 이펙트 생성
 
         isPeaceMelody = false;
         isPressingPiri = false;
@@ -596,29 +617,30 @@ public class PlayerCtrl_R : PlayerCtrlBase
         if (isLocked) return; // 스크립트 중일때는 충돌 리턴
 
 
-        if (collision.gameObject.CompareTag("Enemy")) // 적과 충돌시 데미지 or 가드
-        {
-            EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy 기본 클래스 가져옴
-            if (enemy != null)
-            {
-                if (!enemy.attackMode || enemy.isStune || enemy.isDead || isDamaged) return; // 적의 공격 모드가 false or 스턴, 사망 상태일 경우 or 소녀 피격 상태시 충돌 X
+        //if (collision.gameObject.CompareTag("Enemy")) // 적과 충돌시 데미지 or 가드
+        //{
+        //    EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>(); // Enemy 기본 클래스 가져옴
+        //    if (enemy != null)
+        //    {
+        //        if (!enemy.attackMode || enemy.isStune || enemy.isDead || isDamaged) return; // 적의 공격 모드가 false or 스턴, 사망 상태일 경우 or 소녀 피격 상태시 충돌 X
 
 
-                if (isPeaceMelody)
-                {
-                    playerSkill.PlaySoftPiriCanceled(); // 평화의 연주중이었을 경우 캔슬
-                }
-                float damage = enemy.damage;
-                float position = collision.transform.position.x;
+        //        if (isPeaceMelody)
+        //        {
+        //            playerSkill.PlaySoftPiriCanceled(); // 평화의 연주중이었을 경우 캔슬
+        //        }
+        //        float damage = enemy.damage;
+        //        float position = collision.transform.position.x;
 
-                StartCoroutine(OnDamagedStart(damage * (isPurifying ? 0.2f : 1), position)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
-            }
-            else
-            {
-                Debug.Log("해당 적은 EnemyBase 클래스를 상속하지 않았습니다! 연결해유");
-            }
-        }
-        else if (collision.gameObject.CompareTag("EnemyAttack")) // 에코가드 성공시 그로기 게이지를 높일 수 있는 Attack
+        //        StartCoroutine(OnDamagedStart(damage * (isPurifying ? 0.2f : 1), position)); // 피격 반응 구현 (정화의 걸음시 데미지 20%로 반감)
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("해당 적은 EnemyBase 클래스를 상속하지 않았습니다! 연결해유");
+        //    }
+        //}
+        //else 
+        if (collision.gameObject.CompareTag("EnemyAttack")) // 에코가드 성공시 그로기 게이지를 높일 수 있는 Attack
         {
             if (isDamaged) return; // 소녀 피격 상태시 충돌 X
 

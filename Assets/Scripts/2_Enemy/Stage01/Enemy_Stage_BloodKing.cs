@@ -4,6 +4,12 @@ using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+/*
+    Attack0 : 기본 근거리 공격
+    Attack1 : 돌진 공격
+    Attack2 : 공중 낙하 공격
+ */
 public class Enemy_Stage_BloodKing : BossBase // Mage 스크립트
 {
     public int angerAttackID = 0; // 분노의 악장 중복 충돌 판정 방지

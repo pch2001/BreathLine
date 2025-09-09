@@ -301,13 +301,17 @@ public class Enemy_Stage01_2 : EnemyBase // Spitter 스크립트
         gameObject.SetActive(false); // 적 비활성화
     }
 
+    //IEnumerator Damaged()
+    //{
+    //    yield return new WaitForSeconds(0.1f);
+    //}
     private void AttackMode() // 공격 모드 활성화
     {
         Debug.Log("적이 플레이어에게 달려듭니다!");
         isLooking = true;
         attackMode = true;
-        boxCollider.size = new Vector2(0.03f, 0.23f); // 피격 범위 크기 변경 (플레이어 인식 범위 -> 적 충돌 범위)
-        boxCollider.offset = new Vector2(0f, 0f); // 피격 범위 위치 변경
+        //boxCollider.size = new Vector2(0.03f, 0.23f); // 피격 범위 크기 변경 (플레이어 인식 범위 -> 적 충돌 범위)
+        //boxCollider.offset = new Vector2(0f, 0f); // 피격 범위 위치 변경
         moveSpeed = defaultMoveSpeed;
     }
 
